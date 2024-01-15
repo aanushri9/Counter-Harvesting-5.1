@@ -14,7 +14,7 @@ The project is written with Python 3.11. The PyQt GUI framework is used to creat
 - Karan Goel karan1611goel@gmail.com 
 - Shubham Kaura gotoshubham@gmail.com
 - Vishav Pratap Chauhan vishurana7479@gmail.com
-- AAbhimanyu Rana Abhimanyu27882rana@gmail.com
+- Abhimanyu Rana Abhimanyu27882rana@gmail.com
 - Anushri Garg aanushri@upei.ca
 - Manan Mutereja mmutreja@upei.ca
 - Boyu Wu bwu7676@upei.ca
