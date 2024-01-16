@@ -214,8 +214,8 @@
                    <string/>
                   </property>
                   <property name="icon">
-                   <iconset resource="../Resources.qrc">
-                    <normaloff>:/ui/resources/tab_icons/search_icon.png</normaloff>:/ui/resources/tab_icons/search_icon.png</iconset>
+                   <iconset>
+                    <normaloff>resources/import_vendors_icon.png</normaloff>resources/import_vendors_icon.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -486,8 +486,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

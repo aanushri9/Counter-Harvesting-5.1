@@ -129,7 +129,7 @@ class Ui_Dialog(object):
         self.yearly_directory_help_button.setSizePolicy(sizePolicy)
         self.yearly_directory_help_button.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/ui/resources/tab_icons/search_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("resources/import_vendors_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.yearly_directory_help_button.setIcon(icon)
         self.yearly_directory_help_button.setObjectName("yearly_directory_help_button")
         self.gridLayout_11.addWidget(self.yearly_directory_help_button, 0, 3, 1, 1)
@@ -318,7 +318,6 @@ class Ui_Dialog(object):
         self.save_button.setText(_translate("Dialog", "Save All Changes"))
         self.settings_rebuild_database_button.setText(_translate("Dialog", "Rebuild Database"))
         self.settings_search_label.setText(_translate("Dialog", "Search"))
-# import Resources_rc
 
 
 if __name__ == "__main__":
