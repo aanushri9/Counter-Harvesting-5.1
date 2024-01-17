@@ -228,6 +228,51 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QListView" name="vendors_list_view_special">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>251</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="select_vendors_button_special">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>114</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select All</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deselect_vendors_button_special">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>30</y>
+        <width>114</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deselect All</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QFrame" name="frmSelectReportType">
      <property name="geometry">
@@ -302,18 +347,51 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QFrame" name="frame_30">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>50</y>
-        <width>100</width>
-        <height>20</height>
+        <x>30</x>
+        <y>40</y>
+        <width>154</width>
+        <height>251</height>
        </rect>
       </property>
-      <property name="text">
-       <string>PR</string>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="2" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="tr_radio_button">
+         <property name="text">
+          <string>TR</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="pr_radio_button">
+         <property name="text">
+          <string>PR</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="dr_radio_button">
+         <property name="text">
+          <string>DR</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QRadioButton" name="ir_radio_button">
+         <property name="text">
+          <string>IR</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QFrame" name="frmDateRange">
@@ -451,25 +529,6 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QFrame" name="frame_7">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>49</y>
-        <width>231</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
      <widget class="QLabel" name="lblOptions">
       <property name="geometry">
        <rect>
@@ -491,6 +550,32 @@
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+     </widget>
+     <widget class="QFrame" name="options_frame">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>231</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6"/>
      </widget>
     </widget>
    </widget>
