@@ -6,15 +6,44 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>662</height>
+    <width>935</width>
+    <height>588</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">*{
+	
+border:none;
+background-color:transparent;
+background:none;
+padding:0;
+margin:0;
+color:#fff;
+}
+
+
+
+#centralwidget{
+background-color:#1f232a;
+}
+#EditVendor{
+background-color:#16191d;
+}
+QPushButton{
+text-align:left;
+padding: 5px 10px;
+
+border-top-left-radius:5px;
+border-botton-left-radius:5px;
+}
+QPushButton:pressed{
+background-color:grey;
+text-align:left;
+padding:2px 10px;
+color:white;}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_4">
@@ -30,15 +59,18 @@
           <enum>QFrame::Plain</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0">
+          <item row="0" column="0" alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="label_13">
             <property name="font">
              <font>
-              <family>Segoe UI</family>
-              <pointsize>11</pointsize>
+              <family>Georgia</family>
+              <pointsize>14</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Select Vendor</string>
@@ -53,6 +85,21 @@
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QListView {
+	background-color: #cccccc;
+	border-radius: 20px; 
+}
+
+#vendorsListView{
+
+   border-radius:15px;
+    border: 5px solid #000000;
+	border-color: rgb(166, 166, 166);
+
+
+}</string>
+            </property>
             <property name="alternatingRowColors">
              <bool>true</bool>
             </property>
@@ -60,352 +107,107 @@
           </item>
           <item row="2" column="0">
            <widget class="QFrame" name="frame_2">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    border: 2px solid #000000;
+border-color:grey;
+border-radius:15px;
+}
+
+QPushButton:hover {
+    background-color: lightblue;
+}
+
+</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
-            <layout class="QGridLayout" name="gridLayout_3">
-             <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
               <widget class="QPushButton" name="addVendorButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">text-align: center;
+</string>
+               </property>
                <property name="text">
                 <string>Add New Vendor</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/add_vendor_icon.png</normaloff>resources/add_vendor_icon.png</iconset>
+                 <normaloff>resources/Icons/add.png</normaloff>resources/Icons/add.png</iconset>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
+             <item>
               <widget class="QPushButton" name="importVendorsButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">text-align: center;
+</string>
+               </property>
                <property name="text">
                 <string>Import Vendors</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/import_vendors_icon.png</normaloff>resources/import_vendors_icon.png</iconset>
+                 <normaloff>resources/Icons/import.png</normaloff>resources/Icons/import.png</iconset>
                </property>
               </widget>
              </item>
-             <item row="0" column="3">
+             <item>
               <widget class="QPushButton" name="exportVendorsButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/newPrefix/save_icon.png&quot;/&gt;yguhbnj&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">text-align: center;
+</string>
                </property>
                <property name="text">
                 <string>Export Vendors</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/export_vendors_icon.png</normaloff>resources/export_vendors_icon.png</iconset>
+                 <normaloff>resources/Icons/export - Copy.png</normaloff>resources/Icons/export - Copy.png</iconset>
                </property>
               </widget>
              </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QWidget" name="EditVendor" native="true">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QFrame" name="frame_3">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="text">
-             <string>Edit Vendor (5.0)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QFrame" name="frame_4">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
-              <widget class="QPushButton" name="fivezero">
+              <widget class="QPushButton" name="pushButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="styleSheet">
-                <string notr="true">background-color:#e7e7e7;</string>
+                <string notr="true">text-align: center;
+</string>
                </property>
                <property name="text">
-                <string>5.0</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="fiveone">
-               <property name="text">
-                <string>5.1</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QFrame" name="edit_vendor_details_frame">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_5">
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="text">
-                <string>Requester ID</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="1">
-              <widget class="QCheckBox" name="checkBox_2">
-               <property name="text">
-                <string>CheckBox</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="1">
-              <widget class="QCheckBox" name="checkBox">
-               <property name="text">
-                <string>CheckBox</string>
-               </property>
-              </widget>
-             </item>
-             <item row="9" column="0">
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>Request throttled</string>
-               </property>
-              </widget>
-             </item>
-             <item row="10" column="1">
-              <widget class="QLineEdit" name="notesEdit">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>339</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QDateEdit" name="All_reports_edit_fetch">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="dateTime">
-                <datetime>
-                 <hour>0</hour>
-                 <minute>0</minute>
-                 <second>0</second>
-                 <year>2020</year>
-                 <month>1</month>
-                 <day>1</day>
-                </datetime>
-               </property>
-               <property name="displayFormat">
-                <string>yyyy</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_3">
-               <property name="text">
-                <string>Customer ID</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_5">
-               <property name="text">
-                <string>API Key</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label_8">
-               <property name="text">
-                <string>2 Attempts needed</string>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="0">
-              <widget class="QLabel" name="companiesText">
-               <property name="text">
-                <string>Provider</string>
-               </property>
-              </widget>
-             </item>
-             <item row="10" column="0">
-              <widget class="QLabel" name="label_28">
-               <property name="text">
-                <string>Notes</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="0">
-              <widget class="QLabel" name="label_9">
-               <property name="text">
-                <string>IP Checking</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QLineEdit" name="lineEdit"/>
-             </item>
-             <item row="11" column="1">
-              <widget class="QLineEdit" name="providerEdit">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QLineEdit" name="apiKeyEdit"/>
-             </item>
-             <item row="5" column="1">
-              <widget class="QLineEdit" name="requesterIdEdit"/>
-             </item>
-             <item row="9" column="1">
-              <widget class="QCheckBox" name="checkBox_3">
-               <property name="text">
-                <string>CheckBox</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>Base URL</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Name</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="nameEdit"/>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="name_validation_label">
-               <property name="text">
-                <string>Validation label</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_10">
-               <property name="text">
-                <string>Starting Year</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="customerIdEdit"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QFrame" name="edit_vendor_options_frame">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
-             <item>
-              <widget class="QPushButton" name="saveVendorChangesButton">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="text">
-                <string>Save Changes</string>
+                <string>Edit Vendor</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/save_icon.png</normaloff>resources/save_icon.png</iconset>
-               </property>
-               <property name="default">
-                <bool>false</bool>
-               </property>
-               <property name="flat">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="undoVendorChangesButton">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="text">
-                <string>Undo Changes</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>resources/undo_icon.png</normaloff>resources/undo_icon.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="removeVendorButton">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="text">
-                <string>Remove Vendor</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>resources/remove_vendor_icon.png</normaloff>resources/remove_vendor_icon.png</iconset>
+                 <normaloff>resources/Icons/edit.png</normaloff>resources/Icons/edit.png</iconset>
                </property>
               </widget>
              </item>
@@ -421,6 +223,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

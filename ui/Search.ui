@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>935</width>
+    <height>583</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Search</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+	
+border:none;
+background-color:transparent;
+background:none;
+padding:0;
+margin:0;
+color:#fff;
+}
+
+
+
+#centralwidget{
+background-color:#1f232a;
+}
+#EditVendor{
+background-color:#16191d;
+}
+QPushButton{
+text-align:left;
+padding: 5px 10px;
+
+border-top-left-radius:5px;
+border-botton-left-radius:5px;
+}
+QPushButton:pressed{
+background-color:grey;
+text-align:left;
+padding:2px 10px;
+color:white;}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="SearchImage_frame">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>30</y>
+      <width>151</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/image/R.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>130</y>
+      <width>721</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 5px solid rgb(255, 255, 255);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>681</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    color: black; /* QComboBox中的文本颜色为黑色 */
+}
+
+QComboBox QAbstractItemView {
+    color: black; /* 下拉列表中的文本颜色为黑色 */
+}
+</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Title Substring</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Issn</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Isbn</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
+       <widget class="QComboBox" name="comboBox">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    color: black; /* QComboBox中的文本颜色为黑色 */
+}
+
+QComboBox QAbstractItemView {
+    color: black; /* 下拉列表中的文本颜色为黑色 */
+}
+
+</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>DR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DR_D1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DR_D2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>IR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>IR_A1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>IR_M1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>PR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>PR_P1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_B1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_B2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_B3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_J1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_J2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_J3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TR_J4</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="2" colspan="3">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    color: black; /* 文本颜色为黑色 */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Please input the tile/issn/isbn in correct format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Title Search Option</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Report type</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QSpinBox" name="spinBox_2">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QSpinBox {
+    color: black; /* 文本颜色为黑色 */
+}
+</string>
+        </property>
+        <property name="maximum">
+         <number>9999</number>
+        </property>
+        <property name="value">
+         <number>2024</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>End Year</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QSpinBox" name="spinBox">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QSpinBox {
+    color: black; /* 文本颜色为黑色 */
+}
+</string>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>9999</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Start Year</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBox_3">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    color: black; /* QComboBox中的文本颜色为黑色 */
+}
+
+QComboBox QAbstractItemView {
+    color: black; /* 下拉列表中的文本颜色为黑色 */
+}
+</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Data Base</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Publisher id</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Publisher</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Platform</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Proprietary_id</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Data_type</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Access_method</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Metric_type</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vendor</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>January</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>February</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>March</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>April</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>May</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>June</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>July</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>August</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>September</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>October</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>November</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>December</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Detailed Search Option</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" colspan="3">
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    color: black; /* 文本颜色为黑色 */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Please enter the appropriate name</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>30</y>
+      <width>137</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>410</y>
+      <width>145</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */
+    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Import Search</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */
+    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Export Search</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */
+    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Search</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>C:/Users/Administrator/Downloads/system-regular-42-search.gif</normaloff>C:/Users/Administrator/Downloads/system-regular-42-search.gif</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>280</y>
+      <width>125</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Open File</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBox_2">
+       <property name="font">
+        <font>
+         <family>Georgia</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Open Folder</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="latestUI/Search_image.qrc"/>
+ </resources>
+ <connections/>
+</ui>
