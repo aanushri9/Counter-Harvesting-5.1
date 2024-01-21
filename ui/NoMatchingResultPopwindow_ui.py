@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(592, 143)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_NoMatchineResultPopWindow(object):
+    def setupUi(self, NoMatchineResultPopWindow):
+        NoMatchineResultPopWindow.setObjectName("NoMatchineResultPopWindow")
+        NoMatchineResultPopWindow.resize(592, 143)
+        NoMatchineResultPopWindow.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(NoMatchineResultPopWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(30, 30, 431, 31))
@@ -67,13 +67,13 @@ class Ui_MainWindow(object):
 "    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */\n"
 "}")
         self.pushButton.setObjectName("pushButton")
-        MainWindow.setCentralWidget(self.centralwidget)
+        NoMatchineResultPopWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(NoMatchineResultPopWindow)
+        QtCore.QMetaObject.connectSlotsByName(NoMatchineResultPopWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, NoMatchineResultPopWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "No matching result found, please try again"))
-        self.pushButton.setText(_translate("MainWindow", "Back"))
+        NoMatchineResultPopWindow.setWindowTitle(_translate("NoMatchineResultPopWindow", "NoMatchineResultPopWindow"))
+        self.label.setText(_translate("NoMatchineResultPopWindow", "No matching result found, please try again"))
+        self.pushButton.setText(_translate("NoMatchineResultPopWindow", "Back"))

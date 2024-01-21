@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1052, 876)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_AddVendors(object):
+    def setupUi(self, AddVendors):
+        AddVendors.setObjectName("AddVendors")
+        AddVendors.resize(1052, 876)
+        AddVendors.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(AddVendors)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -298,42 +298,42 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addWidget(self.buttonBox, 4, 0, 1, 1)
         self.verticalLayout.addWidget(self.frame_3)
         self.gridLayout.addWidget(self.frame, 0, 1, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        AddVendors.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(AddVendors)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1052, 26))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        AddVendors.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(AddVendors)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        AddVendors.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(AddVendors)
+        QtCore.QMetaObject.connectSlotsByName(AddVendors)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, AddVendors):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_7.setText(_translate("MainWindow", "Add New Vendor"))
-        self.label.setText(_translate("MainWindow", "Name"))
-        self.label_3.setText(_translate("MainWindow", "Customer ID"))
-        self.name_validation_label.setText(_translate("MainWindow", "Validation label"))
-        self.label_2.setText(_translate("MainWindow", "Base URL"))
-        self.label_10.setText(_translate("MainWindow", "Starting Year"))
-        self.All_reports_edit_fetch.setDisplayFormat(_translate("MainWindow", "yyyy"))
-        self.label_8.setText(_translate("MainWindow", "2 Attempts needed"))
-        self.label_4.setText(_translate("MainWindow", "Requester ID"))
-        self.label_5.setText(_translate("MainWindow", "API Key"))
-        self.label_11.setText(_translate("MainWindow", "Request throttled"))
-        self.label_28.setText(_translate("MainWindow", "Notes"))
-        self.companiesText.setText(_translate("MainWindow", "Provider"))
-        self.label_9.setText(_translate("MainWindow", "IP Checking required"))
+        AddVendors.setWindowTitle(_translate("AddVendors", "AddVendors"))
+        self.label_7.setText(_translate("AddVendors", "Add New Vendor"))
+        self.label.setText(_translate("AddVendors", "Name"))
+        self.label_3.setText(_translate("AddVendors", "Customer ID"))
+        self.name_validation_label.setText(_translate("AddVendors", "Validation label"))
+        self.label_2.setText(_translate("AddVendors", "Base URL"))
+        self.label_10.setText(_translate("AddVendors", "Starting Year"))
+        self.All_reports_edit_fetch.setDisplayFormat(_translate("AddVendors", "yyyy"))
+        self.label_8.setText(_translate("AddVendors", "2 Attempts needed"))
+        self.label_4.setText(_translate("AddVendors", "Requester ID"))
+        self.label_5.setText(_translate("AddVendors", "API Key"))
+        self.label_11.setText(_translate("AddVendors", "Request throttled"))
+        self.label_28.setText(_translate("AddVendors", "Notes"))
+        self.companiesText.setText(_translate("AddVendors", "Provider"))
+        self.label_9.setText(_translate("AddVendors", "IP Checking required"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    AddVendors = QtWidgets.QAddVendors()
+    ui = Ui_AddVendors()
+    ui.setupUi(AddVendors)
+    AddVendors.show()
     sys.exit(app.exec_())
