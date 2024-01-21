@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(935, 588)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_ManageVendors(object):
+    def setupUi(self, ManageVendors):
+        ManageVendors.setObjectName("ManageVendors")
+        ManageVendors.resize(935, 588)
+        ManageVendors.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(ManageVendors)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_4.setObjectName("gridLayout_4")
@@ -161,28 +161,28 @@ class Ui_MainWindow(object):
         self.gridLayout_7.addWidget(self.frame_2, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
         self.gridLayout_4.addWidget(self.SelectVendor, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        ManageVendors.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(ManageVendors)
+        QtCore.QMetaObject.connectSlotsByName(ManageVendors)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, ManageVendors):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_13.setText(_translate("MainWindow", "Select Vendor"))
-        self.addVendorButton.setText(_translate("MainWindow", "Add New Vendor"))
-        self.importVendorsButton.setText(_translate("MainWindow", "Import Vendors"))
-        self.exportVendorsButton.setToolTip(_translate("MainWindow", "<html><head/><body><p><img src=\":/newPrefix/save_icon.png\"/>yguhbnj</p></body></html>"))
-        self.exportVendorsButton.setText(_translate("MainWindow", "Export Vendors"))
-        self.pushButton.setText(_translate("MainWindow", "Edit Vendor"))
+        ManageVendors.setWindowTitle(_translate("ManageVendors", "ManageVendors"))
+        self.label_13.setText(_translate("ManageVendors", "Select Vendor"))
+        self.addVendorButton.setText(_translate("ManageVendors", "Add New Vendor"))
+        self.importVendorsButton.setText(_translate("ManageVendors", "Import Vendors"))
+        self.exportVendorsButton.setToolTip(_translate("ManageVendors", "<html><head/><body><p><img src=\":/newPrefix/save_icon.png\"/>yguhbnj</p></body></html>"))
+        self.exportVendorsButton.setText(_translate("ManageVendors", "Export Vendors"))
+        self.pushButton.setText(_translate("ManageVendors", "Edit Vendor"))
 import resources_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ManageVendors = QtWidgets.QManageVendors()
+    ui = Ui_ManageVendors()
+    ui.setupUi(ManageVendors)
+    ManageVendors.show()
     sys.exit(app.exec_())
