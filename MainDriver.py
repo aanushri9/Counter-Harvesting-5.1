@@ -1,9 +1,45 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication
+import locale
+import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow , QWidget, QFrame, QHBoxLayout, QPushButton 
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 import os
-import sys
 
+#from FetchData import FetchReportsController
+from ui import MainWindow,AddVendor,EditVendors,ManageVendors,RemoveVendorDialog 
+
+
+# region debug_stuff
+
+def trap_exc_during_debug(*args):
+    # when app raises uncaught exception, print info
+    print(args)
+
+
+# install exception hook: without this, uncaught exception would cause application to exit
+sys.excepthook = trap_exc_during_debug
+
+# endregion
+
+if hasattr(Qt, 'AA_EnableHighDpiScaling'):
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+
+if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
+
+# if __name__ == "__main__":
+#     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
+#     app = QApplication(sys.argv)
+#     app.setStyleSheet("QWidget {font-family: Segoe UI; font-size: 12pt;}")
+
+#     # Use QMainWindow instead of QWidget for the main window
+#     main_window = QMainWindow()
+#     main_window_ui = MainWindow.Ui_MainWindow()
+#     main_window_ui.setupUi(main_window)
+    
 class Main(QMainWindow):
     def __init__(self):
         super(Main, self).__init__()
