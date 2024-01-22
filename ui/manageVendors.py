@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import resources_rc
 
 class Ui_ManageVendors(object):
     def setupUi(self, ManageVendors):
@@ -181,7 +181,7 @@ import resources_rc
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    ManageVendors = QtWidgets.QManageVendors()
+    ManageVendors = QtWidgets.QMainWindow()
     ui = Ui_ManageVendors()
     ui.setupUi(ManageVendors)
     ManageVendors.show()

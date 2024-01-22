@@ -1,23 +1,17 @@
-import locale
-import sys
-from PyQt5.QtCore import Qt, QPropertyAnimation, QEasingCurve
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QFrame, QHBoxLayout, QPushButton, QStackedWidget
-from PyQt5.QtGui import QIcon, QPixmap
-from ui import MainWindow, AddVendor, EditVendors, ManageVendors, RemoveVendorDialog
 import os
+import sys
+from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.uic import loadUi
+from ui import ManageVendors  # Import the ManageVendors module
 
 class Main(QMainWindow):
     def __init__(self):
         super(Main, self).__init__()
 
-        # Get the directory of the current script
+        # Load the main window UI
         script_dir = os.path.dirname(os.path.abspath(__file__))
-
-        # Construct the absolute path to the UI file
         ui_file_path = os.path.join(script_dir, "ui", "MainWindow.ui")
-
-        # Load the UI file
         loadUi(ui_file_path, self)
 
         self.menu_num = 0
@@ -31,39 +25,31 @@ class Main(QMainWindow):
 
     def show_manage_vendors(self):
         # Display the ManageVendors UI in the frame_4
-        self.manage_vendors_ui.setupUi(self.frame_4)
+        self.frame_4.setLayout(self.manage_vendors_ui.setupUi(self.frame_4))
         self.frame_4.show()
 
     def menubar(self):
         print("pressed")
         if self.menu_num == 0:
-            self.animation = QPropertyAnimation(self.leftSubContainer, b"minimumWidth")
-            self.animation1 = QPropertyAnimation(self.leftMenu, b"minimumWidth")
-            self.animation.setDuration(250)
-            self.animation.setStartValue(55)
-            self.animation.setEndValue(250)
-            self.animation.setEasingCurve(QEasingCurve.InOutQuart)
-            self.animation.start()
-            self.animation1.setDuration(250)
-            self.animation1.setStartValue(55)
-            self.animation1.setEndValue(250)
-            self.animation1.setEasingCurve(QEasingCurve.InOutQuart)
-            self.animation1.start()
+            self.animate_menu(55, 250)
             self.menu_num = 1
         else:
-            self.animation = QPropertyAnimation(self.leftSubContainer, b"minimumWidth")
-            self.animation1 = QPropertyAnimation(self.leftMenu, b"minimumWidth")
-            self.animation.setDuration(250)
-            self.animation.setStartValue(250)
-            self.animation.setEndValue(40)
-            self.animation.setEasingCurve(QEasingCurve.InOutQuart)
-            self.animation.start()
-            self.animation1.setDuration(250)
-            self.animation1.setStartValue(250)
-            self.animation1.setEndValue(40)
-            self.animation1.setEasingCurve(QEasingCurve.InOutQuart)
-            self.animation1.start()
+            self.animate_menu(250, 40)
             self.menu_num = 0
+
+    def animate_menu(self, start_value, end_value):
+        animation = QPropertyAnimation(self.leftSubContainer, b"minimumWidth")
+        animation1 = QPropertyAnimation(self.leftMenu, b"minimumWidth")
+        animation.setDuration(250)
+        animation.setStartValue(start_value)
+        animation.setEndValue(end_value)
+        animation.setEasingCurve(QEasingCurve.InOutQuart)
+        animation1.setDuration(250)
+        animation1.setStartValue(start_value)
+        animation1.setEndValue(end_value)
+        animation1.setEasingCurve(QEasingCurve.InOutQuart)
+        animation.start()
+        animation1.start()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
