@@ -1,11 +1,12 @@
 import locale
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow , QWidget, QFrame, QHBoxLayout, QPushButton 
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget,QSizePolicy, QWidget, QFrame, QHBoxLayout, QPushButton 
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 import os
+
 #from FetchData import FetchReportsController
 from ui import AddVendorDialog, MainWindow,EditVendors,ManageVendorsTab,RemoveVendorDialog#, SettingsTab
 #from ManageVendors import ManageVendorsController 
@@ -79,41 +80,9 @@ class Main(QMainWindow):
     
     # Connect the manageVendorButton clicked signal to the show_manage_vendors slot
         self.manageVendorsButton.clicked.connect(self.show_manage_vendors)
+        self.settingsButton.clicked.connect(self.show_settings)
 
-        # Load the UI file
-        # loadUi(ui_file_path, self)
 
-        # self.menu_num = 0
-        # self.MenuButton.clicked.connect(self.menubar)
-        
-        # Create an instance of the ManageVendors class
-        #self.manage_vendors = ManageVendorsTab()
-
-        # Set up the UI of the ManageVendors instance and set it as the central widget of Frame4
-        #self.manage_vendors.setupUi(self.frame_4)
-
-        # Hide the Frame4 widget initially
-        #self.frame_4.hide()
-
-        # Connect the manageVendorButton clicked signal to the show_manage_vendors slot
-        #self.manageVendorsButton.clicked.connect(self.show_manage_vendors)
-
-    # def show_manage_vendors(self):
-    #     script_dir = os.path.dirname(os.path.abspath(__file__))
-    #     ui_file_path = os.path.join(script_dir, "ui", "ManageVendorsTab.ui")
-
-    #     # Create an instance of QFrame (or any other QWidget) and load the UI into it
-    #     manage_vendor_frame = QFrame()
-    #     loadUi(ui_file_path, manage_vendor_frame)
-
-    #     # Set the manage_vendor_frame as the central widget of the Frame4 widget
-    #     self.frame_4.setCentralWidget(manage_vendor_frame)
-
-    #     # Uncomment this line if you have a ManageVendorsTab class
-    #     # self.frame_4.setCentralWidget(self.manage_vendors)
-
-    #     # Show the Frame4 widget
-    #     self.frame_4.show()
     def show_manage_vendors(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
         # Construct the absolute path to the ManageVendorsTab UI file
@@ -123,8 +92,35 @@ class Main(QMainWindow):
         manage_vendors_widget = QWidget()
         loadUi(manage_vendors_ui_file_path, manage_vendors_widget)
 
+       # Set the size policy of the manage_vendors_widget
+        manage_vendors_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
         # Add the manage_vendors_widget to the QTabWidget
         self.tabWidget.addTab(manage_vendors_widget, "Manage Vendors")
+
+        # Set the size policy of the QWidget in the mainBodyContainer
+        self.mainBodyContainer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        # Show the QTabWidget
+        self.tabWidget.show()
+
+    def show_settings(self):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Construct the absolute path to the settings.ui file
+        settings_ui_file_path = os.path.join(script_dir, "ui", "SettingsTab.ui")
+
+        # Create an instance of QWidget (or any other QWidget) and load the UI into it
+        settings_widget = QWidget()
+        loadUi(settings_ui_file_path, settings_widget)
+
+        # Set the size policy of the settings_widget
+        settings_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        # Add the settings_widget to the QTabWidget
+        self.tabWidget.addTab(settings_widget, "Settings")
+
+        # Set the size policy of the QWidget in the mainBodyContainer
+        self.mainBodyContainer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         # Show the QTabWidget
         self.tabWidget.show()
@@ -146,12 +142,6 @@ class Main(QMainWindow):
             self.animation1.start()
             self.menu_num = 1
 
-            # Set the manage_vendors UI as the central widget of the Frame4 widget
-            #self.frame_4.setLayout(self.manage_vendors)
-
-            # Show the Frame4 widget
-            #self.frame_4.show()
-
         else:
             self.animation = QPropertyAnimation(self.leftSubContainer, b"minimumWidth")
             self.animation1 = QPropertyAnimation(self.leftMenu, b"minimumWidth")
@@ -167,8 +157,6 @@ class Main(QMainWindow):
             self.animation1.start()
             self.menu_num = 0
 
-            # Hide the Frame4 widget
-            self.frame_4.hide()
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
