@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(911, 585)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_FetchReportProgressWindow(object):
+    def setupUi(self, FetchReportProgressWindow):
+        FetchReportProgressWindow.setObjectName("FetchReportProgressWindow")
+        FetchReportProgressWindow.resize(911, 585)
+        FetchReportProgressWindow.setStyleSheet("*{\n"
 "    \n"
 "    \n"
 "border:none;\n"
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(FetchReportProgressWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -114,24 +114,24 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.exportButton, 0, 1, 1, 1)
         self.gridLayout_3.addWidget(self.frame_2, 3, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        FetchReportProgressWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(FetchReportProgressWindow)
+        QtCore.QMetaObject.connectSlotsByName(FetchReportProgressWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, FetchReportProgressWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Fetching Reports</p></body></html>"))
-        self.logFileButton.setText(_translate("MainWindow", "Log File"))
-        self.exportButton.setText(_translate("MainWindow", "OK"))
+        FetchReportProgressWindow.setWindowTitle(_translate("FetchReportProgressWindow", "FetchReportProgressWindow"))
+        self.label.setText(_translate("FetchReportProgressWindow", "<html><head/><body><p align=\"center\">Fetching Reports</p></body></html>"))
+        self.logFileButton.setText(_translate("FetchReportProgressWindow", "Log File"))
+        self.exportButton.setText(_translate("FetchReportProgressWindow", "OK"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    FetchReportProgressWindow = QtWidgets.QFetchReportProgressWindow()
+    ui = Ui_FetchReportProgressWindow()
+    ui.setupUi(FetchReportProgressWindow)
+    FetchReportProgressWindow.show()
     sys.exit(app.exec_())

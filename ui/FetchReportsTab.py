@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1118, 683)
-        MainWindow.setStyleSheet("color:black;")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Ui_FetchReportsTab(object):
+    def setupUi(self, FetchReportsTab):
+        FetchReportsTab.setObjectName("FetchReportsTab")
+        FetchReportsTab.resize(1118, 683)
+        FetchReportsTab.setStyleSheet("color:black;")
+        self.centralwidget = QtWidgets.QWidget(FetchReportsTab)
         self.centralwidget.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -442,48 +442,48 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.frame_3, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 1, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        FetchReportsTab.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(FetchReportsTab)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        FetchReportsTab.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(FetchReportsTab)
+        QtCore.QMetaObject.connectSlotsByName(FetchReportsTab)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, FetchReportsTab):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.lblOptions.setText(_translate("MainWindow", "Select Standard View"))
-        self.lblEndDate.setText(_translate("MainWindow", "End Date"))
-        self.lblBeginDate.setText(_translate("MainWindow", "Begin Date"))
-        self.dateedit1_3.setDisplayFormat(_translate("MainWindow", "MM-yyyy"))
-        self.lblFetchAllReport_4.setText(_translate("MainWindow", "Date Range"))
-        self.lblFetchAllReport_3.setText(_translate("MainWindow", "Select Vendors"))
-        self.pushButton_3.setText(_translate("MainWindow", "Select All"))
-        self.pushButton_4.setText(_translate("MainWindow", "Deselect All"))
-        self.checkBox_3.setText(_translate("MainWindow", "DR"))
-        self.checkBox_2.setText(_translate("MainWindow", "TR"))
-        self.checkBox.setText(_translate("MainWindow", "PR"))
-        self.checkBox_4.setText(_translate("MainWindow", "IR"))
-        self.pushButton_5.setText(_translate("MainWindow", "Select all"))
-        self.pushButton_6.setText(_translate("MainWindow", "Deselect all "))
-        self.label_2.setText(_translate("MainWindow", "Report(s) will be saved to:"))
-        self.pushButton.setText(_translate("MainWindow", "Browse"))
-        self.pushButton_2.setText(_translate("MainWindow", "Select more options"))
-        self.btnFetchSelectedReports.setText(_translate("MainWindow", "Fetch Selected Reports"))
-        self.lblFetchAllReport_5.setText(_translate("MainWindow", "Select Report Types"))
-        self.lblAdvanceFetchReport.setText(_translate("MainWindow", "Advanced Fetch Reports"))
-        self.label.setText(_translate("MainWindow", "Fetch Report"))
-        self.lblYear.setText(_translate("MainWindow", "Year"))
-        self.All_reports_edit_fetch.setDisplayFormat(_translate("MainWindow", "MM-yyyy"))
-        self.btnFetchAllReport.setText(_translate("MainWindow", "Fetch All Reports"))
+        FetchReportsTab.setWindowTitle(_translate("FetchReportsTab", "FetchReportsTab"))
+        self.lblOptions.setText(_translate("FetchReportsTab", "Select Standard View"))
+        self.lblEndDate.setText(_translate("FetchReportsTab", "End Date"))
+        self.lblBeginDate.setText(_translate("FetchReportsTab", "Begin Date"))
+        self.dateedit1_3.setDisplayFormat(_translate("FetchReportsTab", "MM-yyyy"))
+        self.lblFetchAllReport_4.setText(_translate("FetchReportsTab", "Date Range"))
+        self.lblFetchAllReport_3.setText(_translate("FetchReportsTab", "Select Vendors"))
+        self.pushButton_3.setText(_translate("FetchReportsTab", "Select All"))
+        self.pushButton_4.setText(_translate("FetchReportsTab", "Deselect All"))
+        self.checkBox_3.setText(_translate("FetchReportsTab", "DR"))
+        self.checkBox_2.setText(_translate("FetchReportsTab", "TR"))
+        self.checkBox.setText(_translate("FetchReportsTab", "PR"))
+        self.checkBox_4.setText(_translate("FetchReportsTab", "IR"))
+        self.pushButton_5.setText(_translate("FetchReportsTab", "Select all"))
+        self.pushButton_6.setText(_translate("FetchReportsTab", "Deselect all "))
+        self.label_2.setText(_translate("FetchReportsTab", "Report(s) will be saved to:"))
+        self.pushButton.setText(_translate("FetchReportsTab", "Browse"))
+        self.pushButton_2.setText(_translate("FetchReportsTab", "Select more options"))
+        self.btnFetchSelectedReports.setText(_translate("FetchReportsTab", "Fetch Selected Reports"))
+        self.lblFetchAllReport_5.setText(_translate("FetchReportsTab", "Select Report Types"))
+        self.lblAdvanceFetchReport.setText(_translate("FetchReportsTab", "Advanced Fetch Reports"))
+        self.label.setText(_translate("FetchReportsTab", "Fetch Report"))
+        self.lblYear.setText(_translate("FetchReportsTab", "Year"))
+        self.All_reports_edit_fetch.setDisplayFormat(_translate("FetchReportsTab", "MM-yyyy"))
+        self.btnFetchAllReport.setText(_translate("FetchReportsTab", "Fetch All Reports"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    FetchReportsTab = QtWidgets.QFetchReportsTab()
+    ui = Ui_FetchReportsTab()
+    ui.setupUi(FetchReportsTab)
+    FetchReportsTab.show()
     sys.exit(app.exec_())

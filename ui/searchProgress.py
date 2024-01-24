@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(911, 585)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_search_progress(object):
+    def setupUi(self, search_progress):
+        search_progress.setObjectName("search_progress")
+        search_progress.resize(911, 585)
+        search_progress.setStyleSheet("*{\n"
 "    \n"
 "    \n"
 "border:none;\n"
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(search_progress)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -111,27 +111,27 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.logFileButton, 0, 0, 1, 1)
         self.gridLayout_3.addWidget(self.frame_2, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        search_progress.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(search_progress)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        search_progress.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(search_progress)
+        QtCore.QMetaObject.connectSlotsByName(search_progress)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, search_progress):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Search is complete</p></body></html>"))
-        self.exportButton.setText(_translate("MainWindow", "Done"))
-        self.logFileButton.setText(_translate("MainWindow", "Export"))
+        search_progress.setWindowTitle(_translate("search_progress", "search_progress"))
+        self.label.setText(_translate("search_progress", "<html><head/><body><p align=\"center\">Search is complete</p></body></html>"))
+        self.exportButton.setText(_translate("search_progress", "Done"))
+        self.logFileButton.setText(_translate("search_progress", "Export"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    search_progress = QtWidgets.Qsearch_progress()
+    ui = Ui_search_progress()
+    ui.setupUi(search_progress)
+    search_progress.show()
     sys.exit(app.exec_())
