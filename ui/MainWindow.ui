@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
-    <height>615</height>
+    <width>1221</width>
+    <height>833</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -363,30 +363,19 @@ QPushButton:hover {
         <number>0</number>
        </property>
        <item>
-        <widget class="QWidget" name="widget" native="true">
-         <widget class="QTabWidget" name="tabWidget">
-          <property name="geometry">
-           <rect>
-            <x>-31</x>
-            <y>-1</y>
-            <width>791</width>
-            <height>641</height>
-           </rect>
-          </property>
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="manageVendorTab">
-           <attribute name="title">
-            <string>Manage Vendor</string>
-           </attribute>
-          </widget>
-          <widget class="QWidget" name="fetchReportTab">
-           <attribute name="title">
-            <string>Fetch Reports</string>
-           </attribute>
-          </widget>
-         </widget>
+        <widget class="QFrame" name="frame_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
         </widget>
        </item>
       </layout>

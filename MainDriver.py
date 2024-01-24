@@ -1,14 +1,13 @@
 import locale
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget,QSizePolicy, QWidget, QFrame, QHBoxLayout, QPushButton 
+from PyQt5.QtWidgets import QApplication, QMainWindow , QWidget, QFrame, QHBoxLayout, QPushButton 
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 import os
-
 #from FetchData import FetchReportsController
-from ui import AddVendorDialog, MainWindow,EditVendors,ManageVendorsTab,RemoveVendorDialog#, SettingsTab
+from ui import AddVendor, MainWindow,EditVendors,ManageVendorsTab,RemoveVendorDialog, Search,Settingtab
 #from ManageVendors import ManageVendorsController 
 #import GeneralUtils
 #import ManageDB
@@ -77,11 +76,13 @@ class Main(QMainWindow):
         self.menu_num = 0
     
         self.MenuButton.clicked.connect(self.menubar)
+       
+
     
     # Connect the manageVendorButton clicked signal to the show_manage_vendors slot
         self.manageVendorsButton.clicked.connect(self.show_manage_vendors)
-        self.settingsButton.clicked.connect(self.show_settings)
-
+        
+        self.searchRepotsButton.clicked.connect(self.show_search)
 
     def show_manage_vendors(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -92,38 +93,27 @@ class Main(QMainWindow):
         manage_vendors_widget = QWidget()
         loadUi(manage_vendors_ui_file_path, manage_vendors_widget)
 
-       # Set the size policy of the manage_vendors_widget
-        manage_vendors_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
         # Add the manage_vendors_widget to the QTabWidget
         self.tabWidget.addTab(manage_vendors_widget, "Manage Vendors")
 
-        # Set the size policy of the QWidget in the mainBodyContainer
-        self.mainBodyContainer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
         # Show the QTabWidget
         self.tabWidget.show()
 
-    def show_settings(self):
+    def show_search(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        # Construct the absolute path to the settings.ui file
-        settings_ui_file_path = os.path.join(script_dir, "ui", "SettingsTab.ui")
+        # Construct the absolute path to the ManageVendorsTab UI file
+        search_ui_file_path = os.path.join(script_dir, "ui", "Search.ui")
 
         # Create an instance of QWidget (or any other QWidget) and load the UI into it
-        settings_widget = QWidget()
-        loadUi(settings_ui_file_path, settings_widget)
+        search_widget = QWidget()
+        loadUi(search_ui_file_path, search_widget)
 
-        # Set the size policy of the settings_widget
-        settings_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
-        # Add the settings_widget to the QTabWidget
-        self.tabWidget.addTab(settings_widget, "Settings")
-
-        # Set the size policy of the QWidget in the mainBodyContainer
-        self.mainBodyContainer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        # Add the manage_vendors_widget to the QTabWidget
+        self.tabWidget.addTab(search_widget, "Search Vendors")
 
         # Show the QTabWidget
         self.tabWidget.show()
+
 
     def menubar(self):
         print("pressed")
@@ -157,6 +147,8 @@ class Main(QMainWindow):
             self.animation1.start()
             self.menu_num = 0
 
+            # Hide the Frame4 widget
+            self.frame_4.hide()
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)

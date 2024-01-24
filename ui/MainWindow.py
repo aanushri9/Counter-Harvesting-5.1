@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(864, 615)
+        MainWindow.resize(1221, 833)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -190,23 +190,20 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(self.mainBodyContainer)
         self.verticalLayout.setContentsMargins(0, -1, -1, -1)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.widget = QtWidgets.QWidget(self.mainBodyContainer)
-        self.widget.setObjectName("widget")
-        self.tabWidget = QtWidgets.QTabWidget(self.widget)
-        self.tabWidget.setGeometry(QtCore.QRect(-31, -1, 791, 641))
-        self.tabWidget.setObjectName("tabWidget")
-        self.manageVendorTab = QtWidgets.QWidget()
-        self.manageVendorTab.setObjectName("manageVendorTab")
-        self.tabWidget.addTab(self.manageVendorTab, "")
-        self.fetchReportTab = QtWidgets.QWidget()
-        self.fetchReportTab.setObjectName("fetchReportTab")
-        self.tabWidget.addTab(self.fetchReportTab, "")
-        self.verticalLayout.addWidget(self.widget)
+        self.frame_4 = QtWidgets.QFrame(self.mainBodyContainer)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy)
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.verticalLayout.addWidget(self.frame_4)
         self.horizontalLayout.addWidget(self.mainBodyContainer)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -224,8 +221,6 @@ class Ui_MainWindow(object):
         self.settingsButton.setText(_translate("MainWindow", "Settings"))
         self.pushButton_6.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#003d59;\">Help</span></p></body></html>"))
         self.pushButton_6.setText(_translate("MainWindow", "Help"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.manageVendorTab), _translate("MainWindow", "Manage Vendor"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.fetchReportTab), _translate("MainWindow", "Fetch Reports"))
 import resources_rc
 
 
