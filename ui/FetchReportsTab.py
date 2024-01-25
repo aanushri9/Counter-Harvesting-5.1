@@ -11,12 +11,43 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_FetchReportsTab(object):
-    def setupUi(self, FetchReportsTab):
-        FetchReportsTab.setObjectName("FetchReportsTab")
-        FetchReportsTab.resize(1118, 683)
-        FetchReportsTab.setStyleSheet("color:black;")
-        self.centralwidget = QtWidgets.QWidget(FetchReportsTab)
+class Ui_FetchReports(object):
+    def setupUi(self, FetchReports):
+        FetchReports.setObjectName("FetchReports")
+        FetchReports.resize(1118, 683)
+        FetchReports.setStyleSheet("*{\n"
+"    \n"
+"border:none;\n"
+"background-color:transparent;\n"
+"background:none;\n"
+"padding:0;\n"
+"margin:0;\n"
+"color:#fff;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#FetchReports{\n"
+"background-color:#1f232a;\n"
+"}\n"
+"#EditVendor{\n"
+"background-color:#16191d;\n"
+"}\n"
+"QPushButton{\n"
+"text-align:left;\n"
+"padding: 5px 10px;\n"
+"\n"
+"border-top-left-radius:5px;\n"
+"border-bottom-left-radius:5px;\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color:grey;\n"
+"text-align:left;\n"
+"padding:2px 10px;\n"
+"color:white;}")
+        self.gridLayout_4 = QtWidgets.QGridLayout(FetchReports)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.centralwidget = QtWidgets.QWidget(FetchReports)
         self.centralwidget.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -29,27 +60,24 @@ class Ui_FetchReportsTab(object):
 "\n"
 "\n"
 "\n"
-"#centralwidget{\n"
+"#manage_vendor_tab{\n"
 "background-color:#1f232a;\n"
 "}\n"
-"#leftSubContainer{\n"
+"#EditVendor{\n"
 "background-color:#16191d;\n"
 "}\n"
-"#leftSubContainer QPushButton{\n"
+"QPushButton{\n"
 "text-align:left;\n"
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-botton-left-radius:5px;\n"
+"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
-"\n"
+"text-align:left;\n"
 "padding:2px 10px;\n"
-"color:white;}\n"
-"\n"
-"\n"
-"")
+"color:white;}")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -442,48 +470,48 @@ class Ui_FetchReportsTab(object):
         self.gridLayout_3.addWidget(self.frame_3, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 1, 1, 1)
-        FetchReportsTab.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(FetchReportsTab)
+        self.gridLayout_4.addWidget(self.centralwidget, 0, 0, 1, 1)
+        self.statusbar = QtWidgets.QStatusBar(FetchReports)
+        self.statusbar.setGeometry(QtCore.QRect(0, 0, 3, 21))
         self.statusbar.setObjectName("statusbar")
-        FetchReportsTab.setStatusBar(self.statusbar)
 
-        self.retranslateUi(FetchReportsTab)
-        QtCore.QMetaObject.connectSlotsByName(FetchReportsTab)
+        self.retranslateUi(FetchReports)
+        QtCore.QMetaObject.connectSlotsByName(FetchReports)
 
-    def retranslateUi(self, FetchReportsTab):
+    def retranslateUi(self, FetchReports):
         _translate = QtCore.QCoreApplication.translate
-        FetchReportsTab.setWindowTitle(_translate("FetchReportsTab", "FetchReportsTab"))
-        self.lblOptions.setText(_translate("FetchReportsTab", "Select Standard View"))
-        self.lblEndDate.setText(_translate("FetchReportsTab", "End Date"))
-        self.lblBeginDate.setText(_translate("FetchReportsTab", "Begin Date"))
-        self.dateedit1_3.setDisplayFormat(_translate("FetchReportsTab", "MM-yyyy"))
-        self.lblFetchAllReport_4.setText(_translate("FetchReportsTab", "Date Range"))
-        self.lblFetchAllReport_3.setText(_translate("FetchReportsTab", "Select Vendors"))
-        self.pushButton_3.setText(_translate("FetchReportsTab", "Select All"))
-        self.pushButton_4.setText(_translate("FetchReportsTab", "Deselect All"))
-        self.checkBox_3.setText(_translate("FetchReportsTab", "DR"))
-        self.checkBox_2.setText(_translate("FetchReportsTab", "TR"))
-        self.checkBox.setText(_translate("FetchReportsTab", "PR"))
-        self.checkBox_4.setText(_translate("FetchReportsTab", "IR"))
-        self.pushButton_5.setText(_translate("FetchReportsTab", "Select all"))
-        self.pushButton_6.setText(_translate("FetchReportsTab", "Deselect all "))
-        self.label_2.setText(_translate("FetchReportsTab", "Report(s) will be saved to:"))
-        self.pushButton.setText(_translate("FetchReportsTab", "Browse"))
-        self.pushButton_2.setText(_translate("FetchReportsTab", "Select more options"))
-        self.btnFetchSelectedReports.setText(_translate("FetchReportsTab", "Fetch Selected Reports"))
-        self.lblFetchAllReport_5.setText(_translate("FetchReportsTab", "Select Report Types"))
-        self.lblAdvanceFetchReport.setText(_translate("FetchReportsTab", "Advanced Fetch Reports"))
-        self.label.setText(_translate("FetchReportsTab", "Fetch Report"))
-        self.lblYear.setText(_translate("FetchReportsTab", "Year"))
-        self.All_reports_edit_fetch.setDisplayFormat(_translate("FetchReportsTab", "MM-yyyy"))
-        self.btnFetchAllReport.setText(_translate("FetchReportsTab", "Fetch All Reports"))
+        FetchReports.setWindowTitle(_translate("FetchReports", "MainWindow"))
+        self.lblOptions.setText(_translate("FetchReports", "Select Standard View"))
+        self.lblEndDate.setText(_translate("FetchReports", "End Date"))
+        self.lblBeginDate.setText(_translate("FetchReports", "Begin Date"))
+        self.dateedit1_3.setDisplayFormat(_translate("FetchReports", "MM-yyyy"))
+        self.lblFetchAllReport_4.setText(_translate("FetchReports", "Date Range"))
+        self.lblFetchAllReport_3.setText(_translate("FetchReports", "Select Vendors"))
+        self.pushButton_3.setText(_translate("FetchReports", "Select All"))
+        self.pushButton_4.setText(_translate("FetchReports", "Deselect All"))
+        self.checkBox_3.setText(_translate("FetchReports", "DR"))
+        self.checkBox_2.setText(_translate("FetchReports", "TR"))
+        self.checkBox.setText(_translate("FetchReports", "PR"))
+        self.checkBox_4.setText(_translate("FetchReports", "IR"))
+        self.pushButton_5.setText(_translate("FetchReports", "Select all"))
+        self.pushButton_6.setText(_translate("FetchReports", "Deselect all "))
+        self.label_2.setText(_translate("FetchReports", "Report(s) will be saved to:"))
+        self.pushButton.setText(_translate("FetchReports", "Browse"))
+        self.pushButton_2.setText(_translate("FetchReports", "Select more options"))
+        self.btnFetchSelectedReports.setText(_translate("FetchReports", "Fetch Selected Reports"))
+        self.lblFetchAllReport_5.setText(_translate("FetchReports", "Select Report Types"))
+        self.lblAdvanceFetchReport.setText(_translate("FetchReports", "Advanced Fetch Reports"))
+        self.label.setText(_translate("FetchReports", "Fetch Report"))
+        self.lblYear.setText(_translate("FetchReports", "Year"))
+        self.All_reports_edit_fetch.setDisplayFormat(_translate("FetchReports", "MM-yyyy"))
+        self.btnFetchAllReport.setText(_translate("FetchReports", "Fetch All Reports"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    FetchReportsTab = QtWidgets.QFetchReportsTab()
-    ui = Ui_FetchReportsTab()
-    ui.setupUi(FetchReportsTab)
-    FetchReportsTab.show()
+    FetchReports = QtWidgets.QWidget()
+    ui = Ui_FetchReports()
+    ui.setupUi(FetchReports)
+    FetchReports.show()
     sys.exit(app.exec_())

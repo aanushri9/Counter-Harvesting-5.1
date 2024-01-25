@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1086, 764)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_SettingTab(object):
+    def setupUi(self, SettingTab):
+        SettingTab.setObjectName("SettingTab")
+        SettingTab.resize(1086, 764)
+        SettingTab.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "\n"
-"#centralwidget{\n"
+"#SettingTab{\n"
 "background-color:#1f232a;\n"
 "}\n"
 "#EditVendor{\n"
@@ -45,7 +45,9 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.gridLayout_5 = QtWidgets.QGridLayout(SettingTab)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.centralwidget = QtWidgets.QWidget(SettingTab)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_7.setObjectName("gridLayout_7")
@@ -398,47 +400,47 @@ class Ui_MainWindow(object):
         self.gridLayout_7.addItem(spacerItem1, 4, 0, 1, 1)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout_7.addItem(spacerItem2, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.gridLayout_5.addWidget(self.centralwidget, 0, 0, 1, 1)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(SettingTab)
+        QtCore.QMetaObject.connectSlotsByName(SettingTab)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, SettingTab):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_9.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">If Database gets Corrupted</p></body></html>"))
-        self.pushButton_3.setToolTip(_translate("MainWindow", "Save all default and custom changes"))
-        self.pushButton_3.setText(_translate("MainWindow", "Save All Changes"))
-        self.pushButton_2.setText(_translate("MainWindow", "Choose"))
-        self.label_7.setToolTip(_translate("MainWindow", "We can set where to save search database, vendor data file and yearly reports here"))
-        self.label_7.setText(_translate("MainWindow", "Data folders directory"))
-        self.pushButton_4.setText(_translate("MainWindow", "Choose"))
-        self.label_2.setToolTip(_translate("MainWindow", "The number of seconds the program will wait between sending each report request to a given vendor."))
-        self.label_2.setText(_translate("MainWindow", "Report request interval"))
-        self.label_3.setToolTip(_translate("MainWindow", "The number of seconds the program will allow a vendor to respond to each report request before cancelling it."))
-        self.label_3.setText(_translate("MainWindow", "Request timeout"))
-        self.label_5.setToolTip(_translate("MainWindow", "The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue."))
-        self.label_5.setText(_translate("MainWindow", "Concurrent reports"))
-        self.label_6.setToolTip(_translate("MainWindow", "How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. "))
-        self.label_6.setText(_translate("MainWindow", "User agent"))
-        self.label_4.setToolTip(_translate("MainWindow", "Can change if you find the load on your desktop is too high"))
-        self.label_4.setText(_translate("MainWindow", "Concurrent vendors"))
-        self.label_8.setToolTip(_translate("MainWindow", "This is where the special and non-calendar-year data range reports will be saved"))
-        self.label_8.setText(_translate("MainWindow", "Other reports directory"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "Search database"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Vendor data file"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "Yearly reports"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Settings</p></body></html>"))
-        self.pushButton.setToolTip(_translate("MainWindow", "Recreate or regenerate the database that stores information related to the usage statisitics. when you want to do data consistency, data integrity, update and changes."))
-        self.pushButton.setText(_translate("MainWindow", "Rebuild Database"))
+        SettingTab.setWindowTitle(_translate("SettingTab", "MainWindow"))
+        self.label_9.setText(_translate("SettingTab", "<html><head/><body><p align=\"center\">If Database gets Corrupted</p></body></html>"))
+        self.pushButton_3.setToolTip(_translate("SettingTab", "Save all default and custom changes"))
+        self.pushButton_3.setText(_translate("SettingTab", "Save All Changes"))
+        self.pushButton_2.setText(_translate("SettingTab", "Choose"))
+        self.label_7.setToolTip(_translate("SettingTab", "We can set where to save search database, vendor data file and yearly reports here"))
+        self.label_7.setText(_translate("SettingTab", "Data folders directory"))
+        self.pushButton_4.setText(_translate("SettingTab", "Choose"))
+        self.label_2.setToolTip(_translate("SettingTab", "The number of seconds the program will wait between sending each report request to a given vendor."))
+        self.label_2.setText(_translate("SettingTab", "Report request interval"))
+        self.label_3.setToolTip(_translate("SettingTab", "The number of seconds the program will allow a vendor to respond to each report request before cancelling it."))
+        self.label_3.setText(_translate("SettingTab", "Request timeout"))
+        self.label_5.setToolTip(_translate("SettingTab", "The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue."))
+        self.label_5.setText(_translate("SettingTab", "Concurrent reports"))
+        self.label_6.setToolTip(_translate("SettingTab", "How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. "))
+        self.label_6.setText(_translate("SettingTab", "User agent"))
+        self.label_4.setToolTip(_translate("SettingTab", "Can change if you find the load on your desktop is too high"))
+        self.label_4.setText(_translate("SettingTab", "Concurrent vendors"))
+        self.label_8.setToolTip(_translate("SettingTab", "This is where the special and non-calendar-year data range reports will be saved"))
+        self.label_8.setText(_translate("SettingTab", "Other reports directory"))
+        self.comboBox.setItemText(0, _translate("SettingTab", "Search database"))
+        self.comboBox.setItemText(1, _translate("SettingTab", "Vendor data file"))
+        self.comboBox.setItemText(2, _translate("SettingTab", "Yearly reports"))
+        self.label.setText(_translate("SettingTab", "<html><head/><body><p align=\"center\">Settings</p></body></html>"))
+        self.pushButton.setToolTip(_translate("SettingTab", "Recreate or regenerate the database that stores information related to the usage statisitics. when you want to do data consistency, data integrity, update and changes."))
+        self.pushButton.setText(_translate("SettingTab", "Rebuild Database"))
 import resources_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    SettingTab = QtWidgets.QWidget()
+    ui = Ui_SettingTab()
+    ui.setupUi(SettingTab)
+    SettingTab.show()
     sys.exit(app.exec_())
