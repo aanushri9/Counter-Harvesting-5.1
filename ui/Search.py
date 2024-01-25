@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1119, 841)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_Search(object):
+    def setupUi(self, Search):
+        Search.setObjectName("Search")
+        Search.resize(1119, 841)
+        Search.setStyleSheet("*{\n"
 "    \n"
 "    \n"
 "border:none;\n"
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "\n"
-"#centralwidget{\n"
+"#Search{\n"
 "background-color: #1f232a;\n"
 "}\n"
 "#EditVendor{\n"
@@ -46,7 +46,9 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.gridLayout_8 = QtWidgets.QGridLayout(Search)
+        self.gridLayout_8.setObjectName("gridLayout_8")
+        self.centralwidget = QtWidgets.QWidget(Search)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -344,51 +346,51 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addWidget(self.pushButton_3, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.frame_2, 1, 0, 1, 1)
         self.gridLayout_3.addWidget(self.widget_3, 2, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.gridLayout_8.addWidget(self.centralwidget, 0, 0, 1, 1)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(Search)
+        QtCore.QMetaObject.connectSlotsByName(Search)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Search):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Search</p></body></html>"))
-        self.label_2.setText(_translate("MainWindow", "Report type"))
-        self.label_4.setText(_translate("MainWindow", "Start Year"))
-        self.dateEdit.setDisplayFormat(_translate("MainWindow", "MM-yyyy"))
-        self.label_5.setText(_translate("MainWindow", "End Year"))
-        self.dateEdit_2.setDisplayFormat(_translate("MainWindow", "MM-yyyy"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "DR"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "DR_D1"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "DR_D2"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "IR"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "IR_A1"))
-        self.comboBox.setItemText(5, _translate("MainWindow", "IR_M1"))
-        self.comboBox.setItemText(6, _translate("MainWindow", "PR"))
-        self.comboBox.setItemText(7, _translate("MainWindow", "PR_P1"))
-        self.comboBox.setItemText(8, _translate("MainWindow", "TR"))
-        self.comboBox.setItemText(9, _translate("MainWindow", "TR_B1"))
-        self.comboBox.setItemText(10, _translate("MainWindow", "TR_B2"))
-        self.comboBox.setItemText(11, _translate("MainWindow", "TR_B3"))
-        self.comboBox.setItemText(12, _translate("MainWindow", "TR_J1"))
-        self.comboBox.setItemText(13, _translate("MainWindow", "TR_J2"))
-        self.comboBox.setItemText(14, _translate("MainWindow", "TR_J3"))
-        self.comboBox.setItemText(15, _translate("MainWindow", "TR_J4"))
-        self.lineEdit.setPlaceholderText(_translate("MainWindow", "Please input the tile/issn/isbn "))
-        self.label_3.setText(_translate("MainWindow", "Title Search "))
-        self.comboBox_2.setItemText(0, _translate("MainWindow", "Title Substring"))
-        self.comboBox_2.setItemText(1, _translate("MainWindow", "Issn"))
-        self.comboBox_2.setItemText(2, _translate("MainWindow", "Isbn"))
-        self.pushButton_2.setText(_translate("MainWindow", "Search"))
-        self.pushButton_3.setText(_translate("MainWindow", "Browse"))
+        Search.setWindowTitle(_translate("Search", "MainWindow"))
+        self.label.setText(_translate("Search", "<html><head/><body><p align=\"center\">Search</p></body></html>"))
+        self.label_2.setText(_translate("Search", "Report type"))
+        self.label_4.setText(_translate("Search", "Start Year"))
+        self.dateEdit.setDisplayFormat(_translate("Search", "MM-yyyy"))
+        self.label_5.setText(_translate("Search", "End Year"))
+        self.dateEdit_2.setDisplayFormat(_translate("Search", "MM-yyyy"))
+        self.comboBox.setItemText(0, _translate("Search", "DR"))
+        self.comboBox.setItemText(1, _translate("Search", "DR_D1"))
+        self.comboBox.setItemText(2, _translate("Search", "DR_D2"))
+        self.comboBox.setItemText(3, _translate("Search", "IR"))
+        self.comboBox.setItemText(4, _translate("Search", "IR_A1"))
+        self.comboBox.setItemText(5, _translate("Search", "IR_M1"))
+        self.comboBox.setItemText(6, _translate("Search", "PR"))
+        self.comboBox.setItemText(7, _translate("Search", "PR_P1"))
+        self.comboBox.setItemText(8, _translate("Search", "TR"))
+        self.comboBox.setItemText(9, _translate("Search", "TR_B1"))
+        self.comboBox.setItemText(10, _translate("Search", "TR_B2"))
+        self.comboBox.setItemText(11, _translate("Search", "TR_B3"))
+        self.comboBox.setItemText(12, _translate("Search", "TR_J1"))
+        self.comboBox.setItemText(13, _translate("Search", "TR_J2"))
+        self.comboBox.setItemText(14, _translate("Search", "TR_J3"))
+        self.comboBox.setItemText(15, _translate("Search", "TR_J4"))
+        self.lineEdit.setPlaceholderText(_translate("Search", "Please input the tile/issn/isbn "))
+        self.label_3.setText(_translate("Search", "Title Search "))
+        self.comboBox_2.setItemText(0, _translate("Search", "Title Substring"))
+        self.comboBox_2.setItemText(1, _translate("Search", "Issn"))
+        self.comboBox_2.setItemText(2, _translate("Search", "Isbn"))
+        self.pushButton_2.setText(_translate("Search", "Search"))
+        self.pushButton_3.setText(_translate("Search", "Browse"))
 import resources_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    Search = QtWidgets.QWidget()
+    ui = Ui_Search()
+    ui.setupUi(Search)
+    Search.show()
     sys.exit(app.exec_())
