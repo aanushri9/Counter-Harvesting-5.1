@@ -43,7 +43,7 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-botton-left-radius:5px;
+border-bottom-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -363,18 +363,12 @@ QPushButton:hover {
         <number>0</number>
        </property>
        <item>
-        <widget class="QFrame" name="frame_4">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>-1</number>
          </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+         <property name="tabBarAutoHide">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

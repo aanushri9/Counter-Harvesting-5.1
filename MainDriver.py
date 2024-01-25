@@ -83,6 +83,8 @@ class Main(QMainWindow):
         self.manageVendorsButton.clicked.connect(self.show_manage_vendors)
         
         self.searchRepotsButton.clicked.connect(self.show_search)
+        self.settingsButton.clicked.connect(self.show_settingTab)
+        self.FetchReportsButton.clicked.connect(self.show_Fetch_reports)
 
     def show_manage_vendors(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -99,6 +101,21 @@ class Main(QMainWindow):
         # Show the QTabWidget
         self.tabWidget.show()
 
+    def show_Fetch_reports(self):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Construct the absolute path to the ManageVendorsTab UI file
+        fetch_reports_tab_ui_file_path = os.path.join(script_dir, "ui", "FetchReportsTab.ui")
+
+        # Create an instance of QWidget (or any other QWidget) and load the UI into it
+        fetch_reports_tab_widget = QWidget()
+        loadUi(fetch_reports_tab_ui_file_path, fetch_reports_tab_widget)
+
+        # Add the manage_vendors_widget to the QTabWidget
+        self.tabWidget.addTab(fetch_reports_tab_widget, "Fetch Reports")
+
+        # Show the QTabWidget
+        self.tabWidget.show()
+
     def show_search(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
         # Construct the absolute path to the ManageVendorsTab UI file
@@ -110,6 +127,21 @@ class Main(QMainWindow):
 
         # Add the manage_vendors_widget to the QTabWidget
         self.tabWidget.addTab(search_widget, "Search Vendors")
+
+        # Show the QTabWidget
+        self.tabWidget.show()
+
+    def show_settingTab(self):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Construct the absolute path to the ManageVendorsTab UI file
+        settingTab_ui_file_path = os.path.join(script_dir, "ui", "Settingtab.ui")
+
+        # Create an instance of QWidget (or any other QWidget) and load the UI into it
+        settingTab_widget = QWidget()
+        loadUi(settingTab_ui_file_path, settingTab_widget)
+
+        # Add the manage_vendors_widget to the QTabWidget
+        self.tabWidget.addTab(settingTab_widget, "Settings")
 
         # Show the QTabWidget
         self.tabWidget.show()
