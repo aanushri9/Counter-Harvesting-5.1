@@ -1,7 +1,7 @@
 import locale
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow , QWidget, QFrame, QHBoxLayout, QPushButton 
+from PyQt5.QtWidgets import QApplication, QMainWindow , QWidget, QFrame, QHBoxLayout, QPushButton, QTabWidget
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
@@ -63,7 +63,10 @@ if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
 class Main(QMainWindow):
     def __init__(self):
         super(Main, self).__init__()
-
+        self.manage_vendors_tab_index = -1
+        self.fetch_report_tab_index = -1
+        self.search_tab_index = -1
+        self.settings_tab_index = -1
         # Get the directory of the current script
         script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -72,6 +75,10 @@ class Main(QMainWindow):
 
         # Load the UI file
         loadUi(ui_file_path, self)
+        self.menu_num = 0
+        self.tabWidget.setStyleSheet("QTabBar::tab { color: black; }")
+        for i in range(self.tabWidget.count()):
+            self.tabWidget.setStyleSheet("QTabBar::tab { color: black; }")
 
         self.menu_num = 0
     
@@ -81,24 +88,21 @@ class Main(QMainWindow):
     
     # Connect the manageVendorButton clicked signal to the show_manage_vendors slot
         self.manageVendorsButton.clicked.connect(self.show_manage_vendors)
-        
         self.searchRepotsButton.clicked.connect(self.show_search)
         self.settingsButton.clicked.connect(self.show_settingTab)
         self.FetchReportsButton.clicked.connect(self.show_Fetch_reports)
 
     def show_manage_vendors(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        # Construct the absolute path to the ManageVendorsTab UI file
         manage_vendors_ui_file_path = os.path.join(script_dir, "ui", "ManageVendorsTab.ui")
-
-        # Create an instance of QWidget (or any other QWidget) and load the UI into it
         manage_vendors_widget = QWidget()
         loadUi(manage_vendors_ui_file_path, manage_vendors_widget)
-
-        # Add the manage_vendors_widget to the QTabWidget
-        self.tabWidget.addTab(manage_vendors_widget, "Manage Vendors")
-
-        # Show the QTabWidget
+        if self.manage_vendors_tab_index == -1:
+            # Add the manage_vendors_widget to the QTabWidget
+            self.manage_vendors_tab_index = self.tabWidget.addTab(manage_vendors_widget, "Manage Vendors")
+        else:
+            # Switch to the existing manage vendors tab
+            self.tabWidget.setCurrentIndex(self.manage_vendors_tab_index)
         self.tabWidget.show()
 
     def show_Fetch_reports(self):
@@ -110,11 +114,15 @@ class Main(QMainWindow):
         fetch_reports_tab_widget = QWidget()
         loadUi(fetch_reports_tab_ui_file_path, fetch_reports_tab_widget)
 
-        # Add the manage_vendors_widget to the QTabWidget
-        self.tabWidget.addTab(fetch_reports_tab_widget, "Fetch Reports")
-
-        # Show the QTabWidget
+        # Add the fetch_vendor_widget to the QTabWidget
+        if self.fetch_report_tab_index == -1:
+            # Add the manage_vendors_widget to the QTabWidget
+            self.fetch_report_tab_index = self.tabWidget.addTab(fetch_reports_tab_widget, "Fetch Reports")
+        else:
+            # Switch to the existing manage vendors tab
+            self.tabWidget.setCurrentIndex(self.manage_vendors_tab_index)
         self.tabWidget.show()
+        
 
     def show_search(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -125,11 +133,15 @@ class Main(QMainWindow):
         search_widget = QWidget()
         loadUi(search_ui_file_path, search_widget)
 
-        # Add the manage_vendors_widget to the QTabWidget
-        self.tabWidget.addTab(search_widget, "Search Vendors")
-
-        # Show the QTabWidget
+        # Add the fetch_vendor_widget to the QTabWidget
+        if self.search_tab_index == -1:
+            # Add the manage_vendors_widget to the QTabWidget
+            self.search_tab_index = self.tabWidget.addTab(search_widget, "Search Vendors")
+        else:
+            # Switch to the existing manage vendors tab
+            self.tabWidget.setCurrentIndex(self.search_tab_index)
         self.tabWidget.show()
+        
 
     def show_settingTab(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -140,12 +152,15 @@ class Main(QMainWindow):
         settingTab_widget = QWidget()
         loadUi(settingTab_ui_file_path, settingTab_widget)
 
-        # Add the manage_vendors_widget to the QTabWidget
-        self.tabWidget.addTab(settingTab_widget, "Settings")
-
-        # Show the QTabWidget
+        # Add the fetch_vendor_widget to the QTabWidget
+        if self.settings_tab_index == -1:
+            # Add the manage_vendors_widget to the QTabWidget
+            self.settings_tab_index= self.tabWidget.addTab(settingTab_widget, "Settings")
+        else:
+            # Switch to the existing manage vendors tab
+            self.tabWidget.setCurrentIndex(self.settings_tab_index)
         self.tabWidget.show()
-
+        
 
     def menubar(self):
         print("pressed")
