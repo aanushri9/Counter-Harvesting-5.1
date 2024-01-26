@@ -120,7 +120,7 @@ class Main(QMainWindow):
             self.fetch_report_tab_index = self.tabWidget.addTab(fetch_reports_tab_widget, "Fetch Reports")
         else:
             # Switch to the existing manage vendors tab
-            self.tabWidget.setCurrentIndex(self.manage_vendors_tab_index)
+            self.tabWidget.setCurrentIndex(self.fetch_report_tab_index)
         self.tabWidget.show()
         
 
