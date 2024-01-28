@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1119</width>
-    <height>841</height>
+    <width>1135</width>
+    <height>793</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -58,6 +58,12 @@ color:white;}</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Georgia</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <layout class="QGridLayout" name="gridLayout_6">
          <item row="0" column="0">
           <widget class="QLabel" name="label">
@@ -79,7 +85,7 @@ color:white;}</string>
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Search {TR Reports}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -134,38 +140,6 @@ border-radius:15px;
                <enum>QFrame::Plain</enum>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_2">
-                 <property name="font">
-                  <font>
-                   <family>Georgia</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">border:none;</string>
-                 </property>
-                 <property name="text">
-                  <string>Report type</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QLabel" name="label_4">
-                 <property name="font">
-                  <font>
-                   <family>Georgia</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">border:none</string>
-                 </property>
-                 <property name="text">
-                  <string>Start Year</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="3">
                 <widget class="QDateEdit" name="dateEdit">
                  <property name="sizePolicy">
@@ -183,11 +157,11 @@ border-radius:15px;
                   <string notr="true">color:black;background-color: #cccccc;</string>
                  </property>
                  <property name="displayFormat">
-                  <string>MM-yyyy</string>
+                  <string>yyyy-mm</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="2">
+               <item row="0" column="2">
                 <widget class="QLabel" name="label_5">
                  <property name="font">
                   <font>
@@ -199,12 +173,34 @@ border-radius:15px;
                   <string notr="true">border:none</string>
                  </property>
                  <property name="text">
-                  <string>End Year</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;End Year&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="3">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="font">
+                  <font>
+                   <family>Georgia</family>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border:none</string>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Start Year&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
                 <widget class="QDateEdit" name="dateEdit_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
@@ -214,119 +210,8 @@ border-radius:15px;
                   <string notr="true">color:black;background-color: #cccccc;</string>
                  </property>
                  <property name="displayFormat">
-                  <string>MM-yyyy</string>
+                  <string>yyyy-mm</string>
                  </property>
-                </widget>
-               </item>
-               <item row="0" column="1" alignment="Qt::AlignLeft">
-                <widget class="QComboBox" name="comboBox">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Georgia</family>
-                   <pointsize>12</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QComboBox {
-    color: black; /* QComboBox中的文本颜色为黑色 */
-	background-color: #cccccc;
-}
-
-QComboBox QAbstractItemView {
-    color: black; /* 下拉列表中的文本颜色为黑色 */
-	background-color: #cccccc;
-}
-
-</string>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>DR</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>DR_D1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>DR_D2</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>IR</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>IR_A1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>IR_M1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>PR</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>PR_P1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_B1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_B2</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_B3</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_J1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_J2</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_J3</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>TR_J4</string>
-                  </property>
-                 </item>
                 </widget>
                </item>
               </layout>
@@ -461,7 +346,7 @@ QComboBox QAbstractItemView {
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
-    color: black; /* 文本颜色为黑色 */
+    color: black;
 	background-color: #cccccc;
  border-radius:15px;
 }
@@ -510,12 +395,11 @@ QComboBox QAbstractItemView {
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QComboBox {
-    color: black; /* QComboBox中的文本颜色为黑色 */
-	background-color: #cccccc;
+    color: black; 	background-color: #cccccc;
 }
 
 QComboBox QAbstractItemView {
-    color: black; /* 下拉列表中的文本颜色为黑色 */
+    color: black;
 	background-color: #cccccc;
 }
 </string>
@@ -556,6 +440,53 @@ QComboBox QAbstractItemView {
            </property>
            <layout class="QGridLayout" name="gridLayout_5">
             <item row="0" column="1">
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="font">
+               <font>
+                <family>Georgia</family>
+                <pointsize>18</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">
+  QPushButton {
+    border: 2px solid #000000;
+border-color:grey;
+border-radius:15px;
+text-align:center;
+}
+
+QPushButton:hover {
+    background-color: lightblue;
+}
+
+
+</string>
+              </property>
+              <property name="text">
+               <string>Go To Save Folder</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>28</width>
+                <height>28</height>
+               </size>
+              </property>
+              <property name="shortcut">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
              <widget class="QPushButton" name="pushButton_2">
               <property name="font">
                <font>
@@ -589,54 +520,7 @@ QPushButton:hover {
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>resources/loupe.png</normaloff>resources/loupe.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>28</width>
-                <height>28</height>
-               </size>
-              </property>
-              <property name="shortcut">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="pushButton_3">
-              <property name="font">
-               <font>
-                <family>Georgia</family>
-                <pointsize>18</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">
-  QPushButton {
-    border: 2px solid #000000;
-border-color:grey;
-border-radius:15px;
-text-align:center;
-}
-
-QPushButton:hover {
-    background-color: lightblue;
-}
-
-
-</string>
-              </property>
-              <property name="text">
-               <string>Browse</string>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>resources/Icons/folder.png</normaloff>resources/Icons/folder.png</iconset>
+                <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/loupe.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/loupe.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -661,7 +545,7 @@ QPushButton:hover {
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../Final Project/COUNTER-Release-5.1/ui/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

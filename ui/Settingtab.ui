@@ -118,7 +118,7 @@ QToolTip {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/diskette.png</normaloff>resources/Icons/diskette.png</iconset>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/diskette.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/diskette.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -188,7 +188,7 @@ border-radius:15px;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/folder.png</normaloff>resources/Icons/folder.png</iconset>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</iconset>
              </property>
             </widget>
            </item>
@@ -211,7 +211,7 @@ border-radius:15px;
 </string>
              </property>
              <property name="text">
-              <string>Data folders directory</string>
+              <string>Data folders directories</string>
              </property>
             </widget>
            </item>
@@ -235,7 +235,7 @@ border-radius:15px;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/folder.png</normaloff>resources/Icons/folder.png</iconset>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</iconset>
              </property>
             </widget>
            </item>
@@ -619,7 +619,7 @@ QToolTip {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/database.png</normaloff>resources/Icons/database.png</iconset>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/database.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/database.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -666,7 +666,7 @@ QToolTip {
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../Final Project/COUNTER-Release-5.1/ui/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

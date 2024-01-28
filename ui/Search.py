@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Search(object):
     def setupUi(self, Search):
         Search.setObjectName("Search")
-        Search.resize(1119, 841)
+        Search.resize(1135, 793)
         Search.setStyleSheet("*{\n"
 "    \n"
 "    \n"
@@ -58,6 +58,10 @@ class Ui_Search(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
         self.widget.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(15)
+        self.widget.setFont(font)
         self.widget.setObjectName("widget")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.widget)
         self.gridLayout_6.setObjectName("gridLayout_6")
@@ -114,22 +118,6 @@ class Ui_Search(object):
         self.frame_3.setObjectName("frame_3")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.frame_3)
         self.gridLayout_7.setObjectName("gridLayout_7")
-        self.label_2 = QtWidgets.QLabel(self.frame_3)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet("border:none;")
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_7.addWidget(self.label_2, 0, 0, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.frame_3)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_4.setFont(font)
-        self.label_4.setStyleSheet("border:none")
-        self.label_4.setObjectName("label_4")
-        self.gridLayout_7.addWidget(self.label_4, 0, 2, 1, 1)
         self.dateEdit = QtWidgets.QDateEdit(self.frame_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -149,55 +137,27 @@ class Ui_Search(object):
         self.label_5.setFont(font)
         self.label_5.setStyleSheet("border:none")
         self.label_5.setObjectName("label_5")
-        self.gridLayout_7.addWidget(self.label_5, 1, 2, 1, 1)
+        self.gridLayout_7.addWidget(self.label_5, 0, 2, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("border:none")
+        self.label_4.setObjectName("label_4")
+        self.gridLayout_7.addWidget(self.label_4, 0, 0, 1, 1)
         self.dateEdit_2 = QtWidgets.QDateEdit(self.frame_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.dateEdit_2.sizePolicy().hasHeightForWidth())
+        self.dateEdit_2.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.dateEdit_2.setFont(font)
         self.dateEdit_2.setStyleSheet("color:black;background-color: #cccccc;")
         self.dateEdit_2.setObjectName("dateEdit_2")
-        self.gridLayout_7.addWidget(self.dateEdit_2, 1, 3, 1, 1)
-        self.comboBox = QtWidgets.QComboBox(self.frame_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
-        self.comboBox.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.comboBox.setFont(font)
-        self.comboBox.setStyleSheet("QComboBox {\n"
-"    color: black; /* QComboBox中的文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    color: black; /* 下拉列表中的文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"\n"
-"")
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.gridLayout_7.addWidget(self.comboBox, 0, 1, 1, 1, QtCore.Qt.AlignLeft)
+        self.gridLayout_7.addWidget(self.dateEdit_2, 0, 1, 1, 1)
         self.verticalLayout.addWidget(self.frame_3)
         self.frame_4 = QtWidgets.QFrame(self.frame)
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -232,7 +192,7 @@ class Ui_Search(object):
         font.setPointSize(12)
         self.lineEdit.setFont(font)
         self.lineEdit.setStyleSheet("QLineEdit {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
+"    color: black;\n"
 "    background-color: #cccccc;\n"
 " border-radius:15px;\n"
 "}\n"
@@ -263,12 +223,11 @@ class Ui_Search(object):
         font.setPointSize(15)
         self.comboBox_2.setFont(font)
         self.comboBox_2.setStyleSheet("QComboBox {\n"
-"    color: black; /* QComboBox中的文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
+"    color: black;     background-color: #cccccc;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    color: black; /* 下拉列表中的文本颜色为黑色 */\n"
+"    color: black;\n"
 "    background-color: #cccccc;\n"
 "}\n"
 "")
@@ -286,35 +245,6 @@ class Ui_Search(object):
         self.frame_2.setObjectName("frame_2")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_5.setObjectName("gridLayout_5")
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setAutoFillBackground(False)
-        self.pushButton_2.setStyleSheet("\n"
-"  QPushButton {\n"
-"    border: 2px solid #000000;\n"
-"border-color:grey;\n"
-"border-radius:15px;\n"
-"text-align:center;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: lightblue;\n"
-"}\n"
-"\n"
-"\n"
-"")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/loupe.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon)
-        self.pushButton_2.setIconSize(QtCore.QSize(28, 28))
-        self.pushButton_2.setShortcut("")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout_5.addWidget(self.pushButton_2, 0, 1, 1, 1)
         self.pushButton_3 = QtWidgets.QPushButton(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
@@ -337,13 +267,42 @@ class Ui_Search(object):
 "\n"
 "\n"
 "")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("resources/Icons/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_3.setIcon(icon)
         self.pushButton_3.setIconSize(QtCore.QSize(28, 28))
         self.pushButton_3.setShortcut("")
         self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout_5.addWidget(self.pushButton_3, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.pushButton_3, 0, 1, 1, 1)
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setAutoFillBackground(False)
+        self.pushButton_2.setStyleSheet("\n"
+"  QPushButton {\n"
+"    border: 2px solid #000000;\n"
+"border-color:grey;\n"
+"border-radius:15px;\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: lightblue;\n"
+"}\n"
+"\n"
+"\n"
+"")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/loupe.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_2.setIcon(icon1)
+        self.pushButton_2.setIconSize(QtCore.QSize(28, 28))
+        self.pushButton_2.setShortcut("")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.gridLayout_5.addWidget(self.pushButton_2, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.frame_2, 1, 0, 1, 1)
         self.gridLayout_3.addWidget(self.widget_3, 2, 0, 1, 1)
         self.gridLayout_8.addWidget(self.centralwidget, 0, 0, 1, 1)
@@ -354,35 +313,18 @@ class Ui_Search(object):
     def retranslateUi(self, Search):
         _translate = QtCore.QCoreApplication.translate
         Search.setWindowTitle(_translate("Search", "MainWindow"))
-        self.label.setText(_translate("Search", "<html><head/><body><p align=\"center\">Search</p></body></html>"))
-        self.label_2.setText(_translate("Search", "Report type"))
-        self.label_4.setText(_translate("Search", "Start Year"))
-        self.dateEdit.setDisplayFormat(_translate("Search", "MM-yyyy"))
-        self.label_5.setText(_translate("Search", "End Year"))
-        self.dateEdit_2.setDisplayFormat(_translate("Search", "MM-yyyy"))
-        self.comboBox.setItemText(0, _translate("Search", "DR"))
-        self.comboBox.setItemText(1, _translate("Search", "DR_D1"))
-        self.comboBox.setItemText(2, _translate("Search", "DR_D2"))
-        self.comboBox.setItemText(3, _translate("Search", "IR"))
-        self.comboBox.setItemText(4, _translate("Search", "IR_A1"))
-        self.comboBox.setItemText(5, _translate("Search", "IR_M1"))
-        self.comboBox.setItemText(6, _translate("Search", "PR"))
-        self.comboBox.setItemText(7, _translate("Search", "PR_P1"))
-        self.comboBox.setItemText(8, _translate("Search", "TR"))
-        self.comboBox.setItemText(9, _translate("Search", "TR_B1"))
-        self.comboBox.setItemText(10, _translate("Search", "TR_B2"))
-        self.comboBox.setItemText(11, _translate("Search", "TR_B3"))
-        self.comboBox.setItemText(12, _translate("Search", "TR_J1"))
-        self.comboBox.setItemText(13, _translate("Search", "TR_J2"))
-        self.comboBox.setItemText(14, _translate("Search", "TR_J3"))
-        self.comboBox.setItemText(15, _translate("Search", "TR_J4"))
+        self.label.setText(_translate("Search", "<html><head/><body><p align=\"center\">Search {TR Reports}</p></body></html>"))
+        self.dateEdit.setDisplayFormat(_translate("Search", "yyyy-mm"))
+        self.label_5.setText(_translate("Search", "<html><head/><body><p align=\"right\">End Year</p></body></html>"))
+        self.label_4.setText(_translate("Search", "<html><head/><body><p align=\"right\">Start Year</p></body></html>"))
+        self.dateEdit_2.setDisplayFormat(_translate("Search", "yyyy-mm"))
         self.lineEdit.setPlaceholderText(_translate("Search", "Please input the tile/issn/isbn "))
         self.label_3.setText(_translate("Search", "Title Search "))
         self.comboBox_2.setItemText(0, _translate("Search", "Title Substring"))
         self.comboBox_2.setItemText(1, _translate("Search", "Issn"))
         self.comboBox_2.setItemText(2, _translate("Search", "Isbn"))
+        self.pushButton_3.setText(_translate("Search", "Go To Save Folder"))
         self.pushButton_2.setText(_translate("Search", "Search"))
-        self.pushButton_3.setText(_translate("Search", "Browse"))
 import resources_rc
 
 

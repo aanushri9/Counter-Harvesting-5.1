@@ -97,7 +97,7 @@ class Ui_SettingTab(object):
 "}\n"
 "")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/Icons/diskette.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/diskette.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_3.setObjectName("pushButton_3")
@@ -140,7 +140,7 @@ class Ui_SettingTab(object):
 "}\n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("resources/Icons/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setObjectName("pushButton_2")
         self.gridLayout.addWidget(self.pushButton_2, 0, 4, 1, 1)
@@ -389,7 +389,7 @@ class Ui_SettingTab(object):
 "\n"
 "")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("resources/Icons/database.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/database.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon2)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setObjectName("pushButton")
@@ -413,7 +413,7 @@ class Ui_SettingTab(object):
         self.pushButton_3.setText(_translate("SettingTab", "Save All Changes"))
         self.pushButton_2.setText(_translate("SettingTab", "Choose"))
         self.label_7.setToolTip(_translate("SettingTab", "We can set where to save search database, vendor data file and yearly reports here"))
-        self.label_7.setText(_translate("SettingTab", "Data folders directory"))
+        self.label_7.setText(_translate("SettingTab", "Data folders directories"))
         self.pushButton_4.setText(_translate("SettingTab", "Choose"))
         self.label_2.setToolTip(_translate("SettingTab", "The number of seconds the program will wait between sending each report request to a given vendor."))
         self.label_2.setText(_translate("SettingTab", "Report request interval"))

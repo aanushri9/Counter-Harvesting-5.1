@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ff5c902-f1ea-463c-803a-d5a215f45e8b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/MainDriver.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainDriver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/MainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/MainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/NoMatchingResultPopwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/NoMatchingResultPopwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/searchProgress.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/searchProgress.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
