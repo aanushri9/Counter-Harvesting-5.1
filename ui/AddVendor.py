@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1052, 876)
-        MainWindow.setStyleSheet("*{\n"
+class Ui_addVendorDialog(object):
+    def setupUi(self, addVendorDialog):
+        addVendorDialog.setObjectName("addVendorDialog")
+        addVendorDialog.resize(1052, 876)
+        addVendorDialog.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QtWidgets.QWidget(addVendorDialog)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -298,35 +298,35 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addWidget(self.buttonBox, 4, 0, 1, 1)
         self.verticalLayout.addWidget(self.frame_3)
         self.gridLayout.addWidget(self.frame, 0, 1, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
+        addVendorDialog.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(addVendorDialog)
+        QtCore.QMetaObject.connectSlotsByName(addVendorDialog)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, addVendorDialog):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_7.setText(_translate("MainWindow", "Add New Vendor"))
-        self.label.setText(_translate("MainWindow", "Name"))
-        self.label_3.setText(_translate("MainWindow", "Customer ID"))
-        self.name_validation_label.setText(_translate("MainWindow", "Validation label"))
-        self.label_2.setText(_translate("MainWindow", "Base URL"))
-        self.label_10.setText(_translate("MainWindow", "Starting Year"))
-        self.All_reports_edit_fetch.setDisplayFormat(_translate("MainWindow", "yyyy"))
-        self.label_8.setText(_translate("MainWindow", "2 Attempts needed"))
-        self.label_4.setText(_translate("MainWindow", "Requester ID"))
-        self.label_5.setText(_translate("MainWindow", "API Key"))
-        self.label_11.setText(_translate("MainWindow", "Request throttled"))
-        self.label_28.setText(_translate("MainWindow", "Notes"))
-        self.companiesText.setText(_translate("MainWindow", "Provider"))
-        self.label_9.setText(_translate("MainWindow", "IP Checking required"))
+        addVendorDialog.setWindowTitle(_translate("addVendorDialog", "addVendorDialog"))
+        self.label_7.setText(_translate("addVendorDialog", "Add New Vendor"))
+        self.label.setText(_translate("addVendorDialog", "Name"))
+        self.label_3.setText(_translate("addVendorDialog", "Customer ID"))
+        self.name_validation_label.setText(_translate("addVendorDialog", "Validation label"))
+        self.label_2.setText(_translate("addVendorDialog", "Base URL"))
+        self.label_10.setText(_translate("addVendorDialog", "Starting Year"))
+        self.All_reports_edit_fetch.setDisplayFormat(_translate("addVendorDialog", "yyyy"))
+        self.label_8.setText(_translate("addVendorDialog", "2 Attempts needed"))
+        self.label_4.setText(_translate("addVendorDialog", "Requester ID"))
+        self.label_5.setText(_translate("addVendorDialog", "API Key"))
+        self.label_11.setText(_translate("addVendorDialog", "Request throttled"))
+        self.label_28.setText(_translate("addVendorDialog", "Notes"))
+        self.companiesText.setText(_translate("addVendorDialog", "Provider"))
+        self.label_9.setText(_translate("addVendorDialog", "IP Checking required"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    addVendorDialog = QtWidgets.QaddVendorDialog()
+    ui = Ui_addVendorDialog()
+    ui.setupUi(addVendorDialog)
+    addVendorDialog.show()
     sys.exit(app.exec_())
