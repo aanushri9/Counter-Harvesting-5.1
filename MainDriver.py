@@ -1,14 +1,13 @@
 import locale
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow , QWidget, QFrame, QHBoxLayout, QPushButton, QTabWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QDialog, QVBoxLayout, QLabel, QDialogButtonBox, QMessageBox, QLineEdit
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 import os
-#from FetchData import FetchReportsController
-from ui import AddVendor, MainWindow, EditVendors, ManageVendorsTab, RemoveVendorDialog, Settingtab, FetchReportsTab, SearchTab
-from ManageVendors import ManageVendorsController 
+from ui import AddVendor, MainWindow, ManageVendorsTab, FetchReportsTab, SearchTab, Settingtab
+from ManageVendors import ManageVendorsController
 import GeneralUtils
 #import ManageDB
 #from Constants import *
@@ -28,11 +27,11 @@ from Visual2 import VisualController
 # region debug_stuff
 
 def trap_exc_during_debug(*args):
-    # when app raises uncaught exception, print info
+    # when app raises an uncaught exception, print info
     print(args)
 
 
-# install exception hook: without this, uncaught exception would cause application to exit
+# install exception hook: without this, uncaught exception would cause the application to exit
 sys.excepthook = trap_exc_during_debug
 
 # endregion
@@ -44,11 +43,11 @@ if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
 
 def trap_exc_during_debug(*args):
-    # when app raises uncaught exception, print info
+    # when app raises an uncaught exception, print info
     print(args)
 
 
-# install exception hook: without this, uncaught exception would cause application to exit
+# install exception hook: without this, uncaught exception would cause the application to exit
 sys.excepthook = trap_exc_during_debug
 
 # endregion
@@ -59,52 +58,97 @@ if hasattr(Qt, 'AA_EnableHighDpiScaling'):
 if hasattr(Qt, 'AA_UseHighDpiPixmaps'):
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
 
+class PasswordDialog(QDialog):
+    def __init__(self, parent=None):
+        super(PasswordDialog, self).__init__(parent)
+        self.setWindowTitle("Enter Password")
+        self.setGeometry(200, 200, 300, 100)
+
+        layout = QVBoxLayout()
+
+        self.label = QLabel("Enter password:")
+        self.password_input = QLineEdit()
+        self.password_input.setEchoMode(QLineEdit.Password)
+
+        button_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        button_box.accepted.connect(self.accept)
+        button_box.rejected.connect(self.reject)
+
+        layout.addWidget(self.label)
+        layout.addWidget(self.password_input)
+        layout.addWidget(button_box)
+
+        self.setLayout(layout)
+
+    def check_password(self, correct_password):
+        entered_password = self.password_input.text()
+        return entered_password == correct_password
+
 if __name__ == "__main__":
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
     app = QApplication(sys.argv)
     app.setStyleSheet("QWidget {font-family: Segoe UI; font-size: 12pt;}")
 
+    correct_password = "your_password"  # Replace with your actual password
+
     main_window = QMainWindow()
     main_window_ui = MainWindow.Ui_mainWindow()
     main_window_ui.setupUi(main_window)
+
+    manage_vendors_tab = QWidget(main_window)
+    manage_vendors_ui = ManageVendorsTab.Ui_manage_vendor_tab()
+    manage_vendors_ui.setupUi(manage_vendors_tab)
+    manage_vendors_controller = ManageVendorsController(manage_vendors_tab, manage_vendors_ui)
+
+    main_window_ui.tab_widget.addTab(manage_vendors_tab, manage_vendors_tab.windowIcon(), "Manage Vendors")
+
+    def show_manage_vendors():
+        password_dialog = PasswordDialog()
+        if password_dialog.exec_() == QDialog.Accepted:
+            main_window_ui.tab_widget.setCurrentWidget(manage_vendors_tab)
+        else:
+            QMessageBox.warning(main_window, "Access Denied", "Incorrect password. Access to 'Manage Vendors' denied.")
+
+    main_window_ui.tab_widget.setCurrentIndex(1)  # Set default tab index
+    def handle_tab_change(index):
+        if index == 0:  # Index of "Manage Vendors" tab
+            password_dialog = PasswordDialog()
+            if password_dialog.exec_() != QDialog.Accepted:
+                main_window_ui.tab_widget.setCurrentIndex(1)  # Switch to another tab (index 1) if password is incorrect
+                return
+
+        # Allow changing to the selected tab
+        main_window_ui.tab_widget.setCurrentIndex(index)
+
+    main_window_ui.tab_widget.tabBarClicked.connect(handle_tab_change)
+
+
 
     settings_tab = QWidget(main_window)
     settings_ui = Settingtab.Ui_SettingTab()
     settings_ui.setupUi(settings_tab)
     #settings_controller = SettingsController(settings_tab, settings_ui)
 
-    manage_vendors_tab = QWidget(main_window)
-    manage_vendors_ui = ManageVendorsTab.Ui_manage_vendor_tab()
-    manage_vendors_ui.setupUi(manage_vendors_tab)
-    manage_vendors_controller = ManageVendorsController(manage_vendors_tab, manage_vendors_ui)#, settings_controller.settings)
-
     fetch_reports_tab = QWidget(main_window)
     fetch_reports_ui = FetchReportsTab.Ui_FetchReports()
     fetch_reports_ui.setupUi(fetch_reports_tab)
-    #fetch_reports_controller = FetchReportsController(manage_vendors_controller.vendors, settings_controller.settings,
-    #                                                  fetch_reports_tab, fetch_reports_ui)
-
+    #fetch_reports_controller = FetchReportsController(manage_vendors_controller.vendors, settings_controller.settings,fetch_reports_tab, fetch_reports_ui)
     search_tab = QWidget(main_window)
     search_ui = SearchTab.Ui_Search()
     search_ui.setupUi(search_tab)
     #search_controller = SearchController(search_ui, settings_controller.settings)
 
-     # region Add tabs to main window
+    # region Add tabs to main window
     main_window_ui.tab_widget.addTab(manage_vendors_tab, manage_vendors_tab.windowIcon(), "Manage Vendors")
     main_window_ui.tab_widget.addTab(fetch_reports_tab, fetch_reports_tab.windowIcon(), "Fetch Reports")
     main_window_ui.tab_widget.addTab(search_tab, search_tab.windowIcon(), "Search")
     main_window_ui.tab_widget.addTab(settings_tab, settings_tab.windowIcon(), "Settings")
-
     main_window_ui.tab_widget.setCurrentIndex(1)
     # endregion
-
-
-
-
-
     main_window.show()
     sys.exit(app.exec_())
+    
 
 
 # DO NOT DELETE THE CODE BELOW, THIS WORKS BASED ON OUR PREVIOUS ITERATION OF THE PROJECT- USING MENUBAR
