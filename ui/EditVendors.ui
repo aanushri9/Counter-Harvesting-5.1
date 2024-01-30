@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <widget class="QMainWindow" name="editVendors">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,6 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
+	
 	
 border:none;
 background-color:transparent;
@@ -91,42 +92,8 @@ color:white;}</string>
              <enum>QFrame::StyledPanel</enum>
             </property>
             <layout class="QGridLayout" name="gridLayout_5">
-             <item row="10" column="2">
-              <widget class="QCheckBox" name="checkBox_2">
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="2">
-              <widget class="QCheckBox" name="checkBox_3">
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="9" column="2">
-              <widget class="QCheckBox" name="checkBox">
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="0">
-              <widget class="QLabel" name="label_11">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Request throttled</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="2">
-              <widget class="QLineEdit" name="requesterIdEdit">
+             <item row="0" column="2">
+              <widget class="QLineEdit" name="nameEdit">
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
 	background-color: #cccccc;
@@ -137,8 +104,8 @@ color:black;
                </property>
               </widget>
              </item>
-             <item row="10" column="0">
-              <widget class="QLabel" name="label_9">
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_2">
                <property name="font">
                 <font>
                  <family>Georgia</family>
@@ -146,7 +113,142 @@ color:black;
                 </font>
                </property>
                <property name="text">
-                <string>IP Checking</string>
+                <string>Base URL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>API Key</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Customer ID</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QDateEdit" name="All_reports_edit_fetch">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QDateEdit {
+	background-color: #cccccc;
+	border-radius: 20px; 
+color:black;
+}
+</string>
+               </property>
+               <property name="dateTime">
+                <datetime>
+                 <hour>0</hour>
+                 <minute>0</minute>
+                 <second>0</second>
+                 <year>2020</year>
+                 <month>1</month>
+                 <day>1</day>
+                </datetime>
+               </property>
+               <property name="displayFormat">
+                <string>yyyy</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Starting Year</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLineEdit" name="customerIdEdit">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+	background-color: #cccccc;
+	border-radius: 20px; 
+color:black;
+}
+</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="label_8">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>2 Attempts needed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+	background-color: #cccccc;
+	border-radius: 20px; 
+color:black;
+}
+</string>
+               </property>
+              </widget>
+             </item>
+             <item row="12" column="0">
+              <widget class="QLabel" name="label_28">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Notes</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="2">
+              <widget class="QLineEdit" name="providerEdit">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+	background-color: #cccccc;
+	border-radius: 20px; 
+color:black;
+}
+</string>
                </property>
               </widget>
              </item>
@@ -187,8 +289,34 @@ color:black;
                </property>
               </widget>
              </item>
-             <item row="13" column="2">
-              <widget class="QLineEdit" name="providerEdit">
+             <item row="10" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>IP Checking</string>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Request throttled</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="QLineEdit" name="requesterIdEdit">
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
 	background-color: #cccccc;
@@ -199,20 +327,49 @@ color:black;
                </property>
               </widget>
              </item>
-             <item row="4" column="2">
-              <widget class="QLineEdit" name="lineEdit">
+             <item row="9" column="2">
+              <widget class="QCheckBox" name="checkBox">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="10" column="2">
+              <widget class="QCheckBox" name="checkBox_2">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="2">
+              <widget class="QCheckBox" name="checkBox_3">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <family>Georgia</family>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Platform</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="2">
+              <widget class="QLineEdit" name="lineEdit_2">
                <property name="styleSheet">
-                <string notr="true">QLineEdit {
-	background-color: #cccccc;
-	border-radius: 20px; 
-color:black;
-}
-</string>
+                <string notr="true">background-color: #cccccc;</string>
                </property>
               </widget>
              </item>
-             <item row="12" column="0">
-              <widget class="QLabel" name="label_28">
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_4">
                <property name="font">
                 <font>
                  <family>Georgia</family>
@@ -220,70 +377,12 @@ color:black;
                 </font>
                </property>
                <property name="text">
-                <string>Notes</string>
+                <string>Requester ID</string>
                </property>
               </widget>
              </item>
-             <item row="9" column="0">
-              <widget class="QLabel" name="label_8">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>2 Attempts needed</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_10">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Starting Year</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLineEdit" name="customerIdEdit">
-               <property name="styleSheet">
-                <string notr="true">QLineEdit {
-	background-color: #cccccc;
-	border-radius: 20px; 
-color:black;
-}
-</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_2">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Base URL</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="name_validation_label">
-               <property name="text">
-                <string>Validation label</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLineEdit" name="nameEdit">
+             <item row="8" column="2">
+              <widget class="QLineEdit" name="apiKeyEdit">
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
 	background-color: #cccccc;
@@ -307,108 +406,52 @@ color:black;
                </property>
               </widget>
              </item>
-             <item row="3" column="2">
-              <widget class="QDateEdit" name="All_reports_edit_fetch">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QDateEdit {
-	background-color: #cccccc;
-	border-radius: 20px; 
-color:black;
-}
-</string>
-               </property>
-               <property name="dateTime">
-                <datetime>
-                 <hour>0</hour>
-                 <minute>0</minute>
-                 <second>0</second>
-                 <year>2020</year>
-                 <month>1</month>
-                 <day>1</day>
-                </datetime>
-               </property>
-               <property name="displayFormat">
-                <string>yyyy</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="0">
-              <widget class="QLabel" name="label_5">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
+             <item row="2" column="1">
+              <widget class="QLabel" name="name_validation_label">
                <property name="text">
-                <string>API Key</string>
+                <string>*</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_3">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_12">
                <property name="text">
-                <string>Customer ID</string>
+                <string>*</string>
                </property>
               </widget>
              </item>
-             <item row="8" column="2">
-              <widget class="QLineEdit" name="apiKeyEdit">
-               <property name="styleSheet">
-                <string notr="true">QLineEdit {
-	background-color: #cccccc;
-	border-radius: 20px; 
-color:black;
-}
-</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
+             <item row="3" column="1">
+              <widget class="QLabel" name="label_13">
                <property name="text">
-                <string>Requester ID</string>
+                <string>*</string>
                </property>
               </widget>
              </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_6">
-               <property name="font">
-                <font>
-                 <family>Georgia</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
+             <item row="4" column="1">
+              <widget class="QLabel" name="label_14">
                <property name="text">
-                <string>Platform</string>
+                <string>*</string>
                </property>
               </widget>
              </item>
-             <item row="6" column="2">
-              <widget class="QLineEdit" name="lineEdit_2">
-               <property name="styleSheet">
-                <string notr="true">background-color: #cccccc;</string>
+             <item row="9" column="1">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>*</string>
+               </property>
+              </widget>
+             </item>
+             <item row="10" column="1">
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>*</string>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="1">
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>*</string>
                </property>
               </widget>
              </item>
@@ -456,7 +499,7 @@ QPushButton:hover {
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/Icons/diskette.png</normaloff>resources/Icons/diskette.png</iconset>
+                 <normaloff>../latestUI/resources/Icons/diskette.png</normaloff>../latestUI/resources/Icons/diskette.png</iconset>
                </property>
                <property name="default">
                 <bool>false</bool>
@@ -488,7 +531,7 @@ QPushButton:hover {
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/Icons/undo.png</normaloff>resources/Icons/undo.png</iconset>
+                 <normaloff>../latestUI/resources/Icons/undo.png</normaloff>../latestUI/resources/Icons/undo.png</iconset>
                </property>
               </widget>
              </item>
@@ -514,7 +557,7 @@ QPushButton:hover {
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>resources/Icons/trash-can.png</normaloff>resources/Icons/trash-can.png</iconset>
+                 <normaloff>../latestUI/resources/Icons/trash-can.png</normaloff>../latestUI/resources/Icons/trash-can.png</iconset>
                </property>
               </widget>
              </item>
@@ -531,7 +574,7 @@ QPushButton:hover {
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../latestUI/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

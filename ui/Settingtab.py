@@ -97,7 +97,7 @@ class Ui_SettingTab(object):
 "}\n"
 "")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/Icons/diskette.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/diskette.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon)
         self.pushButton_3.setIconSize(QtCore.QSize(25, 25))
         self.pushButton_3.setObjectName("pushButton_3")
@@ -117,6 +117,142 @@ class Ui_SettingTab(object):
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
+        self.label_5 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet("QToolTip {\n"
+"    color: black;\n"
+"    background-color: #FFFFE0; \n"
+"}\n"
+"")
+        self.label_5.setObjectName("label_5")
+        self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("QToolTip {\n"
+"    color: black;\n"
+"    background-color: #FFFFE0; \n"
+"}\n"
+"")
+        self.label_3.setObjectName("label_3")
+        self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("QToolTip {\n"
+"    color: black; \n"
+"    background-color: #FFFFE0;\n"
+"}\n"
+"")
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("QToolTip {\n"
+"    color: black;\n"
+"    background-color: #FFFFE0; \n"
+"}\n"
+"")
+        self.label_4.setObjectName("label_4")
+        self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
+        self.label_6 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet("QToolTip {\n"
+"    color: black; \n"
+"    background-color: #FFFFE0; \n"
+"}\n"
+"")
+        self.label_6.setObjectName("label_6")
+        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
+        self.label_7 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.label_7.setFont(font)
+        self.label_7.setStyleSheet("QToolTip {\n"
+"    color: black;\n"
+"    background-color: #FFFFE0; \n"
+"}\n"
+"")
+        self.label_7.setObjectName("label_7")
+        self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
+        self.spinBox = QtWidgets.QSpinBox(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.spinBox.setFont(font)
+        self.spinBox.setStyleSheet("QSpinBox {\n"
+"    color: black; /* 文本颜色为黑色 */\n"
+"    background-color: #cccccc;\n"
+"}\n"
+"")
+        self.spinBox.setMaximum(9999)
+        self.spinBox.setObjectName("spinBox")
+        self.gridLayout.addWidget(self.spinBox, 4, 1, 1, 3)
+        self.spinBox_2 = QtWidgets.QSpinBox(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.spinBox_2.setFont(font)
+        self.spinBox_2.setStyleSheet("QSpinBox {\n"
+"    color: black; /* 文本颜色为黑色 */\n"
+"    background-color: #cccccc;\n"
+"}\n"
+"")
+        self.spinBox_2.setMaximum(9999)
+        self.spinBox_2.setObjectName("spinBox_2")
+        self.gridLayout.addWidget(self.spinBox_2, 3, 1, 1, 3)
+        self.spinBox_3 = QtWidgets.QSpinBox(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.spinBox_3.setFont(font)
+        self.spinBox_3.setStyleSheet("QSpinBox {\n"
+"    color: black; /* 文本颜色为黑色 */\n"
+"    background-color: #cccccc;\n"
+"}\n"
+"")
+        self.spinBox_3.setMaximum(9999)
+        self.spinBox_3.setObjectName("spinBox_3")
+        self.gridLayout.addWidget(self.spinBox_3, 2, 1, 1, 3)
+        self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.lineEdit.setFont(font)
+        self.lineEdit.setStyleSheet("QLineEdit {\n"
+"    color: black; /* 文本颜色为黑色 */\n"
+"    background-color: #cccccc;\n"
+"}\n"
+"")
+        self.lineEdit.setObjectName("lineEdit")
+        self.gridLayout.addWidget(self.lineEdit, 5, 1, 1, 3)
+        self.spinBox_4 = QtWidgets.QSpinBox(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(12)
+        self.spinBox_4.setFont(font)
+        self.spinBox_4.setStyleSheet("QSpinBox {\n"
+"    color: black; /* 文本颜色为黑色 */\n"
+"    background-color: #cccccc;\n"
+"}\n"
+"")
+        self.spinBox_4.setMaximum(9999)
+        self.spinBox_4.setObjectName("spinBox_4")
+        self.gridLayout.addWidget(self.spinBox_4, 1, 1, 1, 3)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
@@ -140,184 +276,10 @@ class Ui_SettingTab(object):
 "}\n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("resources/Icons/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon1)
         self.pushButton_2.setObjectName("pushButton_2")
         self.gridLayout.addWidget(self.pushButton_2, 0, 4, 1, 1)
-        self.label_7 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_7.setFont(font)
-        self.label_7.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
-        self.label_7.setObjectName("label_7")
-        self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
-        self.pushButton_4 = QtWidgets.QPushButton(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setStyleSheet("QPushButton:hover {\n"
-"    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */\n"
-"    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */\n"
-"}\n"
-"")
-        self.pushButton_4.setIcon(icon1)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout.addWidget(self.pushButton_4, 1, 4, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet("QToolTip {\n"
-"    color: black; \n"
-"    background-color: #FFFFE0;\n"
-"}\n"
-"")
-        self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
-        self.label_3 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
-        self.label_3.setObjectName("label_3")
-        self.gridLayout.addWidget(self.label_3, 3, 0, 1, 1)
-        self.label_5 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_5.setFont(font)
-        self.label_5.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
-        self.label_5.setObjectName("label_5")
-        self.gridLayout.addWidget(self.label_5, 5, 0, 1, 1)
-        self.label_6 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_6.setFont(font)
-        self.label_6.setStyleSheet("QToolTip {\n"
-"    color: black; \n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
-        self.label_6.setObjectName("label_6")
-        self.gridLayout.addWidget(self.label_6, 6, 0, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_4.setFont(font)
-        self.label_4.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
-        self.label_4.setObjectName("label_4")
-        self.gridLayout.addWidget(self.label_4, 4, 0, 1, 1)
-        self.label_8 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.label_8.setFont(font)
-        self.label_8.setStatusTip("")
-        self.label_8.setStyleSheet("QToolTip {\n"
-"    color: black; \n"
-"    background-color: #FFFFE0;\n"
-"}\n"
-"")
-        self.label_8.setObjectName("label_8")
-        self.gridLayout.addWidget(self.label_8, 1, 0, 1, 1)
-        self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.lineEdit.setFont(font)
-        self.lineEdit.setStyleSheet("QLineEdit {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"")
-        self.lineEdit.setObjectName("lineEdit")
-        self.gridLayout.addWidget(self.lineEdit, 6, 1, 1, 3)
-        self.spinBox_3 = QtWidgets.QSpinBox(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.spinBox_3.setFont(font)
-        self.spinBox_3.setStyleSheet("QSpinBox {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"")
-        self.spinBox_3.setMaximum(9999)
-        self.spinBox_3.setObjectName("spinBox_3")
-        self.gridLayout.addWidget(self.spinBox_3, 3, 1, 1, 3)
-        self.spinBox_4 = QtWidgets.QSpinBox(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.spinBox_4.setFont(font)
-        self.spinBox_4.setStyleSheet("QSpinBox {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"")
-        self.spinBox_4.setMaximum(9999)
-        self.spinBox_4.setObjectName("spinBox_4")
-        self.gridLayout.addWidget(self.spinBox_4, 2, 1, 1, 3)
-        self.spinBox_2 = QtWidgets.QSpinBox(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.spinBox_2.setFont(font)
-        self.spinBox_2.setStyleSheet("QSpinBox {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"")
-        self.spinBox_2.setMaximum(9999)
-        self.spinBox_2.setObjectName("spinBox_2")
-        self.gridLayout.addWidget(self.spinBox_2, 4, 1, 1, 3)
-        self.spinBox = QtWidgets.QSpinBox(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.spinBox.setFont(font)
-        self.spinBox.setStyleSheet("QSpinBox {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"")
-        self.spinBox.setMaximum(9999)
-        self.spinBox.setObjectName("spinBox")
-        self.gridLayout.addWidget(self.spinBox, 5, 1, 1, 3)
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.lineEdit_3.setFont(font)
-        self.lineEdit_3.setStyleSheet("QLineEdit {\n"
-"    color: black; /* 文本颜色为黑色 */\n"
-"    background-color: #cccccc;\n"
-"}\n"
-"")
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.gridLayout.addWidget(self.lineEdit_3, 1, 1, 1, 3)
         self.comboBox = QtWidgets.QComboBox(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
@@ -332,7 +294,9 @@ class Ui_SettingTab(object):
 "    color: black; /* 下拉列表中的文本颜色为黑色 */\n"
 "}\n"
 "")
+        self.comboBox.setEditable(True)
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -389,7 +353,7 @@ class Ui_SettingTab(object):
 "\n"
 "")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("resources/Icons/database.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../Final Project/COUNTER-Release-5.1/ui/resources/Icons/database.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon2)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setObjectName("pushButton")
@@ -411,25 +375,23 @@ class Ui_SettingTab(object):
         self.label_9.setText(_translate("SettingTab", "<html><head/><body><p align=\"center\">If Database gets Corrupted</p></body></html>"))
         self.pushButton_3.setToolTip(_translate("SettingTab", "Save all default and custom changes"))
         self.pushButton_3.setText(_translate("SettingTab", "Save All Changes"))
-        self.pushButton_2.setText(_translate("SettingTab", "Choose"))
-        self.label_7.setToolTip(_translate("SettingTab", "We can set where to save search database, vendor data file and yearly reports here"))
-        self.label_7.setText(_translate("SettingTab", "Data folders directory"))
-        self.pushButton_4.setText(_translate("SettingTab", "Choose"))
-        self.label_2.setToolTip(_translate("SettingTab", "The number of seconds the program will wait between sending each report request to a given vendor."))
-        self.label_2.setText(_translate("SettingTab", "Report request interval"))
-        self.label_3.setToolTip(_translate("SettingTab", "The number of seconds the program will allow a vendor to respond to each report request before cancelling it."))
-        self.label_3.setText(_translate("SettingTab", "Request timeout"))
         self.label_5.setToolTip(_translate("SettingTab", "The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue."))
         self.label_5.setText(_translate("SettingTab", "Concurrent reports"))
-        self.label_6.setToolTip(_translate("SettingTab", "How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. "))
-        self.label_6.setText(_translate("SettingTab", "User agent"))
+        self.label_3.setToolTip(_translate("SettingTab", "The number of seconds the program will allow a vendor to respond to each report request before cancelling it."))
+        self.label_3.setText(_translate("SettingTab", "Request timeout"))
+        self.label_2.setToolTip(_translate("SettingTab", "The number of seconds the program will wait between sending each report request to a given vendor."))
+        self.label_2.setText(_translate("SettingTab", "Report request interval"))
         self.label_4.setToolTip(_translate("SettingTab", "Can change if you find the load on your desktop is too high"))
         self.label_4.setText(_translate("SettingTab", "Concurrent vendors"))
-        self.label_8.setToolTip(_translate("SettingTab", "This is where the special and non-calendar-year data range reports will be saved"))
-        self.label_8.setText(_translate("SettingTab", "Other reports directory"))
+        self.label_6.setToolTip(_translate("SettingTab", "How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. "))
+        self.label_6.setText(_translate("SettingTab", "User agent"))
+        self.label_7.setToolTip(_translate("SettingTab", "We can set where to save search database, vendor data file and yearly reports here"))
+        self.label_7.setText(_translate("SettingTab", "Data folders directories"))
+        self.pushButton_2.setText(_translate("SettingTab", "Choose"))
         self.comboBox.setItemText(0, _translate("SettingTab", "Search database"))
         self.comboBox.setItemText(1, _translate("SettingTab", "Vendor data file"))
         self.comboBox.setItemText(2, _translate("SettingTab", "Yearly reports"))
+        self.comboBox.setItemText(3, _translate("SettingTab", "Other reports"))
         self.label.setText(_translate("SettingTab", "<html><head/><body><p align=\"center\">Settings</p></body></html>"))
         self.pushButton.setToolTip(_translate("SettingTab", "Recreate or regenerate the database that stores information related to the usage statisitics. when you want to do data consistency, data integrity, update and changes."))
         self.pushButton.setText(_translate("SettingTab", "Rebuild Database"))
