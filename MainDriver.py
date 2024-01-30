@@ -85,7 +85,7 @@ class PasswordDialog(QDialog):
         return entered_password == correct_password
     
     def accept(self):
-        correct_password = "12345"  # Replace with your actual password
+        correct_password = "counter"  # Replace with your actual password
         if self.check_password(correct_password):
             super().accept()
         else:
