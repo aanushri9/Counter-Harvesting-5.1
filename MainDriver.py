@@ -83,6 +83,14 @@ class PasswordDialog(QDialog):
     def check_password(self, correct_password):
         entered_password = self.password_input.text()
         return entered_password == correct_password
+    
+    def accept(self):
+        correct_password = "12345"  # Replace with your actual password
+        if self.check_password(correct_password):
+            super().accept()
+        else:
+            QMessageBox.warning(self, "Access Denied", "Incorrect password. Access denied.")
+
 
 if __name__ == "__main__":
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
@@ -90,7 +98,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyleSheet("QWidget {font-family: Segoe UI; font-size: 12pt;}")
 
-    correct_password = "your_password"  # Replace with your actual password
+    #correct_password = "12345678"  # Replace with your actual password
 
     main_window = QMainWindow()
     main_window_ui = MainWindow.Ui_mainWindow()
