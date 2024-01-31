@@ -7,7 +7,7 @@ import validators
 from PyQt5.QtWidgets import QDialog, QLabel, QDialogButtonBox, QWidget, QCheckBox, QMainWindow
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, QObject, QModelIndex, pyqtSignal
-from ui import ManageVendorsTab, AddVendor, RemoveVendorDialog
+from ui import ManageVendorsTab, AddVendor, RemoveVendorDialog,EditVendors
 #import ManageDB
 import GeneralUtils
 from GeneralUtils import JsonModel
@@ -82,6 +82,7 @@ class ManageVendorsController(QObject):
             # self.undo_vendor_changes_button = manage_vendors_ui.undoVendorChangesButton
             # self.remove_vendor_button = manage_vendors_ui.removeVendorButton
             self.add_vendor_button = manage_vendors_ui.addVendorButton
+            self.edit_vendor_button = manage_vendors_ui.editvendorsbutton
             # self.export_vendors_button = manage_vendors_ui.exportVendorsButton
             # self.import_vendors_button = manage_vendors_ui.importVendorsButton
 
@@ -89,6 +90,7 @@ class ManageVendorsController(QObject):
             # self.undo_vendor_changes_button.clicked.connect(self.populate_edit_vendor_view)
             # self.remove_vendor_button.clicked.connect(self.on_remove_vendor_clicked)
             self.add_vendor_button.clicked.connect(self.on_add_vendor_clicked)
+            self.edit_vendor_button.clicked.connect(self.on_edit_vendor_clicked)
             # self.export_vendors_button.clicked.connect(self.on_export_vendors_clicked)
             # self.import_vendors_button.clicked.connect(self.on_import_vendors_clicked)
 
@@ -113,8 +115,11 @@ class ManageVendorsController(QObject):
 
             #self.update_vendors_ui()
             try:
+                script_directory = os.path.dirname(os.path.abspath(__file__))
+                file_path = os.path.join(script_directory, 'all_data', 'vendor_manager', 'vendors.dat')
+
                 # Read JSON data from vendors.dat
-                with open('vendors.dat', 'r') as file:
+                with open(file_path, 'r') as file:
                     vendors_data = json.load(file)
 
                 # Create a QStringListModel
@@ -134,6 +139,11 @@ class ManageVendorsController(QObject):
             except Exception as e:
                 print(f"Error loading vendors: {e}")
 
+
+
+    def edit_vendor(self, new_vendor: Vendor) -> (bool, str):
+        
+        return True, ""
 
     def add_vendor(self, new_vendor: Vendor) -> (bool, str):
         """Adds a new vendor to the system if the vendor is valid
@@ -157,6 +167,18 @@ class ManageVendorsController(QObject):
         self.vendor_names.add(new_vendor.name.lower())
 
         return True, ""
+    
+    def on_edit_vendor_clicked(self):
+        """Handles the signal emitted when the add vendor button is clicked
+
+        A dialog is show to allow the user to enter a new vendor's information. If the information entered is valid,
+        the vendor is added to the system
+        """
+        vendor_dialog = QMainWindow()  # Use QMainWindow instead of QDialog
+        vendor_dialog_ui = EditVendors.Ui_editVendors() 
+        vendor_dialog_ui.setupUi(vendor_dialog)
+        vendor_dialog.show()
+        vendor_dialog.exec_()
 
     def on_add_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
@@ -223,34 +245,34 @@ class ManageVendorsController(QObject):
     def on_ok_clicked(self):
         print("done")
 
-class ManageVendorFunctionality:
-    def __init__(self, ui):
-        self.ui = ui
-        self.setup_functionality()
+# class ManageVendorFunctionality:
+#     def __init__(self, ui):
+#         self.ui = ui
+#         self.setup_functionality()
 
-    def setup_functionality(self):
-        self.ui.addVendorButton.clicked.connect(self.add_vendor)
-        self.ui.importVendorsButton.clicked.connect(self.import_vendors)
-        self.ui.exportVendorsButton.clicked.connect(self.export_vendors)
-        self.ui.pushButton.clicked.connect(self.edit_vendor)
+#     def setup_functionality(self):
+#         self.ui.addVendorButton.clicked.connect(self.add_vendor)
+#         self.ui.importVendorsButton.clicked.connect(self.import_vendors)
+#         self.ui.exportVendorsButton.clicked.connect(self.export_vendors)
+#         self.ui.pushButton.clicked.connect(self.edit_vendor)
 
-    def add_vendor(self):
+#     def add_vendor(self):
        
-        print("Add New Vendor clicked!")
+#         print("Add New Vendor clicked!")
 
-    def import_vendors(self):
+#     def import_vendors(self):
 
-        print("Import Vendors clicked!")
+#         print("Import Vendors clicked!")
 
 
-    def export_vendors(self):
+#     def export_vendors(self):
    
-        print("Export Vendors clicked!")
+#         print("Export Vendors clicked!")
 
 
-    def edit_vendor(self):
+#     def edit_vendor(self):
 
-        print("Edit Vendor clicked!")
+#         print("Edit Vendor clicked!")
 
 
 
