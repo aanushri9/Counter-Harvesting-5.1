@@ -50,6 +50,10 @@ class ManageVendorsController(QObject):
                         #settings: SettingsModel):
             super().__init__()
             self.manage_vendors_widget = manage_vendors_widget
+        
+            # self.vendor_list_view=manage_vendors_ui.vendorsListView
+      
+       
             #self.selected_index = -1
 
             #self.edit_vendor_details_frame = manage_vendors_ui.edit_vendor_details_frame
@@ -88,15 +92,18 @@ class ManageVendorsController(QObject):
             # self.export_vendors_button.clicked.connect(self.on_export_vendors_clicked)
             # self.import_vendors_button.clicked.connect(self.on_import_vendors_clicked)
 
-            self.vendor_list_view = manage_vendors_ui.vendorsListView
-            self.vendor_list_model = QStandardItemModel(self.vendor_list_view)
-            self.vendor_list_view.setModel(self.vendor_list_model)
+            self.vendor_list_view_2 = manage_vendors_ui.vendorsListView_2
+          
+        
+            
+            # self.vendor_list_model = QStandardItemModel(self.vendor_list_view)
+            # self.vendor_list_view.setModel(self.vendor_list_model)
             #self.vendor_list_view.clicked.connect(self.on_vendor_selected)
 
             #self.settings = settings
 
-            # self.vendors = []
-            # self.vendor_names = set()  # Hash set for faster operations
+            self.vendors = []
+            self.vendor_names = set()  # Hash set for faster operations
             # vendors_json_string = GeneralUtils.read_json_file(VENDORS_FILE_PATH)
             # vendor_dicts = json.loads(vendors_json_string)
             # for json_dict in vendor_dicts:
@@ -105,6 +112,27 @@ class ManageVendorsController(QObject):
             #     self.vendor_names.add(vendor.name.lower())
 
             #self.update_vendors_ui()
+            try:
+                # Read JSON data from vendors.dat
+                with open('vendors.dat', 'r') as file:
+                    vendors_data = json.load(file)
+
+                # Create a QStringListModel
+                model = QStandardItemModel()
+
+                # Populate the model with vendor names
+                for vendor_data in vendors_data:
+                    vendor_name = vendor_data.get('name', '')
+                    if vendor_name:
+                        item = QStandardItem(vendor_name)
+                        item.setEditable(False)
+                        model.appendRow(item)
+
+                # Set the model for the QListView
+                self.vendor_list_view_2.setModel(model)
+
+            except Exception as e:
+                print(f"Error loading vendors: {e}")
 
 
     def add_vendor(self, new_vendor: Vendor) -> (bool, str):
@@ -192,7 +220,6 @@ class ManageVendorsController(QObject):
         # cancel_button.clicked.connect(lambda: vendor_dialog.close())
 
         vendor_dialog.exec_()
-
 
 
 class ManageVendorFunctionality:

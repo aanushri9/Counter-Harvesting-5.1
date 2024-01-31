@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'EditVendors5.1.ui'
+# Form implementation generated from reading ui file 'EditVendors.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_EditVendorTab(object):
-    def setupUi(self, EditVendorTab):
-        EditVendorTab.setObjectName("EditVendorTab")
-        EditVendorTab.resize(1067, 600)
-        EditVendorTab.setStyleSheet("*{\n"
+class Ui_editVendors(object):
+    def setupUi(self, editVendors):
+        editVendors.setObjectName("editVendors")
+        editVendors.resize(1067, 600)
+        editVendors.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -47,7 +47,7 @@ class Ui_EditVendorTab(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(EditVendorTab)
+        self.centralwidget = QtWidgets.QWidget(editVendors)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_4.setObjectName("gridLayout_4")
@@ -331,40 +331,40 @@ class Ui_EditVendorTab(object):
         self.gridLayout_6.addWidget(self.edit_vendor_options_frame, 2, 0, 1, 1)
         self.gridLayout_2.addWidget(self.frame_3, 0, 0, 1, 1)
         self.gridLayout_4.addWidget(self.EditVendor, 0, 0, 1, 1)
-        EditVendorTab.setCentralWidget(self.centralwidget)
+        editVendors.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(EditVendorTab)
-        QtCore.QMetaObject.connectSlotsByName(EditVendorTab)
+        self.retranslateUi(editVendors)
+        QtCore.QMetaObject.connectSlotsByName(editVendors)
 
-    def retranslateUi(self, EditVendorTab):
+    def retranslateUi(self, editVendors):
         _translate = QtCore.QCoreApplication.translate
-        EditVendorTab.setWindowTitle(_translate("EditVendorTab", "EditVendorTab"))
-        self.label_7.setText(_translate("EditVendorTab", "Edit Vendor "))
-        self.label_11.setText(_translate("EditVendorTab", "Request throttled"))
-        self.label_9.setText(_translate("EditVendorTab", "IP Checking"))
-        self.companiesText.setText(_translate("EditVendorTab", "Provider"))
-        self.label_28.setText(_translate("EditVendorTab", "Notes"))
-        self.label_8.setText(_translate("EditVendorTab", "2 Attempts needed"))
-        self.label_10.setText(_translate("EditVendorTab", "Starting Year"))
-        self.label_2.setText(_translate("EditVendorTab", "Base URL"))
-        self.name_validation_label.setText(_translate("EditVendorTab", "Validation label"))
-        self.label.setText(_translate("EditVendorTab", "Name"))
-        self.All_reports_edit_fetch.setDisplayFormat(_translate("EditVendorTab", "yyyy"))
-        self.label_5.setText(_translate("EditVendorTab", "API Key"))
-        self.label_3.setText(_translate("EditVendorTab", "Customer ID"))
-        self.label_4.setText(_translate("EditVendorTab", "Requester ID"))
-        self.label_6.setText(_translate("EditVendorTab", "Platform"))
-        self.saveVendorChangesButton.setText(_translate("EditVendorTab", "Save Changes"))
-        self.undoVendorChangesButton.setText(_translate("EditVendorTab", "Undo Changes"))
-        self.removeVendorButton.setText(_translate("EditVendorTab", "Remove Vendor"))
+        editVendors.setWindowTitle(_translate("editVendors", "editVendors"))
+        self.label_7.setText(_translate("editVendors", "Edit Vendor "))
+        self.label_11.setText(_translate("editVendors", "Request throttled"))
+        self.label_9.setText(_translate("editVendors", "IP Checking"))
+        self.companiesText.setText(_translate("editVendors", "Provider"))
+        self.label_28.setText(_translate("editVendors", "Notes"))
+        self.label_8.setText(_translate("editVendors", "2 Attempts needed"))
+        self.label_10.setText(_translate("editVendors", "Starting Year"))
+        self.label_2.setText(_translate("editVendors", "Base URL"))
+        self.name_validation_label.setText(_translate("editVendors", "Validation label"))
+        self.label.setText(_translate("editVendors", "Name"))
+        self.All_reports_edit_fetch.setDisplayFormat(_translate("editVendors", "yyyy"))
+        self.label_5.setText(_translate("editVendors", "API Key"))
+        self.label_3.setText(_translate("editVendors", "Customer ID"))
+        self.label_4.setText(_translate("editVendors", "Requester ID"))
+        self.label_6.setText(_translate("editVendors", "Platform"))
+        self.saveVendorChangesButton.setText(_translate("editVendors", "Save Changes"))
+        self.undoVendorChangesButton.setText(_translate("editVendors", "Undo Changes"))
+        self.removeVendorButton.setText(_translate("editVendors", "Remove Vendor"))
 import resources_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    EditVendorTab = QtWidgets.QEditVendorTab()
-    ui = Ui_EditVendorTab()
-    ui.setupUi(EditVendorTab)
-    EditVendorTab.show()
+    editVendors = QtWidgets.QeditVendors()
+    ui = Ui_editVendors()
+    ui.setupUi(editVendors)
+    editVendors.show()
     sys.exit(app.exec_())

@@ -118,7 +118,7 @@ QToolTip {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/diskette.png</normaloff>resources/Icons/diskette.png</iconset>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/diskette.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/diskette.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -151,6 +151,241 @@ border-radius:15px;
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout">
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue.</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolTip {
+    color: black;
+    background-color: #FFFFE0; 
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Concurrent reports</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>The number of seconds the program will allow a vendor to respond to each report request before cancelling it.</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolTip {
+    color: black;
+    background-color: #FFFFE0; 
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Request timeout</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>The number of seconds the program will wait between sending each report request to a given vendor.</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolTip {
+    color: black; 
+    background-color: #FFFFE0;
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Report request interval</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Can change if you find the load on your desktop is too high</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolTip {
+    color: black;
+    background-color: #FFFFE0; 
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Concurrent vendors</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. </string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolTip {
+    color: black; 
+    background-color: #FFFFE0; 
+}
+</string>
+             </property>
+             <property name="text">
+              <string>User agent</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>We can set where to save search database, vendor data file and yearly reports here</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolTip {
+    color: black;
+    background-color: #FFFFE0; 
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Data folders directories</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" colspan="3">
+            <widget class="QSpinBox" name="spinBox">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
+    color: black; /* 文本颜色为黑色 */
+	background-color: #cccccc;
+}
+</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="3">
+            <widget class="QSpinBox" name="spinBox_2">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
+    color: black; /* 文本颜色为黑色 */
+	background-color: #cccccc;
+}
+</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="3">
+            <widget class="QSpinBox" name="spinBox_3">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
+    color: black; /* 文本颜色为黑色 */
+	background-color: #cccccc;
+}
+</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" colspan="3">
+            <widget class="QLineEdit" name="lineEdit">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    color: black; /* 文本颜色为黑色 */
+	background-color: #cccccc;
+}
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="3">
+            <widget class="QSpinBox" name="spinBox_4">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
+    color: black; /* 文本颜色为黑色 */
+	background-color: #cccccc;
+}
+</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="3">
             <widget class="QLineEdit" name="lineEdit_2">
              <property name="font">
@@ -188,309 +423,7 @@ border-radius:15px;
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/folder.png</normaloff>resources/Icons/folder.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_7">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>We can set where to save search database, vendor data file and yearly reports here</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Data folders directory</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton:hover {
-    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */
-    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Choose</string>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>resources/Icons/folder.png</normaloff>resources/Icons/folder.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>The number of seconds the program will wait between sending each report request to a given vendor.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black; 
-    background-color: #FFFFE0;
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Report request interval</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_3">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>The number of seconds the program will allow a vendor to respond to each report request before cancelling it.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Request timeout</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_5">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Concurrent reports</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. </string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black; 
-    background-color: #FFFFE0; 
-}
-</string>
-             </property>
-             <property name="text">
-              <string>User agent</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_4">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>Can change if you find the load on your desktop is too high</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Concurrent vendors</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_8">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>This is where the special and non-calendar-year data range reports will be saved</string>
-             </property>
-             <property name="statusTip">
-              <string/>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black; 
-    background-color: #FFFFE0;
-}
-</string>
-             </property>
-             <property name="text">
-              <string>Other reports directory</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1" colspan="3">
-            <widget class="QLineEdit" name="lineEdit">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-    color: black; /* 文本颜色为黑色 */
-	background-color: #cccccc;
-}
-</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1" colspan="3">
-            <widget class="QSpinBox" name="spinBox_3">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-    color: black; /* 文本颜色为黑色 */
-	background-color: #cccccc;
-}
-</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1" colspan="3">
-            <widget class="QSpinBox" name="spinBox_4">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-    color: black; /* 文本颜色为黑色 */
-	background-color: #cccccc;
-}
-</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1" colspan="3">
-            <widget class="QSpinBox" name="spinBox_2">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-    color: black; /* 文本颜色为黑色 */
-	background-color: #cccccc;
-}
-</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1" colspan="3">
-            <widget class="QSpinBox" name="spinBox">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-    color: black; /* 文本颜色为黑色 */
-	background-color: #cccccc;
-}
-</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="3">
-            <widget class="QLineEdit" name="lineEdit_3">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>12</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-    color: black; /* 文本颜色为黑色 */
-	background-color: #cccccc;
-}
-</string>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/folder.png</iconset>
              </property>
             </widget>
            </item>
@@ -513,6 +446,9 @@ QComboBox QAbstractItemView {
 }
 </string>
              </property>
+             <property name="editable">
+              <bool>true</bool>
+             </property>
              <item>
               <property name="text">
                <string>Search database</string>
@@ -526,6 +462,11 @@ QComboBox QAbstractItemView {
              <item>
               <property name="text">
                <string>Yearly reports</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Other reports</string>
               </property>
              </item>
             </widget>
@@ -619,7 +560,7 @@ QToolTip {
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>resources/Icons/database.png</normaloff>resources/Icons/database.png</iconset>
+               <normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/database.png</normaloff>../Final Project/COUNTER-Release-5.1/ui/resources/Icons/database.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -666,7 +607,7 @@ QToolTip {
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../Final Project/COUNTER-Release-5.1/ui/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

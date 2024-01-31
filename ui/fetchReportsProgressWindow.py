@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_FetchReportProgressWindow(object):
-    def setupUi(self, FetchReportProgressWindow):
-        FetchReportProgressWindow.setObjectName("FetchReportProgressWindow")
-        FetchReportProgressWindow.resize(911, 585)
-        FetchReportProgressWindow.setStyleSheet("*{\n"
+class Ui_MainWindow(object):
+    def setupUi(self, fetchReportsProgress):
+        fetchReportsProgress.setObjectName("fetchReportsProgress")
+        fetchReportsProgress.setGeometry(QtCore.QRect(0, 0, 911, 585))
+        fetchReportsProgress.setStyleSheet("*{\n"
 "    \n"
 "    \n"
 "border:none;\n"
@@ -47,7 +47,7 @@ class Ui_FetchReportProgressWindow(object):
 "text-align:left;\n"
 "padding:2px 10px;\n"
 "color:white;}")
-        self.centralwidget = QtWidgets.QWidget(FetchReportProgressWindow)
+        self.centralwidget = QtWidgets.QWidget(fetchReportsProgress)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -87,7 +87,7 @@ class Ui_FetchReportProgressWindow(object):
         self.results_scroll_area.setWidgetResizable(True)
         self.results_scroll_area.setObjectName("results_scroll_area")
         self.scroll_area_widget_contents = QtWidgets.QWidget()
-        self.scroll_area_widget_contents.setGeometry(QtCore.QRect(0, 0, 837, 398))
+        self.scroll_area_widget_contents.setGeometry(QtCore.QRect(0, 0, 857, 429))
         self.scroll_area_widget_contents.setObjectName("scroll_area_widget_contents")
         self.scroll_area_vertical_layout = QtWidgets.QVBoxLayout(self.scroll_area_widget_contents)
         self.scroll_area_vertical_layout.setObjectName("scroll_area_vertical_layout")
@@ -99,10 +99,9 @@ class Ui_FetchReportProgressWindow(object):
         self.frame_2.setObjectName("frame_2")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.logFileButton = QtWidgets.QPushButton(self.frame_2)
-        self.logFileButton.setStyleSheet("padding-right:5px;")
-        self.logFileButton.setObjectName("logFileButton")
-        self.gridLayout_2.addWidget(self.logFileButton, 0, 0, 1, 1)
+        self.pushButton = QtWidgets.QPushButton(self.frame_2)
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout_2.addWidget(self.pushButton, 1, 1, 1, 1)
         self.exportButton = QtWidgets.QPushButton(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -111,27 +110,32 @@ class Ui_FetchReportProgressWindow(object):
         self.exportButton.setSizePolicy(sizePolicy)
         self.exportButton.setStyleSheet("padding-left:5px;")
         self.exportButton.setObjectName("exportButton")
-        self.gridLayout_2.addWidget(self.exportButton, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.exportButton, 1, 3, 1, 1)
+        self.logFileButton = QtWidgets.QPushButton(self.frame_2)
+        self.logFileButton.setStyleSheet("padding-right:5px;")
+        self.logFileButton.setObjectName("logFileButton")
+        self.gridLayout_2.addWidget(self.logFileButton, 1, 2, 1, 1)
         self.gridLayout_3.addWidget(self.frame_2, 3, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
-        FetchReportProgressWindow.setCentralWidget(self.centralwidget)
+        fetchReportsProgress.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(FetchReportProgressWindow)
-        QtCore.QMetaObject.connectSlotsByName(FetchReportProgressWindow)
+        self.retranslateUi(fetchReportsProgress)
+        QtCore.QMetaObject.connectSlotsByName(fetchReportsProgress)
 
-    def retranslateUi(self, FetchReportProgressWindow):
+    def retranslateUi(self, fetchReportsProgress):
         _translate = QtCore.QCoreApplication.translate
-        FetchReportProgressWindow.setWindowTitle(_translate("FetchReportProgressWindow", "FetchReportProgressWindow"))
-        self.label.setText(_translate("FetchReportProgressWindow", "<html><head/><body><p align=\"center\">Fetching Reports</p></body></html>"))
-        self.logFileButton.setText(_translate("FetchReportProgressWindow", "Log File"))
-        self.exportButton.setText(_translate("FetchReportProgressWindow", "OK"))
+        fetchReportsProgress.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Fetching Reports</p></body></html>"))
+        self.pushButton.setText(_translate("MainWindow", "Copy To Clipboard"))
+        self.exportButton.setText(_translate("MainWindow", "OK"))
+        self.logFileButton.setText(_translate("MainWindow", "Log File"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    FetchReportProgressWindow = QtWidgets.QFetchReportProgressWindow()
-    ui = Ui_FetchReportProgressWindow()
-    ui.setupUi(FetchReportProgressWindow)
-    FetchReportProgressWindow.show()
+    fetchReportsProgress = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(fetchReportsProgress)
+    fetchReportsProgress.show()
     sys.exit(app.exec_())
