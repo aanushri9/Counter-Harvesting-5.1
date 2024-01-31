@@ -80,14 +80,16 @@ class Ui_manage_vendor_tab(object):
         self.vendorsListView.setFont(font)
         self.vendorsListView.setStyleSheet("QListView {\n"
 "    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
+"\n"
+"    color:black;\n"
 "}\n"
 "\n"
 "#vendorsListView{\n"
 "\n"
-"   border-radius:15px;\n"
+"\n"
 "    border: 5px solid #000000;\n"
 "    border-color: rgb(166, 166, 166);\n"
+"color:black;\n"
 "\n"
 "\n"
 "}")
@@ -101,12 +103,13 @@ class Ui_manage_vendor_tab(object):
         self.vendorsListView_2.setFont(font)
         self.vendorsListView_2.setStyleSheet("QListView {\n"
 "    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
+"\n"
+"color:black;\n"
 "}\n"
 "\n"
 "#vendorsListView{\n"
+"color:black;\n"
 "\n"
-"   border-radius:15px;\n"
 "    border: 5px solid #000000;\n"
 "    border-color: rgb(166, 166, 166);\n"
 "\n"
@@ -170,19 +173,19 @@ class Ui_manage_vendor_tab(object):
         self.exportVendorsButton.setIcon(icon2)
         self.exportVendorsButton.setObjectName("exportVendorsButton")
         self.horizontalLayout.addWidget(self.exportVendorsButton)
-        self.pushButton = QtWidgets.QPushButton(self.frame_2)
+        self.editvendorsbutton = QtWidgets.QPushButton(self.frame_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setStyleSheet("text-align: center;\n"
+        sizePolicy.setHeightForWidth(self.editvendorsbutton.sizePolicy().hasHeightForWidth())
+        self.editvendorsbutton.setSizePolicy(sizePolicy)
+        self.editvendorsbutton.setStyleSheet("text-align: center;\n"
 "")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("resources/Icons/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon3)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.editvendorsbutton.setIcon(icon3)
+        self.editvendorsbutton.setObjectName("editvendorsbutton")
+        self.horizontalLayout.addWidget(self.editvendorsbutton)
         self.gridLayout_3.addWidget(self.frame_2, 3, 0, 1, 2)
         self.label_13 = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
@@ -210,7 +213,7 @@ class Ui_manage_vendor_tab(object):
         self.importVendorsButton.setText(_translate("manage_vendor_tab", "Import Vendors"))
         self.exportVendorsButton.setToolTip(_translate("manage_vendor_tab", "<html><head/><body><p><img src=\":/newPrefix/save_icon.png\"/>yguhbnj</p></body></html>"))
         self.exportVendorsButton.setText(_translate("manage_vendor_tab", "Export Vendors"))
-        self.pushButton.setText(_translate("manage_vendor_tab", "Edit Vendor"))
+        self.editvendorsbutton.setText(_translate("manage_vendor_tab", "Edit Vendor"))
         self.label_13.setText(_translate("manage_vendor_tab", "<html><head/><body><p align=\"center\">Select Vendor</p></body></html>"))
 import resources_rc
 

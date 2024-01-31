@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
+ <class>searchProgress</class>
  <widget class="QMainWindow" name="searchProgress">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>911</width>
-    <height>585</height>
+    <width>441</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,8 +106,8 @@ color:white;}</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>661</width>
-            <height>85</height>
+            <width>393</width>
+            <height>86</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="scroll_area_vertical_layout"/>
