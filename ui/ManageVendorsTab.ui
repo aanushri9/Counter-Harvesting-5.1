@@ -96,14 +96,16 @@ color:white;}</string>
               <property name="styleSheet">
                <string notr="true">QListView {
 	background-color: #cccccc;
-	border-radius: 20px; 
+
+	color:black;
 }
 
 #vendorsListView{
 
-   border-radius:15px;
+
     border: 5px solid #000000;
 	border-color: rgb(166, 166, 166);
+color:black;
 
 
 }</string>
@@ -124,12 +126,13 @@ color:white;}</string>
               <property name="styleSheet">
                <string notr="true">QListView {
 	background-color: #cccccc;
-	border-radius: 20px; 
+
+color:black;
 }
 
 #vendorsListView{
+color:black;
 
-   border-radius:15px;
     border: 5px solid #000000;
 	border-color: rgb(166, 166, 166);
 
@@ -227,7 +230,7 @@ QPushButton:hover {
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="editvendorsbutton">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                    <horstretch>0</horstretch>
