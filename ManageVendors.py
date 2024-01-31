@@ -172,7 +172,7 @@ class ManageVendorsController(QObject):
         # vendor_dialog_ui = AddVendor.Ui_addVendorDialog()
         # vendor_dialog_ui.setupUi(vendor_dialog)
 
-        # name_edit = vendor_dialog_ui.nameEdit
+        name_edit = vendor_dialog_ui.nameEdit
         # base_url_edit = vendor_dialog_ui.baseUrlEdit
         # customer_id_edit = vendor_dialog_ui.customerIdEdit
         # requestor_id_edit = vendor_dialog_ui.requestorIdEdit
@@ -196,7 +196,7 @@ class ManageVendorsController(QObject):
         # base_url_edit.textChanged.connect(
         #     lambda url: self.on_url_text_changed(url, url_validation_label, True, non_sushi_check_box))
 
-        # def attempt_add_vendor():
+        def attempt_add_vendor():
         #     vendor = Vendor(name_edit.text(), base_url_edit.text(), customer_id_edit.text(), requestor_id_edit.text(),
         #                     api_key_edit.text(), platform_edit.text(), non_sushi_check_box.checkState() == Qt.Checked,
         #                     description_edit.toPlainText(), companies_edit.toPlainText())
@@ -213,14 +213,15 @@ class ManageVendorsController(QObject):
         #     else:
         #         GeneralUtils.show_message(message)
 
-        # button_box = vendor_dialog_ui.buttonBox
-        # ok_button = button_box.button(QDialogButtonBox.Ok)
-        # ok_button.clicked.connect(attempt_add_vendor)
-        # cancel_button = button_box.button(QDialogButtonBox.Cancel)
-        # cancel_button.clicked.connect(lambda: vendor_dialog.close())
+        button_box = vendor_dialog_ui.buttonBox
+        ok_button = button_box.button(QDialogButtonBox.Ok)
+        ok_button.clicked.connect(self.on_ok_clicked)
+        cancel_button = button_box.button(QDialogButtonBox.Cancel)
+        cancel_button.clicked.connect(lambda: vendor_dialog.close())
 
-        vendor_dialog.exec_()
-
+        # vendor_dialog.exec_()
+    def on_ok_clicked(self):
+        print("done")
 
 class ManageVendorFunctionality:
     def __init__(self, ui):
