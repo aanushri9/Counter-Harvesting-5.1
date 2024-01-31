@@ -113,8 +113,11 @@ class ManageVendorsController(QObject):
 
             #self.update_vendors_ui()
             try:
+                script_directory = os.path.dirname(os.path.abspath(__file__))
+                file_path = os.path.join(script_directory, 'all_data', 'vendor_manager', 'vendors.dat')
+
                 # Read JSON data from vendors.dat
-                with open('vendors.dat', 'r') as file:
+                with open(file_path, 'r') as file:
                     vendors_data = json.load(file)
 
                 # Create a QStringListModel
@@ -220,40 +223,6 @@ class ManageVendorsController(QObject):
         # cancel_button.clicked.connect(lambda: vendor_dialog.close())
 
         vendor_dialog.exec_()
-
-
-class ManageVendorFunctionality:
-    def __init__(self, ui):
-        self.ui = ui
-        self.setup_functionality()
-
-    def setup_functionality(self):
-        self.ui.addVendorButton.clicked.connect(self.add_vendor)
-        self.ui.importVendorsButton.clicked.connect(self.import_vendors)
-        self.ui.exportVendorsButton.clicked.connect(self.export_vendors)
-        self.ui.pushButton.clicked.connect(self.edit_vendor)
-
-    def add_vendor(self):
-       
-        print("Add New Vendor clicked!")
-
-    def import_vendors(self):
-
-        print("Import Vendors clicked!")
-
-
-    def export_vendors(self):
-   
-        print("Export Vendors clicked!")
-
-
-    def edit_vendor(self):
-
-        print("Edit Vendor clicked!")
-
-
-
-
 
 
 # class ManageVendorsController(QObject):
