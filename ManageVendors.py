@@ -102,8 +102,8 @@ class ManageVendorsController(QObject):
 
             #self.settings = settings
 
-            # self.vendors = []
-            # self.vendor_names = set()  # Hash set for faster operations
+            self.vendors = []
+            self.vendor_names = set()  # Hash set for faster operations
             # vendors_json_string = GeneralUtils.read_json_file(VENDORS_FILE_PATH)
             # vendor_dicts = json.loads(vendors_json_string)
             # for json_dict in vendor_dicts:
