@@ -106,8 +106,8 @@ color:white;}</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>393</width>
-            <height>86</height>
+            <width>397</width>
+            <height>91</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="scroll_area_vertical_layout"/>
@@ -170,7 +170,7 @@ color:white;}</string>
              <string notr="true">padding-left:5px;</string>
             </property>
             <property name="text">
-             <string>Done</string>
+             <string>Cancel</string>
             </property>
            </widget>
           </item>
