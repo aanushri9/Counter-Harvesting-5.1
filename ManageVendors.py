@@ -27,17 +27,17 @@ class Vendor(JsonModel):
     :param description: A description of this vendor
     :param companies: More information about the vendor
     """
-    def __init__(self, name: str, base_url: str, customer_id: str, requestor_id: str, api_key: str, platform: str,
-                 is_non_sushi: bool, description: str, companies: str):
+    def __init__(self, name: str):#, base_url: str, customer_id: str, requestor_id: str, api_key: str, platform: str,
+                # is_non_sushi: bool, description: str, companies: str):
         self.name = name
-        self.base_url = base_url
-        self.customer_id = customer_id
-        self.requestor_id = requestor_id
-        self.api_key = api_key
-        self.platform = platform
-        self.is_non_sushi = is_non_sushi
-        self.description = description
-        self.companies = companies
+        # self.base_url = base_url
+        # self.customer_id = customer_id
+        # self.requestor_id = requestor_id
+        # self.api_key = api_key
+        # self.platform = platform
+        # self.is_non_sushi = is_non_sushi
+        # self.description = description
+        # self.companies = companies
 
 
 class ManageVendorsController(QObject):
@@ -98,12 +98,15 @@ class ManageVendorsController(QObject):
           
         
             
-            # self.vendor_list_model = QStandardItemModel(self.vendor_list_view)
+            #self.vendor_list_model = QStandardItemModel(self.vendor_list_view)
             # self.vendor_list_view.setModel(self.vendor_list_model)
             #self.vendor_list_view.clicked.connect(self.on_vendor_selected)
 
             #self.settings = settings
+           
 
+        # Set the model for the QListView
+           
             self.vendors = []
             self.vendor_names = set()  # Hash set for faster operations
             # vendors_json_string = GeneralUtils.read_json_file(VENDORS_FILE_PATH)
@@ -123,21 +126,45 @@ class ManageVendorsController(QObject):
                     vendors_data = json.load(file)
 
                 # Create a QStringListModel
-                model = QStandardItemModel()
+                self.vendor_list_model = QStandardItemModel(self.vendor_list_view_2)
 
                 # Populate the model with vendor names
                 for vendor_data in vendors_data:
+                    
                     vendor_name = vendor_data.get('name', '')
-                    if vendor_name:
-                        item = QStandardItem(vendor_name)
-                        item.setEditable(False)
-                        model.appendRow(item)
+                    self.vendor_names.add(vendor_name.lower())
+                    self.vendors.append(vendor_data)
+               
 
-                # Set the model for the QListView
-                self.vendor_list_view_2.setModel(model)
-
+                # # Set the model for the QListView
+                self.vendor_list_view_2.setModel(self.vendor_list_model)
+                self.update_vendors_ui()
             except Exception as e:
                 print(f"Error loading vendors: {e}")
+    # def validate_new_name(self, new_name: str, original_name: str = "") -> (bool, str):
+    #     """Validates a new vendor name
+
+    #     :param new_name: The new name to be validated
+    #     :param original_name: The original name
+    #     :returns: (is_successful, message) A Tuple with the completion status and a message
+    #     """
+    #     if not new_name:
+    #         return False, "Vendor name can't be empty"
+    #     elif new_name.lower() in self.vendor_names:
+    #         if original_name and original_name.lower() == new_name.lower():
+    #             return True, ""
+    #         else:
+    #             return False, "Duplicate vendor name"
+    #     else:
+    #         return True, ""
+
+    def update_vendors_ui(self):
+            self.vendor_list_model.clear()
+            for vendor_data in self.vendors:
+                    vendor_name = vendor_data.get('name', '')
+                    item = QStandardItem(vendor_name)
+                    item.setEditable(False)
+                    self.vendor_list_model.appendRow(item)
 
 
 
@@ -145,28 +172,30 @@ class ManageVendorsController(QObject):
         
         return True, ""
 
-    def add_vendor(self, new_vendor: Vendor) -> (bool, str):
-        """Adds a new vendor to the system if the vendor is valid
+    # def add_vendor(self, new_vendor: Vendor) -> (bool, str):
+    #     """Adds a new vendor to the system if the vendor is valid
 
-        :param new_vendor: The new vendor to be added
-        :returns: (is_successful, message) A Tuple with the completion status and a message
-        """
+    #     :param new_vendor: The new vendor to be added
+    #     :returns: (is_successful, message) A Tuple with the completion status and a message
+    #     """
         
 
-        # Check if vendor is valid
-        is_valid, message = self.validate_new_name(new_vendor.name)
-        if not is_valid:
-            return is_valid, message
+    #     # # Check if vendor is valid
+    #     # is_valid, message = self.validate_new_name(new_vendor.name)
+    #     # if not is_valid:
+    #     #     return is_valid, message
 
-        if not new_vendor.is_non_sushi:
-            is_valid, message = self.validate_url(new_vendor.base_url)
-            if not is_valid:
-                return is_valid, message
+    #     # if not new_vendor.is_non_sushi:
+    #     #     is_valid, message = self.validate_url(new_vendor.base_url)
+    #     #     if not is_valid:
+    #     #         return is_valid, message
 
-        self.vendors.append(new_vendor)
-        self.vendor_names.add(new_vendor.name.lower())
+        
 
-        return True, ""
+    #     # self.vendors.append(new_vendor)
+    #     self.vendor_names.add(new_vendor.name.lower())
+
+    #     return True, ""
     
     def on_edit_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
@@ -179,71 +208,124 @@ class ManageVendorsController(QObject):
         vendor_dialog_ui.setupUi(vendor_dialog)
         vendor_dialog.show()
         vendor_dialog.exec_()
-
+        
     def on_add_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
 
-        A dialog is show to allow the user to enter a new vendor's information. If the information entered is valid,
-        the vendor is added to the system
+        A dialog is shown to allow the user to enter a new vendor's information.
+        If the information entered is valid, the vendor is added to the system.
         """
         vendor_dialog = QMainWindow()  # Use QMainWindow instead of QDialog
         vendor_dialog_ui = AddVendor.Ui_addVendorDialog()
         vendor_dialog_ui.setupUi(vendor_dialog)
         vendor_dialog.show()
-        # vendor_dialog = QDialog()
-        # vendor_dialog_ui = AddVendor.Ui_addVendorDialog()
-        # vendor_dialog_ui.setupUi(vendor_dialog)
 
         name_edit = vendor_dialog_ui.nameEdit
-        # base_url_edit = vendor_dialog_ui.baseUrlEdit
-        # customer_id_edit = vendor_dialog_ui.customerIdEdit
-        # requestor_id_edit = vendor_dialog_ui.requestorIdEdit
-        # api_key_edit = vendor_dialog_ui.apiKeyEdit
-        # platform_edit = vendor_dialog_ui.platformEdit
-        # non_sushi_check_box = vendor_dialog_ui.non_Sushi_check_box
-        # description_edit = vendor_dialog_ui.descriptionEdit
-        # companies_edit = vendor_dialog_ui.companiesEdit
-
-        # vendor_dialog_ui.non_sushi_help_button.clicked.connect(
-        #     lambda: GeneralUtils.show_message("Vendors that don't provide SUSHI service can be added to the list for "
-        #                                       "use with Import Reports"))
-
-        # name_validation_label = vendor_dialog_ui.name_validation_label
-        # name_validation_label.hide()
-        # url_validation_label = vendor_dialog_ui.url_validation_label
-        # url_validation_label.hide()
-
-        # name_edit.textChanged.connect(
-        #     lambda new_name: self.on_name_text_changed(new_name, "", name_validation_label))
-        # base_url_edit.textChanged.connect(
-        #     lambda url: self.on_url_text_changed(url, url_validation_label, True, non_sushi_check_box))
 
         def attempt_add_vendor():
-        #     vendor = Vendor(name_edit.text(), base_url_edit.text(), customer_id_edit.text(), requestor_id_edit.text(),
-        #                     api_key_edit.text(), platform_edit.text(), non_sushi_check_box.checkState() == Qt.Checked,
-        #                     description_edit.toPlainText(), companies_edit.toPlainText())
+            vendor_name = name_edit.text()
+            new_vendor = {'name': vendor_name}  # You can add other vendor attributes here
 
-        #     is_valid, message = self.add_vendor(vendor)
-        #     if is_valid:
-        #         self.sort_vendors()
-        #         self.selected_index = -1
-        #         self.update_vendors_ui()
-        #         self.populate_edit_vendor_view()
-        #         self.vendors_changed_signal.emit(self.vendors)
-        #         self.save_all_vendors_to_disk()
-        #         vendor_dialog.close()
-        #     else:
-        #         GeneralUtils.show_message(message)
+
+            # Check if the vendor name is not already present
+            if vendor_name.lower() in self.vendor_names:
+                GeneralUtils.show_message("Duplicate vendor name. Please enter a unique name.")
+                return
+
+            # Add the new vendor name to the set
+            # self.vendors.append(vendor_name)
+            self.vendors.append(new_vendor)
+            self.vendor_names.add(vendor_name.lower())
+            self.update_vendors_ui()
+            self.save_vendors_to_file()
+        
+            # Close the dialog
+            vendor_dialog.close()
 
         button_box = vendor_dialog_ui.buttonBox
         ok_button = button_box.button(QDialogButtonBox.Ok)
-        ok_button.clicked.connect(self.on_ok_clicked)
+        ok_button.clicked.connect(attempt_add_vendor)
         cancel_button = button_box.button(QDialogButtonBox.Cancel)
         cancel_button.clicked.connect(lambda: vendor_dialog.close())
 
-        # vendor_dialog.exec_()
-    def on_ok_clicked(self):
-        print("done")
+    def save_vendors_to_file(self):
+        try:
+            script_directory = os.path.dirname(os.path.abspath(__file__))
+            file_path = os.path.join(script_directory, 'all_data', 'vendor_manager', 'vendors.dat')
+
+            # Write the updated vendors_data list to the vendors.dat file
+            with open(file_path, 'w') as file:
+                json.dump(self.vendors, file)
+
+        except Exception as e:
+            print(f"Error saving vendors to file: {e}")
+
+    # def on_add_vendor_clicked(self):
+    #     """Handles the signal emitted when the add vendor button is clicked
+
+    #     A dialog is show to allow the user to enter a new vendor's information. If the information entered is valid,
+    #     the vendor is added to the system
+    #     """
+    #     vendor_dialog = QMainWindow()  # Use QMainWindow instead of QDialog
+    #     vendor_dialog_ui = AddVendor.Ui_addVendorDialog()
+    #     vendor_dialog_ui.setupUi(vendor_dialog)
+    #     vendor_dialog.show()
+    #     # vendor_dialog = QDialog()
+    #     # vendor_dialog_ui = AddVendor.Ui_addVendorDialog()
+    #     # vendor_dialog_ui.setupUi(vendor_dialog)
+
+    #     name_edit = vendor_dialog_ui.nameEdit
+    #     # base_url_edit = vendor_dialog_ui.baseUrlEdit
+    #     # customer_id_edit = vendor_dialog_ui.customerIdEdit
+    #     # requestor_id_edit = vendor_dialog_ui.requestorIdEdit
+    #     # api_key_edit = vendor_dialog_ui.apiKeyEdit
+    #     # platform_edit = vendor_dialog_ui.platformEdit
+    #     # non_sushi_check_box = vendor_dialog_ui.non_Sushi_check_box
+    #     # description_edit = vendor_dialog_ui.descriptionEdit
+    #     # companies_edit = vendor_dialog_ui.companiesEdit
+
+    #     # vendor_dialog_ui.non_sushi_help_button.clicked.connect(
+    #     #     lambda: GeneralUtils.show_message("Vendors that don't provide SUSHI service can be added to the list for "
+    #     #                                       "use with Import Reports"))
+
+    #     # name_validation_label = vendor_dialog_ui.nameValidation
+    #     # name_validation_label.hide()
+    #     # # url_validation_label = vendor_dialog_ui.url_validation_label
+    #     # # url_validation_label.hide()
+
+    #     # name_edit.textChanged.connect(
+    #     #      lambda new_name: self.on_name_text_changed(new_name, "", name_validation_label))
+    #     # base_url_edit.textChanged.connect(
+    #     #     lambda url: self.on_url_text_changed(url, url_validation_label, True, non_sushi_check_box))
+
+    #     def attempt_add_vendor():
+    #           vendor=Vendor(name_edit.text())
+    #     #     vendor = Vendor(name_edit.text(), base_url_edit.text(), customer_id_edit.text(), requestor_id_edit.text(),
+    #     #                     api_key_edit.text(), platform_edit.text(), non_sushi_check_box.checkState() == Qt.Checked,
+    #     #                     description_edit.toPlainText(), companies_edit.toPlainText())
+
+    #           self.add_vendor(vendor)
+    #     #     if is_valid:
+    #     #         self.sort_vendors()
+    #     #         self.selected_index = -1
+    #     #         self.update_vendors_ui()
+    #     #         self.populate_edit_vendor_view()
+    #     #         self.vendors_changed_signal.emit(self.vendors)
+    #     #         self.save_all_vendors_to_disk()
+    #     #         vendor_dialog.close()
+    #     #     else:
+    #     #         GeneralUtils.show_message(message)
+              
+
+    #     button_box = vendor_dialog_ui.buttonBox
+    #     ok_button = button_box.button(QDialogButtonBox.Ok)
+    #     ok_button.clicked.connect(attempt_add_vendor)
+    #     cancel_button = button_box.button(QDialogButtonBox.Cancel)
+    #     cancel_button.clicked.connect(lambda: vendor_dialog.close())
+
+    #     # vendor_dialog.exec_()
+    # def on_ok_clicked(self):
+    #     print("done")
 
 # class ManageVendorFunctionality:
 #     def __init__(self, ui):
