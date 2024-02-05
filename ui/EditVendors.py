@@ -14,8 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_editVendors(object):
     def setupUi(self, editVendors):
         editVendors.setObjectName("editVendors")
-        # editVendors.setGeometry(QtCore.QRect(0, 0, 1067, 600))
-        editVendors.resize(800, 500)
+        editVendors.setGeometry(QtCore.QRect(0, 0, 1067, 600))
         editVendors.setStyleSheet("*{\n"
 "    \n"
 "    \n"
@@ -42,7 +41,7 @@ class Ui_editVendors(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-botton-left-radius:5px;\n"
+"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"

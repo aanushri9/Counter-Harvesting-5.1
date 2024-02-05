@@ -38,7 +38,7 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-botton-left-radius:5px;
+border-bottom-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -140,80 +140,7 @@ border-radius:15px;
                <enum>QFrame::Plain</enum>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
-               <item row="0" column="7">
-                <widget class="QComboBox" name="comboBox_3">
-                 <property name="font">
-                  <font>
-                   <family>Georgia</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:Black;</string>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>January</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Feburary</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>March</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>April</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>May</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>June</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>July</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>August</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>September</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>October</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>November</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>December</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-               <item row="0" column="4">
+               <item row="0" column="5">
                 <widget class="QLabel" name="label_5">
                  <property name="font">
                   <font>
@@ -229,8 +156,81 @@ border-radius:15px;
                  </property>
                 </widget>
                </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_4">
+               <item row="0" column="8">
+                <widget class="QComboBox" name="comboBox_3">
+                 <property name="font">
+                  <font>
+                   <family>Georgia</family>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color:Black;</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>  January</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  Feburary</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  March</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  April</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  May</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  June</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  July</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  August</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  September</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  October</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  November</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>  December</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="0" column="7">
+                <widget class="QLabel" name="label_6">
                  <property name="font">
                   <font>
                    <family>Georgia</family>
@@ -241,28 +241,7 @@ border-radius:15px;
                   <string notr="true">border:none</string>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Start Year&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="5">
-                <widget class="QDateEdit" name="dateEdit">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:black;background-color: #cccccc;</string>
-                 </property>
-                 <property name="displayFormat">
-                  <string>yyyy</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;End Month &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                </item>
@@ -275,69 +254,70 @@ border-radius:15px;
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">color:Black;</string>
+                  <string notr="true">color:Black;
+</string>
                  </property>
                  <property name="editable">
                   <bool>false</bool>
                  </property>
                  <item>
                   <property name="text">
-                   <string>January</string>
+                   <string>  January</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>Feburary</string>
+                   <string>  Feburary</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>March</string>
+                   <string>  March</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>April</string>
+                   <string>  April</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>May</string>
+                   <string>  May</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>June</string>
+                   <string>  June</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>July</string>
+                   <string>  July</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>August</string>
+                   <string>  August</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>September</string>
+                   <string>  September</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>October</string>
+                   <string>  October</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>November</string>
+                   <string>  November</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>December</string>
+                   <string>  December</string>
                   </property>
                  </item>
                 </widget>
@@ -363,22 +343,6 @@ border-radius:15px;
                  </property>
                 </widget>
                </item>
-               <item row="0" column="6">
-                <widget class="QLabel" name="label_6">
-                 <property name="font">
-                  <font>
-                   <family>Georgia</family>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">border:none</string>
-                 </property>
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;End Month &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="2">
                 <widget class="QLabel" name="label_2">
                  <property name="font">
@@ -394,6 +358,56 @@ border-radius:15px;
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Start Month&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
+               </item>
+               <item row="0" column="6">
+                <widget class="QDateEdit" name="dateEdit">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color:black;background-color: #cccccc;</string>
+                 </property>
+                 <property name="displayFormat">
+                  <string>yyyy</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="font">
+                  <font>
+                   <family>Georgia</family>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border:none</string>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Start Year&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -534,7 +548,7 @@ border-radius:15px;
 </string>
                  </property>
                  <property name="placeholderText">
-                  <string>Please input the tile/issn/isbn </string>
+                  <string>Please input the Title/ISSN/ISBN </string>
                  </property>
                 </widget>
                </item>
@@ -592,12 +606,12 @@ QComboBox QAbstractItemView {
                  </item>
                  <item>
                   <property name="text">
-                   <string>Issn</string>
+                   <string>ISSN</string>
                   </property>
                  </item>
                  <item>
                   <property name="text">
-                   <string>Isbn</string>
+                   <string>ISBN</string>
                   </property>
                  </item>
                 </widget>

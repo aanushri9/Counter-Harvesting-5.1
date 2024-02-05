@@ -37,7 +37,7 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-botton-left-radius:5px;
+border-bottom-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -80,6 +80,19 @@ border-radius:15px;
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <layout class="QGridLayout" name="gridLayout_6">
            <item row="0" column="0">
@@ -130,6 +143,19 @@ QToolTip {
            </item>
           </layout>
          </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
         </layout>
        </widget>
       </item>
@@ -163,11 +189,7 @@ border-radius:15px;
               <string>The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue.</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
+              <string notr="true">Border:none;</string>
              </property>
              <property name="text">
               <string>Concurrent reports</string>
@@ -186,11 +208,7 @@ border-radius:15px;
               <string>The number of seconds the program will allow a vendor to respond to each report request before cancelling it.</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
+              <string notr="true">Border:none;</string>
              </property>
              <property name="text">
               <string>Request timeout</string>
@@ -209,11 +227,7 @@ border-radius:15px;
               <string>The number of seconds the program will wait between sending each report request to a given vendor.</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black; 
-    background-color: #FFFFE0;
-}
-</string>
+              <string notr="true">Border:none;</string>
              </property>
              <property name="text">
               <string>Report request interval</string>
@@ -232,11 +246,7 @@ border-radius:15px;
               <string>Can change if you find the load on your desktop is too high</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
+              <string notr="true">Border:none;</string>
              </property>
              <property name="text">
               <string>Concurrent vendors</string>
@@ -255,11 +265,7 @@ border-radius:15px;
               <string>How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. </string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black; 
-    background-color: #FFFFE0; 
-}
-</string>
+              <string notr="true">Border:none;</string>
              </property>
              <property name="text">
               <string>User agent</string>
@@ -278,11 +284,7 @@ border-radius:15px;
               <string>We can set where to save search database, vendor data file and yearly reports here</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QToolTip {
-    color: black;
-    background-color: #FFFFE0; 
-}
-</string>
+              <string notr="true">Border:none;</string>
              </property>
              <property name="text">
               <string>Data folders directories</string>
@@ -523,6 +525,19 @@ border-radius:15px;
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="0">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="1">
             <widget class="QPushButton" name="pushButton">
              <property name="font">
               <font>
@@ -569,6 +584,19 @@ QToolTip {
               </size>
              </property>
             </widget>
+           </item>
+           <item row="0" column="2">
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </item>

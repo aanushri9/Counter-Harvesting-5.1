@@ -38,7 +38,7 @@ class Ui_SettingTab(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-botton-left-radius:5px;\n"
+"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -71,6 +71,8 @@ class Ui_SettingTab(object):
         self.frame_3.setObjectName("frame_3")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_3)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.gridLayout_6 = QtWidgets.QGridLayout()
         self.gridLayout_6.setObjectName("gridLayout_6")
         self.pushButton_3 = QtWidgets.QPushButton(self.frame_3)
@@ -103,6 +105,8 @@ class Ui_SettingTab(object):
         self.pushButton_3.setObjectName("pushButton_3")
         self.gridLayout_6.addWidget(self.pushButton_3, 0, 0, 1, 1)
         self.horizontalLayout.addLayout(self.gridLayout_6)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
         self.gridLayout_7.addWidget(self.frame_3, 3, 0, 1, 1, QtCore.Qt.AlignTop)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setStyleSheet("QFrame{\n"
@@ -122,11 +126,7 @@ class Ui_SettingTab(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         self.label_5.setFont(font)
-        self.label_5.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
+        self.label_5.setStyleSheet("Border:none;")
         self.label_5.setObjectName("label_5")
         self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
         self.label_3 = QtWidgets.QLabel(self.frame_2)
@@ -134,11 +134,7 @@ class Ui_SettingTab(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         self.label_3.setFont(font)
-        self.label_3.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
+        self.label_3.setStyleSheet("Border:none;")
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.frame_2)
@@ -146,11 +142,7 @@ class Ui_SettingTab(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         self.label_2.setFont(font)
-        self.label_2.setStyleSheet("QToolTip {\n"
-"    color: black; \n"
-"    background-color: #FFFFE0;\n"
-"}\n"
-"")
+        self.label_2.setStyleSheet("Border:none;")
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.frame_2)
@@ -158,11 +150,7 @@ class Ui_SettingTab(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         self.label_4.setFont(font)
-        self.label_4.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
+        self.label_4.setStyleSheet("Border:none;")
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
         self.label_6 = QtWidgets.QLabel(self.frame_2)
@@ -170,11 +158,7 @@ class Ui_SettingTab(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         self.label_6.setFont(font)
-        self.label_6.setStyleSheet("QToolTip {\n"
-"    color: black; \n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
+        self.label_6.setStyleSheet("Border:none;")
         self.label_6.setObjectName("label_6")
         self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
         self.label_7 = QtWidgets.QLabel(self.frame_2)
@@ -182,11 +166,7 @@ class Ui_SettingTab(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         self.label_7.setFont(font)
-        self.label_7.setStyleSheet("QToolTip {\n"
-"    color: black;\n"
-"    background-color: #FFFFE0; \n"
-"}\n"
-"")
+        self.label_7.setStyleSheet("Border:none;")
         self.label_7.setObjectName("label_7")
         self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
         self.spinBox = QtWidgets.QSpinBox(self.frame_2)
@@ -312,8 +292,8 @@ class Ui_SettingTab(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.gridLayout_7.addWidget(self.label, 1, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem, 9, 0, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem2, 9, 0, 1, 1)
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setStyleSheet("QFrame{\n"
 "    border: 2px solid #000000;\n"
@@ -327,6 +307,8 @@ class Ui_SettingTab(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.gridLayout_3 = QtWidgets.QGridLayout()
         self.gridLayout_3.setObjectName("gridLayout_3")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem3, 0, 0, 1, 1)
         self.pushButton = QtWidgets.QPushButton(self.frame)
         font = QtGui.QFont()
         font.setFamily("Georgia")
@@ -357,13 +339,15 @@ class Ui_SettingTab(object):
         self.pushButton.setIcon(icon2)
         self.pushButton.setIconSize(QtCore.QSize(25, 25))
         self.pushButton.setObjectName("pushButton")
-        self.gridLayout_3.addWidget(self.pushButton, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.pushButton, 0, 1, 1, 1)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem4, 0, 2, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout_3, 0, 0, 1, 1)
         self.gridLayout_7.addWidget(self.frame, 8, 0, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem1, 4, 0, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem2, 0, 0, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem5, 4, 0, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem6, 0, 0, 1, 1)
         self.gridLayout_5.addWidget(self.centralwidget, 0, 0, 1, 1)
 
         self.retranslateUi(SettingTab)
