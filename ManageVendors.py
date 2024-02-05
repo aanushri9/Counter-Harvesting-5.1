@@ -27,17 +27,19 @@ class Vendor(JsonModel):
     :param description: A description of this vendor
     :param companies: More information about the vendor
     """
-    def __init__(self, name: str):#, base_url: str, customer_id: str, requestor_id: str, api_key: str, platform: str,
-                # is_non_sushi: bool, description: str, companies: str):
+    def __init__(self, name: str, base_url: str, customer_id: str, requestor_id: str, api_key: str, platform: str,
+                 ip_checking: bool,two_attempts:bool, request_throttled:bool,notes: str, provider: str):
         self.name = name
-        # self.base_url = base_url
-        # self.customer_id = customer_id
-        # self.requestor_id = requestor_id
-        # self.api_key = api_key
-        # self.platform = platform
-        # self.is_non_sushi = is_non_sushi
-        # self.description = description
-        # self.companies = companies
+        self.base_url = base_url
+        self.customer_id = customer_id
+        self.requestor_id = requestor_id
+        self.api_key = api_key
+        self.platform = platform
+        self.ip_checking= ip_checking
+        self.request_throttled= request_throttled
+        self.two_attempts= two_attempts
+        self.notes = notes
+        self.provider = provider
 
 
 class ManageVendorsController(QObject):
@@ -105,18 +107,9 @@ class ManageVendorsController(QObject):
             #self.settings = settings
            
 
-        # Set the model for the QListView
-           
             self.vendors = []
             self.vendor_names = set()  # Hash set for faster operations
-            # vendors_json_string = GeneralUtils.read_json_file(VENDORS_FILE_PATH)
-            # vendor_dicts = json.loads(vendors_json_string)
-            # for json_dict in vendor_dicts:
-            #     vendor = Vendor.from_json(json_dict)
-            #     self.vendors.append(vendor)
-            #     self.vendor_names.add(vendor.name.lower())
-
-            #self.update_vendors_ui()
+    
             try:
                 script_directory = os.path.dirname(os.path.abspath(__file__))
                 file_path = os.path.join(script_directory, 'all_data', 'vendor_manager', 'vendors.dat')
@@ -134,6 +127,7 @@ class ManageVendorsController(QObject):
                     vendor_name = vendor_data.get('name', '')
                     self.vendor_names.add(vendor_name.lower())
                     self.vendors.append(vendor_data)
+                    # print(self.vendors)
                
 
                 # # Set the model for the QListView
@@ -141,22 +135,43 @@ class ManageVendorsController(QObject):
                 self.update_vendors_ui()
             except Exception as e:
                 print(f"Error loading vendors: {e}")
-    # def validate_new_name(self, new_name: str, original_name: str = "") -> (bool, str):
-    #     """Validates a new vendor name
 
-    #     :param new_name: The new name to be validated
-    #     :param original_name: The original name
-    #     :returns: (is_successful, message) A Tuple with the completion status and a message
-    #     """
-    #     if not new_name:
-    #         return False, "Vendor name can't be empty"
-    #     elif new_name.lower() in self.vendor_names:
-    #         if original_name and original_name.lower() == new_name.lower():
-    #             return True, ""
-    #         else:
-    #             return False, "Duplicate vendor name"
-    #     else:
-    #         return True, ""
+    def on_name_text_changed(self, new_name: str, original_name: str, validation_label: QLabel, validate: bool = True):
+        """Handles the signal emitted when a vendor's name is changed
+
+        :param new_name: The new name entered in the text field
+        :param original_name: The vendor's original name
+        :param validation_label: The label to show validation messages
+        :param validate: This indicates whether the new_name should be validated
+        """
+        if not validate:
+            validation_label.hide()
+            return
+
+        is_valid, message = self.validate_new_name(new_name, original_name)
+        if is_valid:
+            validation_label.hide()
+        else:
+            validation_label.show()
+            validation_label.setText(message)
+
+    def validate_new_name(self, new_name: str, original_name: str = "") -> (bool, str):
+        """Validates a new vendor name
+
+        :param new_name: The new name to be validated
+        :param original_name: The original name
+        :returns: (is_successful, message) A Tuple with the completion status and a message
+        """
+        if not new_name:
+            return False, "Required"
+        elif new_name.lower() in self.vendor_names:
+            if original_name and original_name.lower() == new_name.lower():
+                return True, ""
+            else:
+                return False, "Duplicate vendor name"
+        else:
+            return True, ""
+
 
     def update_vendors_ui(self):
             self.vendor_list_model.clear()
@@ -172,30 +187,6 @@ class ManageVendorsController(QObject):
         
         return True, ""
 
-    # def add_vendor(self, new_vendor: Vendor) -> (bool, str):
-    #     """Adds a new vendor to the system if the vendor is valid
-
-    #     :param new_vendor: The new vendor to be added
-    #     :returns: (is_successful, message) A Tuple with the completion status and a message
-    #     """
-        
-
-    #     # # Check if vendor is valid
-    #     # is_valid, message = self.validate_new_name(new_vendor.name)
-    #     # if not is_valid:
-    #     #     return is_valid, message
-
-    #     # if not new_vendor.is_non_sushi:
-    #     #     is_valid, message = self.validate_url(new_vendor.base_url)
-    #     #     if not is_valid:
-    #     #         return is_valid, message
-
-        
-
-    #     # self.vendors.append(new_vendor)
-    #     self.vendor_names.add(new_vendor.name.lower())
-
-    #     return True, ""
     
     def on_edit_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
@@ -208,7 +199,7 @@ class ManageVendorsController(QObject):
         vendor_dialog_ui.setupUi(vendor_dialog)
         vendor_dialog.show()
         vendor_dialog.exec_()
-        
+
     def on_add_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
 
@@ -221,21 +212,55 @@ class ManageVendorsController(QObject):
         vendor_dialog.show()
 
         name_edit = vendor_dialog_ui.nameEdit
+        base_url_edit=vendor_dialog_ui.URLEdit
+        customer_id_edit=vendor_dialog_ui.customerIdEdit
+        requestor_id_edit= vendor_dialog_ui.requesterIdEdit
+        api_key_edit=vendor_dialog_ui.apiKeyEdit
+        platform_edit=vendor_dialog_ui.platformEdit
+        notes_edit=vendor_dialog_ui.notesEdit
+        provider_edit=vendor_dialog_ui.providerEdit
+        two_attempts_needed_checkbox=vendor_dialog_ui.twoattemptsCheckbox
+        request_throttled_checkbox=vendor_dialog_ui.requestcheckBox
+        ip_checking_checkbox=vendor_dialog_ui.ipcheckBox
+
+        name_validation_label=vendor_dialog_ui.nameValidation
+        name_validation_label.hide()
+
+        name_edit.textChanged.connect(
+            lambda new_name: self.on_name_text_changed(new_name, "", name_validation_label))
 
         def attempt_add_vendor():
+            # vendor=Vendor(name_edit.text())#, base_url_edit.text(), customer_id_edit.text(), requestor_id_edit.text(),
+                            #api_key_edit.text())#, platform_edit.text(), two_attempts_needed_checkbox.checkState() == Qt.Checked,
+                        #    request_throttled_checkbox.checkState() == Qt.Checked,ip_checking_checkbox.checkState() == Qt.Checked,
+                        #      notes_edit.text(), provider_edit.text())
             vendor_name = name_edit.text()
-            new_vendor = {'name': vendor_name}  # You can add other vendor attributes here
+            vendor_base_url_edit=base_url_edit.text()
+            vendor_customer_id_edit=customer_id_edit.text()
+            vendor_requestor_id_edit=requestor_id_edit.text()
+            vendor_api_key_edit=api_key_edit.text()
+            vendor_platform_edit=platform_edit.text()
+            vendor_notes_edit=notes_edit.text()
+            vendor_provider_edit=provider_edit.text()
+            vendor_two_attempts=two_attempts_needed_checkbox.checkState() == Qt.Checked
+            vendor_request_throttle=request_throttled_checkbox.checkState() == Qt.Checked
+            vendor_ip_checking=ip_checking_checkbox.checkState() == Qt.Checked
+            new_vendor_data = {
+                'name': vendor_name,
+                'base_url': vendor_base_url_edit,
+                'customer_id': vendor_customer_id_edit,
+                'requestor_id': vendor_requestor_id_edit,
+                'api_key': vendor_api_key_edit,
+                'platform': vendor_platform_edit,
+                'ip_checking': vendor_ip_checking,
+                'request_throttled': vendor_request_throttle,
+                'two_attempts': vendor_two_attempts,
+                'notes': vendor_notes_edit,
+                'provider': vendor_provider_edit
+            }  # You can add other vendor attributes here
 
-
-            # Check if the vendor name is not already present
-            if vendor_name.lower() in self.vendor_names:
-                GeneralUtils.show_message("Duplicate vendor name. Please enter a unique name.")
-                return
-
-            # Add the new vendor name to the set
-            # self.vendors.append(vendor_name)
-            self.vendors.append(new_vendor)
-            self.vendor_names.add(vendor_name.lower())
+            self.add_vendor(new_vendor_data)
+            
             self.update_vendors_ui()
             self.save_vendors_to_file()
         
@@ -247,6 +272,16 @@ class ManageVendorsController(QObject):
         ok_button.clicked.connect(attempt_add_vendor)
         cancel_button = button_box.button(QDialogButtonBox.Cancel)
         cancel_button.clicked.connect(lambda: vendor_dialog.close())
+
+
+
+
+
+    def add_vendor(self,new_vendor:Vendor)->(bool,str):
+            self.vendors.append(new_vendor)
+            # self.vendor_names.add(new_vendor.vendor_name.lower())
+            return True,""
+      
 
     def save_vendors_to_file(self):
         try:
