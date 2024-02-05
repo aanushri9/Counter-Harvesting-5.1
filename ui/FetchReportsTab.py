@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FetchReports(object):
     def setupUi(self, FetchReports):
         FetchReports.setObjectName("FetchReports")
-        FetchReports.resize(1118, 683)
+        FetchReports.resize(1166, 752)
         FetchReports.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -77,7 +77,12 @@ class Ui_FetchReports(object):
 "background-color:grey;\n"
 "text-align:left;\n"
 "padding:2px 10px;\n"
-"color:white;}")
+"color:white;}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: lightblue;\n"
+"}\n"
+"")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -519,6 +524,8 @@ class Ui_FetchReports(object):
         self.frame_3.setObjectName("frame_3")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_3)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.lblYear = QtWidgets.QLabel(self.frame_3)
         font = QtGui.QFont()
         font.setFamily("Georgia")
@@ -541,6 +548,8 @@ class Ui_FetchReports(object):
         self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2020, 1, 1), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.horizontalLayout.addWidget(self.All_reports_edit_fetch)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
         self.btnFetchAllReport = QtWidgets.QPushButton(self.frame_3)
         font = QtGui.QFont()
         font.setFamily("Georgia")
@@ -548,6 +557,8 @@ class Ui_FetchReports(object):
         self.btnFetchAllReport.setStyleSheet("text-align:center;")
         self.btnFetchAllReport.setObjectName("btnFetchAllReport")
         self.horizontalLayout.addWidget(self.btnFetchAllReport)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
         self.gridLayout_3.addWidget(self.frame_3, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.widget, 0, 1, 1, 1)

@@ -36,7 +36,7 @@ class Ui_Dialog_remove(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-botton-left-radius:5px;\n"
+"border-bottom-left-radius:5px;\n"
 "}\n"
 "QDialog{\n"
 "background-color:#1f232a;;\n"
