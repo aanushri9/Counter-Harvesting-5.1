@@ -101,7 +101,7 @@ QLineEdit {
             </property>
             <layout class="QGridLayout" name="gridLayout_5">
              <item row="8" column="2">
-              <widget class="QCheckBox" name="checkBox_2">
+              <widget class="QCheckBox" name="ipcheckBox">
                <property name="text">
                 <string/>
                </property>
@@ -132,7 +132,7 @@ color:black;
               </widget>
              </item>
              <item row="7" column="2">
-              <widget class="QCheckBox" name="checkBox">
+              <widget class="QCheckBox" name="twoattemptsCheckbox">
                <property name="text">
                 <string/>
                </property>
@@ -152,7 +152,7 @@ color:black;
               </widget>
              </item>
              <item row="1" column="2">
-              <widget class="QLineEdit" name="customerIdEdit">
+              <widget class="QLineEdit" name="URLEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -317,7 +317,7 @@ color:black;
               </widget>
              </item>
              <item row="3" column="2">
-              <widget class="QLineEdit" name="lineEdit">
+              <widget class="QLineEdit" name="customeridEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -335,7 +335,7 @@ color:black;
               </widget>
              </item>
              <item row="5" column="2">
-              <widget class="QLineEdit" name="lineEdit_2">
+              <widget class="QLineEdit" name="platformEdit">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
