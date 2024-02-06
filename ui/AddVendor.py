@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_addVendorDialog(object):
     def setupUi(self, addVendorDialog):
         addVendorDialog.setObjectName("addVendorDialog")
-        addVendorDialog.resize(1052, 791)
+        addVendorDialog.resize(620, 600)
         addVendorDialog.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"

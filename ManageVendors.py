@@ -52,6 +52,8 @@ class ManageVendorsController(QObject):
                         #settings: SettingsModel):
             super().__init__()
             self.manage_vendors_widget = manage_vendors_widget
+            self.selected_index=-1
+
         
             # self.vendor_list_view=manage_vendors_ui.vendorsListView
       
@@ -105,6 +107,7 @@ class ManageVendorsController(QObject):
             #self.vendor_list_view.clicked.connect(self.on_vendor_selected)
 
             #self.settings = settings
+            self.vendor_list_view_2.clicked.connect(self.on_vendor_selected)
            
 
             self.vendors = []
@@ -186,7 +189,10 @@ class ManageVendorsController(QObject):
     def edit_vendor(self, new_vendor: Vendor) -> (bool, str):
         
         return True, ""
-
+    
+    def on_vendor_selected(self,model_index:QModelIndex):
+         self.selected_index=model_index.row()
+        #  self.populate_edit_vendor_view()
     
     def on_edit_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
@@ -194,12 +200,53 @@ class ManageVendorsController(QObject):
         A dialog is show to allow the user to enter a new vendor's information. If the information entered is valid,
         the vendor is added to the system
         """
-        vendor_dialog = QMainWindow()  # Use QMainWindow instead of QDialog
-        vendor_dialog_ui = EditVendors.Ui_editVendors() 
-        vendor_dialog_ui.setupUi(vendor_dialog)
-        vendor_dialog.show()
-        vendor_dialog.exec_()
+        edit_vendor_dialog = QMainWindow()  # Use QMainWindow instead of QDialog
+        edit_vendor_dialog_ui = EditVendors.Ui_editVendors() 
+        edit_vendor_dialog_ui.setupUi(edit_vendor_dialog)
+        edit_vendor_dialog.show()
+     
+        name_edit = edit_vendor_dialog_ui.nameEdit
+        base_url_edit=edit_vendor_dialog_ui.URLEdit
+        customer_id_edit=edit_vendor_dialog_ui.customerIdEdit
+        requestor_id_edit= edit_vendor_dialog_ui.requesterIdEdit
+        api_key_edit=edit_vendor_dialog_ui.apiKeyEdit
+        platform_edit=edit_vendor_dialog_ui.platformEdit
+        notes_edit=edit_vendor_dialog_ui.notesEdit
+        provider_edit=edit_vendor_dialog_ui.providerEdit
+        two_attempts_needed_checkbox=edit_vendor_dialog_ui.twoattemptsCheckbox
+        request_throttled_checkbox=edit_vendor_dialog_ui.requestcheckbox
+        ip_checking_checkbox=edit_vendor_dialog_ui.ipcheckBox  
 
+        # def populate_edit_vendor_view(self):
+        if self.selected_index>=0:
+            selected_vendor=self.vendors[self.selected_index]
+            name_edit.setText(selected_vendor.get('name', '')) 
+            base_url_edit.setText(selected_vendor.get('base_url', ''))
+            customer_id_edit.setText(selected_vendor.get('customer_id', ''))
+            requestor_id_edit.setText(selected_vendor.get('requestor_id', ''))
+            api_key_edit.setText(selected_vendor.get('api_key', ''))
+            platform_edit.setText(selected_vendor.get('platform', ''))
+            notes_edit.setText(selected_vendor.get('notes', ''))
+            provider_edit.setText(selected_vendor.get('provider', ''))
+            two_attempts_needed_checkbox.setChecked(selected_vendor.get('two_attempts',False ))
+            request_throttled_checkbox.setChecked(selected_vendor.get('request_throttled',False ))
+            ip_checking_checkbox.setChecked(selected_vendor.get('ip_checking', False))
+        else:   
+            name_edit.setText("") 
+            base_url_edit.setText("")
+            customer_id_edit.setText("")
+            requestor_id_edit.setText("")
+            api_key_edit.setText("")
+            platform_edit.setText("")
+            notes_edit.setText("")
+            provider_edit.setText("")
+            two_attempts_needed_checkbox.setChecked(False)
+            request_throttled_checkbox.setChecked(False)
+            ip_checking_checkbox.setChecked(False)
+             
+
+        
+        edit_vendor_dialog.exec_()
     def on_add_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
 
@@ -260,6 +307,7 @@ class ManageVendorsController(QObject):
             }  # You can add other vendor attributes here
 
             self.add_vendor(new_vendor_data)
+
             
             self.update_vendors_ui()
             self.save_vendors_to_file()
