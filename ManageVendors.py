@@ -4,7 +4,7 @@ import csv
 import os
 import json
 import validators
-from PyQt5.QtWidgets import QDialog, QLabel, QDialogButtonBox, QWidget, QCheckBox, QMainWindow
+from PyQt5.QtWidgets import QDialog, QLabel, QDialogButtonBox, QWidget, QCheckBox, QMainWindow,QMessageBox
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, QObject, QModelIndex, pyqtSignal
 from ui import ManageVendorsTab, AddVendor, RemoveVendorDialog,EditVendors
@@ -204,7 +204,8 @@ class ManageVendorsController(QObject):
         edit_vendor_dialog_ui = EditVendors.Ui_editVendors() 
         edit_vendor_dialog_ui.setupUi(edit_vendor_dialog)
         edit_vendor_dialog.show()
-     
+
+        edit_vendor_text=edit_vendor_dialog_ui.EditVendorText
         name_edit = edit_vendor_dialog_ui.nameEdit
         base_url_edit=edit_vendor_dialog_ui.URLEdit
         customer_id_edit=edit_vendor_dialog_ui.customerIdEdit
@@ -216,10 +217,13 @@ class ManageVendorsController(QObject):
         two_attempts_needed_checkbox=edit_vendor_dialog_ui.twoattemptsCheckbox
         request_throttled_checkbox=edit_vendor_dialog_ui.requestcheckbox
         ip_checking_checkbox=edit_vendor_dialog_ui.ipcheckBox  
-
+        remove_vendor_button=edit_vendor_dialog_ui.removeVendorButton
+        remove_vendor_button.clicked.connect(self.remove_vendor)
+        
         # def populate_edit_vendor_view(self):
         if self.selected_index>=0:
             selected_vendor=self.vendors[self.selected_index]
+            edit_vendor_text.setText("Edit Vendor 5.0")
             name_edit.setText(selected_vendor.get('name', '')) 
             base_url_edit.setText(selected_vendor.get('base_url', ''))
             customer_id_edit.setText(selected_vendor.get('customer_id', ''))
@@ -247,6 +251,35 @@ class ManageVendorsController(QObject):
 
         
         edit_vendor_dialog.exec_()
+
+    def remove_vendor(self):
+        if self.selected_index >= 0 :
+            confirmation_message = "Are you sure you want to remove the selected vendor?"
+            if GeneralUtils.ask_confirmation(confirmation_message):
+                    self.vendors.pop(self.selected_index)
+                    self.selected_index = -1
+                    
+                    self.update_vendors_ui()
+                    self.save_vendors_to_file()
+                    self.on_edit_vendor_clicked()
+                    GeneralUtils.show_message("Vendor removed")
+           
+        else:
+            GeneralUtils.show_message("No vendor selected")     
+         
+
+        
+    # def remove_vendor(self):
+    #         if self.selected_index >= 0:
+    #             self.vendors.pop(self.selected_index)
+    #             self.selected_index = -1
+
+    #             self.update_vendors_ui()
+    #             self.on_edit_vendor_clicked()
+    #             self.save_all_vendors_to_file()
+    #             GeneralUtils.show_message("vendor removed")
+            
+
     def on_add_vendor_clicked(self):
         """Handles the signal emitted when the add vendor button is clicked
 
