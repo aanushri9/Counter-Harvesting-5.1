@@ -174,6 +174,42 @@ class ManageVendorsController(QObject):
                 return False, "Duplicate vendor name"
         else:
             return True, ""
+        
+    def on_url_text_changed(self, url: str, validation_label: QLabel, validate: bool):
+        """Handles the signal emitted when a vendor's URL is changed
+
+        :param url: The URL entered in the text field
+        :param validation_label: The label to show validation messages
+        :param validate: This indicates whether the url should be validated
+        :param non_sushi_check_box: The non_sushi checkbox indicator. If checked, the URL is not validated
+        """
+        if not validate:
+            validation_label.hide()
+            return
+
+        # if non_sushi_check_box.isChecked():
+        #     validation_label.hide()
+        #     return
+
+        is_valid, message = self.validate_url(url)
+        if is_valid:
+            validation_label.hide()
+        else:
+            validation_label.show()
+            validation_label.setText(message)
+
+    def validate_url(self, url: str) -> (bool, str):
+        """Validates a new url
+
+        :param url: The URL to be validated
+        :returns: (is_successful, message) A Tuple with the completion status and a message
+        """
+        if not validators.url(url):
+            return False, "Invalid Url"
+        elif not url.endswith("/reports"):
+            return False, "URL must end with '/reports'"
+        else:
+            return True, ""
 
 
     def update_vendors_ui(self):
@@ -185,10 +221,6 @@ class ManageVendorsController(QObject):
                     self.vendor_list_model.appendRow(item)
 
 
-
-    def edit_vendor(self, new_vendor: Vendor) -> (bool, str):
-        
-        return True, ""
     
     def on_vendor_selected(self,model_index:QModelIndex):
          self.selected_index=model_index.row()
@@ -205,20 +237,25 @@ class ManageVendorsController(QObject):
         edit_vendor_dialog_ui.setupUi(edit_vendor_dialog)
         edit_vendor_dialog.show()
 
-        edit_vendor_text=edit_vendor_dialog_ui.EditVendorText
-        name_edit = edit_vendor_dialog_ui.nameEdit
-        base_url_edit=edit_vendor_dialog_ui.URLEdit
-        customer_id_edit=edit_vendor_dialog_ui.customerIdEdit
+        edit_vendor_text = edit_vendor_dialog_ui.EditVendorText
+        name_edit        = edit_vendor_dialog_ui.nameEdit
+        base_url_edit    = edit_vendor_dialog_ui.URLEdit
+        customer_id_edit = edit_vendor_dialog_ui.customerIdEdit
         requestor_id_edit= edit_vendor_dialog_ui.requesterIdEdit
-        api_key_edit=edit_vendor_dialog_ui.apiKeyEdit
+        api_key_edit     = edit_vendor_dialog_ui.apiKeyEdit
         platform_edit=edit_vendor_dialog_ui.platformEdit
         notes_edit=edit_vendor_dialog_ui.notesEdit
         provider_edit=edit_vendor_dialog_ui.providerEdit
         two_attempts_needed_checkbox=edit_vendor_dialog_ui.twoattemptsCheckbox
         request_throttled_checkbox=edit_vendor_dialog_ui.requestcheckbox
         ip_checking_checkbox=edit_vendor_dialog_ui.ipcheckBox  
-        remove_vendor_button=edit_vendor_dialog_ui.removeVendorButton
+
+
+        remove_vendor_button=edit_vendor_dialog_ui.removeVendorButton #remove vendor button
         remove_vendor_button.clicked.connect(self.remove_vendor)
+
+        save_vendor_changes_button=edit_vendor_dialog_ui.saveVendorChangesButton
+        save_vendor_changes_button.clicked.connect(self.modify_vendor)
         
         # def populate_edit_vendor_view(self):
         if self.selected_index>=0:
@@ -247,11 +284,52 @@ class ManageVendorsController(QObject):
             two_attempts_needed_checkbox.setChecked(False)
             request_throttled_checkbox.setChecked(False)
             ip_checking_checkbox.setChecked(False)
-             
-
         
+        # if self.selected_index < 0:
+        #         GeneralUtils.show_message("No vendor selected")
+        #         return
+        # selected_vendor = self.vendors[self.selected_index]
+           
+        # selected_vendor['name']= name_edit.text()
+        # print(name_edit.text())
+        # if self.selected_index < 0:
+        #         GeneralUtils.show_message("No vendor selected")
+        #         return
+
+        # selected_vendor = self.vendors[self.selected_index]
+        # selected_vendor['name'] = name_edit.text()
+        # print(name_edit.text())
         edit_vendor_dialog.exec_()
 
+        
+
+    def modify_vendor(self):
+            
+
+            # edit_vendor_dialog_ui = EditVendors.Ui_editVendors() 
+            # if self.selected_index < 0:
+            #     GeneralUtils.show_message("No vendor selected")
+            #     return
+            # selected_vendor = self.vendors[self.selected_index]
+           
+            # name_edit=edit_vendor_dialog_ui.nameEdit
+            # selected_vendor['name']= name_edit.text()
+            # selected_vendor['base_url'] = self.base_url_line_edit.text()
+            # selected_vendor['customer_id'] = self.customer_id_line_edit.text()
+            # selected_vendor['requestor_id'] = self.requestor_id_line_edit.text()
+            # selected_vendor['api_key'] = self.api_key_line_edit.text()
+            # selected_vendor['platform'] = self.platform_line_edit.text()
+            # selected_vendor['is_non_sushi'] = self.non_Sushi_check_box.checkState() == Qt.Checked
+            # selected_vendor['description'] = self.description_text_edit.toPlainText()
+            # selected_vendor['companies'] = self.companies_text_edit.toPlainText()
+
+            self.update_vendors_ui()
+            
+
+            # Save changes to disk
+            self.save_vendors_to_file()
+            GeneralUtils.show_message("Vendor modified successfully")
+        
     def remove_vendor(self):
         if self.selected_index >= 0 :
             confirmation_message = "Are you sure you want to remove the selected vendor?"
@@ -266,18 +344,7 @@ class ManageVendorsController(QObject):
            
         else:
             GeneralUtils.show_message("No vendor selected")     
-         
-
-        
-    # def remove_vendor(self):
-    #         if self.selected_index >= 0:
-    #             self.vendors.pop(self.selected_index)
-    #             self.selected_index = -1
-
-    #             self.update_vendors_ui()
-    #             self.on_edit_vendor_clicked()
-    #             self.save_all_vendors_to_file()
-    #             GeneralUtils.show_message("vendor removed")
+    
             
 
     def on_add_vendor_clicked(self):
@@ -306,10 +373,24 @@ class ManageVendorsController(QObject):
         name_validation_label=vendor_dialog_ui.nameValidation
         name_validation_label.hide()
 
+        url_validation_label=vendor_dialog_ui.URLValidation
+        url_validation_label.hide()
+
         name_edit.textChanged.connect(
             lambda new_name: self.on_name_text_changed(new_name, "", name_validation_label))
 
+        base_url_edit.textChanged.connect(
+             lambda new_Url: self.on_url_text_changed(new_Url,url_validation_label,True)
+                                )
         def attempt_add_vendor():
+            vendor_name = name_edit.text()
+
+    # Check if the name field is empty
+            if not vendor_name:
+                    GeneralUtils.show_message("Name cannot be empty")
+                    # name_validation_label.setText("Name cannot be empty")
+                    # name_validation_label.show()
+                    return
             # vendor=Vendor(name_edit.text())#, base_url_edit.text(), customer_id_edit.text(), requestor_id_edit.text(),
                             #api_key_edit.text())#, platform_edit.text(), two_attempts_needed_checkbox.checkState() == Qt.Checked,
                         #    request_throttled_checkbox.checkState() == Qt.Checked,ip_checking_checkbox.checkState() == Qt.Checked,
