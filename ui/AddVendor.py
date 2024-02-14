@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_addVendorDialog(object):
     def setupUi(self, addVendorDialog):
         addVendorDialog.setObjectName("addVendorDialog")
-        addVendorDialog.resize(620, 600)
+        addVendorDialog.resize(957, 641)
         addVendorDialog.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -36,7 +36,7 @@ class Ui_addVendorDialog(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
+"border-botton-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -73,226 +73,32 @@ class Ui_addVendorDialog(object):
         self.frame_3.setObjectName("frame_3")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_3)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.AddNewVendor = QtWidgets.QFrame(self.frame_3)
-        self.AddNewVendor.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(8)
-        self.AddNewVendor.setFont(font)
-        self.AddNewVendor.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.AddNewVendor.setObjectName("AddNewVendor")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.AddNewVendor)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.ipcheckBox = QtWidgets.QCheckBox(self.AddNewVendor)
-        self.ipcheckBox.setText("")
-        self.ipcheckBox.setObjectName("ipcheckBox")
-        self.gridLayout_5.addWidget(self.ipcheckBox, 8, 2, 1, 1)
-        self.notesEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.label_7 = QtWidgets.QLabel(self.frame_3)
+        self.label_7.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.notesEdit.sizePolicy().hasHeightForWidth())
-        self.notesEdit.setSizePolicy(sizePolicy)
-        self.notesEdit.setMinimumSize(QtCore.QSize(339, 0))
-        self.notesEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.notesEdit.setObjectName("notesEdit")
-        self.gridLayout_5.addWidget(self.notesEdit, 11, 2, 1, 1)
-        self.twoattemptsCheckbox = QtWidgets.QCheckBox(self.AddNewVendor)
-        self.twoattemptsCheckbox.setText("")
-        self.twoattemptsCheckbox.setObjectName("twoattemptsCheckbox")
-        self.gridLayout_5.addWidget(self.twoattemptsCheckbox, 7, 2, 1, 1)
-        self.label_8 = QtWidgets.QLabel(self.AddNewVendor)
+        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
+        self.label_7.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_8.setFont(font)
-        self.label_8.setObjectName("label_8")
-        self.gridLayout_5.addWidget(self.label_8, 7, 0, 1, 1)
-        self.URLEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        self.URLEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.URLEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.URLEdit.setObjectName("URLEdit")
-        self.gridLayout_5.addWidget(self.URLEdit, 1, 2, 1, 1)
-        self.label = QtWidgets.QLabel(self.AddNewVendor)
+        font.setPointSize(14)
+        font.setBold(True)
+        self.label_7.setFont(font)
+        self.label_7.setStyleSheet("text-align:centre;")
+        self.label_7.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.label_7.setObjectName("label_7")
+        self.gridLayout_2.addWidget(self.label_7, 0, 1, 1, 2)
+        self.pushButton = QtWidgets.QPushButton(self.frame_3)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.gridLayout_5.addWidget(self.label, 0, 0, 1, 1)
-        self.label_5 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
-        self.gridLayout_5.addWidget(self.label_5, 6, 0, 1, 1)
-        self.label_11 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_11.setFont(font)
-        self.label_11.setObjectName("label_11")
-        self.gridLayout_5.addWidget(self.label_11, 9, 0, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.gridLayout_5.addWidget(self.label_4, 4, 0, 1, 1)
-        self.label_28 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_28.setFont(font)
-        self.label_28.setObjectName("label_28")
-        self.gridLayout_5.addWidget(self.label_28, 11, 0, 1, 1)
-        self.requestcheckBox = QtWidgets.QCheckBox(self.AddNewVendor)
-        self.requestcheckBox.setText("")
-        self.requestcheckBox.setObjectName("requestcheckBox")
-        self.gridLayout_5.addWidget(self.requestcheckBox, 9, 2, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_5.addWidget(self.label_2, 1, 0, 1, 1)
-        self.apiKeyEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        self.apiKeyEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.apiKeyEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;}\n"
-"")
-        self.apiKeyEdit.setObjectName("apiKeyEdit")
-        self.gridLayout_5.addWidget(self.apiKeyEdit, 6, 2, 1, 1)
-        self.requesterIdEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        self.requesterIdEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.requesterIdEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.requesterIdEdit.setObjectName("requesterIdEdit")
-        self.gridLayout_5.addWidget(self.requesterIdEdit, 4, 2, 1, 1)
-        self.customerIDValidation = QtWidgets.QLabel(self.AddNewVendor)
-        self.customerIDValidation.setObjectName("customerIDValidation")
-        self.gridLayout_5.addWidget(self.customerIDValidation, 3, 1, 1, 1)
-        self.startingYearValidation = QtWidgets.QLabel(self.AddNewVendor)
-        self.startingYearValidation.setObjectName("startingYearValidation")
-        self.gridLayout_5.addWidget(self.startingYearValidation, 2, 1, 1, 1)
-        self.label_9 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_9.setFont(font)
-        self.label_9.setObjectName("label_9")
-        self.gridLayout_5.addWidget(self.label_9, 8, 0, 1, 1)
-        self.customerIdEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        self.customerIdEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.customerIdEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.customerIdEdit.setObjectName("customerIdEdit")
-        self.gridLayout_5.addWidget(self.customerIdEdit, 3, 2, 1, 1)
-        self.platformEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        self.platformEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.platformEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.platformEdit.setObjectName("platformEdit")
-        self.gridLayout_5.addWidget(self.platformEdit, 5, 2, 1, 1)
-        self.label_6 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_6.setFont(font)
-        self.label_6.setObjectName("label_6")
-        self.gridLayout_5.addWidget(self.label_6, 5, 0, 1, 1)
-        self.companiesText = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.companiesText.setFont(font)
-        self.companiesText.setObjectName("companiesText")
-        self.gridLayout_5.addWidget(self.companiesText, 10, 0, 1, 1)
-        self.providerEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.providerEdit.sizePolicy().hasHeightForWidth())
-        self.providerEdit.setSizePolicy(sizePolicy)
-        self.providerEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.providerEdit.setObjectName("providerEdit")
-        self.gridLayout_5.addWidget(self.providerEdit, 10, 2, 1, 1)
-        self.All_reports_edit_fetch = QtWidgets.QDateEdit(self.AddNewVendor)
-        self.All_reports_edit_fetch.setEnabled(True)
-        self.All_reports_edit_fetch.setMinimumSize(QtCore.QSize(0, 30))
-        self.All_reports_edit_fetch.setMaximumSize(QtCore.QSize(60, 16777215))
-        self.All_reports_edit_fetch.setStyleSheet("QDateEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-" color:black;\n"
-"}\n"
-"")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2020, 1, 1), QtCore.QTime(0, 0, 0)))
-        self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
-        self.gridLayout_5.addWidget(self.All_reports_edit_fetch, 2, 2, 1, 1)
-        self.nameEdit = QtWidgets.QLineEdit(self.AddNewVendor)
-        self.nameEdit.setMinimumSize(QtCore.QSize(0, 30))
-        self.nameEdit.setStyleSheet("QLineEdit {\n"
-"    background-color: #cccccc;\n"
-"    border-radius: 20px; \n"
-"color:black;\n"
-"}\n"
-"")
-        self.nameEdit.setObjectName("nameEdit")
-        self.gridLayout_5.addWidget(self.nameEdit, 0, 2, 1, 1)
-        self.label_10 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_10.setFont(font)
-        self.label_10.setObjectName("label_10")
-        self.gridLayout_5.addWidget(self.label_10, 2, 0, 1, 1)
-        self.label_3 = QtWidgets.QLabel(self.AddNewVendor)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(10)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.gridLayout_5.addWidget(self.label_3, 3, 0, 1, 1)
-        self.nameValidation = QtWidgets.QLabel(self.AddNewVendor)
-        self.nameValidation.setObjectName("nameValidation")
-        self.gridLayout_5.addWidget(self.nameValidation, 0, 1, 1, 1)
-        self.URLValidation = QtWidgets.QLabel(self.AddNewVendor)
-        self.URLValidation.setObjectName("URLValidation")
-        self.gridLayout_5.addWidget(self.URLValidation, 1, 1, 1, 1)
-        self.gridLayout_2.addWidget(self.AddNewVendor, 1, 0, 1, 3)
+        font.setPointSize(12)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("border: 2px solid grey;\n"
+"border-radius:15px;\n"
+"text-align:center;")
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout_2.addWidget(self.pushButton, 3, 1, 1, 1)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.frame_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -305,7 +111,6 @@ class Ui_addVendorDialog(object):
         font.setPointSize(12)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(50)
         self.buttonBox.setFont(font)
         self.buttonBox.setStyleSheet("font: 12pt \"Georgia\";\n"
 "border: 2px solid grey;\n"
@@ -314,62 +119,232 @@ class Ui_addVendorDialog(object):
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.gridLayout_2.addWidget(self.buttonBox, 2, 2, 2, 1)
-        self.pushButton = QtWidgets.QPushButton(self.frame_3)
+        self.AddNewVendor = QtWidgets.QFrame(self.frame_3)
+        self.AddNewVendor.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(12)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("border: 2px solid grey;\n"
-"border-radius:15px;\n"
-"text-align:center;")
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout_2.addWidget(self.pushButton, 3, 1, 1, 1)
-        self.label_7 = QtWidgets.QLabel(self.frame_3)
-        self.label_7.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        font.setPointSize(8)
+        self.AddNewVendor.setFont(font)
+        self.AddNewVendor.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.AddNewVendor.setObjectName("AddNewVendor")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.AddNewVendor)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.label_5 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.gridLayout_5.addWidget(self.label_5, 9, 0, 1, 1)
+        self.label_28 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_28.setFont(font)
+        self.label_28.setObjectName("label_28")
+        self.gridLayout_5.addWidget(self.label_28, 12, 0, 1, 1)
+        self.provider = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.provider.setFont(font)
+        self.provider.setObjectName("provider")
+        self.gridLayout_5.addWidget(self.provider, 11, 0, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.gridLayout_5.addWidget(self.label_4, 7, 0, 1, 1)
+        self.label_12 = QtWidgets.QLabel(self.AddNewVendor)
+        self.label_12.setObjectName("label_12")
+        self.gridLayout_5.addWidget(self.label_12, 2, 1, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout_5.addWidget(self.label_3, 6, 0, 1, 1)
+        self.label_14 = QtWidgets.QLabel(self.AddNewVendor)
+        self.label_14.setObjectName("label_14")
+        self.gridLayout_5.addWidget(self.label_14, 6, 1, 1, 1)
+        self.label_2 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout_5.addWidget(self.label_2, 4, 0, 1, 1)
+        self.label_6 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.gridLayout_5.addWidget(self.label_6, 8, 0, 1, 1)
+        self.label = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.gridLayout_5.addWidget(self.label, 2, 0, 1, 1)
+        self.label_15 = QtWidgets.QLabel(self.AddNewVendor)
+        self.label_15.setObjectName("label_15")
+        self.gridLayout_5.addWidget(self.label_15, 0, 0, 1, 1)
+        self.label_18 = QtWidgets.QLabel(self.AddNewVendor)
+        self.label_18.setObjectName("label_18")
+        self.gridLayout_5.addWidget(self.label_18, 4, 1, 1, 1)
+        self.label_8 = QtWidgets.QLabel(self.AddNewVendor)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(10)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.gridLayout_5.addWidget(self.label_8, 10, 0, 1, 1)
+        self.nameEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        self.nameEdit.setMinimumSize(QtCore.QSize(0, 30))
+        self.nameEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.nameEdit.setObjectName("nameEdit")
+        self.gridLayout_5.addWidget(self.nameEdit, 2, 2, 1, 1)
+        self.label_9 = QtWidgets.QLabel(self.AddNewVendor)
+        self.label_9.setObjectName("label_9")
+        self.gridLayout_5.addWidget(self.label_9, 0, 2, 1, 1)
+        self.baseUrlEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        self.baseUrlEdit.setMinimumSize(QtCore.QSize(0, 30))
+        self.baseUrlEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.baseUrlEdit.setObjectName("baseUrlEdit")
+        self.gridLayout_5.addWidget(self.baseUrlEdit, 4, 2, 1, 1)
+        self.name_validation_label = QtWidgets.QLabel(self.AddNewVendor)
+        self.name_validation_label.setText("")
+        self.name_validation_label.setObjectName("name_validation_label")
+        self.gridLayout_5.addWidget(self.name_validation_label, 3, 2, 1, 1)
+        self.url_validation_label = QtWidgets.QLabel(self.AddNewVendor)
+        self.url_validation_label.setText("")
+        self.url_validation_label.setObjectName("url_validation_label")
+        self.gridLayout_5.addWidget(self.url_validation_label, 5, 2, 1, 1)
+        self.customerIdEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        self.customerIdEdit.setMinimumSize(QtCore.QSize(0, 30))
+        self.customerIdEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.customerIdEdit.setObjectName("customerIdEdit")
+        self.gridLayout_5.addWidget(self.customerIdEdit, 6, 2, 1, 1)
+        self.requestorIdEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        self.requestorIdEdit.setMinimumSize(QtCore.QSize(0, 30))
+        self.requestorIdEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.requestorIdEdit.setObjectName("requestorIdEdit")
+        self.gridLayout_5.addWidget(self.requestorIdEdit, 7, 2, 1, 1)
+        self.platformEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        self.platformEdit.setMinimumSize(QtCore.QSize(0, 30))
+        self.platformEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.platformEdit.setObjectName("platformEdit")
+        self.gridLayout_5.addWidget(self.platformEdit, 8, 2, 1, 1)
+        self.apiKeyEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        self.apiKeyEdit.setMinimumSize(QtCore.QSize(0, 30))
+        self.apiKeyEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;}\n"
+"")
+        self.apiKeyEdit.setObjectName("apiKeyEdit")
+        self.gridLayout_5.addWidget(self.apiKeyEdit, 9, 2, 1, 1)
+        self.non_Sushi_check_box = QtWidgets.QCheckBox(self.AddNewVendor)
+        self.non_Sushi_check_box.setText("")
+        self.non_Sushi_check_box.setObjectName("non_Sushi_check_box")
+        self.gridLayout_5.addWidget(self.non_Sushi_check_box, 10, 2, 1, 1)
+        self.descriptionEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
-        self.label_7.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_7.setFont(font)
-        self.label_7.setStyleSheet("text-align:centre;")
-        self.label_7.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.label_7.setObjectName("label_7")
-        self.gridLayout_2.addWidget(self.label_7, 0, 1, 1, 2)
+        sizePolicy.setHeightForWidth(self.descriptionEdit.sizePolicy().hasHeightForWidth())
+        self.descriptionEdit.setSizePolicy(sizePolicy)
+        self.descriptionEdit.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.descriptionEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.descriptionEdit.setObjectName("descriptionEdit")
+        self.gridLayout_5.addWidget(self.descriptionEdit, 11, 2, 1, 1)
+        self.companiesEdit = QtWidgets.QLineEdit(self.AddNewVendor)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.companiesEdit.sizePolicy().hasHeightForWidth())
+        self.companiesEdit.setSizePolicy(sizePolicy)
+        self.companiesEdit.setMinimumSize(QtCore.QSize(339, 0))
+        self.companiesEdit.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.companiesEdit.setStyleSheet("QLineEdit {\n"
+"    background-color: #cccccc;\n"
+"    border-radius: 20px; \n"
+"color:black;\n"
+"}\n"
+"")
+        self.companiesEdit.setObjectName("companiesEdit")
+        self.gridLayout_5.addWidget(self.companiesEdit, 12, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.AddNewVendor, 1, 0, 1, 3)
         self.verticalLayout.addWidget(self.frame_3)
-        self.gridLayout.addWidget(self.frame, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 2)
         addVendorDialog.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(addVendorDialog)
         QtCore.QMetaObject.connectSlotsByName(addVendorDialog)
+        addVendorDialog.setTabOrder(self.nameEdit, self.baseUrlEdit)
+        addVendorDialog.setTabOrder(self.baseUrlEdit, self.customerIdEdit)
+        addVendorDialog.setTabOrder(self.customerIdEdit, self.requestorIdEdit)
+        addVendorDialog.setTabOrder(self.requestorIdEdit, self.platformEdit)
+        addVendorDialog.setTabOrder(self.platformEdit, self.apiKeyEdit)
+        addVendorDialog.setTabOrder(self.apiKeyEdit, self.non_Sushi_check_box)
+        addVendorDialog.setTabOrder(self.non_Sushi_check_box, self.descriptionEdit)
+        addVendorDialog.setTabOrder(self.descriptionEdit, self.companiesEdit)
+        addVendorDialog.setTabOrder(self.companiesEdit, self.pushButton)
 
     def retranslateUi(self, addVendorDialog):
         _translate = QtCore.QCoreApplication.translate
         addVendorDialog.setWindowTitle(_translate("addVendorDialog", "MainWindow"))
-        self.label_8.setText(_translate("addVendorDialog", "2 Attempts needed"))
-        self.label.setText(_translate("addVendorDialog", "Name"))
-        self.label_5.setText(_translate("addVendorDialog", "API Key"))
-        self.label_11.setText(_translate("addVendorDialog", "Request throttled"))
-        self.label_4.setText(_translate("addVendorDialog", "Requester ID"))
-        self.label_28.setText(_translate("addVendorDialog", "Notes"))
-        self.label_2.setText(_translate("addVendorDialog", "Base URL"))
-        self.customerIDValidation.setText(_translate("addVendorDialog", "*"))
-        self.startingYearValidation.setText(_translate("addVendorDialog", "*"))
-        self.label_9.setText(_translate("addVendorDialog", "IP Checking required"))
-        self.label_6.setText(_translate("addVendorDialog", "Platform"))
-        self.companiesText.setText(_translate("addVendorDialog", "Provider"))
-        self.All_reports_edit_fetch.setDisplayFormat(_translate("addVendorDialog", "yyyy"))
-        self.label_10.setText(_translate("addVendorDialog", "Starting Year"))
-        self.label_3.setText(_translate("addVendorDialog", "Customer ID"))
-        self.nameValidation.setText(_translate("addVendorDialog", "*"))
-        self.URLValidation.setText(_translate("addVendorDialog", "*"))
-        self.pushButton.setText(_translate("addVendorDialog", "Validate"))
         self.label_7.setText(_translate("addVendorDialog", "<html><head/><body><p align=\"center\">Add New Vendor</p></body></html>"))
+        self.pushButton.setText(_translate("addVendorDialog", "Validate"))
+        self.label_5.setText(_translate("addVendorDialog", "API Key"))
+        self.label_28.setText(_translate("addVendorDialog", "Companies"))
+        self.provider.setText(_translate("addVendorDialog", "Description"))
+        self.label_4.setText(_translate("addVendorDialog", "Requester ID"))
+        self.label_12.setText(_translate("addVendorDialog", "*"))
+        self.label_3.setText(_translate("addVendorDialog", "Customer ID"))
+        self.label_14.setText(_translate("addVendorDialog", "*"))
+        self.label_2.setText(_translate("addVendorDialog", "Base URL"))
+        self.label_6.setText(_translate("addVendorDialog", "Platform"))
+        self.label.setText(_translate("addVendorDialog", "Name"))
+        self.label_15.setText(_translate("addVendorDialog", "Version"))
+        self.label_18.setText(_translate("addVendorDialog", "*"))
+        self.label_8.setText(_translate("addVendorDialog", "is_non_sushi"))
+        self.label_9.setText(_translate("addVendorDialog", "5.0"))
 
 
 if __name__ == "__main__":
