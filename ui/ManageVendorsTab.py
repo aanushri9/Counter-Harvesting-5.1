@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_manage_vendor_tab(object):
     def setupUi(self, manage_vendor_tab):
         manage_vendor_tab.setObjectName("manage_vendor_tab")
-        manage_vendor_tab.resize(932, 494)
+        manage_vendor_tab.resize(932, 691)
         manage_vendor_tab.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -61,63 +61,6 @@ class Ui_manage_vendor_tab(object):
         self.frame.setObjectName("frame")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.frame)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        self.label = QtWidgets.QLabel(self.frame)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.gridLayout_3.addWidget(self.label, 1, 0, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_3.addWidget(self.label_2, 1, 1, 1, 1)
-        self.vendorsListView = QtWidgets.QListView(self.frame)
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(11)
-        self.vendorsListView.setFont(font)
-        self.vendorsListView.setStyleSheet("QListView {\n"
-"    background-color: #cccccc;\n"
-"\n"
-"    color:black;\n"
-"}\n"
-"\n"
-"#vendorsListView{\n"
-"\n"
-"\n"
-"    border: 5px solid #000000;\n"
-"    border-color: rgb(166, 166, 166);\n"
-"color:black;\n"
-"\n"
-"\n"
-"}")
-        self.vendorsListView.setAlternatingRowColors(True)
-        self.vendorsListView.setObjectName("vendorsListView")
-        self.gridLayout_3.addWidget(self.vendorsListView, 2, 0, 1, 1)
-        self.vendorsListView_2 = QtWidgets.QListView(self.frame)
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(11)
-        self.vendorsListView_2.setFont(font)
-        self.vendorsListView_2.setStyleSheet("QListView {\n"
-"    background-color: #cccccc;\n"
-"\n"
-"color:black;\n"
-"}\n"
-"\n"
-"#vendorsListView{\n"
-"color:black;\n"
-"\n"
-"    border: 5px solid #000000;\n"
-"    border-color: rgb(166, 166, 166);\n"
-"\n"
-"\n"
-"}")
-        self.vendorsListView_2.setAlternatingRowColors(True)
-        self.vendorsListView_2.setObjectName("vendorsListView_2")
-        self.gridLayout_3.addWidget(self.vendorsListView_2, 2, 1, 1, 1)
         self.frame_2 = QtWidgets.QFrame(self.frame)
         self.frame_2.setStyleSheet("QPushButton {\n"
 "    border: 2px solid #000000;\n"
@@ -186,18 +129,66 @@ class Ui_manage_vendor_tab(object):
         self.editvendorsbutton.setIcon(icon3)
         self.editvendorsbutton.setObjectName("editvendorsbutton")
         self.horizontalLayout.addWidget(self.editvendorsbutton)
-        self.gridLayout_3.addWidget(self.frame_2, 3, 0, 1, 2)
-        self.label_13 = QtWidgets.QLabel(self.frame)
+        self.gridLayout_3.addWidget(self.frame_2, 2, 1, 1, 2)
+        self.vendorsListView = QtWidgets.QListView(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
+        self.vendorsListView.setFont(font)
+        self.vendorsListView.setStyleSheet("QListView {\n"
+"    background-color: #cccccc;\n"
+"\n"
+"    color:black;\n"
+"}\n"
+"\n"
+"#vendorsListView{\n"
+"\n"
+"\n"
+"    border: 5px solid #000000;\n"
+"    border-color: rgb(166, 166, 166);\n"
+"color:black;\n"
+"\n"
+"\n"
+"}")
+        self.vendorsListView.setAlternatingRowColors(True)
+        self.vendorsListView.setObjectName("vendorsListView")
+        self.gridLayout_3.addWidget(self.vendorsListView, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.frame, 3, 0, 7, 1)
+        self.selectVersionFrame = QtWidgets.QFrame(self.SelectVendor)
+        self.selectVersionFrame.setMinimumSize(QtCore.QSize(0, 0))
+        self.selectVersionFrame.setStyleSheet("QPushButton {\n"
+"    border: 2px solid #000000;\n"
+"border-color:grey;\n"
+"border-radius:15px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: lightblue;\n"
+"}\n"
+"")
+        self.selectVersionFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.selectVersionFrame.setProperty("pushButton", True)
+        self.selectVersionFrame.setObjectName("selectVersionFrame")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.selectVersionFrame)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.version51 = QtWidgets.QPushButton(self.selectVersionFrame)
+        self.version51.setStyleSheet("text-align: center;\n"
+"")
+        self.version51.setObjectName("version51")
+        self.horizontalLayout_2.addWidget(self.version51)
+        self.version50 = QtWidgets.QPushButton(self.selectVersionFrame)
+        self.version50.setObjectName("version50")
+        self.horizontalLayout_2.addWidget(self.version50)
+        self.gridLayout.addWidget(self.selectVersionFrame, 2, 0, 1, 1, QtCore.Qt.AlignHCenter)
+        self.label_13 = QtWidgets.QLabel(self.SelectVendor)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
         self.label_13.setFont(font)
         self.label_13.setStyleSheet("")
         self.label_13.setObjectName("label_13")
-        self.gridLayout_3.addWidget(self.label_13, 0, 0, 1, 2)
-        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_13, 1, 0, 1, 1)
         self.gridLayout_4.addWidget(self.SelectVendor, 0, 0, 1, 1)
         self.gridLayout_2.addWidget(self.centralwidget, 0, 0, 1, 1)
 
@@ -207,13 +198,13 @@ class Ui_manage_vendor_tab(object):
     def retranslateUi(self, manage_vendor_tab):
         _translate = QtCore.QCoreApplication.translate
         manage_vendor_tab.setWindowTitle(_translate("manage_vendor_tab", "MainWindow"))
-        self.label.setText(_translate("manage_vendor_tab", "5.1"))
-        self.label_2.setText(_translate("manage_vendor_tab", "5.0"))
         self.addVendorButton.setText(_translate("manage_vendor_tab", "Add New Vendor"))
         self.importVendorsButton.setText(_translate("manage_vendor_tab", "Import Vendors"))
         self.exportVendorsButton.setToolTip(_translate("manage_vendor_tab", "<html><head/><body><p><img src=\":/newPrefix/save_icon.png\"/>yguhbnj</p></body></html>"))
         self.exportVendorsButton.setText(_translate("manage_vendor_tab", "Export Vendors"))
         self.editvendorsbutton.setText(_translate("manage_vendor_tab", "Edit Vendor"))
+        self.version51.setText(_translate("manage_vendor_tab", "Version 5.1"))
+        self.version50.setText(_translate("manage_vendor_tab", "Version 5.0"))
         self.label_13.setText(_translate("manage_vendor_tab", "<html><head/><body><p align=\"center\">Select Vendor</p></body></html>"))
 import resources_rc
 
