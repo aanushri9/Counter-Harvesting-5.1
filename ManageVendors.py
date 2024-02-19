@@ -946,6 +946,41 @@ class ManageVendorsController(QObject):
     def edit_vendor(self, new_vendor: Vendor51) -> tuple[bool, str]:
         return True, ""
 
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
+
 # class ManageVendorFunctionality:
 #     def __init__(self, ui):
 #         self.ui = ui

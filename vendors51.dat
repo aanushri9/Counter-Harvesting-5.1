@@ -2773,5 +2773,20 @@
     "needs_throttling": false,
     "notes": "",
     "provider": ""
+  },
+  {
+    "name": "Vishav",
+    "is_version_5_0_or_5_1": "5.1",
+    "base_url": "https://www.counter.amdigital.co.uk/CounterSushi5Api/counter/r51/reports",
+    "starting_year": "2021",
+    "customer_id": "fghjhnj",
+    "requestor_id": "",
+    "api_key": "",
+    "platform": "",
+    "requires_two_attempts": false,
+    "does_ip_checking": false,
+    "needs_throttling": false,
+    "notes": "",
+    "provider": ""
   }
 ]
