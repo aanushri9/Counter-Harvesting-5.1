@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1010</width>
+    <width>1071</width>
     <height>752</height>
    </rect>
   </property>
@@ -78,7 +78,10 @@ QPushButton:pressed{
 background-color:grey;
 text-align:left;
 padding:2px 10px;
-color:white;}</string>
+color:white;}
+QPushButton:hover {
+    background-color: lightblue;
+}</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="1">
@@ -159,6 +162,7 @@ hover:grey
                         <font>
                          <family>Georgia</family>
                          <pointsize>10</pointsize>
+                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -184,7 +188,7 @@ border: none ;
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color:white;</string>
+                        <string notr="true">color:Black;</string>
                        </property>
                        <property name="movement">
                         <enum>QListView::Static</enum>
@@ -267,7 +271,7 @@ border: none ;
                      <item row="2" column="1">
                       <widget class="QDateEdit" name="end_date_edit_fetch_year">
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">color:Black;</string>
                        </property>
                        <property name="displayFormat">
                         <string>yyyy</string>
@@ -296,7 +300,7 @@ border: none ;
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font-size:15;</string>
+                        <string notr="true">font-size:15;color:Black;</string>
                        </property>
                        <property name="dateTime">
                         <datetime>
@@ -348,7 +352,7 @@ border: none ;
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">color:Black;</string>
                        </property>
                        <item>
                         <property name="text">
@@ -421,7 +425,7 @@ border: none ;
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">color:Black;</string>
                        </property>
                        <item>
                         <property name="text">
@@ -497,6 +501,7 @@ border: none ;
                         <font>
                          <family>Georgia</family>
                          <pointsize>12</pointsize>
+                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -571,6 +576,7 @@ border: 2px solid grey ;
                         <font>
                          <family>Georgia</family>
                          <pointsize>12</pointsize>
+                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -591,7 +597,7 @@ border: 2px solid grey ;
                      <item row="4" column="0" colspan="2">
                       <widget class="QListView" name="vendors_list_view_fetch">
                        <property name="styleSheet">
-                        <string notr="true">color:white;</string>
+                        <string notr="true">color:Black;</string>
                        </property>
                       </widget>
                      </item>
@@ -787,6 +793,7 @@ text-align:center;</string>
                         <font>
                          <family>Georgia</family>
                          <pointsize>12</pointsize>
+                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -845,7 +852,7 @@ border:none;
                         <item row="1" column="0">
                          <widget class="QLineEdit" name="custom_dir_edit">
                           <property name="styleSheet">
-                           <string notr="true">color:white;</string>
+                           <string notr="true">color:Black;</string>
                           </property>
                          </widget>
                         </item>
@@ -924,6 +931,7 @@ padding-bottom:10px;
                <font>
                 <family>Georgia</family>
                 <pointsize>10</pointsize>
+                <weight>50</weight>
                 <bold>false</bold>
                 <kerning>true</kerning>
                </font>
@@ -1013,7 +1021,7 @@ alignment: AlignCenter;
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true"/>
+                  <string notr="true">color:Black;</string>
                  </property>
                  <property name="dateTime">
                   <datetime>
