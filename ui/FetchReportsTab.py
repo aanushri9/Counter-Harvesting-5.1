@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'FetchReportsTab.ui'
+# Form implementation generated from reading ui file 'fetchReportsTab.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FetchReports(object):
     def setupUi(self, FetchReports):
         FetchReports.setObjectName("FetchReports")
-        FetchReports.resize(1010, 752)
+        FetchReports.resize(1071, 752)
         FetchReports.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -77,7 +77,10 @@ class Ui_FetchReports(object):
 "background-color:grey;\n"
 "text-align:left;\n"
 "padding:2px 10px;\n"
-"color:white;}")
+"color:white;}\n"
+"QPushButton:hover {\n"
+"    background-color: lightblue;\n"
+"}")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -137,6 +140,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         font.setBold(False)
+        font.setWeight(50)
         self.lblOptions.setFont(font)
         self.lblOptions.setStyleSheet("QLabel{\n"
 "border: none ; \n"
@@ -150,7 +154,7 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.standard_report_types_list_view.sizePolicy().hasHeightForWidth())
         self.standard_report_types_list_view.setSizePolicy(sizePolicy)
-        self.standard_report_types_list_view.setStyleSheet("color:white;")
+        self.standard_report_types_list_view.setStyleSheet("color:Black;")
         self.standard_report_types_list_view.setMovement(QtWidgets.QListView.Static)
         self.standard_report_types_list_view.setObjectName("standard_report_types_list_view")
         self.gridLayout_11.addWidget(self.standard_report_types_list_view, 1, 0, 1, 1)
@@ -196,7 +200,7 @@ class Ui_FetchReports(object):
         self.label_3.setObjectName("label_3")
         self.gridLayout_10.addWidget(self.label_3, 1, 2, 1, 1)
         self.end_date_edit_fetch_year = QtWidgets.QDateEdit(self.frmDateRange)
-        self.end_date_edit_fetch_year.setStyleSheet("")
+        self.end_date_edit_fetch_year.setStyleSheet("color:Black;")
         self.end_date_edit_fetch_year.setCalendarPopup(False)
         self.end_date_edit_fetch_year.setDate(QtCore.QDate(2024, 1, 1))
         self.end_date_edit_fetch_year.setObjectName("end_date_edit_fetch_year")
@@ -208,7 +212,7 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.begin_date_edit_fetch_year.sizePolicy().hasHeightForWidth())
         self.begin_date_edit_fetch_year.setSizePolicy(sizePolicy)
-        self.begin_date_edit_fetch_year.setStyleSheet("font-size:15;")
+        self.begin_date_edit_fetch_year.setStyleSheet("font-size:15;color:Black;")
         self.begin_date_edit_fetch_year.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 4, 5), QtCore.QTime(0, 0, 0)))
         self.begin_date_edit_fetch_year.setDisplayFormat("yyyy")
         self.begin_date_edit_fetch_year.setCalendarPopup(False)
@@ -228,7 +232,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         self.begin_month_combo_box.setFont(font)
-        self.begin_month_combo_box.setStyleSheet("")
+        self.begin_month_combo_box.setStyleSheet("color:Black;")
         self.begin_month_combo_box.setObjectName("begin_month_combo_box")
         self.begin_month_combo_box.addItem("")
         self.begin_month_combo_box.addItem("")
@@ -248,7 +252,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         self.end_month_combo_box.setFont(font)
-        self.end_month_combo_box.setStyleSheet("")
+        self.end_month_combo_box.setStyleSheet("color:Black;")
         self.end_month_combo_box.setObjectName("end_month_combo_box")
         self.end_month_combo_box.addItem("")
         self.end_month_combo_box.addItem("")
@@ -273,6 +277,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(False)
+        font.setWeight(50)
         self.lblFetchAllReport_4.setFont(font)
         self.lblFetchAllReport_4.setAutoFillBackground(False)
         self.lblFetchAllReport_4.setStyleSheet("border:none")
@@ -310,6 +315,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(False)
+        font.setWeight(50)
         self.lblFetchAllReport_3.setFont(font)
         self.lblFetchAllReport_3.setAutoFillBackground(False)
         self.lblFetchAllReport_3.setStyleSheet("border:none;")
@@ -317,7 +323,7 @@ class Ui_FetchReports(object):
         self.lblFetchAllReport_3.setObjectName("lblFetchAllReport_3")
         self.gridLayout_6.addWidget(self.lblFetchAllReport_3, 0, 0, 1, 2)
         self.vendors_list_view_fetch = QtWidgets.QListView(self.frmSelectVenders)
-        self.vendors_list_view_fetch.setStyleSheet("color:white;")
+        self.vendors_list_view_fetch.setStyleSheet("color:Black;")
         self.vendors_list_view_fetch.setObjectName("vendors_list_view_fetch")
         self.gridLayout_6.addWidget(self.vendors_list_view_fetch, 4, 0, 1, 2)
         self.version_51_button = QtWidgets.QPushButton(self.frmSelectVenders)
@@ -419,6 +425,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(False)
+        font.setWeight(50)
         self.lblFetchAllReport_5.setFont(font)
         self.lblFetchAllReport_5.setAutoFillBackground(False)
         self.lblFetchAllReport_5.setStyleSheet("border:none")
@@ -447,7 +454,7 @@ class Ui_FetchReports(object):
         self.label_2.setObjectName("label_2")
         self.gridLayout_12.addWidget(self.label_2, 0, 0, 1, 1)
         self.custom_dir_edit = QtWidgets.QLineEdit(self.frame_9)
-        self.custom_dir_edit.setStyleSheet("color:white;")
+        self.custom_dir_edit.setStyleSheet("color:Black;")
         self.custom_dir_edit.setObjectName("custom_dir_edit")
         self.gridLayout_12.addWidget(self.custom_dir_edit, 1, 0, 1, 1)
         self.custom_dir_button = QtWidgets.QPushButton(self.frame_9)
@@ -489,6 +496,7 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         font.setBold(False)
+        font.setWeight(50)
         font.setKerning(True)
         self.lblAdvanceFetchReport.setFont(font)
         self.lblAdvanceFetchReport.setAutoFillBackground(False)
@@ -540,7 +548,7 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.All_reports_edit_fetch.sizePolicy().hasHeightForWidth())
         self.All_reports_edit_fetch.setSizePolicy(sizePolicy)
-        self.All_reports_edit_fetch.setStyleSheet("")
+        self.All_reports_edit_fetch.setStyleSheet("color:Black;")
         self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 25), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.horizontalLayout.addWidget(self.All_reports_edit_fetch)
