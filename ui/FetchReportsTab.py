@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'fetchReportsTab.ui'
+# Form implementation generated from reading ui file 'FetchReportsTab.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FetchReports(object):
     def setupUi(self, FetchReports):
         FetchReports.setObjectName("FetchReports")
-        FetchReports.resize(1071, 752)
+        FetchReports.resize(1067, 693)
         FetchReports.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -77,10 +77,7 @@ class Ui_FetchReports(object):
 "background-color:grey;\n"
 "text-align:left;\n"
 "padding:2px 10px;\n"
-"color:white;}\n"
-"QPushButton:hover {\n"
-"    background-color: lightblue;\n"
-"}")
+"color:white;}")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -140,7 +137,6 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         font.setBold(False)
-        font.setWeight(50)
         self.lblOptions.setFont(font)
         self.lblOptions.setStyleSheet("QLabel{\n"
 "border: none ; \n"
@@ -154,7 +150,10 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.standard_report_types_list_view.sizePolicy().hasHeightForWidth())
         self.standard_report_types_list_view.setSizePolicy(sizePolicy)
-        self.standard_report_types_list_view.setStyleSheet("color:Black;")
+        self.standard_report_types_list_view.setStyleSheet("color:white;\n"
+"background-color: #1E1E1E;\n"
+"border-radius: 4px;\n"
+"padding: 2px;")
         self.standard_report_types_list_view.setMovement(QtWidgets.QListView.Static)
         self.standard_report_types_list_view.setObjectName("standard_report_types_list_view")
         self.gridLayout_11.addWidget(self.standard_report_types_list_view, 1, 0, 1, 1)
@@ -200,7 +199,42 @@ class Ui_FetchReports(object):
         self.label_3.setObjectName("label_3")
         self.gridLayout_10.addWidget(self.label_3, 1, 2, 1, 1)
         self.end_date_edit_fetch_year = QtWidgets.QDateEdit(self.frmDateRange)
-        self.end_date_edit_fetch_year.setStyleSheet("color:Black;")
+        self.end_date_edit_fetch_year.setMinimumSize(QtCore.QSize(0, 20))
+        self.end_date_edit_fetch_year.setStyleSheet("QDateEdit {\n"
+"background-color: #2E2F30;\n"
+"    border: 2px solid #808080;\n"
+"    border-radius: 4px;\n"
+"    padding-left: 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button, QDateEdit::down-button {\n"
+"    border: none;\n"
+"    padding-right: 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button {\n"
+"    subcontrol-position: top right;\n"
+"}\n"
+"\n"
+"QDateEdit::down-button {\n"
+"    subcontrol-position: bottom right;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow, QDateEdit::down-arrow {\n"
+"    border: 5px solid rgba(255, 255, 255, 0);\n"
+"    width: 0;\n"
+"    height: 0;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow {\n"
+"    border-top: none;\n"
+"    border-bottom-color: white;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow {\n"
+"    border-bottom: none;\n"
+"    border-top-color: white;\n"
+"}")
         self.end_date_edit_fetch_year.setCalendarPopup(False)
         self.end_date_edit_fetch_year.setDate(QtCore.QDate(2024, 1, 1))
         self.end_date_edit_fetch_year.setObjectName("end_date_edit_fetch_year")
@@ -212,7 +246,42 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.begin_date_edit_fetch_year.sizePolicy().hasHeightForWidth())
         self.begin_date_edit_fetch_year.setSizePolicy(sizePolicy)
-        self.begin_date_edit_fetch_year.setStyleSheet("font-size:15;color:Black;")
+        self.begin_date_edit_fetch_year.setMinimumSize(QtCore.QSize(0, 20))
+        self.begin_date_edit_fetch_year.setStyleSheet("QDateEdit {\n"
+"background-color: #2E2F30;\n"
+"    border: 2px solid #808080;\n"
+"    border-radius: 4px;\n"
+"    padding-left: 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button, QDateEdit::down-button {\n"
+"    border: none;\n"
+"    padding-right: 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button {\n"
+"    subcontrol-position: top right;\n"
+"}\n"
+"\n"
+"QDateEdit::down-button {\n"
+"    subcontrol-position: bottom right;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow, QDateEdit::down-arrow {\n"
+"    border: 5px solid rgba(255, 255, 255, 0);\n"
+"    width: 0;\n"
+"    height: 0;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow {\n"
+"    border-top: none;\n"
+"    border-bottom-color: white;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow {\n"
+"    border-bottom: none;\n"
+"    border-top-color: white;\n"
+"}")
         self.begin_date_edit_fetch_year.setDateTime(QtCore.QDateTime(QtCore.QDate(2023, 4, 5), QtCore.QTime(0, 0, 0)))
         self.begin_date_edit_fetch_year.setDisplayFormat("yyyy")
         self.begin_date_edit_fetch_year.setCalendarPopup(False)
@@ -232,40 +301,26 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         self.begin_month_combo_box.setFont(font)
-        self.begin_month_combo_box.setStyleSheet("color:Black;")
+        self.begin_month_combo_box.setStyleSheet("color:white;\n"
+"border-radius: 0px;\n"
+"background: #2E2F30;\n"
+"padding-left: 5px;")
+        self.begin_month_combo_box.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLengthWithIcon)
+        self.begin_month_combo_box.setMinimumContentsLength(10)
         self.begin_month_combo_box.setObjectName("begin_month_combo_box")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
-        self.begin_month_combo_box.addItem("")
         self.gridLayout_10.addWidget(self.begin_month_combo_box, 1, 3, 1, 1)
         self.end_month_combo_box = QtWidgets.QComboBox(self.frmDateRange)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(10)
         self.end_month_combo_box.setFont(font)
-        self.end_month_combo_box.setStyleSheet("color:Black;")
+        self.end_month_combo_box.setStyleSheet("color:white;\n"
+"border-radius: 0px;\n"
+"background: #2E2F30;\n"
+"padding-left: 5px;")
+        self.end_month_combo_box.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLengthWithIcon)
+        self.end_month_combo_box.setMinimumContentsLength(10)
         self.end_month_combo_box.setObjectName("end_month_combo_box")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
-        self.end_month_combo_box.addItem("")
         self.gridLayout_10.addWidget(self.end_month_combo_box, 2, 3, 1, 1)
         self.lblFetchAllReport_4 = QtWidgets.QLabel(self.frmDateRange)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -277,7 +332,6 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(False)
-        font.setWeight(50)
         self.lblFetchAllReport_4.setFont(font)
         self.lblFetchAllReport_4.setAutoFillBackground(False)
         self.lblFetchAllReport_4.setStyleSheet("border:none")
@@ -315,7 +369,6 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(False)
-        font.setWeight(50)
         self.lblFetchAllReport_3.setFont(font)
         self.lblFetchAllReport_3.setAutoFillBackground(False)
         self.lblFetchAllReport_3.setStyleSheet("border:none;")
@@ -323,7 +376,14 @@ class Ui_FetchReports(object):
         self.lblFetchAllReport_3.setObjectName("lblFetchAllReport_3")
         self.gridLayout_6.addWidget(self.lblFetchAllReport_3, 0, 0, 1, 2)
         self.vendors_list_view_fetch = QtWidgets.QListView(self.frmSelectVenders)
-        self.vendors_list_view_fetch.setStyleSheet("color:Black;")
+        self.vendors_list_view_fetch.setStyleSheet("\n"
+"\n"
+"color:white;\n"
+"background-color: #1E1E1E;\n"
+"border-radius: 4px;\n"
+"padding: 2px;\n"
+"\n"
+"")
         self.vendors_list_view_fetch.setObjectName("vendors_list_view_fetch")
         self.gridLayout_6.addWidget(self.vendors_list_view_fetch, 4, 0, 1, 2)
         self.version_51_button = QtWidgets.QPushButton(self.frmSelectVenders)
@@ -425,7 +485,6 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(False)
-        font.setWeight(50)
         self.lblFetchAllReport_5.setFont(font)
         self.lblFetchAllReport_5.setAutoFillBackground(False)
         self.lblFetchAllReport_5.setStyleSheet("border:none")
@@ -454,7 +513,8 @@ class Ui_FetchReports(object):
         self.label_2.setObjectName("label_2")
         self.gridLayout_12.addWidget(self.label_2, 0, 0, 1, 1)
         self.custom_dir_edit = QtWidgets.QLineEdit(self.frame_9)
-        self.custom_dir_edit.setStyleSheet("color:Black;")
+        self.custom_dir_edit.setStyleSheet("color:white;\n"
+"background-color: #1E1E1E;")
         self.custom_dir_edit.setObjectName("custom_dir_edit")
         self.gridLayout_12.addWidget(self.custom_dir_edit, 1, 0, 1, 1)
         self.custom_dir_button = QtWidgets.QPushButton(self.frame_9)
@@ -496,7 +556,6 @@ class Ui_FetchReports(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         font.setBold(False)
-        font.setWeight(50)
         font.setKerning(True)
         self.lblAdvanceFetchReport.setFont(font)
         self.lblAdvanceFetchReport.setAutoFillBackground(False)
@@ -548,8 +607,43 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.All_reports_edit_fetch.sizePolicy().hasHeightForWidth())
         self.All_reports_edit_fetch.setSizePolicy(sizePolicy)
-        self.All_reports_edit_fetch.setStyleSheet("color:Black;")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 25), QtCore.QTime(0, 0, 0)))
+        self.All_reports_edit_fetch.setMinimumSize(QtCore.QSize(0, 23))
+        self.All_reports_edit_fetch.setStyleSheet("QDateEdit {\n"
+"background-color: #2E2F30;\n"
+"    border: 2px solid #808080;\n"
+"    border-radius: 4px;\n"
+"    padding-left: 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button, QDateEdit::down-button {\n"
+"    border: none;\n"
+"    padding-right: 5px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button {\n"
+"    subcontrol-position: top right;\n"
+"}\n"
+"\n"
+"QDateEdit::down-button {\n"
+"    subcontrol-position: bottom right;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow, QDateEdit::down-arrow {\n"
+"    border: 5px solid rgba(255, 255, 255, 0);\n"
+"    width: 0;\n"
+"    height: 0;\n"
+"}\n"
+"\n"
+"QDateEdit::up-arrow {\n"
+"    border-top: none;\n"
+"    border-bottom-color: white;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow {\n"
+"    border-bottom: none;\n"
+"    border-top-color: white;\n"
+"}")
+        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 21), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.horizontalLayout.addWidget(self.All_reports_edit_fetch)
         self.fetch_all_data_button = QtWidgets.QPushButton(self.frame_3)
@@ -579,30 +673,6 @@ class Ui_FetchReports(object):
         self.label_3.setText(_translate("FetchReports", "Begin Month"))
         self.end_date_edit_fetch_year.setDisplayFormat(_translate("FetchReports", "yyyy"))
         self.label_4.setText(_translate("FetchReports", "End Month"))
-        self.begin_month_combo_box.setItemText(0, _translate("FetchReports", "January"))
-        self.begin_month_combo_box.setItemText(1, _translate("FetchReports", "Feburary"))
-        self.begin_month_combo_box.setItemText(2, _translate("FetchReports", "March"))
-        self.begin_month_combo_box.setItemText(3, _translate("FetchReports", "April"))
-        self.begin_month_combo_box.setItemText(4, _translate("FetchReports", "May"))
-        self.begin_month_combo_box.setItemText(5, _translate("FetchReports", "June"))
-        self.begin_month_combo_box.setItemText(6, _translate("FetchReports", "July"))
-        self.begin_month_combo_box.setItemText(7, _translate("FetchReports", "August"))
-        self.begin_month_combo_box.setItemText(8, _translate("FetchReports", "September"))
-        self.begin_month_combo_box.setItemText(9, _translate("FetchReports", "October"))
-        self.begin_month_combo_box.setItemText(10, _translate("FetchReports", "November"))
-        self.begin_month_combo_box.setItemText(11, _translate("FetchReports", "December"))
-        self.end_month_combo_box.setItemText(0, _translate("FetchReports", "January"))
-        self.end_month_combo_box.setItemText(1, _translate("FetchReports", "Feburary"))
-        self.end_month_combo_box.setItemText(2, _translate("FetchReports", "March"))
-        self.end_month_combo_box.setItemText(3, _translate("FetchReports", "April"))
-        self.end_month_combo_box.setItemText(4, _translate("FetchReports", "May"))
-        self.end_month_combo_box.setItemText(5, _translate("FetchReports", "June"))
-        self.end_month_combo_box.setItemText(6, _translate("FetchReports", "July"))
-        self.end_month_combo_box.setItemText(7, _translate("FetchReports", "August"))
-        self.end_month_combo_box.setItemText(8, _translate("FetchReports", "September"))
-        self.end_month_combo_box.setItemText(9, _translate("FetchReports", "October"))
-        self.end_month_combo_box.setItemText(10, _translate("FetchReports", "November"))
-        self.end_month_combo_box.setItemText(11, _translate("FetchReports", "December"))
         self.lblFetchAllReport_4.setText(_translate("FetchReports", "Date Range"))
         self.deselect_allvendors_button.setText(_translate("FetchReports", "Deselect All"))
         self.select_allvendors_button.setText(_translate("FetchReports", "Select All"))
@@ -615,7 +685,7 @@ class Ui_FetchReports(object):
         self.pr_master_report_checkbox.setText(_translate("FetchReports", "PR"))
         self.ir_master_report_checkbox.setText(_translate("FetchReports", "IR"))
         self.select_all_master_reports_button.setText(_translate("FetchReports", "Select all"))
-        self.deselect_all_master_reports_button.setText(_translate("FetchReports", "Deselect all "))
+        self.deselect_all_master_reports_button.setText(_translate("FetchReports", "Deselect all"))
         self.lblFetchAllReport_5.setText(_translate("FetchReports", "Select Report Types"))
         self.label_2.setText(_translate("FetchReports", "Report(s) will be saved to:"))
         self.custom_dir_button.setText(_translate("FetchReports", "Browse"))

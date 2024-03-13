@@ -35,7 +35,7 @@ from ui import (
     VendorResultsWidget,
     ReportResultWidget,
 )
-from ManageVendors import Vendor, Vendor51
+from ManageVendors import Vendor51
 from PyQt5.QtCore import QObject, QThread, pyqtSignal, QDate, Qt
 from PyQt5.QtWidgets import (
     QPushButton,
@@ -804,7 +804,7 @@ class ProcessResult:
     :param report_type: The target report type
     """
 
-    def __init__(self, vendor: Vendor, report_type: str = None):
+    def __init__(self, vendor: Vendor51, report_type: str = None):
         self.vendor = vendor
         self.report_type = report_type
         self.completion_status = CompletionStatus.SUCCESSFUL
@@ -903,7 +903,7 @@ class RequestData:
 
     def __init__(
         self,
-        vendor: Vendor,
+        vendor: Vendor51,
         target_report_types: list,
         begin_date: QDate,
         end_date: QDate,
@@ -926,7 +926,7 @@ class RequestData:
 class FetchReportsAbstract:
     def __init__(
         self,
-        vendors_v50: list[Vendor],
+        vendors_v50: list[Vendor51],
         vendors_v51: list[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
@@ -940,7 +940,7 @@ class FetchReportsAbstract:
 
         # region General
         self.widget = widget
-        self.vendors_v50: list[Vendor] = vendors_v50
+        self.vendors_v50: list[Vendor51] = vendors_v50
         self.vendors_v51: list[Vendor51] = vendors_v51
         # self.update_vendors(vendors)
         self.selected_data = []  # List of ReportData Objects
@@ -997,8 +997,6 @@ class FetchReportsAbstract:
         """
         self.vendors = []
         for vendor in vendors:
-            if vendor.is_non_sushi:
-                continue
             self.vendors.append(vendor)
 
     def update_vendors_ui(self):
@@ -1012,14 +1010,11 @@ class FetchReportsAbstract:
 
         :param request_data: The request data for this vendor request
         """
-        print("🥶🥶🥶🥶  request_data: ", request_data)
         worker_id = request_data.vendor.name
-        # print("🔥  worker_id: ", worker_id);
         if worker_id in self.vendor_workers:
             return  # Avoid processing a vendor twice
 
         vendor_worker = VendorWorker(worker_id, request_data)
-        # print("🔥  vendor_worker: ", vendor_worker);
         vendor_worker.worker_finished_signal.connect(self.on_vendor_worker_finished)
         vendor_thread = QThread()
         self.vendor_workers[worker_id] = vendor_worker, vendor_thread
@@ -1037,7 +1032,7 @@ class FetchReportsAbstract:
 
     def update_results_ui(
         self,
-        vendor: Vendor,
+        vendor: Vendor51,
         vendor_result: ProcessResult = None,
         report_results: list = None,
     ):
@@ -1061,6 +1056,16 @@ class FetchReportsAbstract:
             ]
             vertical_layout = vendor_results_ui.results_frame.layout()
             status_label = vendor_results_ui.status_label
+
+            successful_box = vendor_results_ui.successful_list_box
+            warning_box = vendor_results_ui.warning_list_box
+            failed_box = vendor_results_ui.failed_list_box
+            cancelled_box = vendor_results_ui.cancelled_list_box
+            successful_list_edit: QLabel = vendor_results_ui.successful_reports_list
+            warning_list_edit: QLabel = vendor_results_ui.warning_reports_list
+            failed_list_edit: QLabel = vendor_results_ui.failed_reports_list
+            cancelled_list_edit: QLabel = vendor_results_ui.cancelled_reports_list
+            frame = vendor_results_ui.results_frame
         else:
             vendor_results_widget = QWidget(self.scroll_contents)
             vendor_results_ui = VendorResultsWidget.Ui_VendorResultsWidget()
@@ -1070,13 +1075,23 @@ class FetchReportsAbstract:
 
             status_label = vendor_results_ui.status_label
             frame = vendor_results_ui.results_frame
-            expand_button = vendor_results_ui.expand_button
-            collapse_button = vendor_results_ui.collapse_button
+
+            successful_box = vendor_results_ui.successful_list_box
+            warning_box = vendor_results_ui.warning_list_box
+            failed_box = vendor_results_ui.failed_list_box
+            cancelled_box = vendor_results_ui.cancelled_list_box
+            successful_list_edit = vendor_results_ui.successful_reports_list
+            warning_list_edit = vendor_results_ui.warning_reports_list
+            failed_list_edit = vendor_results_ui.failed_reports_list
+            cancelled_list_edit = vendor_results_ui.cancelled_reports_list
+
+            # expand_button = vendor_results_ui.expand_button
+            # collapse_button = vendor_results_ui.collapse_button
 
             status_label.setText("Working...")
-            frame.hide()
-            expand_button.clicked.connect(lambda: frame.show())
-            collapse_button.clicked.connect(lambda: frame.hide())
+            # frame.hide()
+            # expand_button.clicked.connect(lambda: frame.show())
+            # collapse_button.clicked.connect(lambda: frame.hide())
 
             self.vendor_result_widgets[vendor.name] = (
                 vendor_results_widget,
@@ -1088,25 +1103,72 @@ class FetchReportsAbstract:
             return
 
         status_label.setText("Done")
-        result_widget = self.get_result_widget(
-            vendor, vendor_results_widget, vendor_result
-        )
-        vertical_layout.addWidget(result_widget)
+
+        if vendor_result.completion_status == CompletionStatus.FAILED:
+            status_label.setText("Failed")
+            frame.hide()
+        else:
+            frame.show()
+
+        successful_reports = ""
+        warning_reports = ""
+        failed_reports = ""
+        cancelled_reports = ""
+
+        for report_result in report_results:
+            if report_result.completion_status == CompletionStatus.SUCCESSFUL:
+                successful_reports += f"{report_result.report_type}, "
+            elif report_result.completion_status == CompletionStatus.WARNING:
+                warning_reports += f"{report_result.report_type}, "
+            elif report_result.completion_status == CompletionStatus.FAILED:
+                failed_reports += f"{report_result.report_type}, "
+            elif report_result.completion_status == CompletionStatus.CANCELLED:
+                cancelled_reports += f"{report_result.report_type}, "
+
+        if successful_reports == "":
+            successful_box.hide()
+        else:
+            successful_box.show()
+        if warning_reports == "":
+            warning_box.hide()
+        else:
+            warning_box.show()
+        if failed_reports == "":
+            failed_box.hide()
+        else:
+            failed_box.show()
+        if cancelled_reports == "":
+            cancelled_box.hide()
+        else:
+            cancelled_box.show()
+
+        successful_list_edit.clear()
+        warning_list_edit.clear()
+        failed_list_edit.clear()
+        cancelled_list_edit.clear()
+
+        successful_list_edit.setText(successful_reports)
+        warning_list_edit.setText(warning_reports)
+        failed_list_edit.setText(failed_reports)
+        cancelled_list_edit.setText(cancelled_reports)
+
+        # result_widget = self.get_result_widget(
+        #     vendor, vendor_results_widget, vendor_result
+        # )
+        # vertical_layout.addWidget(result_widget)
 
         logging.info(
-            f"Vendor : {vendor.name} status:  {vendor_result.completion_status} message: {vendor_result.message}"
+            f"Vendor : {vendor.name} status:  {vendor_result.completion_status} message: {vendor_result.message} \n Successful: {successful_reports} \n Warning: {warning_reports} \n Failed: {failed_reports} \n Cancelled: {cancelled_reports} \n"
         )
-        # print("😜 vendor: ", vendor.name)
-        # print("😜😜 vendor_result: ", vendor_result)
-        for report_result in report_results:
-            result_widget = self.get_result_widget(
-                vendor, vendor_results_widget, report_result
-            )
-            # print("🥶🥶🥶 report_result: ", report_result)
-            vertical_layout.addWidget(result_widget)
+
+        # for report_result in report_results:
+        #     result_widget = self.get_result_widget(
+        #         vendor, vendor_results_widget, report_result
+        #     )
+        #     vertical_layout.addWidget(result_widget)
 
     def get_result_widget(
-        self, vendor: Vendor, vendor_widget: QWidget, process_result: ProcessResult
+        self, vendor: Vendor51, vendor_widget: QWidget, process_result: ProcessResult
     ) -> QWidget:
         """This creates a result widget for either a vendor or a vendor's report
 
@@ -1359,7 +1421,7 @@ class FetchReportsController(FetchReportsAbstract):
 
     def __init__(
         self,
-        vendors_v50: list[Vendor],
+        vendors_v50: list[Vendor51],
         vendors_v51: list[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
@@ -1394,6 +1456,10 @@ class FetchReportsController(FetchReportsAbstract):
 
         # region Vendors
         self.vendor_list_view = fetch_reports_ui.vendors_list_view_fetch
+        self.vendor_list_view.setHorizontalScrollBarPolicy(
+            Qt.ScrollBarPolicy.ScrollBarAlwaysOff
+        )
+        self.vendor_list_view.scrollToBottom()
         self.vendor_list_model = QStandardItemModel(self.vendor_list_view)
         self.vendor_list_view.setModel(self.vendor_list_model)
 
@@ -1512,6 +1578,19 @@ class FetchReportsController(FetchReportsAbstract):
         self.end_month_combo_box.setCurrentIndex(self.adv_end_date.month() - 1)
         # endregion
 
+        curr_date = QDate.currentDate()
+        formatted_date = curr_date.toString(
+            "yyyy-MM-dd-"
+        ) + QTime.currentTime().toString("hh:mm:ss")
+
+        logging.basicConfig(
+            level=logging.INFO,
+            filename=f"{directory_path}/all_data/Logs/{formatted_date}.log",
+            filemode="w",
+            format="%(asctime)s - %(levelname)s - %(message)s",
+            datefmt="%d-%b-%y %H:%M:%S",
+        )
+
     def handleItemChanged(self):
         count = 0
         if self.pr_master_report_checkbox.isChecked():
@@ -1544,12 +1623,28 @@ class FetchReportsController(FetchReportsAbstract):
             for vendor in self.vendors_v51:
                 self.curr_version = "5.1"
                 self.version_51_btn.setStyleSheet(
-                    self.version_51_btn.styleSheet() + "background-color: #2095E6;"
+                    """
+                        QPushButton { 
+                            color: #FFFFFF;
+                            font: bold;
+                            border-radius: 4px;
+                            text-align: center;
+                            background-color: #1768E3;
+                        }
+                    """
                 )
                 self.version_50_btn.setStyleSheet(
-                    self.version_50_btn.styleSheet().replace(
-                        "background-color: #2095E6;", ""
-                    )
+                    """
+                        QPushButton { 
+                            color: #FFFFFF;
+                            font: bold;
+                            border-radius: 4px;
+                            text-align: center;
+                        }
+                        QPushButton:hover{
+                            background-color: #2095E6;
+                        }
+                    """
                 )
                 item = QStandardItem(vendor.name)
                 item.setCheckable(True)
@@ -1559,12 +1654,28 @@ class FetchReportsController(FetchReportsAbstract):
             for vendor in self.vendors_v50:
                 self.curr_version = "5.0"
                 self.version_50_btn.setStyleSheet(
-                    self.version_50_btn.styleSheet() + "background-color: #2095E6;"
+                    """
+                        QPushButton { 
+                            color: #FFFFFF;
+                            font: bold;
+                            border-radius: 4px;
+                            text-align: center;
+                            background-color: #1768E3;
+                        }
+                    """
                 )
                 self.version_51_btn.setStyleSheet(
-                    self.version_51_btn.styleSheet().replace(
-                        "background-color: #2095E6;", ""
-                    )
+                    """
+                        QPushButton { 
+                            color: #FFFFFF;
+                            font: bold;
+                            border-radius: 4px;
+                            text-align: center;
+                        }
+                        QPushButton:hover{
+                            background-color: #2095E6;
+                        }
+                    """
                 )
                 item = QStandardItem(vendor.name)
                 item.setCheckable(True)
@@ -1648,6 +1759,7 @@ class FetchReportsController(FetchReportsAbstract):
         for i in range(len(special_options)):
             option_name = special_options[i][1]
             checkbox = QCheckBox(option_name)
+            checkbox.setStyleSheet("color: white;")
             checkbox.toggled.connect(
                 lambda is_checked, option=option_name: self.on_special_option_toggled(
                     option, is_checked
@@ -1663,8 +1775,14 @@ class FetchReportsController(FetchReportsAbstract):
                 or option_type == SpecialOptionType.ADP
             ):
                 line_edit = QLineEdit(DEFAULT_SPECIAL_OPTION_VALUE)
+                line_edit.setStyleSheet(
+                    "color: white; background-color: #000000; border-radius: 4px;"
+                )
                 line_edit.setReadOnly(True)
                 button = QPushButton("Choose")
+                button.setStyleSheet(
+                    "color: white; background-color: #1E1E1E; border-radius: 4px; padding: 5px; "
+                )
                 if option_type == SpecialOptionType.ADP:
                     button.clicked.connect(
                         lambda c, so=special_options[
@@ -1739,6 +1857,27 @@ class FetchReportsController(FetchReportsAbstract):
             flags=Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint,
         )
         dialog.setWindowTitle(option_name + " options")
+        dialog.setStyleSheet(
+            """
+            QDialog {
+            background-color: #333333;
+            color: #ffffff;
+            }
+
+            QCheckBox {
+            color: #ffffff;
+            }
+
+            QLineEdit {
+            color: #ffffff;
+            background-color: #000000;
+            border-radius: 4px;
+            }
+
+            }   
+        """
+        )
+
         layout = QVBoxLayout(dialog)
 
         list_view = QListView(dialog)
@@ -1754,6 +1893,30 @@ class FetchReportsController(FetchReportsAbstract):
             model.appendRow(item)
 
         list_view.setModel(model)
+
+        # Apply CSS for dark mode
+        list_view.setStyleSheet(
+            """
+            QListView {
+            background-color: #333333;
+            color: #ffffff;
+            }
+        
+            
+            QListView::item:alternate {
+            background-color: #444444;
+            }
+            
+            QListView::item:selected {
+            background-color: #666666;
+            }
+            
+            QListView::item:checked {
+            background-color: #007bff;
+            color: #ffffff;
+            }
+        """
+        )
 
         layout.addWidget(list_view)
 
@@ -1964,22 +2127,8 @@ class FetchReportsController(FetchReportsAbstract):
         self.save_dir = self.settings.yearly_directory
         # self.save_dir = f"{directory_path}/all_data/yearly_files/"
         self.selected_data = []
-        curr_date = QDate.currentDate()
-        formatted_date = curr_date.toString(
-            "yyyy-MM-dd-"
-        ) + QTime.currentTime().toString("hh:mm:ss")
-        # print(formatted_date)
-        logging.basicConfig(
-            level=logging.INFO,
-            filename=f"{directory_path}/all_data/Logs/{formatted_date}-v{'50' if self.curr_version == '5.0' else '51'}.log",
-            filemode="w",
-            format="%(asctime)s - %(levelname)s - %(message)s",
-            datefmt="%d-%b-%y %H:%M:%S",
-        )
-        for i in range(len(vendors)):
-            if self.curr_version == "5.0" and vendors[i].is_non_sushi:
-                continue
 
+        for i in range(len(vendors)):
             request_data = RequestData(
                 vendors[i],
                 ALL_REPORTS,
@@ -1990,7 +2139,6 @@ class FetchReportsController(FetchReportsAbstract):
             )
             self.selected_data.append(request_data)
 
-        # print("🔥  self.selected_data: ", len(self.selected_data))
         self.is_last_fetch_advanced = False
         self.start_progress_dialog("Fetch Reports Progress")
         self.retry_data = []
@@ -2004,12 +2152,11 @@ class FetchReportsController(FetchReportsAbstract):
             and self.started_processes < concurrent_vendors
         ):
             request_data = self.selected_data[self.started_processes]
-            # print("🔥  request_data: ", request_data);
             self.fetch_vendor_data(request_data)
             self.started_processes += 1
 
     def fetch_selected_data(self):
-        """ Fetches reports based on the selected options in the UI"""
+        """Fetches reports based on the selected options in the UI"""
         if self.total_processes > 0 or self.is_updating_database:
             GeneralUtils.show_message(f"Waiting for pending processes to complete...")
             # if self.settings.show_debug_messages:
@@ -2028,19 +2175,6 @@ class FetchReportsController(FetchReportsAbstract):
         if self.begin_date > self.end_date:
             GeneralUtils.show_message("'Begin Date' is higher than 'End Date'")
             return
-
-        curr_date = QDate.currentDate()
-        formatted_date = curr_date.toString(
-            "yyyy-MM-dd-"
-        ) + QTime.currentTime().toString("hh:mm:ss")
-        # print(formatted_date)
-        logging.basicConfig(
-            level=logging.INFO,
-            filename=f"{directory_path}/all_data/Logs/{formatted_date}-v{'50' if self.curr_version == '5.0' else '51'}.log",
-            filemode="w",
-            format="%(asctime)s - %(levelname)s - %(message)s",
-            datefmt="%d-%b-%y %H:%M:%S",
-        )
 
         count = 0
         if self.pr_master_report_checkbox.isChecked():
@@ -2110,8 +2244,6 @@ class FetchReportsController(FetchReportsAbstract):
             #     else f"{directory_path}/all_data/special_reports/"
             # )
 
-        # print("🔥  selected_report_types: ", selected_report_types)
-
         for i in range(self.vendor_list_model.rowCount()):
             if self.vendor_list_model.item(i).checkState() == Qt.Checked:
                 request_data = RequestData(
@@ -2142,6 +2274,12 @@ class FetchReportsController(FetchReportsAbstract):
             request_data = self.selected_data[self.started_processes]
             self.fetch_vendor_data(request_data)
             self.started_processes += 1
+
+    def update_settings(self, settings: SettingsModel):
+        """Called when the settings are saved
+
+        :param settings: the new settings"""
+        self.settings = settings
 
 
 class VendorWorker(QObject):

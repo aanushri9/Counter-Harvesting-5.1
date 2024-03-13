@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1071</width>
-    <height>752</height>
+    <width>1067</width>
+    <height>693</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,10 +78,7 @@ QPushButton:pressed{
 background-color:grey;
 text-align:left;
 padding:2px 10px;
-color:white;}
-QPushButton:hover {
-    background-color: lightblue;
-}</string>
+color:white;}</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="1">
@@ -162,7 +159,6 @@ hover:grey
                         <font>
                          <family>Georgia</family>
                          <pointsize>10</pointsize>
-                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -188,7 +184,10 @@ border: none ;
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color:Black;</string>
+                        <string notr="true">color:white;
+background-color: #1E1E1E;
+border-radius: 4px;
+padding: 2px;</string>
                        </property>
                        <property name="movement">
                         <enum>QListView::Static</enum>
@@ -270,8 +269,48 @@ border: none ;
                      </item>
                      <item row="2" column="1">
                       <widget class="QDateEdit" name="end_date_edit_fetch_year">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>20</height>
+                        </size>
+                       </property>
                        <property name="styleSheet">
-                        <string notr="true">color:Black;</string>
+                        <string notr="true">QDateEdit {
+background-color: #2E2F30;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+QDateEdit::up-button, QDateEdit::down-button {
+    border: none;
+    padding-right: 5px;
+}
+
+QDateEdit::up-button {
+    subcontrol-position: top right;
+}
+
+QDateEdit::down-button {
+    subcontrol-position: bottom right;
+}
+
+QDateEdit::up-arrow, QDateEdit::down-arrow {
+    border: 5px solid rgba(255, 255, 255, 0);
+    width: 0;
+    height: 0;
+}
+
+QDateEdit::up-arrow {
+    border-top: none;
+    border-bottom-color: white;
+}
+
+QDateEdit::down-arrow {
+    border-bottom: none;
+    border-top-color: white;
+}</string>
                        </property>
                        <property name="displayFormat">
                         <string>yyyy</string>
@@ -299,8 +338,48 @@ border: none ;
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>20</height>
+                        </size>
+                       </property>
                        <property name="styleSheet">
-                        <string notr="true">font-size:15;color:Black;</string>
+                        <string notr="true">QDateEdit {
+background-color: #2E2F30;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+QDateEdit::up-button, QDateEdit::down-button {
+    border: none;
+    padding-right: 5px;
+}
+
+QDateEdit::up-button {
+    subcontrol-position: top right;
+}
+
+QDateEdit::down-button {
+    subcontrol-position: bottom right;
+}
+
+QDateEdit::up-arrow, QDateEdit::down-arrow {
+    border: 5px solid rgba(255, 255, 255, 0);
+    width: 0;
+    height: 0;
+}
+
+QDateEdit::up-arrow {
+    border-top: none;
+    border-bottom-color: white;
+}
+
+QDateEdit::down-arrow {
+    border-bottom: none;
+    border-top-color: white;
+}</string>
                        </property>
                        <property name="dateTime">
                         <datetime>
@@ -352,68 +431,17 @@ border: none ;
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color:Black;</string>
+                        <string notr="true">color:white;
+border-radius: 0px;
+background: #2E2F30;
+padding-left: 5px;</string>
                        </property>
-                       <item>
-                        <property name="text">
-                         <string>January</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>Feburary</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>March</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>April</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>May</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>June</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>July</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>August</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>September</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>October</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>November</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>December</string>
-                        </property>
-                       </item>
+                       <property name="sizeAdjustPolicy">
+                        <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                       </property>
+                       <property name="minimumContentsLength">
+                        <number>10</number>
+                       </property>
                       </widget>
                      </item>
                      <item row="2" column="3">
@@ -425,68 +453,17 @@ border: none ;
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color:Black;</string>
+                        <string notr="true">color:white;
+border-radius: 0px;
+background: #2E2F30;
+padding-left: 5px;</string>
                        </property>
-                       <item>
-                        <property name="text">
-                         <string>January</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>Feburary</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>March</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>April</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>May</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>June</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>July</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>August</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>September</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>October</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>November</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>December</string>
-                        </property>
-                       </item>
+                       <property name="sizeAdjustPolicy">
+                        <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                       </property>
+                       <property name="minimumContentsLength">
+                        <number>10</number>
+                       </property>
                       </widget>
                      </item>
                      <item row="0" column="0" colspan="4">
@@ -501,7 +478,6 @@ border: none ;
                         <font>
                          <family>Georgia</family>
                          <pointsize>12</pointsize>
-                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -576,7 +552,6 @@ border: 2px solid grey ;
                         <font>
                          <family>Georgia</family>
                          <pointsize>12</pointsize>
-                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -597,7 +572,14 @@ border: 2px solid grey ;
                      <item row="4" column="0" colspan="2">
                       <widget class="QListView" name="vendors_list_view_fetch">
                        <property name="styleSheet">
-                        <string notr="true">color:Black;</string>
+                        <string notr="true">
+
+color:white;
+background-color: #1E1E1E;
+border-radius: 4px;
+padding: 2px;
+
+</string>
                        </property>
                       </widget>
                      </item>
@@ -774,7 +756,7 @@ text-align:center;</string>
                            <string notr="true">text-align:center;</string>
                           </property>
                           <property name="text">
-                           <string>Deselect all </string>
+                           <string>Deselect all</string>
                           </property>
                          </widget>
                         </item>
@@ -793,7 +775,6 @@ text-align:center;</string>
                         <font>
                          <family>Georgia</family>
                          <pointsize>12</pointsize>
-                         <weight>50</weight>
                          <bold>false</bold>
                         </font>
                        </property>
@@ -852,7 +833,8 @@ border:none;
                         <item row="1" column="0">
                          <widget class="QLineEdit" name="custom_dir_edit">
                           <property name="styleSheet">
-                           <string notr="true">color:Black;</string>
+                           <string notr="true">color:white;
+background-color: #1E1E1E;</string>
                           </property>
                          </widget>
                         </item>
@@ -931,7 +913,6 @@ padding-bottom:10px;
                <font>
                 <family>Georgia</family>
                 <pointsize>10</pointsize>
-                <weight>50</weight>
                 <bold>false</bold>
                 <kerning>true</kerning>
                </font>
@@ -1020,8 +1001,48 @@ alignment: AlignCenter;
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>23</height>
+                  </size>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">color:Black;</string>
+                  <string notr="true">QDateEdit {
+background-color: #2E2F30;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+QDateEdit::up-button, QDateEdit::down-button {
+    border: none;
+    padding-right: 5px;
+}
+
+QDateEdit::up-button {
+    subcontrol-position: top right;
+}
+
+QDateEdit::down-button {
+    subcontrol-position: bottom right;
+}
+
+QDateEdit::up-arrow, QDateEdit::down-arrow {
+    border: 5px solid rgba(255, 255, 255, 0);
+    width: 0;
+    height: 0;
+}
+
+QDateEdit::up-arrow {
+    border-top: none;
+    border-bottom-color: white;
+}
+
+QDateEdit::down-arrow {
+    border-bottom: none;
+    border-top-color: white;
+}</string>
                  </property>
                  <property name="dateTime">
                   <datetime>
@@ -1030,7 +1051,7 @@ alignment: AlignCenter;
                    <second>0</second>
                    <year>2019</year>
                    <month>12</month>
-                   <day>25</day>
+                   <day>21</day>
                   </datetime>
                  </property>
                  <property name="displayFormat">
