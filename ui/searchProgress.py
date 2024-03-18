@@ -11,10 +11,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_searchProgress(object):
+class Ui_MainWindow(object):
     def setupUi(self, searchProgress):
         searchProgress.setObjectName("searchProgress")
-        searchProgress.resize(441, 362)
+        searchProgress.setGeometry(QtCore.QRect(0, 0, 911, 585))
         searchProgress.setStyleSheet("*{\n"
 "    \n"
 "    \n"
@@ -84,7 +84,7 @@ class Ui_searchProgress(object):
         self.results_scroll_area.setWidgetResizable(True)
         self.results_scroll_area.setObjectName("results_scroll_area")
         self.scroll_area_widget_contents = QtWidgets.QWidget()
-        self.scroll_area_widget_contents.setGeometry(QtCore.QRect(0, 0, 397, 91))
+        self.scroll_area_widget_contents.setGeometry(QtCore.QRect(0, 0, 661, 85))
         self.scroll_area_widget_contents.setObjectName("scroll_area_widget_contents")
         self.scroll_area_vertical_layout = QtWidgets.QVBoxLayout(self.scroll_area_widget_contents)
         self.scroll_area_vertical_layout.setObjectName("scroll_area_vertical_layout")
@@ -128,17 +128,17 @@ class Ui_searchProgress(object):
 
     def retranslateUi(self, searchProgress):
         _translate = QtCore.QCoreApplication.translate
-        searchProgress.setWindowTitle(_translate("searchProgress", "MainWindow"))
-        self.label.setText(_translate("searchProgress", "<html><head/><body><p align=\"center\">Search Progress</p></body></html>"))
-        self.ExportButton.setText(_translate("searchProgress", "Export"))
-        self.DoneButton.setText(_translate("searchProgress", "Cancel"))
+        searchProgress.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Search Progress</p></body></html>"))
+        self.ExportButton.setText(_translate("MainWindow", "Export"))
+        self.DoneButton.setText(_translate("MainWindow", "Done"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     searchProgress = QtWidgets.QMainWindow()
-    ui = Ui_searchProgress()
+    ui = Ui_MainWindow()
     ui.setupUi(searchProgress)
     searchProgress.show()
     sys.exit(app.exec_())
