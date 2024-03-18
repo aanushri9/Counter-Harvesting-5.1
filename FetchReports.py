@@ -33,7 +33,6 @@ from ui import (
     FetchReportsTab,
     FetchProgressDialog,
     VendorResultsWidget,
-    ReportResultWidget,
 )
 from ManageVendors import Vendor51
 from PyQt5.QtCore import QObject, QThread, pyqtSignal, QDate, Qt
@@ -1023,11 +1022,6 @@ class FetchReportsAbstract:
         vendor_thread.finished.connect(vendor_thread.deleteLater)
 
         vendor_thread.start()
-
-        # if self.settings.show_debug_messages:
-        #     print(
-        #         f"{worker_id}: Added a process, total processes: {self.total_processes}"
-        #     )
         self.update_results_ui(request_data.vendor)
 
     def update_results_ui(
@@ -1085,13 +1079,7 @@ class FetchReportsAbstract:
             failed_list_edit = vendor_results_ui.failed_reports_list
             cancelled_list_edit = vendor_results_ui.cancelled_reports_list
 
-            # expand_button = vendor_results_ui.expand_button
-            # collapse_button = vendor_results_ui.collapse_button
-
             status_label.setText("Working...")
-            # frame.hide()
-            # expand_button.clicked.connect(lambda: frame.show())
-            # collapse_button.clicked.connect(lambda: frame.hide())
 
             self.vendor_result_widgets[vendor.name] = (
                 vendor_results_widget,
@@ -1151,11 +1139,6 @@ class FetchReportsAbstract:
         warning_list_edit.setText(warning_reports)
         failed_list_edit.setText(failed_reports)
         cancelled_list_edit.setText(cancelled_reports)
-
-        # result_widget = self.get_result_widget(
-        #     vendor, vendor_results_widget, vendor_result
-        # )
-        # vertical_layout.addWidget(result_widget)
 
         logging.info(
             f"Vendor : {vendor.name} status:  {vendor_result.completion_status} message: {vendor_result.message} \n Successful: {successful_reports} \n Warning: {warning_reports} \n Failed: {failed_reports} \n Cancelled: {cancelled_reports} \n"
@@ -1335,8 +1318,6 @@ class FetchReportsAbstract:
         self.ok_button.setEnabled(True)
         # self.retry_button.setEnabled(True)
         self.status_label.setText("Done!")
-        # if self.settings.show_debug_messages:
-        #     print("Fin!")
 
     def cancel_workers(self):
         """Sends a cancel signal to all vendor workers, updates the UI accordingly"""
@@ -1376,8 +1357,6 @@ class FetchReportsAbstract:
     def start_updating_database(self) -> bool:
         """Starts a thread to update the database. Returns True if successfully started"""
         if self.is_updating_database:
-            # if self.settings.show_debug_messages:
-            #     print("Database is already updating")
             return False
 
         self.is_updating_database = True
@@ -1456,9 +1435,6 @@ class FetchReportsController(FetchReportsAbstract):
 
         # region Vendors
         self.vendor_list_view = fetch_reports_ui.vendors_list_view_fetch
-        self.vendor_list_view.setHorizontalScrollBarPolicy(
-            Qt.ScrollBarPolicy.ScrollBarAlwaysOff
-        )
         self.vendor_list_view.scrollToBottom()
         self.vendor_list_model = QStandardItemModel(self.vendor_list_view)
         self.vendor_list_view.setModel(self.vendor_list_model)
@@ -2104,8 +2080,6 @@ class FetchReportsController(FetchReportsAbstract):
         """Fetches all reports for the selected year"""
         if self.total_processes > 0 or self.is_updating_database:
             GeneralUtils.show_message(f"Waiting for pending processes to complete...")
-            # if self.settings.show_debug_messages:
-            #     print(f"Waiting for pending processes to complete...")
             return
 
         if self.curr_version == "5.0":
@@ -2159,8 +2133,6 @@ class FetchReportsController(FetchReportsAbstract):
         """Fetches reports based on the selected options in the UI"""
         if self.total_processes > 0 or self.is_updating_database:
             GeneralUtils.show_message(f"Waiting for pending processes to complete...")
-            # if self.settings.show_debug_messages:
-            #     print(f"Waiting for pending processes to complete...")
             return
 
         if self.curr_version == "5.0":
@@ -2297,7 +2269,6 @@ class VendorWorker(QObject):
         self.request_data = request_data
         self.vendor = request_data.vendor
         self.target_report_types = request_data.target_report_types
-        # self.show_debug = request_data.settings.show_debug_messages
         self.concurrent_reports = request_data.settings.concurrent_reports
         # self.concurrent_reports = 2
         self.request_interval = request_data.settings.request_interval
@@ -2323,8 +2294,6 @@ class VendorWorker(QObject):
 
         Requests the vendor's supported reports before requesting only the supported reports
         """
-        # if self.show_debug:
-        #     print(f"{self.vendor.name}: Fetching supported reports")
         request_query = {}
         if self.vendor.customer_id.strip():
             request_query["customer_id"] = self.vendor.customer_id
@@ -2345,8 +2314,6 @@ class VendorWorker(QObject):
                 headers={"User-Agent": self.user_agent},
                 timeout=self.request_timeout,
             )
-            # if self.show_debug:
-            #     print(response.url)
             if response.status_code == 200:
                 self.process_response(response)
             else:
@@ -2359,13 +2326,9 @@ class VendorWorker(QObject):
             self.process_result.message = (
                 f"Request timed out after {self.request_timeout} second(s)"
             )
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}: Request timed out")
         except requests.exceptions.RequestException as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"Request Exception: {e}"
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}: Request Exception: {e}")
 
         if len(self.report_workers) == 0:
             self.notify_worker_finished()
@@ -2444,13 +2407,9 @@ class VendorWorker(QObject):
         except json.JSONDecodeError as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"JSON Exception: {e}"
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}: JSON Exception: {e.msg}")
         except Exception as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = str(e)
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}: Exception: {e}")
 
     def fetch_report(self, report_type: str):
         """Initiates the process to fetch a report
@@ -2551,13 +2510,8 @@ class ReportWorker(QObject):
         self.vendor = request_data.vendor
         self.begin_date = request_data.begin_date
         self.end_date = request_data.end_date
-        # self.show_debug = request_data.settings.show_debug_messages
         self.request_timeout = request_data.settings.request_timeout
-        # self.request_timeout = 120
         self.user_agent = request_data.settings.user_agent
-        # self.user_agent = (
-        #     "Mozilla/5.0 Firefox/73.0 Chrome/80.0.3987.132 Safari/605.1.15"
-        # )
         self.save_dir = request_data.save_location
         self.special_options = request_data.special_options
 
@@ -2571,13 +2525,8 @@ class ReportWorker(QObject):
 
     def work(self):
         """Processes the report request"""
-        # if self.show_debug:
-        #     print(f"{self.vendor.name}-{self.report_type}: Fetching Report")
 
         self.make_request()
-
-        # if self.show_debug:
-        #     print(f"{self.vendor.name}-{self.report_type}: Done")
         self.notify_worker_finished()
 
     def make_request(self):
@@ -2651,8 +2600,6 @@ class ReportWorker(QObject):
                 headers={"User-Agent": self.user_agent},
                 timeout=self.request_timeout,
             )
-            # if self.show_debug:
-            #     print(response.url)
             if response.status_code == 200:
                 self.process_response(response)
             else:
@@ -2665,13 +2612,9 @@ class ReportWorker(QObject):
             self.process_result.message = (
                 f"Request timed out after {self.request_timeout} second(s)"
             )
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}: Request timed out")
         except requests.exceptions.RequestException as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"Request Exception: {e}"
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}-{self.report_type}: Request Exception: {e}")
 
     def process_response(self, response: requests.Response):
         """Processes the response from a request
@@ -2702,17 +2645,8 @@ class ReportWorker(QObject):
                 self.process_result.message = f"Vendor did not return any data"
             else:
                 self.process_result.message = f"JSON Exception: {e.msg}"
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}-{self.report_type}: JSON Exception: {e.msg}")
         except RetryLaterException as e:
             if not self.retried_request:
-                # if self.show_debug:
-                #     print(
-                #         f"{self.vendor.name}-{self.report_type}: Retry Later Exception: {e}"
-                #     )
-                #     print(
-                #         f"{self.vendor.name}-{self.report_type}: Retrying in {RETRY_WAIT_TIME} seconds..."
-                #     )
                 QThread.currentThread().sleep(
                     RETRY_WAIT_TIME
                 )  # Wait some time before retrying request
@@ -2725,10 +2659,6 @@ class ReportWorker(QObject):
                     self.process_result.message += "\n\n" + message
                 self.process_result.completion_status = CompletionStatus.FAILED
                 self.process_result.retry = True
-                # if self.show_debug:
-                #     print(
-                #         f"{self.vendor.name}-{self.report_type}: Retry Later Exception: {e}"
-                #     )
         except ReportHeaderMissingException as e:
             self.process_result.message = (
                 "Report_Header not received, no file was created"
@@ -2737,25 +2667,17 @@ class ReportWorker(QObject):
             if message:
                 self.process_result.message += "\n\n" + message
             self.process_result.completion_status = CompletionStatus.FAILED
-            # if self.show_debug:
-            #     print(
-            #         f"{self.vendor.name}-{self.report_type}: Report Header Missing Exception: {e}"
-            #     )
+
         except UnacceptableCodeException as e:
             self.process_result.message = "Unsupported exception code received"
             message = exception_models_to_message(e.exceptions)
             if message:
                 self.process_result.message += "\n\n" + message
             self.process_result.completion_status = CompletionStatus.FAILED
-            # if self.show_debug:
-            #     print(
-            #         f"{self.vendor.name}-{self.report_type}: Unsupported Code Exception: {e}"
-            #     )
+
         except Exception as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = str(e)
-            # if self.show_debug:
-            #     print(f"{self.vendor.name}-{self.report_type}: Exception: {e}")
 
     def process_report_model(self, report_model: ReportModel):
         """Processes the report model into a TSV report
@@ -2773,9 +2695,6 @@ class ReportWorker(QObject):
             f"{self.begin_date.toString('yyyy')}_{self.vendor.name}_{report_type}.tsv"
         )
         file_path = f"{file_dir}{file_name}"
-
-        # if self.show_debug:
-        #     print(f"{self.vendor.name}-{self.report_type}: Processing report")
 
         for report_item in report_items:
             metric_row_dict = (
@@ -3023,10 +2942,6 @@ class ReportWorker(QObject):
                                     metric_row.parent_uri = item_id.value
 
                     else:
-                        # if self.show_debug:
-                        #     print(
-                        #         f"{self.vendor.name}-{self.report_type}: Unexpected report type"
-                        #     )
                         pass
 
                     month_counts = metric_row.month_counts

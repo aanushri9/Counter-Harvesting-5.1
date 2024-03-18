@@ -184,10 +184,30 @@ border: none ;
                         </sizepolicy>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color:white;
-background-color: #1E1E1E;
-border-radius: 4px;
-padding: 2px;</string>
+                        <string notr="true">QListView {
+	background-color: rgb(33, 33, 33);
+	color:white;
+	alternate-background-color: rgb(50, 50, 50);
+	padding: 8px;
+	border: 2px solid gray;
+	border-radius: 4px;
+}
+
+QListView::item {
+    padding: 6px;
+
+}
+
+
+QScrollBar {
+    border: none;
+    background: rgb(30, 30, 30);
+    width: 15px;
+    margin: 15px 0 15px 0;
+}</string>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
                        </property>
                        <property name="movement">
                         <enum>QListView::Static</enum>
@@ -574,12 +594,30 @@ border: 2px solid grey ;
                        <property name="styleSheet">
                         <string notr="true">
 
-color:white;
-background-color: #1E1E1E;
-border-radius: 4px;
-padding: 2px;
 
-</string>
+QListView {
+	background-color: rgb(33, 33, 33);
+	color:white;
+	alternate-background-color: rgb(50, 50, 50);
+	padding: 8px;
+	border: 2px solid gray;
+	border-radius: 4px;
+}
+
+QListView::item {
+    padding: 6px;
+}
+
+
+QScrollBar {
+    border: none;
+    background: rgb(30, 30, 30);
+    width: 15px;
+    margin: 15px 0 15px 0;
+}</string>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -1051,7 +1089,7 @@ QDateEdit::down-arrow {
                    <second>0</second>
                    <year>2019</year>
                    <month>12</month>
-                   <day>21</day>
+                   <day>20</day>
                   </datetime>
                  </property>
                  <property name="displayFormat">

@@ -150,10 +150,28 @@ class Ui_FetchReports(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.standard_report_types_list_view.sizePolicy().hasHeightForWidth())
         self.standard_report_types_list_view.setSizePolicy(sizePolicy)
-        self.standard_report_types_list_view.setStyleSheet("color:white;\n"
-"background-color: #1E1E1E;\n"
-"border-radius: 4px;\n"
-"padding: 2px;")
+        self.standard_report_types_list_view.setStyleSheet("QListView {\n"
+"    background-color: rgb(33, 33, 33);\n"
+"    color:white;\n"
+"    alternate-background-color: rgb(50, 50, 50);\n"
+"    padding: 8px;\n"
+"    border: 2px solid gray;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QListView::item {\n"
+"    padding: 6px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar {\n"
+"    border: none;\n"
+"    background: rgb(30, 30, 30);\n"
+"    width: 15px;\n"
+"    margin: 15px 0 15px 0;\n"
+"}")
+        self.standard_report_types_list_view.setAlternatingRowColors(True)
         self.standard_report_types_list_view.setMovement(QtWidgets.QListView.Static)
         self.standard_report_types_list_view.setObjectName("standard_report_types_list_view")
         self.gridLayout_11.addWidget(self.standard_report_types_list_view, 1, 0, 1, 1)
@@ -378,12 +396,28 @@ class Ui_FetchReports(object):
         self.vendors_list_view_fetch = QtWidgets.QListView(self.frmSelectVenders)
         self.vendors_list_view_fetch.setStyleSheet("\n"
 "\n"
-"color:white;\n"
-"background-color: #1E1E1E;\n"
-"border-radius: 4px;\n"
-"padding: 2px;\n"
 "\n"
-"")
+"QListView {\n"
+"    background-color: rgb(33, 33, 33);\n"
+"    color:white;\n"
+"    alternate-background-color: rgb(50, 50, 50);\n"
+"    padding: 8px;\n"
+"    border: 2px solid gray;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QListView::item {\n"
+"    padding: 6px;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar {\n"
+"    border: none;\n"
+"    background: rgb(30, 30, 30);\n"
+"    width: 15px;\n"
+"    margin: 15px 0 15px 0;\n"
+"}")
+        self.vendors_list_view_fetch.setAlternatingRowColors(True)
         self.vendors_list_view_fetch.setObjectName("vendors_list_view_fetch")
         self.gridLayout_6.addWidget(self.vendors_list_view_fetch, 4, 0, 1, 2)
         self.version_51_button = QtWidgets.QPushButton(self.frmSelectVenders)
@@ -643,7 +677,7 @@ class Ui_FetchReports(object):
 "    border-bottom: none;\n"
 "    border-top-color: white;\n"
 "}")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 21), QtCore.QTime(0, 0, 0)))
+        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 20), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.horizontalLayout.addWidget(self.All_reports_edit_fetch)
         self.fetch_all_data_button = QtWidgets.QPushButton(self.frame_3)

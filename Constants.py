@@ -606,32 +606,6 @@ ALL_REPORT_FIELDS = (
 )
 # endregion
 
-# region cost table fields
-COST_FIELDS = (
-    {
-        NAME_KEY: "cost_in_original_currency",
-        TYPE_KEY: "REAL",
-        OPTIONS_KEY: ("NOT NULL", "CHECK(cost_in_original_currency >= 0)"),
-    },
-    {
-        NAME_KEY: "original_currency",
-        TYPE_KEY: "TEXT",
-        OPTIONS_KEY: ("NOT NULL", 'CHECK(original_currency <> "")'),
-    },
-    {
-        NAME_KEY: "cost_in_local_currency",
-        TYPE_KEY: "REAL",
-        OPTIONS_KEY: ("NOT NULL", "CHECK(cost_in_local_currency >= 0)"),
-    },
-    {
-        NAME_KEY: "cost_in_local_currency_with_tax",
-        TYPE_KEY: "REAL",
-        OPTIONS_KEY: ("NOT NULL", "CHECK(cost_in_local_currency_with_tax >= 0)"),
-    },
-)
-# endregion
-# endregion
-
 ALL_REPORTS = DATABASE_REPORTS + ITEM_REPORTS + PLATFORM_REPORTS + TITLE_REPORTS
 REPORT_TYPE_SWITCHER = {
     "DR": {REPORTS_KEY: DATABASE_REPORTS, "report_fields": DATABASE_REPORT_FIELDS},
@@ -667,7 +641,6 @@ RANKING_CALCULATION = "RANK() OVER(ORDER BY " + "SUM(" + "metric" + ")" + " DESC
 
 VIEW_SUFFIX = "_view"
 VISUAL_VIEW_SUFFIX = "_visual_view"
-COST_TABLE_SUFFIX = "_costs"
 
 FIELDS_NOT_IN_VIEWS = ("month", "metric", "updated_on")
 FIELDS_NOT_IN_KEYS = ("metric", "updated_on")
@@ -679,7 +652,6 @@ FIELDS_IN_CHARTS = (
 )
 FIELDS_NOT_IN_TOP_NUMBER_CHARTS = FIELDS_IN_CHARTS + ("year",)
 
-COSTS_KEY_FIELDS = ("vendor", "month", "year")
 CHART_KEY_FIELDS = ("vendor", "metric_type")
 
 DATABASE_FOLDER = r"./all_data/search/"
@@ -687,7 +659,6 @@ DATABASE_LOCATION = DATABASE_FOLDER + r"search.db"
 # All yearly reports tsv and json are saved here in original condition as backup
 PROTECTED_DATABASE_FILE_DIR = "./all_data/.DO_NOT_MODIFY/"
 FILE_SUBDIRECTORY_ORDER = ("year", "vendor")
-COSTS_SAVE_FOLDER = PROTECTED_DATABASE_FILE_DIR + "costs/"
 
 DELIMITERS = {".tsv": "\t", ".csv": ","}
 

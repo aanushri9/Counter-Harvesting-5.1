@@ -1,3 +1,4 @@
+from datetime import datetime
 import webbrowser
 import shlex
 import subprocess
@@ -152,7 +153,8 @@ def get_special_file_dir(base_path: str, vendor_name: str) -> str:
 def get_special_file_name(
     vendor_name: str, report_type: str, begin_date: QDate, end_date: QDate
 ) -> str:
-    return f"{vendor_name}_{report_type}_{begin_date.toString('yyyy-MMM')}_{end_date.toString('yyyy-MMM')}_S.tsv"
+    current_datetime = datetime.now().strftime("%Y%m%d%H%M%S")  # Format: YYYYMMDDHHMMSS
+    return f"{vendor_name}_{report_type}_{begin_date.toString('yyyy-MMM')}_{end_date.toString('yyyy-MMM')}_{current_datetime}_S.tsv"
 
 
 def get_other_file_dir(base_path: str, vendor_name: str) -> str:

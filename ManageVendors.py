@@ -20,12 +20,10 @@ from PyQt5.QtCore import Qt, QObject, QModelIndex, pyqtSignal
 from Settings import SettingsModel
 from ui import (
     ManageVendorsTab,
-    AddVendor,
     AddVendor51,
     RemoveVendorDialog,
     ImportVersion,
     EditVendors51,
-    EditVendors50,
 )
 
 # import ManageDB
@@ -650,7 +648,6 @@ class ManageVendorsController(QObject):
                 is_valid, message = self.add_vendor(vendor, version)
                 if not is_valid:
                     print(f"error in importing vendors version {version} : {message}")
-                    # if self.settings.show_debug_messages: print(message)
 
             tsv_file.close()
 
@@ -666,7 +663,6 @@ class ManageVendorsController(QObject):
 
             GeneralUtils.show_message(f"Import successful!")
         except Exception as e:
-            # if self.settings.show_debug_messages: print(f"File import failed: {e}")
             GeneralUtils.show_message(f"File import failed: {e}")
 
     def import_vendors_clicked(self, import_version_dialog, version: str):
@@ -741,7 +737,6 @@ class ManageVendorsController(QObject):
             GeneralUtils.show_message(f"Exported to {file_path_v50}")
 
         except Exception as e:
-            # if self.settings.show_debug_messages: print(f"File export failed: {e}")
             GeneralUtils.show_message(f"File export failed: {e}")
 
         # Now we will save one more file for vendor version 5.1
@@ -773,7 +768,6 @@ class ManageVendorsController(QObject):
             GeneralUtils.show_message(f"Exported to {file_path_v51}")
 
         except Exception as e:
-            # if self.settings.show_debug_messages: print(f"File export failed: {e}")
             GeneralUtils.show_message(f"File export failed: {e}")
 
     # """

@@ -43,7 +43,6 @@ class SettingsModel(JsonModel):
 
     def __init__(
         self,
-        # show_debug_messages: bool,
         database_location: str,
         vendors_location: str,
         yearly_directory: str,
@@ -53,9 +52,7 @@ class SettingsModel(JsonModel):
         concurrent_vendors: int,
         concurrent_reports: int,
         user_agent: str,
-        # default_currency: str,
     ):
-        # self.show_debug_messages = show_debug_messages
         self.yearly_directory = path.abspath(yearly_directory) + path.sep
         self.other_directory = path.abspath(other_directory) + path.sep
         self.database_location = path.abspath(database_location)
@@ -65,15 +62,9 @@ class SettingsModel(JsonModel):
         self.concurrent_vendors = concurrent_vendors
         self.concurrent_reports = concurrent_reports
         self.user_agent = user_agent
-        # self.default_currency = default_currency
 
     @classmethod
     def from_json(cls, json_dict: dict):
-        # show_debug_messages = (
-        #     json_dict["show_debug_messages"]
-        #     if "show_debug_messages" in json_dict
-        #     else SHOW_DEBUG_MESSAGES
-        # )
         database_location = (
             json_dict["database_location"]
             if "database_location" in json_dict
@@ -129,14 +120,8 @@ class SettingsModel(JsonModel):
         user_agent = (
             json_dict["user_agent"] if "user_agent" in json_dict else USER_AGENT
         )
-        # default_currency = (
-        #     json_dict["default_currency"]
-        #     if "default_currency" in json_dict
-        #     else DEFAULT_CURRENCY
-        # )
 
         return cls(
-            # show_debug_messages,
             database_location,
             vendors_location,
             yearly_directory,
@@ -146,7 +131,6 @@ class SettingsModel(JsonModel):
             concurrent_vendors,
             concurrent_reports,
             user_agent,
-            # default_currency,
         )
 
 
@@ -171,8 +155,6 @@ class SettingsController(QObject):
         self.settings = SettingsModel.from_json(json_dict)
         self.save_settings_to_disk()
 
-        # self.show_debug_checkbox = settings_ui.show_debug_check_box
-        # self.show_debug_checkbox.setChecked(self.settings.show_debug_messages)
         # endregion
 
         # region Reports
@@ -277,26 +259,22 @@ class SettingsController(QObject):
             ):
                 self.is_rebuilding_database = True
                 self.update_database_dialog.update_database(
-                    ManageDB.get_all_report_files() + ManageDB.get_all_cost_files(),
+                    ManageDB.get_all_report_files(),
                     True,
                 )
                 self.is_rebuilding_database = False
         else:
-            # if self.settings.show_debug_messages:
-            #     print("Database is already being rebuilt")
+            print("It is equal to the rebuild database state")
             pass
 
     def update_settings(self):
         """Updates the app's settings using the values entered on the UI"""
-        # self.settings.show_debug_messages = self.show_debug_checkbox.isChecked()
-        # self.settings.yearly_directory = self.yearly_dir_edit.text()
-        # self.settings.other_directory = self.other_dir_edit.text()
+
         self.settings.request_interval = self.request_interval_spin_box.value()
         self.settings.request_timeout = self.request_timeout_spin_box.value()
         self.settings.concurrent_vendors = self.concurrent_vendors_spin_box.value()
         self.settings.concurrent_reports = self.concurrent_reports_spin_box.value()
         self.settings.user_agent = self.user_agent_edit.text()
-        # self.settings.default_currency = self.default_currency_combobox.currentText()
 
     def save_settings_to_disk(self):
         """Saves all settings to disk"""

@@ -21,7 +21,6 @@ import os
 from Search import SearchController
 from Settings import SettingsController
 from ui import (
-    AddVendor,
     MainWindow,
     ManageVendorsTab,
     FetchReportsTab,
@@ -30,12 +29,9 @@ from ui import (
 )
 from ManageVendors import ManageVendorsController
 from FetchReports import FetchReportsController
-
-# from Settings import SettingsController
 import GeneralUtils
 import hashlib
 
-# region debug_stuff
 
 
 def trap_exc_during_debug(*args):
@@ -137,9 +133,6 @@ if __name__ == "__main__":
         manage_vendors_tab, manage_vendors_ui, settings_controller.settings
     )
 
-    # main_window_ui.tab_widget.addTab(
-    #     manage_vendors_tab, manage_vendors_tab.windowIcon(), "Manage Vendors"
-    # )
 
     def show_manage_vendors():
         password_dialog = PasswordDialog()
@@ -151,8 +144,6 @@ if __name__ == "__main__":
                 "Access Denied",
                 "Incorrect password. Access to 'Manage Vendors' denied.",
             )
-
-    # main_window_ui.tab_widget.setCurrentIndex(2)  # Set default tab index
 
     def handle_tab_change(index):
         if index == 0 and authorized == False:  # Index of "Manage Vendors" tab
