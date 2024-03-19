@@ -1557,7 +1557,7 @@ class FetchReportsController(FetchReportsAbstract):
         curr_date = QDate.currentDate()
         formatted_date = curr_date.toString(
             "yyyy-MM-dd-"
-        ) + QTime.currentTime().toString("hh:mm:ss")
+        ) + QTime.currentTime().toString("hh_mm_ss")
 
         logging.basicConfig(
             level=logging.INFO,
