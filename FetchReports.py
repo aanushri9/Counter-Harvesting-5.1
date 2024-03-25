@@ -2,6 +2,7 @@ import copy
 import csv
 import ctypes
 import json
+from operator import is_
 from os import makedirs, path
 import platform
 import logging
@@ -64,7 +65,7 @@ import subprocess
 
 current_file_path = os.path.abspath(__file__)
 directory_path = os.path.dirname(current_file_path)
-
+is_yop_selected = False
 
 # region Models
 class SupportedReportModel(JsonModel):
@@ -1557,7 +1558,7 @@ class FetchReportsController(FetchReportsAbstract):
         curr_date = QDate.currentDate()
         formatted_date = curr_date.toString(
             "yyyy-MM-dd-"
-        ) + QTime.currentTime().toString("hh_mm_ss")
+        ) + QTime.currentTime().toString("hh:mm:ss")
 
         logging.basicConfig(
             level=logging.INFO,
@@ -1581,7 +1582,7 @@ class FetchReportsController(FetchReportsAbstract):
         if self.ir_master_report_checkbox.isChecked():
             self.major_report_type = MajorReportType.ITEM
             count += 1
-
+        
         self.get_checked_standard_reports_types_list()
 
         if len(self.standard_reports_types_list) > 0 or count != 1:
@@ -1692,6 +1693,8 @@ class FetchReportsController(FetchReportsAbstract):
     # show more options for master report
     def reset_selected_options(self):
         self.selected_options = SpecialReportOptions()
+        global is_yop_selected
+        is_yop_selected = False
 
     def handle_select_more_options(self):
         count = 0
@@ -1710,15 +1713,20 @@ class FetchReportsController(FetchReportsAbstract):
 
         self.get_checked_standard_reports_types_list()
 
+        global is_yop_selected
         if len(self.standard_reports_types_list) > 0:
             show_message("More Option can only applicable on master reports")
+            is_yop_selected = False
             return
         elif count > 1:
             show_message("Select only 1 master report")
+            is_yop_selected = False
             return
         elif count == 0:
             show_message("No master report type is selected.")
+            is_yop_selected = False
             return
+        
 
         self.more_option_dialog = QMainWindow()
         self.more_option_dialog_ui = MoreOptionsMasterReport.Ui_MoreOptionsDialog()
@@ -1810,6 +1818,9 @@ class FetchReportsController(FetchReportsAbstract):
         :param is_checked: Checked or un-checked
         """
         option = option.lower()
+        if option == "yop":
+            global is_yop_selected
+            is_yop_selected = is_checked
         __, option_type, option_name, curr_options = (
             self.selected_options.__getattribute__(option)
         )
@@ -2169,6 +2180,8 @@ class FetchReportsController(FetchReportsAbstract):
 
         if len(self.standard_reports_types_list) > 0 or count > 1:
             # do the normal fetch with normal options
+            global is_yop_selected
+            is_yop_selected = False
             selected_report_types = []
             for i in range(len(ALL_REPORTS)):
                 if (
@@ -3235,6 +3248,7 @@ class ReportWorker(QObject):
         """
         column_names = []
         row_dicts = []
+        global is_yop_selected
 
         if report_type == "PR":
             column_names += ["Platform"]
@@ -3382,8 +3396,9 @@ class ReportWorker(QObject):
                     column_names.append("Data_Type")
                 if special_options_dict["section_type"][0]:
                     column_names.append("Section_Type")
-                if special_options_dict["yop"][0]:
-                    column_names.append("YOP")
+                if is_yop_selected:
+                    if special_options_dict["yop"][0]:
+                        column_names.append("YOP")
                 if special_options_dict["access_type"][0]:
                     column_names.append("Access_Type")
                 if special_options_dict["access_method"][0]:
@@ -3416,8 +3431,9 @@ class ReportWorker(QObject):
                         row_dict["Data_Type"] = row.data_type
                     if special_options_dict["section_type"][0]:
                         row_dict["Section_Type"] = row.section_type
-                    if special_options_dict["yop"][0]:
-                        row_dict["YOP"] = row.yop
+                    if is_yop_selected:
+                        if special_options_dict["yop"][0]:
+                            row_dict["YOP"] = row.yop
                     if special_options_dict["access_type"][0]:
                         row_dict["Access_Type"] = row.access_type
                     if special_options_dict["access_method"][0]:
@@ -3669,8 +3685,9 @@ class ReportWorker(QObject):
                     ]
                 if special_options_dict["data_type"][0]:
                     column_names.append("Data_Type")
-                if special_options_dict["yop"][0]:
-                    column_names.append("YOP")
+                if is_yop_selected:
+                    if special_options_dict["yop"][0]:
+                        column_names.append("YOP")
                 if special_options_dict["access_type"][0]:
                     column_names.append("Access_Type")
                 if special_options_dict["access_method"][0]:
@@ -3762,8 +3779,9 @@ class ReportWorker(QObject):
                         )
                     if special_options_dict["data_type"][0]:
                         row_dict["Data_Type"] = row.data_type
-                    if special_options_dict["yop"][0]:
-                        row_dict["YOP"] = row.yop
+                    if is_yop_selected:
+                        if special_options_dict["yop"][0]:
+                            row_dict["YOP"] = row.yop
                     if special_options_dict["access_type"][0]:
                         row_dict["Access_Type"] = row.access_type
                     if special_options_dict["access_method"][0]:
