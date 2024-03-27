@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_SettingTab(object):
     def setupUi(self, SettingTab):
         SettingTab.setObjectName("SettingTab")
-        SettingTab.resize(605, 595)
+        SettingTab.resize(611, 580)
         SettingTab.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -85,281 +85,6 @@ class Ui_SettingTab(object):
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
-        self.label_5 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.label_5.setFont(font)
-        self.label_5.setStyleSheet("Border:none;\n"
-"font-size: 13px;")
-        self.label_5.setObjectName("label_5")
-        self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
-        self.label_3 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("Border:none;\n"
-"font-size: 13px;")
-        self.label_3.setObjectName("label_3")
-        self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet("Border:none;\n"
-"font-size: 13px;")
-        self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.label_4.setFont(font)
-        self.label_4.setStyleSheet("Border:none;\n"
-"font-size: 13px;")
-        self.label_4.setObjectName("label_4")
-        self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
-        self.label_6 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.label_6.setFont(font)
-        self.label_6.setStyleSheet("Border:none;\n"
-"font-size: 13px;")
-        self.label_6.setObjectName("label_6")
-        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
-        self.label_7 = QtWidgets.QLabel(self.frame_2)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.label_7.setFont(font)
-        self.label_7.setStyleSheet("Border:none;\n"
-"font-size: 13px;")
-        self.label_7.setObjectName("label_7")
-        self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
-        self.concurrent_reports_spin_box = QtWidgets.QSpinBox(self.frame_2)
-        self.concurrent_reports_spin_box.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.concurrent_reports_spin_box.setFont(font)
-        self.concurrent_reports_spin_box.setStyleSheet("QSpinBox {\n"
-"background-color: #2E2F30;\n"
-"    border: 2px solid #808080;\n"
-"    border-radius: 4px;\n"
-"    padding-left: 5px;\n"
-"    padding: 4px;\n"
-"font-size: 14px;\n"
-"padding-left: 6px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button, QSpinBox::down-button {\n"
-"    border: none;\n"
-"    padding-right: 5px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-position: top right;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
-"    border: 5px solid rgba(255, 255, 255, 0);\n"
-"    width: 0;\n"
-"    height: 0;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    border-top: none;\n"
-"    border-bottom-color: white;\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    border-bottom: none;\n"
-"    border-top-color: white;\n"
-"}")
-        self.concurrent_reports_spin_box.setMaximum(9999)
-        self.concurrent_reports_spin_box.setObjectName("concurrent_reports_spin_box")
-        self.gridLayout.addWidget(self.concurrent_reports_spin_box, 4, 1, 1, 3)
-        self.concurrent_vendors_spin_box = QtWidgets.QSpinBox(self.frame_2)
-        self.concurrent_vendors_spin_box.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.concurrent_vendors_spin_box.setFont(font)
-        self.concurrent_vendors_spin_box.setStyleSheet("QSpinBox {\n"
-"background-color: #2E2F30;\n"
-"    border: 2px solid #808080;\n"
-"    border-radius: 4px;\n"
-"    padding-left: 5px;\n"
-"    padding: 4px;\n"
-"font-size: 14px;\n"
-"padding-left: 6px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button, QSpinBox::down-button {\n"
-"    border: none;\n"
-"    padding-right: 5px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-position: top right;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
-"    border: 5px solid rgba(255, 255, 255, 0);\n"
-"    width: 0;\n"
-"    height: 0;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    border-top: none;\n"
-"    border-bottom-color: white;\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    border-bottom: none;\n"
-"    border-top-color: white;\n"
-"}")
-        self.concurrent_vendors_spin_box.setMaximum(9999)
-        self.concurrent_vendors_spin_box.setObjectName("concurrent_vendors_spin_box")
-        self.gridLayout.addWidget(self.concurrent_vendors_spin_box, 3, 1, 1, 3)
-        self.request_timeout_spin_box = QtWidgets.QSpinBox(self.frame_2)
-        self.request_timeout_spin_box.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.request_timeout_spin_box.setFont(font)
-        self.request_timeout_spin_box.setStyleSheet("QSpinBox {\n"
-"background-color: #2E2F30;\n"
-"    border: 2px solid #808080;\n"
-"    border-radius: 4px;\n"
-"    padding-left: 5px;\n"
-"    padding: 4px;\n"
-"font-size: 14px;\n"
-"padding-left: 6px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button, QSpinBox::down-button {\n"
-"    border: none;\n"
-"    padding-right: 5px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-position: top right;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
-"    border: 5px solid rgba(255, 255, 255, 0);\n"
-"    width: 0;\n"
-"    height: 0;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    border-top: none;\n"
-"    border-bottom-color: white;\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    border-bottom: none;\n"
-"    border-top-color: white;\n"
-"}")
-        self.request_timeout_spin_box.setMaximum(9999)
-        self.request_timeout_spin_box.setObjectName("request_timeout_spin_box")
-        self.gridLayout.addWidget(self.request_timeout_spin_box, 2, 1, 1, 3)
-        self.user_agent_edit = QtWidgets.QLineEdit(self.frame_2)
-        self.user_agent_edit.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.user_agent_edit.setFont(font)
-        self.user_agent_edit.setStyleSheet("QLineEdit {\n"
-"background-color: #2E2F30;\n"
-"    border: 2px solid #808080;\n"
-"    border-radius: 4px;\n"
-"    padding-left: 5px;\n"
-"    padding: 4px;\n"
-"font-size: 14px;\n"
-"padding-left: 6px;\n"
-"}")
-        self.user_agent_edit.setObjectName("user_agent_edit")
-        self.gridLayout.addWidget(self.user_agent_edit, 5, 1, 1, 3)
-        self.request_interval_spin_box = QtWidgets.QSpinBox(self.frame_2)
-        self.request_interval_spin_box.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.request_interval_spin_box.setFont(font)
-        self.request_interval_spin_box.setStyleSheet("QSpinBox {\n"
-"background-color: #2E2F30;\n"
-"    border: 2px solid #808080;\n"
-"    border-radius: 4px;\n"
-"    padding-left: 5px;\n"
-"    padding: 4px;\n"
-"font-size: 14px;\n"
-"padding-left: 6px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button, QSpinBox::down-button {\n"
-"    border: none;\n"
-"    padding-right: 5px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"    subcontrol-position: top right;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
-"    border: 5px solid rgba(255, 255, 255, 0);\n"
-"    width: 0;\n"
-"    height: 0;\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow {\n"
-"    border-top: none;\n"
-"    border-bottom-color: white;\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow {\n"
-"    border-bottom: none;\n"
-"    border-top-color: white;\n"
-"}")
-        self.request_interval_spin_box.setMaximum(9999)
-        self.request_interval_spin_box.setObjectName("request_interval_spin_box")
-        self.gridLayout.addWidget(self.request_interval_spin_box, 1, 1, 1, 3)
-        self.directory_edit = QtWidgets.QLineEdit(self.frame_2)
-        self.directory_edit.setMinimumSize(QtCore.QSize(0, 30))
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(-1)
-        self.directory_edit.setFont(font)
-        self.directory_edit.setStyleSheet("QLineEdit {\n"
-"    color: white; \n"
-"    background-color: #2E2F30;\n"
-"    padding: 4px;\n"
-"font-size: 13px;\n"
-"padding-left: 6px;\n"
-"}\n"
-"")
-        self.directory_edit.setObjectName("directory_edit")
-        self.gridLayout.addWidget(self.directory_edit, 0, 3, 1, 1)
         self.select_directory_button = QtWidgets.QPushButton(self.frame_2)
         self.select_directory_button.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
@@ -418,6 +143,169 @@ class Ui_SettingTab(object):
         self.directory_type_comboBox.addItem("")
         self.directory_type_comboBox.addItem("")
         self.gridLayout.addWidget(self.directory_type_comboBox, 0, 1, 1, 2)
+        self.request_interval_spin_box = QtWidgets.QSpinBox(self.frame_2)
+        self.request_interval_spin_box.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.request_interval_spin_box.setFont(font)
+        self.request_interval_spin_box.setStyleSheet("QSpinBox {\n"
+"background-color: #2E2F30;\n"
+"    border: 2px solid #808080;\n"
+"    border-radius: 4px;\n"
+"    padding-left: 5px;\n"
+"    padding: 4px;\n"
+"font-size: 14px;\n"
+"padding-left: 6px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button, QSpinBox::down-button {\n"
+"    border: none;\n"
+"    padding-right: 5px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"    subcontrol-position: top right;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"    subcontrol-position: bottom right;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
+"    border: 5px solid rgba(255, 255, 255, 0);\n"
+"    width: 0;\n"
+"    height: 0;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow {\n"
+"    border-top: none;\n"
+"    border-bottom-color: white;\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    border-bottom: none;\n"
+"    border-top-color: white;\n"
+"}")
+        self.request_interval_spin_box.setMaximum(9999)
+        self.request_interval_spin_box.setObjectName("request_interval_spin_box")
+        self.gridLayout.addWidget(self.request_interval_spin_box, 1, 1, 1, 3)
+        self.user_agent_edit = QtWidgets.QLineEdit(self.frame_2)
+        self.user_agent_edit.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.user_agent_edit.setFont(font)
+        self.user_agent_edit.setStyleSheet("QLineEdit {\n"
+"background-color: #2E2F30;\n"
+"    border: 2px solid #808080;\n"
+"    border-radius: 4px;\n"
+"    padding-left: 5px;\n"
+"    padding: 4px;\n"
+"font-size: 14px;\n"
+"padding-left: 6px;\n"
+"}")
+        self.user_agent_edit.setObjectName("user_agent_edit")
+        self.gridLayout.addWidget(self.user_agent_edit, 3, 1, 1, 3)
+        self.label_6 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet("Border:none;\n"
+"font-size: 13px;")
+        self.label_6.setObjectName("label_6")
+        self.gridLayout.addWidget(self.label_6, 3, 0, 1, 1)
+        self.request_timeout_spin_box = QtWidgets.QSpinBox(self.frame_2)
+        self.request_timeout_spin_box.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.request_timeout_spin_box.setFont(font)
+        self.request_timeout_spin_box.setStyleSheet("QSpinBox {\n"
+"background-color: #2E2F30;\n"
+"    border: 2px solid #808080;\n"
+"    border-radius: 4px;\n"
+"    padding-left: 5px;\n"
+"    padding: 4px;\n"
+"font-size: 14px;\n"
+"padding-left: 6px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button, QSpinBox::down-button {\n"
+"    border: none;\n"
+"    padding-right: 5px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"    subcontrol-position: top right;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"    subcontrol-position: bottom right;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow, QSpinBox::down-arrow {\n"
+"    border: 5px solid rgba(255, 255, 255, 0);\n"
+"    width: 0;\n"
+"    height: 0;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow {\n"
+"    border-top: none;\n"
+"    border-bottom-color: white;\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    border-bottom: none;\n"
+"    border-top-color: white;\n"
+"}")
+        self.request_timeout_spin_box.setMaximum(9999)
+        self.request_timeout_spin_box.setObjectName("request_timeout_spin_box")
+        self.gridLayout.addWidget(self.request_timeout_spin_box, 2, 1, 1, 3)
+        self.label_2 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("Border:none;\n"
+"font-size: 13px;")
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
+        self.directory_edit = QtWidgets.QLineEdit(self.frame_2)
+        self.directory_edit.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.directory_edit.setFont(font)
+        self.directory_edit.setStyleSheet("QLineEdit {\n"
+"    color: white; \n"
+"    background-color: #2E2F30;\n"
+"    padding: 4px;\n"
+"font-size: 13px;\n"
+"padding-left: 6px;\n"
+"}\n"
+"")
+        self.directory_edit.setObjectName("directory_edit")
+        self.gridLayout.addWidget(self.directory_edit, 0, 3, 1, 1)
+        self.label_7 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.label_7.setFont(font)
+        self.label_7.setStyleSheet("Border:none;\n"
+"font-size: 13px;")
+        self.label_7.setObjectName("label_7")
+        self.gridLayout.addWidget(self.label_7, 0, 0, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Georgia")
+        font.setPointSize(-1)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("Border:none;\n"
+"font-size: 13px;")
+        self.label_3.setObjectName("label_3")
+        self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout, 0, 0, 1, 1)
         self.gridLayout_7.addWidget(self.frame_2, 2, 0, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -490,9 +378,7 @@ class Ui_SettingTab(object):
         SettingTab.setTabOrder(self.directory_edit, self.select_directory_button)
         SettingTab.setTabOrder(self.select_directory_button, self.request_interval_spin_box)
         SettingTab.setTabOrder(self.request_interval_spin_box, self.request_timeout_spin_box)
-        SettingTab.setTabOrder(self.request_timeout_spin_box, self.concurrent_vendors_spin_box)
-        SettingTab.setTabOrder(self.concurrent_vendors_spin_box, self.concurrent_reports_spin_box)
-        SettingTab.setTabOrder(self.concurrent_reports_spin_box, self.user_agent_edit)
+        SettingTab.setTabOrder(self.request_timeout_spin_box, self.user_agent_edit)
         SettingTab.setTabOrder(self.user_agent_edit, self.save_button)
         SettingTab.setTabOrder(self.save_button, self.settings_rebuild_database_button)
 
@@ -501,23 +387,19 @@ class Ui_SettingTab(object):
         SettingTab.setWindowTitle(_translate("SettingTab", "MainWindow"))
         self.label.setText(_translate("SettingTab", "<html><head/><body><p align=\"center\">Settings</p></body></html>"))
         self.label_9.setText(_translate("SettingTab", "<html><head/><body><p align=\"center\">If Database gets Corrupted</p></body></html>"))
-        self.label_5.setToolTip(_translate("SettingTab", "The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue."))
-        self.label_5.setText(_translate("SettingTab", "Concurrent reports"))
-        self.label_3.setToolTip(_translate("SettingTab", "The number of seconds the program will allow a vendor to respond to each report request before cancelling it."))
-        self.label_3.setText(_translate("SettingTab", "Request timeout"))
-        self.label_2.setToolTip(_translate("SettingTab", "The number of seconds the program will wait between sending each report request to a given vendor."))
-        self.label_2.setText(_translate("SettingTab", "Report request interval"))
-        self.label_4.setToolTip(_translate("SettingTab", "Can change if you find the load on your desktop is too high"))
-        self.label_4.setText(_translate("SettingTab", "Concurrent vendors"))
-        self.label_6.setToolTip(_translate("SettingTab", "How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. "))
-        self.label_6.setText(_translate("SettingTab", "User agent"))
-        self.label_7.setToolTip(_translate("SettingTab", "We can set where to save search database, vendor data file and yearly reports here"))
-        self.label_7.setText(_translate("SettingTab", "Data folders directories"))
         self.select_directory_button.setText(_translate("SettingTab", "Choose"))
         self.directory_type_comboBox.setItemText(0, _translate("SettingTab", "Search database"))
         self.directory_type_comboBox.setItemText(1, _translate("SettingTab", "Vendor data file"))
         self.directory_type_comboBox.setItemText(2, _translate("SettingTab", "Yearly reports"))
         self.directory_type_comboBox.setItemText(3, _translate("SettingTab", "Other reports"))
+        self.label_6.setToolTip(_translate("SettingTab", "How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. "))
+        self.label_6.setText(_translate("SettingTab", "User agent"))
+        self.label_2.setToolTip(_translate("SettingTab", "The number of seconds the program will wait between sending each report request to a given vendor."))
+        self.label_2.setText(_translate("SettingTab", "Report request interval"))
+        self.label_7.setToolTip(_translate("SettingTab", "We can set where to save search database, vendor data file and yearly reports here"))
+        self.label_7.setText(_translate("SettingTab", "Data folders directories"))
+        self.label_3.setToolTip(_translate("SettingTab", "The number of seconds the program will allow a vendor to respond to each report request before cancelling it."))
+        self.label_3.setText(_translate("SettingTab", "Request timeout"))
         self.save_button.setToolTip(_translate("SettingTab", "Save all default and custom changes"))
         self.save_button.setText(_translate("SettingTab", "Save All Changes"))
         self.settings_rebuild_database_button.setToolTip(_translate("SettingTab", "Recreate or regenerate the database that stores information related to the usage statisitics. when you want to do data consistency, data integrity, update and changes."))

@@ -1,6 +1,9 @@
 from ast import main
+from json import load
 import locale
 import sys
+import os
+from dotenv import load_dotenv
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
     QApplication,
@@ -32,6 +35,7 @@ from FetchReports import FetchReportsController
 import GeneralUtils
 import hashlib
 
+load_dotenv()
 
 
 def trap_exc_during_debug(*args):
@@ -101,7 +105,7 @@ class PasswordDialog(QDialog):
         return input_hash == hash_pass
 
     def accept(self):
-        correct_password = "123"  # Replace with your actual password
+        correct_password = os.getenv("MANAGE_VENDOR_PASSWORD")
         hash_pass = hashlib.md5(correct_password.encode("utf8")).hexdigest()
         if self.check_password(hash_pass):
             super().accept()
@@ -132,7 +136,6 @@ if __name__ == "__main__":
     manage_vendors_controller = ManageVendorsController(
         manage_vendors_tab, manage_vendors_ui, settings_controller.settings
     )
-
 
     def show_manage_vendors():
         password_dialog = PasswordDialog()
@@ -205,4 +208,3 @@ if __name__ == "__main__":
     # endregion
     main_window.show()
     sys.exit(app.exec_())
-

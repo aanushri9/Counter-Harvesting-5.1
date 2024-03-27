@@ -4,6 +4,7 @@ import csv
 import os
 import json
 from sys import version
+import requests
 import validators
 from PyQt5.QtWidgets import (
     QDialog,
@@ -135,6 +136,8 @@ class ManageVendorsController(QObject):
         self.get_vendor_names()
         self.sort_vendors()
         self.on_click_version51()
+
+        self.isValidated: bool = False
 
     # """
     # Show List According to selected version Section
@@ -391,6 +394,11 @@ class ManageVendorsController(QObject):
         provider_edit = vendor_dialog_ui.providerEdit
         notes_edit = vendor_dialog_ui.notesEdit
 
+        validate_button = vendor_dialog_ui.validate_button
+        if self.curr_version == "5.0":
+            validate_button.hide()
+        self.isValidated = False
+
         name_validation_label = vendor_dialog_ui.name_validation_label
         name_validation_label.hide()
         url_validation_label = vendor_dialog_ui.url_validation_label
@@ -407,6 +415,10 @@ class ManageVendorsController(QObject):
         )
 
         def attempt_add_vendor():
+            if self.curr_version == "5.1" and not self.isValidated:
+                GeneralUtils.show_message("Please validate the vendor first.")
+                return
+
             vendor = Vendor51(
                 name_edit.text(),
                 version_edit.text(),
@@ -440,6 +452,34 @@ class ManageVendorsController(QObject):
             else:
                 GeneralUtils.show_message(message)
 
+        def validate_vendor():
+            try:
+                request_query = {"customer_id": customer_id_edit.text()}
+                request_url = base_url_edit.text()
+                # triming the url and removing /reports from the end and adding /members
+                request_url = request_url.strip()
+                if request_url.endswith("/reports"):
+                    request_url = request_url[:-8]
+                request_url += "/members"
+
+                print("Request URL: ", request_url)
+
+                response = requests.get(request_url, request_query, timeout=10)
+                if response.status_code == 200:
+                    GeneralUtils.show_message("Vendor validated successfully")
+                    self.isValidated = True
+                else:
+                    GeneralUtils.show_message(
+                        f"Vendor validation failed with status code: {response.status_code}"
+                    )
+            except requests.exceptions.Timeout as e:
+                GeneralUtils.show_message("Vendor validation failed: Timeout")
+                return
+            except requests.exceptions.RequestException as e:
+                GeneralUtils.show_message(f"Vendor validation failed: {e}")
+                return
+
+        validate_button.clicked.connect(lambda: validate_vendor())
         button_box = vendor_dialog_ui.buttonBox
         ok_button = button_box.button(QDialogButtonBox.Ok)
         ok_button.clicked.connect(attempt_add_vendor)

@@ -7,6 +7,7 @@ from os import makedirs, path
 import platform
 import logging
 import os
+import re
 from Constants import (
     ACCEPTABLE_CODES,
     ALL_REPORTS,
@@ -66,6 +67,7 @@ import subprocess
 current_file_path = os.path.abspath(__file__)
 directory_path = os.path.dirname(current_file_path)
 is_yop_selected = False
+
 
 # region Models
 class SupportedReportModel(JsonModel):
@@ -197,6 +199,7 @@ class ReportHeaderModel(JsonModel):
         exceptions: list,
         created: str,
         created_by: str,
+        registry_record: str,
     ):
         self.report_name = report_name
         self.report_id = report_id
@@ -208,6 +211,7 @@ class ReportHeaderModel(JsonModel):
         self.exceptions = exceptions
         self.created = created
         self.created_by = created_by
+        self.registry_record = registry_record
 
         # Not part of JSON
         self.major_report_type = None
@@ -221,6 +225,9 @@ class ReportHeaderModel(JsonModel):
         release = json_dict["Release"] if "Release" in json_dict else ""
         institution_name = (
             json_dict["Institution_Name"] if "Institution_Name" in json_dict else ""
+        )
+        registry_record = (
+            json_dict["Registry_Record"] if "Registry_Record" in json_dict else ""
         )
         created = json_dict["Created"] if "Created" in json_dict else ""
         created_by = json_dict["Created_By"] if "Created_By" in json_dict else ""
@@ -241,7 +248,11 @@ class ReportHeaderModel(JsonModel):
             exceptions,
             created,
             created_by,
+            registry_record,
         )
+
+    def __repr__(self):
+        return f"🍭🍭🍭🍭🍭🍭 [{self.report_name}, {self.report_id}, {self.release}, {self.institution_name}, {self.institution_ids}, {self.report_filters}, {self.report_attributes}, {self.exceptions}, {self.created}, {self.created_by}, {self.registry_record}] 🍭🍭🍭🍭🍭🍭"
 
 
 class ReportModel(JsonModel):
@@ -356,6 +367,9 @@ class PlatformReportItemModel(JsonModel):
         performances = get_models("Performance", PerformanceModel, json_dict)
 
         return cls(platform, data_type, access_method, performances)
+
+    def __repr__(self):
+        return f"🍭🍭🍭🍭🍭🍭 [{self.platform}, {self.data_type}, {self.access_method}, {self.performances}] 🍭🍭🍭🍭🍭🍭"
 
 
 class DatabaseReportItemModel(JsonModel):
@@ -1145,72 +1159,6 @@ class FetchReportsAbstract:
             f"Vendor : {vendor.name} status:  {vendor_result.completion_status} message: {vendor_result.message} \n Successful: {successful_reports} \n Warning: {warning_reports} \n Failed: {failed_reports} \n Cancelled: {cancelled_reports} \n"
         )
 
-        # for report_result in report_results:
-        #     result_widget = self.get_result_widget(
-        #         vendor, vendor_results_widget, report_result
-        #     )
-        #     vertical_layout.addWidget(result_widget)
-
-    def get_result_widget(
-        self, vendor: Vendor51, vendor_widget: QWidget, process_result: ProcessResult
-    ) -> QWidget:
-        """This creates a result widget for either a vendor or a vendor's report
-
-        :param vendor: The target vendor
-        :param vendor_widget: The vendor's widget in the fetch progress dialog
-        :param process_result: The result to show
-        """
-        completion_status = process_result.completion_status
-        report_result_widget = QWidget(vendor_widget)
-        report_result_ui = ReportResultWidget.Ui_ReportResultWidget()
-        report_result_ui.setupUi(report_result_widget)
-
-        if process_result.message:
-            report_result_ui.message_label.setText(process_result.message)
-        else:
-            report_result_ui.message_label.hide()
-
-        if (
-            process_result.report_type is not None
-        ):  # If this is a report result, not vendor
-            report_result_ui.report_type_label.setText(process_result.report_type)
-            if (
-                completion_status == CompletionStatus.SUCCESSFUL
-                or completion_status == CompletionStatus.WARNING
-            ):
-                report_result_ui.file_frame.show()
-
-                report_result_ui.folder_button.clicked.connect(
-                    lambda: GeneralUtils.open_file_or_dir(process_result.file_dir)
-                )
-
-                report_result_ui.file_label.setText(
-                    f"Saved as: {process_result.file_name}"
-                )
-                report_result_ui.file_label.mousePressEvent = (
-                    lambda event: GeneralUtils.open_file_or_dir(
-                        process_result.file_path
-                    )
-                )
-            else:
-                report_result_ui.file_frame.hide()
-        else:
-            report_result_ui.report_type_label.setText("Target Reports")
-            report_result_ui.file_frame.hide()
-            report_result_ui.retry_frame.hide()
-
-        report_result_ui.success_label.setText(process_result.completion_status.value)
-        if completion_status == CompletionStatus.FAILED:
-            report_result_ui.retry_check_box.stateChanged.connect(
-                lambda checked_state: self.on_report_to_retry_toggled(
-                    checked_state, vendor, process_result.report_type
-                )
-            )
-        else:
-            report_result_ui.retry_frame.hide()
-
-        return report_result_widget
-
     def on_vendor_worker_finished(self, worker_id: str):
         """Handles the signal emmited when a vendor worker has finished
 
@@ -1329,6 +1277,7 @@ class FetchReportsAbstract:
         )
         for worker, thread in self.vendor_workers.values():
             worker.set_cancelling()
+
 
     def is_yearly_range(self, begin_date: QDate, end_date: QDate) -> bool:
         """Checks if a date range will retrieve all available reports for one year
@@ -1582,7 +1531,7 @@ class FetchReportsController(FetchReportsAbstract):
         if self.ir_master_report_checkbox.isChecked():
             self.major_report_type = MajorReportType.ITEM
             count += 1
-        
+
         self.get_checked_standard_reports_types_list()
 
         if len(self.standard_reports_types_list) > 0 or count != 1:
@@ -1726,7 +1675,6 @@ class FetchReportsController(FetchReportsAbstract):
             show_message("No master report type is selected.")
             is_yop_selected = False
             return
-        
 
         self.more_option_dialog = QMainWindow()
         self.more_option_dialog_ui = MoreOptionsMasterReport.Ui_MoreOptionsDialog()
@@ -2130,12 +2078,7 @@ class FetchReportsController(FetchReportsAbstract):
 
         self.total_processes = len(self.selected_data)
         self.started_processes = 0
-        concurrent_vendors = self.settings.concurrent_vendors
-        # concurrent_vendors = 2  # taking 2 as a temperory value
-        while (
-            self.started_processes < len(self.selected_data)
-            and self.started_processes < concurrent_vendors
-        ):
+        while self.started_processes < len(self.selected_data):
             request_data = self.selected_data[self.started_processes]
             self.fetch_vendor_data(request_data)
             self.started_processes += 1
@@ -2250,12 +2193,7 @@ class FetchReportsController(FetchReportsAbstract):
 
         self.total_processes = len(self.selected_data)
         self.started_processes = 0
-        concurrent_vendors = self.settings.concurrent_vendors
-        # concurrent_vendors = 2
-        while (
-            self.started_processes < len(self.selected_data)
-            and self.started_processes < concurrent_vendors
-        ):
+        while self.started_processes < len(self.selected_data):
             request_data = self.selected_data[self.started_processes]
             self.fetch_vendor_data(request_data)
             self.started_processes += 1
@@ -2282,8 +2220,6 @@ class VendorWorker(QObject):
         self.request_data = request_data
         self.vendor = request_data.vendor
         self.target_report_types = request_data.target_report_types
-        self.concurrent_reports = request_data.settings.concurrent_reports
-        # self.concurrent_reports = 2
         self.request_interval = request_data.settings.request_interval
         # self.request_interval = 10
         self.request_timeout = request_data.settings.request_timeout
@@ -2403,10 +2339,7 @@ class VendorWorker(QObject):
 
             self.total_processes = len(self.reports_to_process)
             self.started_processes = 0
-            while (
-                self.started_processes < self.total_processes
-                and self.started_processes < self.concurrent_reports
-            ):
+            while self.started_processes < self.total_processes:
                 QThread.currentThread().sleep(
                     self.request_interval
                 )  # Avoid spamming vendor's server
@@ -2557,6 +2490,7 @@ class ReportWorker(QObject):
         request_query["end_date"] = self.end_date.toString("yyyy-MM")
 
         attributes_to_show = ""
+        
         if self.is_special:
             attr_count = 0
             special_options_dict = self.special_options.__dict__
@@ -2642,6 +2576,7 @@ class ReportWorker(QObject):
                 self.save_json_file(json_string)
 
             json_dict = json.loads(json_string)
+
             report_model = ReportModel.from_json(json_dict)
             self.process_report_model(report_model)
             if len(report_model.report_items) > 0 or len(report_model.exceptions) > 0:
@@ -3222,6 +3157,7 @@ class ReportWorker(QObject):
         tsv_writer.writerow(["Reporting_Period", reporting_period_str.rstrip("; ")])
         tsv_writer.writerow(["Created", report_header.created])
         tsv_writer.writerow(["Created_By", report_header.created_by])
+        tsv_writer.writerow(["Registry_Record", report_header.registry_record])
         tsv_writer.writerow([])
 
     @staticmethod
@@ -3252,31 +3188,26 @@ class ReportWorker(QObject):
 
         if report_type == "PR":
             column_names += ["Platform"]
+            column_names.append("Data_Type")
             if is_special:
                 special_options_dict = special_options.__dict__
-                if special_options_dict["data_type"][0]:
-                    column_names.append("Data_Type")
                 if special_options_dict["access_method"][0]:
                     column_names.append("Access_Method")
             elif include_all_attributes:
-                column_names.append("Data_Type")
                 column_names.append("Access_Method")
 
             row: ReportRow
             for row in report_rows:
                 row_dict = {"Platform": row.platform}
+                row_dict["Data_Type"] = row.data_type
                 if is_special:
                     special_options_dict = special_options.__dict__
-                    if special_options_dict["data_type"][0]:
-                        row_dict["Data_Type"] = row.data_type
                     if special_options_dict["access_method"][0]:
                         row_dict["Access_Method"] = row.access_method
-
                     if not special_options_dict["exclude_monthly_details"][0]:
                         row_dict.update(row.month_counts)
                 else:
                     if include_all_attributes:
-                        row_dict["Data_Type"] = row.data_type
                         row_dict["Access_Method"] = row.access_method
                     row_dict.update(row.month_counts)
 
@@ -3290,21 +3221,23 @@ class ReportWorker(QObject):
 
         elif report_type == "PR_P1":
             column_names += ["Platform"]
+            column_names.append("Data_Type")
 
             row: ReportRow
             for row in report_rows:
                 row_dict = {
                     "Platform": row.platform,
+                    "Data_Type": row.data_type,
                     "Metric_Type": row.metric_type,
                     "Reporting_Period_Total": row.total_count,
                 }
                 row_dict.update(row.month_counts)
-
                 row_dicts.append(row_dict)
 
         elif report_type == "DR":
             column_names += [
                 "Database",
+                "Data_Type",
                 "Publisher",
                 "Publisher_ID",
                 "Platform",
@@ -3312,18 +3245,16 @@ class ReportWorker(QObject):
             ]
             if is_special:
                 special_options_dict = special_options.__dict__
-                if special_options_dict["data_type"][0]:
-                    column_names.append("Data_Type")
                 if special_options_dict["access_method"][0]:
                     column_names.append("Access_Method")
             elif include_all_attributes:
-                column_names.append("Data_Type")
                 column_names.append("Access_Method")
 
             row: ReportRow
             for row in report_rows:
                 row_dict = {
                     "Database": row.database,
+                    "Data_Type": row.data_type,
                     "Publisher": row.publisher,
                     "Publisher_ID": row.publisher_id,
                     "Platform": row.platform,
@@ -3332,8 +3263,6 @@ class ReportWorker(QObject):
 
                 if is_special:
                     special_options_dict = special_options.__dict__
-                    if special_options_dict["data_type"][0]:
-                        row_dict["Data_Type"] = row.data_type
                     if special_options_dict["access_method"][0]:
                         row_dict["Access_Method"] = row.access_method
 
@@ -3341,7 +3270,6 @@ class ReportWorker(QObject):
                         row_dict.update(row.month_counts)
                 else:
                     if include_all_attributes:
-                        row_dict["Data_Type"] = row.data_type
                         row_dict["Access_Method"] = row.access_method
                     row_dict.update(row.month_counts)
 
@@ -3389,11 +3317,10 @@ class ReportWorker(QObject):
                 "Print_ISSN",
                 "Online_ISSN",
                 "URI",
+                "Data_Type",
             ]
             if is_special:
                 special_options_dict = special_options.__dict__
-                if special_options_dict["data_type"][0]:
-                    column_names.append("Data_Type")
                 if special_options_dict["section_type"][0]:
                     column_names.append("Section_Type")
                 if is_yop_selected:
@@ -3404,7 +3331,6 @@ class ReportWorker(QObject):
                 if special_options_dict["access_method"][0]:
                     column_names.append("Access_Method")
             elif include_all_attributes:
-                column_names.append("Data_Type")
                 column_names.append("Section_Type")
                 column_names.append("YOP")
                 column_names.append("Access_Type")
@@ -3423,12 +3349,11 @@ class ReportWorker(QObject):
                     "Print_ISSN": row.print_issn,
                     "Online_ISSN": row.online_issn,
                     "URI": row.uri,
+                    "Data_Type": row.data_type,
                 }
 
                 if is_special:
                     special_options_dict = special_options.__dict__
-                    if special_options_dict["data_type"][0]:
-                        row_dict["Data_Type"] = row.data_type
                     if special_options_dict["section_type"][0]:
                         row_dict["Section_Type"] = row.section_type
                     if is_yop_selected:
@@ -3443,7 +3368,6 @@ class ReportWorker(QObject):
                         row_dict.update(row.month_counts)
                 else:
                     if include_all_attributes:
-                        row_dict["Data_Type"] = row.data_type
                         row_dict["Section_Type"] = row.section_type
                         row_dict["YOP"] = row.yop
                         row_dict["Access_Type"] = row.access_type
@@ -3470,6 +3394,7 @@ class ReportWorker(QObject):
                 "Print_ISSN",
                 "Online_ISSN",
                 "URI",
+                "Data_Type",
                 "YOP",
             ]
 
@@ -3486,6 +3411,7 @@ class ReportWorker(QObject):
                     "Print_ISSN": row.print_issn,
                     "Online_ISSN": row.online_issn,
                     "URI": row.uri,
+                    "Data_Type": row.data_type,
                     "YOP": row.yop,
                     "Metric_Type": row.metric_type,
                     "Reporting_Period_Total": row.total_count,
@@ -3506,6 +3432,7 @@ class ReportWorker(QObject):
                 "Print_ISSN",
                 "Online_ISSN",
                 "URI",
+                "Data_Type",
                 "YOP",
                 "Access_Type",
             ]
@@ -3523,6 +3450,7 @@ class ReportWorker(QObject):
                     "Print_ISSN": row.print_issn,
                     "Online_ISSN": row.online_issn,
                     "URI": row.uri,
+                    "Data_Type": row.data_type,
                     "YOP": row.yop,
                     "Access_Type": row.access_type,
                     "Metric_Type": row.metric_type,
@@ -3683,8 +3611,7 @@ class ReportWorker(QObject):
                         "Component_Online_ISSN",
                         "Component_URI",
                     ]
-                if special_options_dict["data_type"][0]:
-                    column_names.append("Data_Type")
+                column_names.append("Data_Type")
                 if is_yop_selected:
                     if special_options_dict["yop"][0]:
                         column_names.append("YOP")
@@ -3777,8 +3704,7 @@ class ReportWorker(QObject):
                                 "Component_URI": row.component_uri,
                             }
                         )
-                    if special_options_dict["data_type"][0]:
-                        row_dict["Data_Type"] = row.data_type
+                    row_dict["Data_Type"] = row.data_type
                     if is_yop_selected:
                         if special_options_dict["yop"][0]:
                             row_dict["YOP"] = row.yop
@@ -3902,6 +3828,7 @@ class ReportWorker(QObject):
                 "DOI",
                 "Proprietary_ID",
                 "URI",
+                "Data_Type",
             ]
 
             row: ReportRow
@@ -3914,6 +3841,7 @@ class ReportWorker(QObject):
                     "DOI": row.doi,
                     "Proprietary_ID": row.proprietary_id,
                     "URI": row.uri,
+                    "Data_Type": row.data_type,
                     "Metric_Type": row.metric_type,
                     "Reporting_Period_Total": row.total_count,
                 }

@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 from tracemalloc import start
 from typing import Sequence
@@ -5,7 +6,7 @@ from Constants import MONTHS, TSV_FILTER
 from Settings import SettingsModel
 import GeneralUtils
 from ui import SearchTab
-from PyQt5.QtCore import QObject
+from PyQt5.QtCore import QObject, QDate
 import ManageDB
 
 
@@ -19,8 +20,11 @@ class SearchController(QObject):
         self.search_edit = fetch_reports_ui.input_search_edit
         self.start_month_comboBox = fetch_reports_ui.start_month_comboBox
         self.start_year_edit = fetch_reports_ui.start_year_edit
+        self.start_year_edit.setDate(QDate(datetime.today().year - 1, 1, 1))
         self.end_month_comboBox = fetch_reports_ui.end_month_comboBox
         self.end_year_edit = fetch_reports_ui.end_year_edit
+        self.end_year_edit.setDate(QDate(datetime.today().year, 1, 1))
+
         self.search_btn = fetch_reports_ui.search_button
         self.save_btn = fetch_reports_ui.save_folder_button
         self.result_edit = fetch_reports_ui.result_summary_edit

@@ -21,8 +21,6 @@ class Setting(Enum):
     OTHER_DIR = 3
     REQUEST_INTERVAL = 4
     REQUEST_TIMEOUT = 5
-    CONCURRENT_VENDORS = 6
-    CONCURRENT_REPORTS = 7
     USER_AGENT = 8
 
 
@@ -36,8 +34,6 @@ class SettingsModel(JsonModel):
     :param other_directory: The default directory where non-yearly reports are saved.
     :param request_interval: The time to wait between each report request, per vendor.
     :param request_timeout: The time to wait before timing out a connection (seconds).
-    :param concurrent_vendors: The max number of vendors to work on at a time.
-    :param concurrent_reports: The max number of reports to work on at a time, per vendor.
     :param user_agent: The user-agent that's included in the header when making requests.
     """
 
@@ -49,8 +45,6 @@ class SettingsModel(JsonModel):
         other_directory: str,
         request_interval: int,
         request_timeout: int,
-        concurrent_vendors: int,
-        concurrent_reports: int,
         user_agent: str,
     ):
         self.yearly_directory = path.abspath(yearly_directory) + path.sep
@@ -59,8 +53,6 @@ class SettingsModel(JsonModel):
         self.vendors_location = path.abspath(vendors_location)
         self.request_interval = request_interval
         self.request_timeout = request_timeout
-        self.concurrent_vendors = concurrent_vendors
-        self.concurrent_reports = concurrent_reports
         self.user_agent = user_agent
 
     @classmethod
@@ -107,16 +99,6 @@ class SettingsModel(JsonModel):
             if "request_timeout" in json_dict
             else REQUEST_TIMEOUT
         )
-        concurrent_vendors = (
-            int(json_dict["concurrent_vendors"])
-            if "concurrent_vendors" in json_dict
-            else CONCURRENT_VENDORS
-        )
-        concurrent_reports = (
-            int(json_dict["concurrent_reports"])
-            if "concurrent_reports" in json_dict
-            else CONCURRENT_REPORTS
-        )
         user_agent = (
             json_dict["user_agent"] if "user_agent" in json_dict else USER_AGENT
         )
@@ -128,8 +110,6 @@ class SettingsModel(JsonModel):
             other_directory,
             request_interval,
             request_timeout,
-            concurrent_vendors,
-            concurrent_reports,
             user_agent,
         )
 
@@ -162,8 +142,6 @@ class SettingsController(QObject):
         self.dir_type_comboBox = settings_ui.directory_type_comboBox
         self.request_interval_spin_box = settings_ui.request_interval_spin_box
         self.request_timeout_spin_box = settings_ui.request_timeout_spin_box
-        self.concurrent_vendors_spin_box = settings_ui.concurrent_vendors_spin_box
-        self.concurrent_reports_spin_box = settings_ui.concurrent_reports_spin_box
         self.user_agent_edit = settings_ui.user_agent_edit
 
         self.dir_edit.setText(self.settings.database_location)
@@ -171,8 +149,6 @@ class SettingsController(QObject):
         self.dir_type_comboBox.currentIndexChanged.connect(self.update_dir_edit)
         self.request_interval_spin_box.setValue(self.settings.request_interval)
         self.request_timeout_spin_box.setValue(self.settings.request_timeout)
-        self.concurrent_vendors_spin_box.setValue(self.settings.concurrent_vendors)
-        self.concurrent_reports_spin_box.setValue(self.settings.concurrent_reports)
         self.user_agent_edit.setText(self.settings.user_agent)
 
         settings_ui.select_directory_button.clicked.connect(
@@ -272,8 +248,6 @@ class SettingsController(QObject):
 
         self.settings.request_interval = self.request_interval_spin_box.value()
         self.settings.request_timeout = self.request_timeout_spin_box.value()
-        self.settings.concurrent_vendors = self.concurrent_vendors_spin_box.value()
-        self.settings.concurrent_reports = self.concurrent_reports_spin_box.value()
         self.settings.user_agent = self.user_agent_edit.text()
 
     def save_settings_to_disk(self):

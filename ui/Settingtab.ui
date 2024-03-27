@@ -115,415 +115,6 @@ padding: 10px;
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout">
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_5">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>The maximum number of reports to work on at the same time. If set too high, the UI might freeze while fetching reports but the fetching process will continue.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">Border:none;
-font-size: 13px;</string>
-             </property>
-             <property name="text">
-              <string>Concurrent reports</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_3">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>The number of seconds the program will allow a vendor to respond to each report request before cancelling it.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">Border:none;
-font-size: 13px;</string>
-             </property>
-             <property name="text">
-              <string>Request timeout</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>The number of seconds the program will wait between sending each report request to a given vendor.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">Border:none;
-font-size: 13px;</string>
-             </property>
-             <property name="text">
-              <string>Report request interval</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_4">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>Can change if you find the load on your desktop is too high</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">Border:none;
-font-size: 13px;</string>
-             </property>
-             <property name="text">
-              <string>Concurrent vendors</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. </string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">Border:none;
-font-size: 13px;</string>
-             </property>
-             <property name="text">
-              <string>User agent</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_7">
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>We can set where to save search database, vendor data file and yearly reports here</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">Border:none;
-font-size: 13px;</string>
-             </property>
-             <property name="text">
-              <string>Data folders directories</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1" colspan="3">
-            <widget class="QSpinBox" name="concurrent_reports_spin_box">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-background-color: #2E2F30;
-    border: 2px solid #808080;
-    border-radius: 4px;
-    padding-left: 5px;
-	padding: 4px;
-font-size: 14px;
-padding-left: 6px;
-}
-
-QSpinBox::up-button, QSpinBox::down-button {
-    border: none;
-    padding-right: 5px;
-}
-
-QSpinBox::up-button {
-    subcontrol-position: top right;
-}
-
-QSpinBox::down-button {
-    subcontrol-position: bottom right;
-}
-
-QSpinBox::up-arrow, QSpinBox::down-arrow {
-    border: 5px solid rgba(255, 255, 255, 0);
-    width: 0;
-    height: 0;
-}
-
-QSpinBox::up-arrow {
-    border-top: none;
-    border-bottom-color: white;
-}
-
-QSpinBox::down-arrow {
-    border-bottom: none;
-    border-top-color: white;
-}</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1" colspan="3">
-            <widget class="QSpinBox" name="concurrent_vendors_spin_box">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-background-color: #2E2F30;
-    border: 2px solid #808080;
-    border-radius: 4px;
-    padding-left: 5px;
-	padding: 4px;
-font-size: 14px;
-padding-left: 6px;
-}
-
-QSpinBox::up-button, QSpinBox::down-button {
-    border: none;
-    padding-right: 5px;
-}
-
-QSpinBox::up-button {
-    subcontrol-position: top right;
-}
-
-QSpinBox::down-button {
-    subcontrol-position: bottom right;
-}
-
-QSpinBox::up-arrow, QSpinBox::down-arrow {
-    border: 5px solid rgba(255, 255, 255, 0);
-    width: 0;
-    height: 0;
-}
-
-QSpinBox::up-arrow {
-    border-top: none;
-    border-bottom-color: white;
-}
-
-QSpinBox::down-arrow {
-    border-bottom: none;
-    border-top-color: white;
-}</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1" colspan="3">
-            <widget class="QSpinBox" name="request_timeout_spin_box">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-background-color: #2E2F30;
-    border: 2px solid #808080;
-    border-radius: 4px;
-    padding-left: 5px;
-	padding: 4px;
-font-size: 14px;
-padding-left: 6px;
-}
-
-QSpinBox::up-button, QSpinBox::down-button {
-    border: none;
-    padding-right: 5px;
-}
-
-QSpinBox::up-button {
-    subcontrol-position: top right;
-}
-
-QSpinBox::down-button {
-    subcontrol-position: bottom right;
-}
-
-QSpinBox::up-arrow, QSpinBox::down-arrow {
-    border: 5px solid rgba(255, 255, 255, 0);
-    width: 0;
-    height: 0;
-}
-
-QSpinBox::up-arrow {
-    border-top: none;
-    border-bottom-color: white;
-}
-
-QSpinBox::down-arrow {
-    border-bottom: none;
-    border-top-color: white;
-}</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1" colspan="3">
-            <widget class="QLineEdit" name="user_agent_edit">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-background-color: #2E2F30;
-    border: 2px solid #808080;
-    border-radius: 4px;
-    padding-left: 5px;
-	padding: 4px;
-font-size: 14px;
-padding-left: 6px;
-}</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="3">
-            <widget class="QSpinBox" name="request_interval_spin_box">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QSpinBox {
-background-color: #2E2F30;
-    border: 2px solid #808080;
-    border-radius: 4px;
-    padding-left: 5px;
-	padding: 4px;
-font-size: 14px;
-padding-left: 6px;
-}
-
-QSpinBox::up-button, QSpinBox::down-button {
-    border: none;
-    padding-right: 5px;
-}
-
-QSpinBox::up-button {
-    subcontrol-position: top right;
-}
-
-QSpinBox::down-button {
-    subcontrol-position: bottom right;
-}
-
-QSpinBox::up-arrow, QSpinBox::down-arrow {
-    border: 5px solid rgba(255, 255, 255, 0);
-    width: 0;
-    height: 0;
-}
-
-QSpinBox::up-arrow {
-    border-top: none;
-    border-bottom-color: white;
-}
-
-QSpinBox::down-arrow {
-    border-bottom: none;
-    border-top-color: white;
-}</string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QLineEdit" name="directory_edit">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Georgia</family>
-               <pointsize>-1</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-    color: white; 
-	background-color: #2E2F30;
-	padding: 4px;
-font-size: 13px;
-padding-left: 6px;
-}
-</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="4" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
             <widget class="QPushButton" name="select_directory_button">
              <property name="minimumSize">
@@ -628,6 +219,257 @@ QComboBox QAbstractItemView {
                <string>Other reports</string>
               </property>
              </item>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="3">
+            <widget class="QSpinBox" name="request_interval_spin_box">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
+background-color: #2E2F30;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    padding-left: 5px;
+	padding: 4px;
+font-size: 14px;
+padding-left: 6px;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+    border: none;
+    padding-right: 5px;
+}
+
+QSpinBox::up-button {
+    subcontrol-position: top right;
+}
+
+QSpinBox::down-button {
+    subcontrol-position: bottom right;
+}
+
+QSpinBox::up-arrow, QSpinBox::down-arrow {
+    border: 5px solid rgba(255, 255, 255, 0);
+    width: 0;
+    height: 0;
+}
+
+QSpinBox::up-arrow {
+    border-top: none;
+    border-bottom-color: white;
+}
+
+QSpinBox::down-arrow {
+    border-bottom: none;
+    border-top-color: white;
+}</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="3">
+            <widget class="QLineEdit" name="user_agent_edit">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+background-color: #2E2F30;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    padding-left: 5px;
+	padding: 4px;
+font-size: 14px;
+padding-left: 6px;
+}</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>How program identifies itself to the SUSHI servers. Some vendors will reject some particular user agents. Only change this if there is a known problem as it will affect all requests to all vendors. </string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">Border:none;
+font-size: 13px;</string>
+             </property>
+             <property name="text">
+              <string>User agent</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="3">
+            <widget class="QSpinBox" name="request_timeout_spin_box">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
+background-color: #2E2F30;
+    border: 2px solid #808080;
+    border-radius: 4px;
+    padding-left: 5px;
+	padding: 4px;
+font-size: 14px;
+padding-left: 6px;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+    border: none;
+    padding-right: 5px;
+}
+
+QSpinBox::up-button {
+    subcontrol-position: top right;
+}
+
+QSpinBox::down-button {
+    subcontrol-position: bottom right;
+}
+
+QSpinBox::up-arrow, QSpinBox::down-arrow {
+    border: 5px solid rgba(255, 255, 255, 0);
+    width: 0;
+    height: 0;
+}
+
+QSpinBox::up-arrow {
+    border-top: none;
+    border-bottom-color: white;
+}
+
+QSpinBox::down-arrow {
+    border-bottom: none;
+    border-top-color: white;
+}</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>The number of seconds the program will wait between sending each report request to a given vendor.</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">Border:none;
+font-size: 13px;</string>
+             </property>
+             <property name="text">
+              <string>Report request interval</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLineEdit" name="directory_edit">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    color: white; 
+	background-color: #2E2F30;
+	padding: 4px;
+font-size: 13px;
+padding-left: 6px;
+}
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>We can set where to save search database, vendor data file and yearly reports here</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">Border:none;
+font-size: 13px;</string>
+             </property>
+             <property name="text">
+              <string>Data folders directories</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="font">
+              <font>
+               <family>Georgia</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>The number of seconds the program will allow a vendor to respond to each report request before cancelling it.</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">Border:none;
+font-size: 13px;</string>
+             </property>
+             <property name="text">
+              <string>Request timeout</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -764,8 +606,6 @@ cursor: pointer;
   <tabstop>select_directory_button</tabstop>
   <tabstop>request_interval_spin_box</tabstop>
   <tabstop>request_timeout_spin_box</tabstop>
-  <tabstop>concurrent_vendors_spin_box</tabstop>
-  <tabstop>concurrent_reports_spin_box</tabstop>
   <tabstop>user_agent_edit</tabstop>
   <tabstop>save_button</tabstop>
   <tabstop>settings_rebuild_database_button</tabstop>
