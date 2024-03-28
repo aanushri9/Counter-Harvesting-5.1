@@ -67,6 +67,7 @@ import subprocess
 current_file_path = os.path.abspath(__file__)
 directory_path = os.path.dirname(current_file_path)
 is_yop_selected = False
+curr_version = "5.1"
 
 
 # region Models
@@ -1278,7 +1279,6 @@ class FetchReportsAbstract:
         for worker, thread in self.vendor_workers.values():
             worker.set_cancelling()
 
-
     def is_yearly_range(self, begin_date: QDate, end_date: QDate) -> bool:
         """Checks if a date range will retrieve all available reports for one year
 
@@ -1545,7 +1545,9 @@ class FetchReportsController(FetchReportsAbstract):
     def update_vendors_ui(self, version: str):
         """Updates the UI to show vendors that support report fetching (SUSHI)"""
         self.vendor_list_model.clear()
+        global curr_version
         if version == "5.1":
+            curr_version = "5.1"
             for vendor in self.vendors_v51:
                 self.curr_version = "5.1"
                 self.version_51_btn.setStyleSheet(
@@ -1577,6 +1579,7 @@ class FetchReportsController(FetchReportsAbstract):
                 item.setEditable(False)
                 self.vendor_list_model.appendRow(item)
         else:
+            curr_version = "5.0"
             for vendor in self.vendors_v50:
                 self.curr_version = "5.0"
                 self.version_50_btn.setStyleSheet(
@@ -2156,21 +2159,11 @@ class FetchReportsController(FetchReportsAbstract):
                 GeneralUtils.show_message("No report type selected")
                 return
             self.save_dir = custom_dir if custom_dir else self.settings.other_directory
-            # self.save_dir = (
-            #     custom_dir
-            #     if custom_dir
-            #     else f"{directory_path}/all_data/selected_reports/"
-            # )
             self.selected_options = None
         else:
             # do the fetch with special options
             selected_report_types = [self.major_report_type.value]
             self.save_dir = custom_dir if custom_dir else self.settings.other_directory
-            # self.save_dir = (
-            #     custom_dir
-            #     if custom_dir
-            #     else f"{directory_path}/all_data/special_reports/"
-            # )
 
         for i in range(self.vendor_list_model.rowCount()):
             if self.vendor_list_model.item(i).checkState() == Qt.Checked:
@@ -2490,7 +2483,7 @@ class ReportWorker(QObject):
         request_query["end_date"] = self.end_date.toString("yyyy-MM")
 
         attributes_to_show = ""
-        
+
         if self.is_special:
             attr_count = 0
             special_options_dict = self.special_options.__dict__
@@ -2539,6 +2532,10 @@ class ReportWorker(QObject):
 
         request_url = f"{self.vendor.base_url}/{self.report_type.lower()}"
 
+        logging.info(
+            f"Requesting {self.vendor.name} {self.report_type} report \n Request URL: {request_url} \n Request Query: {request_query} \n headers: User-Agent: {self.user_agent} \n timeout: {self.request_timeout} ... \n"
+        )
+
         try:
             # Some vendors only work if they think a web browser is making the request...
             response = requests.get(
@@ -2562,6 +2559,7 @@ class ReportWorker(QObject):
         except requests.exceptions.RequestException as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"Request Exception: {e}"
+        
 
     def process_response(self, response: requests.Response):
         """Processes the response from a request
@@ -3157,7 +3155,9 @@ class ReportWorker(QObject):
         tsv_writer.writerow(["Reporting_Period", reporting_period_str.rstrip("; ")])
         tsv_writer.writerow(["Created", report_header.created])
         tsv_writer.writerow(["Created_By", report_header.created_by])
-        tsv_writer.writerow(["Registry_Record", report_header.registry_record])
+        global curr_version
+        if curr_version == "5.1":
+            tsv_writer.writerow(["Registry_Record", report_header.registry_record])
         tsv_writer.writerow([])
 
     @staticmethod
@@ -3184,30 +3184,40 @@ class ReportWorker(QObject):
         """
         column_names = []
         row_dicts = []
-        global is_yop_selected
+        global is_yop_selected, curr_version
 
         if report_type == "PR":
             column_names += ["Platform"]
-            column_names.append("Data_Type")
+            if curr_version == "5.1":
+                column_names.append("Data_Type")
             if is_special:
                 special_options_dict = special_options.__dict__
+                if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                    column_names.append("Data_Type")
                 if special_options_dict["access_method"][0]:
                     column_names.append("Access_Method")
             elif include_all_attributes:
+                if curr_version == "5.0":
+                    column_names.append("Data_Type")
                 column_names.append("Access_Method")
 
             row: ReportRow
             for row in report_rows:
                 row_dict = {"Platform": row.platform}
-                row_dict["Data_Type"] = row.data_type
+                if curr_version == "5.1":
+                    row_dict["Data_Type"] = row.data_type
                 if is_special:
                     special_options_dict = special_options.__dict__
+                    if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                        row_dict["Data_Type"] = row.data_type
                     if special_options_dict["access_method"][0]:
                         row_dict["Access_Method"] = row.access_method
                     if not special_options_dict["exclude_monthly_details"][0]:
                         row_dict.update(row.month_counts)
                 else:
                     if include_all_attributes:
+                        if curr_version == "5.0":
+                            row_dict["Data_Type"] = row.data_type
                         row_dict["Access_Method"] = row.access_method
                     row_dict.update(row.month_counts)
 
@@ -3221,48 +3231,80 @@ class ReportWorker(QObject):
 
         elif report_type == "PR_P1":
             column_names += ["Platform"]
-            column_names.append("Data_Type")
+            if curr_version == "5.1":
+                column_names.append("Data_Type")
 
             row: ReportRow
             for row in report_rows:
-                row_dict = {
-                    "Platform": row.platform,
-                    "Data_Type": row.data_type,
-                    "Metric_Type": row.metric_type,
-                    "Reporting_Period_Total": row.total_count,
-                }
+                if curr_version == "5.0":
+                    row_dict = {
+                        "Platform": row.platform,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
+                else:
+                    row_dict = {
+                        "Platform": row.platform,
+                        "Data_Type": row.data_type,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
                 row_dict.update(row.month_counts)
                 row_dicts.append(row_dict)
 
         elif report_type == "DR":
-            column_names += [
-                "Database",
-                "Data_Type",
-                "Publisher",
-                "Publisher_ID",
-                "Platform",
-                "Proprietary_ID",
-            ]
+            if curr_version == "5.1":
+                column_names += [
+                    "Database",
+                    "Data_Type",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "Proprietary_ID",
+                ]
+            else:
+                column_names += [
+                    "Database",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "Proprietary_ID",
+                ]
             if is_special:
                 special_options_dict = special_options.__dict__
+                if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                    column_names.append("Data_Type")
                 if special_options_dict["access_method"][0]:
                     column_names.append("Access_Method")
             elif include_all_attributes:
+                if curr_version == "5.0":
+                    column_names.append("Data_Type")
                 column_names.append("Access_Method")
 
             row: ReportRow
             for row in report_rows:
-                row_dict = {
-                    "Database": row.database,
-                    "Data_Type": row.data_type,
-                    "Publisher": row.publisher,
-                    "Publisher_ID": row.publisher_id,
-                    "Platform": row.platform,
-                    "Proprietary_ID": row.proprietary_id,
-                }
+                if curr_version == "5.1":
+                    row_dict = {
+                        "Database": row.database,
+                        "Data_Type": row.data_type,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "Proprietary_ID": row.proprietary_id,
+                    }
+                else:
+                    row_dict = {
+                        "Database": row.database,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "Proprietary_ID": row.proprietary_id,
+                    }
 
                 if is_special:
                     special_options_dict = special_options.__dict__
+                    if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                        row_dict["Data_Type"] = row.data_type
                     if special_options_dict["access_method"][0]:
                         row_dict["Access_Method"] = row.access_method
 
@@ -3270,6 +3312,8 @@ class ReportWorker(QObject):
                         row_dict.update(row.month_counts)
                 else:
                     if include_all_attributes:
+                        if curr_version == "5.0":
+                            row_dict["Data_Type"] = row.data_type
                         row_dict["Access_Method"] = row.access_method
                     row_dict.update(row.month_counts)
 
@@ -3282,6 +3326,7 @@ class ReportWorker(QObject):
                 row_dicts.append(row_dict)
 
         elif report_type == "DR_D1" or report_type == "DR_D2":
+
             column_names += [
                 "Database",
                 "Publisher",
@@ -3302,26 +3347,41 @@ class ReportWorker(QObject):
                     "Reporting_Period_Total": row.total_count,
                 }
                 row_dict.update(row.month_counts)
-
                 row_dicts.append(row_dict)
 
         elif report_type == "TR":
-            column_names += [
-                "Title",
-                "Publisher",
-                "Publisher_ID",
-                "Platform",
-                "DOI",
-                "Proprietary_ID",
-                "ISBN",
-                "Print_ISSN",
-                "Online_ISSN",
-                "URI",
-                "Data_Type",
-            ]
+            if curr_version == "5.1":
+                column_names += [
+                    "Title",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "ISBN",
+                    "Print_ISSN",
+                    "Online_ISSN",
+                    "URI",
+                    "Data_Type",
+                ]
+            else:
+                column_names += [
+                    "Title",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "ISBN",
+                    "Print_ISSN",
+                    "Online_ISSN",
+                    "URI",
+                ]
             if is_special:
                 special_options_dict = special_options.__dict__
-                if special_options_dict["section_type"][0]:
+                if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                    column_names.append("Data_type")
+                if curr_version == "5.0" and special_options_dict["section_type"][0]:
                     column_names.append("Section_Type")
                 if is_yop_selected:
                     if special_options_dict["yop"][0]:
@@ -3331,30 +3391,48 @@ class ReportWorker(QObject):
                 if special_options_dict["access_method"][0]:
                     column_names.append("Access_Method")
             elif include_all_attributes:
-                column_names.append("Section_Type")
+                if curr_version == "5.0":
+                    column_names.append("Data_Type")
+                    column_names.append("Section_Type")
                 column_names.append("YOP")
                 column_names.append("Access_Type")
                 column_names.append("Access_Method")
 
             row: ReportRow
             for row in report_rows:
-                row_dict = {
-                    "Title": row.title,
-                    "Publisher": row.publisher,
-                    "Publisher_ID": row.publisher_id,
-                    "Platform": row.platform,
-                    "DOI": row.doi,
-                    "Proprietary_ID": row.proprietary_id,
-                    "ISBN": row.isbn,
-                    "Print_ISSN": row.print_issn,
-                    "Online_ISSN": row.online_issn,
-                    "URI": row.uri,
-                    "Data_Type": row.data_type,
-                }
+                if curr_version == "5.1":
+                    row_dict = {
+                        "Title": row.title,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "ISBN": row.isbn,
+                        "Print_ISSN": row.print_issn,
+                        "Online_ISSN": row.online_issn,
+                        "URI": row.uri,
+                        "Data_Type": row.data_type,
+                    }
+                else:
+                    row_dict = {
+                        "Title": row.title,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "ISBN": row.isbn,
+                        "Print_ISSN": row.print_issn,
+                        "Online_ISSN": row.online_issn,
+                        "URI": row.uri,
+                    }
 
                 if is_special:
                     special_options_dict = special_options.__dict__
-                    if special_options_dict["section_type"][0]:
+                    if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                        row_dict["Data_Type"] = row.data_type
+                    if curr_version == "5.0" and special_options_dict["section_type"][0]:
                         row_dict["Section_Type"] = row.section_type
                     if is_yop_selected:
                         if special_options_dict["yop"][0]:
@@ -3368,7 +3446,9 @@ class ReportWorker(QObject):
                         row_dict.update(row.month_counts)
                 else:
                     if include_all_attributes:
-                        row_dict["Section_Type"] = row.section_type
+                        if curr_version == "5.0":
+                            row_dict["Data_Type"] = row.data_type
+                            row_dict["Section_Type"] = row.section_type
                         row_dict["YOP"] = row.yop
                         row_dict["Access_Type"] = row.access_type
                         row_dict["Access_Method"] = row.access_method
@@ -3383,81 +3463,146 @@ class ReportWorker(QObject):
                 row_dicts.append(row_dict)
 
         elif report_type == "TR_B1" or report_type == "TR_B2":
-            column_names += [
-                "Title",
-                "Publisher",
-                "Publisher_ID",
-                "Platform",
-                "DOI",
-                "Proprietary_ID",
-                "ISBN",
-                "Print_ISSN",
-                "Online_ISSN",
-                "URI",
-                "Data_Type",
-                "YOP",
-            ]
+            if curr_version == "5.1":
+                column_names += [
+                    "Title",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "ISBN",
+                    "Print_ISSN",
+                    "Online_ISSN",
+                    "URI",
+                    "Data_Type",
+                    "YOP",
+                ]
+            else:
+                column_names += [
+                    "Title",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "ISBN",
+                    "Print_ISSN",
+                    "Online_ISSN",
+                    "URI",
+                    "YOP",
+                ]
 
             row: ReportRow
             for row in report_rows:
-                row_dict = {
-                    "Title": row.title,
-                    "Publisher": row.publisher,
-                    "Publisher_ID": row.publisher_id,
-                    "Platform": row.platform,
-                    "DOI": row.doi,
-                    "Proprietary_ID": row.proprietary_id,
-                    "ISBN": row.isbn,
-                    "Print_ISSN": row.print_issn,
-                    "Online_ISSN": row.online_issn,
-                    "URI": row.uri,
-                    "Data_Type": row.data_type,
-                    "YOP": row.yop,
-                    "Metric_Type": row.metric_type,
-                    "Reporting_Period_Total": row.total_count,
-                }
+                if curr_version == "5.1":
+                    row_dict = {
+                        "Title": row.title,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "ISBN": row.isbn,
+                        "Print_ISSN": row.print_issn,
+                        "Online_ISSN": row.online_issn,
+                        "URI": row.uri,
+                        "Data_Type": row.data_type,
+                        "YOP": row.yop,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
+                else:
+                    row_dict = {
+                        "Title": row.title,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "ISBN": row.isbn,
+                        "Print_ISSN": row.print_issn,
+                        "Online_ISSN": row.online_issn,
+                        "URI": row.uri,
+                        "YOP": row.yop,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
                 row_dict.update(row.month_counts)
 
                 row_dicts.append(row_dict)
 
         elif report_type == "TR_B3":
-            column_names += [
-                "Title",
-                "Publisher",
-                "Publisher_ID",
-                "Platform",
-                "DOI",
-                "Proprietary_ID",
-                "ISBN",
-                "Print_ISSN",
-                "Online_ISSN",
-                "URI",
-                "Data_Type",
-                "YOP",
-                "Access_Type",
-            ]
+            if curr_version == "5.1":
+                column_names += [
+                    "Title",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "ISBN",
+                    "Print_ISSN",
+                    "Online_ISSN",
+                    "URI",
+                    "Data_Type",
+                    "YOP",
+                    "Access_Type",
+                ]
+            else :
+                column_names += [
+                    "Title",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "ISBN",
+                    "Print_ISSN",
+                    "Online_ISSN",
+                    "URI",
+                    "YOP",
+                    "Access_Type",
+                ]
 
             row: ReportRow
             for row in report_rows:
-                row_dict = {
-                    "Title": row.title,
-                    "Publisher": row.publisher,
-                    "Publisher_ID": row.publisher_id,
-                    "Platform": row.platform,
-                    "DOI": row.doi,
-                    "Proprietary_ID": row.proprietary_id,
-                    "ISBN": row.isbn,
-                    "Print_ISSN": row.print_issn,
-                    "Online_ISSN": row.online_issn,
-                    "URI": row.uri,
-                    "Data_Type": row.data_type,
-                    "YOP": row.yop,
-                    "Access_Type": row.access_type,
-                    "Metric_Type": row.metric_type,
-                    "Reporting_Period_Total": row.total_count,
-                }
+                if curr_version == "5.1":
+                    row_dict = {
+                        "Title": row.title,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "ISBN": row.isbn,
+                        "Print_ISSN": row.print_issn,
+                        "Online_ISSN": row.online_issn,
+                        "URI": row.uri,
+                        "Data_Type": row.data_type,
+                        "YOP": row.yop,
+                        "Access_Type": row.access_type,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
+                else:
+                    row_dict = {
+                        "Title": row.title,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "ISBN": row.isbn,
+                        "Print_ISSN": row.print_issn,
+                        "Online_ISSN": row.online_issn,
+                        "URI": row.uri,
+                        "YOP": row.yop,
+                        "Access_Type": row.access_type,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
                 row_dict.update(row.month_counts)
-
                 row_dicts.append(row_dict)
 
         elif report_type == "TR_J1" or report_type == "TR_J2":
@@ -3611,7 +3756,10 @@ class ReportWorker(QObject):
                         "Component_Online_ISSN",
                         "Component_URI",
                     ]
-                column_names.append("Data_Type")
+                if curr_version == "5.1":
+                    column_names.append("Data_Type")
+                if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                    column_names.append("Data_Type")
                 if is_yop_selected:
                     if special_options_dict["yop"][0]:
                         column_names.append("YOP")
@@ -3704,7 +3852,10 @@ class ReportWorker(QObject):
                                 "Component_URI": row.component_uri,
                             }
                         )
-                    row_dict["Data_Type"] = row.data_type
+                    if curr_version == "5.1":
+                        row_dict["Data_Type"] = row.data_type
+                    if curr_version == "5.0" and special_options_dict["data_type"][0]:
+                        row_dict["Data_Type"] = row.data_type
                     if is_yop_selected:
                         if special_options_dict["yop"][0]:
                             row_dict["YOP"] = row.yop
@@ -3820,31 +3971,55 @@ class ReportWorker(QObject):
                 row_dicts.append(row_dict)
 
         elif report_type == "IR_M1":
-            column_names += [
-                "Item",
-                "Publisher",
-                "Publisher_ID",
-                "Platform",
-                "DOI",
-                "Proprietary_ID",
-                "URI",
-                "Data_Type",
-            ]
+            if curr_version == "5.1":
+                column_names += [
+                    "Item",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "URI",
+                    "Data_Type",
+                ]
+            else:
+                column_names += [
+                    "Item",
+                    "Publisher",
+                    "Publisher_ID",
+                    "Platform",
+                    "DOI",
+                    "Proprietary_ID",
+                    "URI",
+                ]
 
             row: ReportRow
             for row in report_rows:
-                row_dict = {
-                    "Item": row.item,
-                    "Publisher": row.publisher,
-                    "Publisher_ID": row.publisher_id,
-                    "Platform": row.platform,
-                    "DOI": row.doi,
-                    "Proprietary_ID": row.proprietary_id,
-                    "URI": row.uri,
-                    "Data_Type": row.data_type,
-                    "Metric_Type": row.metric_type,
-                    "Reporting_Period_Total": row.total_count,
-                }
+                if curr_version == "5.1":
+                    row_dict = {
+                        "Item": row.item,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "URI": row.uri,
+                        "Data_Type": row.data_type,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
+                else:
+                    row_dict = {
+                        "Item": row.item,
+                        "Publisher": row.publisher,
+                        "Publisher_ID": row.publisher_id,
+                        "Platform": row.platform,
+                        "DOI": row.doi,
+                        "Proprietary_ID": row.proprietary_id,
+                        "URI": row.uri,
+                        "Metric_Type": row.metric_type,
+                        "Reporting_Period_Total": row.total_count,
+                    }
                 row_dict.update(row.month_counts)
 
                 row_dicts.append(row_dict)
