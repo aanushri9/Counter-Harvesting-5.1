@@ -38,7 +38,7 @@ class Ui_SettingTab(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
+"border-botton-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -54,7 +54,7 @@ class Ui_SettingTab(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         font.setBold(True)
         self.label.setFont(font)
         self.label.setStyleSheet("font-size: 16px;")
@@ -65,7 +65,7 @@ class Ui_SettingTab(object):
         self.label_9 = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         font.setBold(True)
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("font-size: 15px;")
@@ -116,7 +116,7 @@ class Ui_SettingTab(object):
         self.directory_type_comboBox.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.directory_type_comboBox.setFont(font)
         self.directory_type_comboBox.setStyleSheet("\n"
 "QComboBox {\n"
@@ -147,7 +147,7 @@ class Ui_SettingTab(object):
         self.request_interval_spin_box.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.request_interval_spin_box.setFont(font)
         self.request_interval_spin_box.setStyleSheet("QSpinBox {\n"
 "background-color: #2E2F30;\n"
@@ -194,7 +194,7 @@ class Ui_SettingTab(object):
         self.user_agent_edit.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.user_agent_edit.setFont(font)
         self.user_agent_edit.setStyleSheet("QLineEdit {\n"
 "background-color: #2E2F30;\n"
@@ -210,7 +210,7 @@ class Ui_SettingTab(object):
         self.label_6 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("Border:none;\n"
 "font-size: 13px;")
@@ -220,7 +220,7 @@ class Ui_SettingTab(object):
         self.request_timeout_spin_box.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.request_timeout_spin_box.setFont(font)
         self.request_timeout_spin_box.setStyleSheet("QSpinBox {\n"
 "background-color: #2E2F30;\n"
@@ -266,7 +266,7 @@ class Ui_SettingTab(object):
         self.label_2 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet("Border:none;\n"
 "font-size: 13px;")
@@ -276,7 +276,7 @@ class Ui_SettingTab(object):
         self.directory_edit.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.directory_edit.setFont(font)
         self.directory_edit.setStyleSheet("QLineEdit {\n"
 "    color: white; \n"
@@ -291,7 +291,7 @@ class Ui_SettingTab(object):
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.label_7.setFont(font)
         self.label_7.setStyleSheet("Border:none;\n"
 "font-size: 13px;")
@@ -300,7 +300,7 @@ class Ui_SettingTab(object):
         self.label_3 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.label_3.setFont(font)
         self.label_3.setStyleSheet("Border:none;\n"
 "font-size: 13px;")
@@ -315,7 +315,7 @@ class Ui_SettingTab(object):
         self.save_button = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setItalic(False)
         self.save_button.setFont(font)
@@ -331,7 +331,7 @@ class Ui_SettingTab(object):
 "\n"
 "QPushButton:hover{\n"
 " background-color: #2095E6;\n"
-
+"cursor: pointer;\n"
 "}\n"
 "\n"
 "")
@@ -344,7 +344,7 @@ class Ui_SettingTab(object):
         self.settings_rebuild_database_button = QtWidgets.QPushButton(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         font.setBold(True)
         font.setItalic(False)
         self.settings_rebuild_database_button.setFont(font)
@@ -360,7 +360,7 @@ class Ui_SettingTab(object):
 "\n"
 "QPushButton:hover{\n"
 " background-color: #2095E6;\n"
-
+"cursor: pointer;\n"
 "}\n"
 "\n"
 "")

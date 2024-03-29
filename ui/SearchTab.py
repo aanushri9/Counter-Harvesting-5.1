@@ -39,7 +39,7 @@ class Ui_Search(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
+"border-botton-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -358,7 +358,7 @@ class Ui_Search(object):
         self.input_search_edit.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(1)
+        font.setPointSize(-1)
         self.input_search_edit.setFont(font)
         self.input_search_edit.setStyleSheet("QLineEdit {\n"
 "    color: white;\n"
@@ -419,7 +419,7 @@ class Ui_Search(object):
 "\n"
 "QPushButton:hover{\n"
 " background-color: #2095E6;\n"
-
+"cursor: pointer;\n"
 "}\n"
 "\n"
 "")
@@ -449,7 +449,7 @@ class Ui_Search(object):
 "\n"
 "QPushButton:hover{\n"
 " background-color: #2095E6;\n"
-
+"cursor: pointer;\n"
 "}\n"
 "\n"
 "")

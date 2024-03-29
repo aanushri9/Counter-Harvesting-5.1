@@ -48,7 +48,7 @@ class Ui_mainWindow(object):
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
-        mainWindow.setWindowTitle(_translate("mainWindow", "COUNTER 5 Report Tool"))
+        mainWindow.setWindowTitle(_translate("mainWindow", "COUNTER 5.1 Report Tool"))
 import resources_rc
 
 

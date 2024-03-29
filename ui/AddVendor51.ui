@@ -35,7 +35,7 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-bottom-left-radius:5px;
+border-botton-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -444,7 +444,7 @@ QDateEdit::down-arrow {
                  <second>0</second>
                  <year>2019</year>
                  <month>12</month>
-                 <day>28</day>
+                 <day>27</day>
                 </datetime>
                </property>
                <property name="displayFormat">
@@ -609,7 +609,7 @@ background-color: #2E2F30;
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="validate_button">
             <property name="font">
              <font>
               <family>Georgia</family>
@@ -681,7 +681,7 @@ background-color: #000000;
   </widget>
  </widget>
  <tabstops>
-  <tabstop>pushButton</tabstop>
+  <tabstop>validate_button</tabstop>
  </tabstops>
  <resources/>
  <connections/>

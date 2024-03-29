@@ -36,7 +36,7 @@ class Ui_addVendor51Dialog(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
+"border-botton-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -274,7 +274,7 @@ class Ui_addVendor51Dialog(object):
 "    border-bottom: none;\n"
 "    border-top-color: white;\n"
 "}")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 28), QtCore.QTime(0, 0, 0)))
+        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 27), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.gridLayout_5.addWidget(self.All_reports_edit_fetch, 5, 2, 1, 1)
         self.customerIdEdit = QtWidgets.QLineEdit(self.AddNewVendor)
@@ -377,14 +377,14 @@ class Ui_addVendor51Dialog(object):
         self.notesEdit.setObjectName("notesEdit")
         self.gridLayout_5.addWidget(self.notesEdit, 14, 2, 1, 1)
         self.gridLayout_2.addWidget(self.AddNewVendor, 1, 0, 1, 3)
-        self.pushButton = QtWidgets.QPushButton(self.frame_3)
+        self.validate_button = QtWidgets.QPushButton(self.frame_3)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(12)
         font.setBold(True)
         font.setItalic(False)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
+        self.validate_button.setFont(font)
+        self.validate_button.setStyleSheet("QPushButton {\n"
 "    background-color: #1768E3; \n"
 "    color: #FFFFFF;\n"
 "    font: bold;\n"
@@ -397,8 +397,8 @@ class Ui_addVendor51Dialog(object):
 "}\n"
 "\n"
 "")
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout_2.addWidget(self.pushButton, 3, 1, 1, 1)
+        self.validate_button.setObjectName("validate_button")
+        self.gridLayout_2.addWidget(self.validate_button, 3, 1, 1, 1)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.frame_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -449,7 +449,7 @@ class Ui_addVendor51Dialog(object):
         self.label_8.setText(_translate("addVendor51Dialog", "2 Attempts needed"))
         self.label_11.setText(_translate("addVendor51Dialog", "Request throttled"))
         self.All_reports_edit_fetch.setDisplayFormat(_translate("addVendor51Dialog", "yyyy"))
-        self.pushButton.setText(_translate("addVendor51Dialog", "Validate"))
+        self.validate_button.setText(_translate("addVendor51Dialog", "Validate"))
 
 
 if __name__ == "__main__":
