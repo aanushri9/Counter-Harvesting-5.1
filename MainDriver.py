@@ -105,9 +105,8 @@ class PasswordDialog(QDialog):
         return input_hash == hash_pass
 
     def accept(self):
-        correct_password = os.getenv("MANAGE_VENDOR_PASSWORD")
-        hash_pass = hashlib.md5(correct_password.encode("utf8")).hexdigest()
-        if self.check_password(hash_pass):
+        correct_password_hash = os.getenv("MANAGE_VENDOR_PASSWORD_HASH")
+        if self.check_password(correct_password_hash):
             super().accept()
         else:
             QMessageBox.warning(

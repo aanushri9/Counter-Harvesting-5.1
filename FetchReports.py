@@ -1156,9 +1156,9 @@ class FetchReportsAbstract:
         failed_list_edit.setText(failed_reports)
         cancelled_list_edit.setText(cancelled_reports)
 
-        logging.info(
-            f"Vendor : {vendor.name} status:  {vendor_result.completion_status} message: {vendor_result.message} \n Successful: {successful_reports} \n Warning: {warning_reports} \n Failed: {failed_reports} \n Cancelled: {cancelled_reports} \n"
-        )
+        # logging.info(
+        #     f"\nVendor : {vendor.name} \nstatus:  {vendor_result.completion_status} \nmessage: {vendor_result.message} \n Successful: {successful_reports} \n Warning: {warning_reports} \n Failed: {failed_reports} \n Cancelled: {cancelled_reports} \n"
+        # )
 
     def on_vendor_worker_finished(self, worker_id: str):
         """Handles the signal emmited when a vendor worker has finished
@@ -1268,6 +1268,7 @@ class FetchReportsAbstract:
         self.ok_button.setEnabled(True)
         # self.retry_button.setEnabled(True)
         self.status_label.setText("Done!")
+        # print("🥶 4. hello")
 
     def cancel_workers(self):
         """Sends a cancel signal to all vendor workers, updates the UI accordingly"""
@@ -1316,12 +1317,15 @@ class FetchReportsAbstract:
         self.database_worker = UpdateDatabaseWorker(self.database_report_data, False)
         self.database_worker.moveToThread(self.database_thread)
 
+        # print("🥶 0. hello")
         def on_progress_changed(progress: int):
+            # print("🥶 1. hello")
             self.progress_bar.setValue(
                 int((progress / len(self.database_report_data)) * 100)
             )
 
         def on_worker_finished(code):
+            # print("🥶 2. hello")
             self.database_thread.quit()
             self.database_thread.wait()
             self.finish_updating_database()
@@ -1331,7 +1335,7 @@ class FetchReportsAbstract:
 
         self.database_thread.started.connect(self.database_worker.work)
         self.database_thread.start()
-
+        # print("🥶 3. hello")
         return True
 
 
@@ -1506,8 +1510,8 @@ class FetchReportsController(FetchReportsAbstract):
 
         curr_date = QDate.currentDate()
         formatted_date = curr_date.toString(
-            "yyyy-MM-dd-"
-        ) + QTime.currentTime().toString("hh:mm:ss")
+            "yyyy_MM_dd_"
+        ) + QTime.currentTime().toString("hh_mm_ss")
 
         logging.basicConfig(
             level=logging.INFO,
@@ -2249,13 +2253,14 @@ class VendorWorker(QObject):
         request_url = self.vendor.base_url
 
         try:
-            # Some vendors only work if they think a web browser is making the request...
             response = requests.get(
                 request_url,
                 request_query,
                 headers={"User-Agent": self.user_agent},
                 timeout=self.request_timeout,
             )
+            url = response.history[0].url if response.history else response.url
+            # logging.info(f"Request URL :  {url} \n")
             if response.status_code == 200:
                 self.process_response(response)
             else:
@@ -2263,14 +2268,23 @@ class VendorWorker(QObject):
                 self.process_result.message = (
                     f"Unexpected HTTP status code received: {response.status_code}"
                 )
+                logging.warning(
+                    f"Request URL : {url} \nRequest_Query: {request_query} \nUnexpected HTTP status code received: {response.status_code}  FAILED \n\n"
+                )
         except requests.exceptions.Timeout as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = (
                 f"Request timed out after {self.request_timeout} second(s)"
             )
+            logging.error(
+                f"Request URL : {request_url} \nRequest_Query: {request_query} \nRequest timed out after {self.request_timeout} second(s) \nFAILED\n\n"
+            )
         except requests.exceptions.RequestException as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"Request Exception: {e}"
+            logging.error(
+                f"Request URL : {request_url} \nRequest_Query: {request_query} \nRequest Exception: {e}  \nFAILED\n\n"
+            )
 
         if len(self.report_workers) == 0:
             self.notify_worker_finished()
@@ -2280,9 +2294,13 @@ class VendorWorker(QObject):
 
         Requests the target reports that are supported by the vendor
         """
+        url = response.history[0].url if response.history else response.url
         if self.is_cancelling:
             self.process_result.message = "Target reports not processed"
             self.process_result.completion_status = CompletionStatus.CANCELLED
+            logging.warning(
+                f"Request URL : {url} \nTarget reports not processed  \nCANCELLED\n\n"
+            )
             return
 
         try:
@@ -2291,6 +2309,9 @@ class VendorWorker(QObject):
             if len(exceptions) > 0:
                 self.process_result.message = exception_models_to_message(exceptions)
                 self.process_result.completion_status = CompletionStatus.FAILED
+                logging.error(
+                    f"Request URL : {url} \nRequest_Query: {self.request_data} \n{self.process_result.message}  \nFAILED\n\n"
+                )
                 return
 
             json_dicts = []
@@ -2327,6 +2348,10 @@ class VendorWorker(QObject):
             self.process_result.message += "\nUnsupported: "
             self.process_result.message += ", ".join(unsupported_report_types)
 
+            logging.info(
+                f"Request URL : {url}  \n{self.process_result.message}  \nSUCCESS\n\n"
+            )
+
             if len(self.reports_to_process) == 0:
                 return
 
@@ -2338,6 +2363,9 @@ class VendorWorker(QObject):
                 )  # Avoid spamming vendor's server
                 if self.is_cancelling:
                     self.process_result.completion_status = CompletionStatus.CANCELLED
+                    logging.warning(
+                        f"Request URL : {url} \nTarget reports not processed  \nCANCELLED\n\n"
+                    )
                     return
 
                 self.fetch_report(self.reports_to_process[self.started_processes])
@@ -2346,9 +2374,11 @@ class VendorWorker(QObject):
         except json.JSONDecodeError as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"JSON Exception: {e}"
+            logging.error(f"Request URL : {url} \nJSON Exception: {e}  \nFAILED\n\n")
         except Exception as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = str(e)
+            logging.error(f"Request URL : {url} \nERROR: {str(e)}  \nFAILED\n\n")
 
     def fetch_report(self, report_type: str):
         """Initiates the process to fetch a report
@@ -2532,9 +2562,9 @@ class ReportWorker(QObject):
 
         request_url = f"{self.vendor.base_url}/{self.report_type.lower()}"
 
-        logging.info(
-            f"Requesting {self.vendor.name} {self.report_type} report \n Request URL: {request_url} \n Request Query: {request_query} \n headers: User-Agent: {self.user_agent} \n timeout: {self.request_timeout} ... \n"
-        )
+        # logging.info(
+        #     f"Requesting {self.vendor.name} {self.report_type} report \n Request URL: {request_url} \n Request Query: {request_query} \n headers: User-Agent: {self.user_agent} \n timeout: {self.request_timeout} ... \n"
+        # )
 
         try:
             # Some vendors only work if they think a web browser is making the request...
@@ -2544,22 +2574,35 @@ class ReportWorker(QObject):
                 headers={"User-Agent": self.user_agent},
                 timeout=self.request_timeout,
             )
+            url = response.history[0].url if response.history else response.url
+            # logging.info(f"Request URL :  {url} \n")
             if response.status_code == 200:
                 self.process_response(response)
+                logging.info(
+                    f"Request URL : {url}  \nRequest completed successfully \nSUCCESS\n\n"
+                )
             else:
                 self.process_result.completion_status = CompletionStatus.FAILED
                 self.process_result.message = (
                     f"Unexpected HTTP status code received: {response.status_code}"
+                )
+                logging.warning(
+                    f"Request URL : {url} \nUnexpected HTTP status code received: {response.status_code}  \nFAILED\n\n"
                 )
         except requests.exceptions.Timeout as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = (
                 f"Request timed out after {self.request_timeout} second(s)"
             )
+            logging.error(
+                f"Request URL : {request_url} \nRequest Query : {request_query} \nRequest timed out after {self.request_timeout} second(s) \nFAILED\n\n"
+            )
         except requests.exceptions.RequestException as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"Request Exception: {e}"
-        
+            logging.error(
+                f"Request URL : {request_url} \nRequest Query : {request_query} \nRequest Exception: {e}  \nFAILED\n\n"
+            )
 
     def process_response(self, response: requests.Response):
         """Processes the response from a request
@@ -2568,6 +2611,7 @@ class ReportWorker(QObject):
 
         :param response: The received response
         """
+        url = response.history[0].url if response.history else response.url
         try:
             json_string = response.text
             if self.is_yearly:
@@ -2589,8 +2633,15 @@ class ReportWorker(QObject):
             self.process_result.completion_status = CompletionStatus.FAILED
             if e.msg == "Expecting value":
                 self.process_result.message = f"Vendor did not return any data"
+                logging.error(
+                    f"Request URL : {url} \nVendor did not return any data  \nFAILED\n\n"
+                )
             else:
                 self.process_result.message = f"JSON Exception: {e.msg}"
+                logging.error(
+                    f"Request URL : {url} \nJSON Exception: {e.msg}  \nFAILED\n\n"
+                )
+
         except RetryLaterException as e:
             if not self.retried_request:
                 QThread.currentThread().sleep(
@@ -2603,6 +2654,9 @@ class ReportWorker(QObject):
                 message = exception_models_to_message(e.exceptions)
                 if message:
                     self.process_result.message += "\n\n" + message
+                    logging.error(
+                        f"Request URL : {url} \nRetry later exception received {message}  \nFAILED\n\n"
+                    )
                 self.process_result.completion_status = CompletionStatus.FAILED
                 self.process_result.retry = True
         except ReportHeaderMissingException as e:
@@ -2613,9 +2667,15 @@ class ReportWorker(QObject):
             if message:
                 self.process_result.message += "\n\n" + message
             self.process_result.completion_status = CompletionStatus.FAILED
+            logging.error(
+                f"Request URL : {url} \nReport_Header not received, no file was created  \nFAILED\n\n"
+            )
 
         except UnacceptableCodeException as e:
             self.process_result.message = "Unsupported exception code received"
+            logging.error(
+                f"Request URL : {url} \nUnsupported exception code received  \nFAILED\n\n"
+            )
             message = exception_models_to_message(e.exceptions)
             if message:
                 self.process_result.message += "\n\n" + message
@@ -2624,6 +2684,7 @@ class ReportWorker(QObject):
         except Exception as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = str(e)
+            logging.error(f"Request URL : {url} \nERROR: {str(e)}  \nFAILED\n\n")
 
     def process_report_model(self, report_model: ReportModel):
         """Processes the report model into a TSV report
@@ -3432,7 +3493,10 @@ class ReportWorker(QObject):
                     special_options_dict = special_options.__dict__
                     if curr_version == "5.0" and special_options_dict["data_type"][0]:
                         row_dict["Data_Type"] = row.data_type
-                    if curr_version == "5.0" and special_options_dict["section_type"][0]:
+                    if (
+                        curr_version == "5.0"
+                        and special_options_dict["section_type"][0]
+                    ):
                         row_dict["Section_Type"] = row.section_type
                     if is_yop_selected:
                         if special_options_dict["yop"][0]:
@@ -3549,7 +3613,7 @@ class ReportWorker(QObject):
                     "YOP",
                     "Access_Type",
                 ]
-            else :
+            else:
                 column_names += [
                     "Title",
                     "Publisher",

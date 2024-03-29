@@ -220,6 +220,9 @@ class ManageVendorsController(QObject):
                         vendor_name: str = vendor_name.lower()
                         self.vendor_names_v51.add(vendor_name)
 
+            self.update_vendors_dat_file()
+            self.update_vendors51_dat_file()
+
         except Exception as e:
             print(f"Error loading vendors: {e}")
 

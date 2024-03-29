@@ -346,32 +346,43 @@ def read_report_file(
     :param year: the year of the data in the file
     :returns: (file_name, report, values) a Tuple with the file name, the kind of report, and the data from the file
     """
+    # print(f"🍭 0. yo filename : {file_name} , vendor: {vendor} , year : {year}")
     delimiter = DELIMITERS[file_name[-4:].lower()]
     file = open(file_name, "r", encoding="utf-8-sig")
+    # print("🍭 1. yo")
     reader = csv.reader(file, delimiter=delimiter, quotechar='"')
     if file.mode == "r":
+        # print("🍭 2. yo")
         header = {}
         for row in range(HEADER_ROWS):  # reads header data
+            # print(f"🍭 2.1. yo row : {row}")
             cells = next(reader)
-            key = cells[0].lower()
-            if len(cells) > 1:
-                header[key] = cells[1].strip()
-            else:
-                header[key] = None
-
+            # TODO error is here at index 12
+            if cells:
+                key = cells[0].lower()
+                # print(f"🍭 2.2. yo row : {row} , key : {key}")
+                if len(cells) > 1:
+                    header[key] = cells[1].strip()
+                else:
+                    header[key] = None
+                # print(f"🍭 2.3. yo row : {row} , key : {key} , header[key] : {header[key]}")
+        # print("🍭 3. yo")
         for row in range(BLANK_ROWS):
             next(reader)
         column_headers = next(reader)
         column_headers = list(
             map((lambda column_header: column_header.lower()), column_headers)
         )  # reads column headers
+        # print("🍭 4. yo")
 
         values = []
         for cells in list(reader):
+            # print("🍭 5. yo")
             for (
                 month
             ) in MONTHS:  # makes value from each month with metric > 0 for each row
                 month_header = MONTHS[month][:3].lower() + "-" + str(year)
+                # print(f"🍭 6. yo month_header : {month_header} , column_headers : {column_headers}")
                 if month_header in column_headers:
                     current_month = column_headers.index(month_header)
                     metric = int(cells[current_month])
@@ -392,6 +403,8 @@ def read_report_file(
                         value["updated_on"] = header["created"]
                         value["file"] = os.path.basename(file.name)
                         values.append(value)
+        
+        # print("🍭 7. yo")
         return os.path.basename(file.name), header["report_id"], tuple(values)
     else:
         print("Error: could not open file " + file_name)
@@ -433,21 +446,29 @@ def insert_single_file(
     :param vendor: the vendor name of the data in the file
     :param year: the year of the data in the file
     :param emit_signal: whether to emit a signal upon completion"""
+    # print("🐼 1. hi")
     file, report, read_data = read_report_file(file_path, vendor, year)
+    # print("🐼 2. hi")
     delete, delete_data, replace, replace_data = replace_sql_text(
         file, report, read_data
     )
+    # print("🐼 3. hi")
+
 
     connection = create_connection(DATABASE_LOCATION)
     if connection is not None:
+        # print("🐼 4. hi")
         run_sql(connection, delete, delete_data, emit_signal=False)
         run_sql(connection, replace, replace_data, emit_signal=False)
         connection.close()
+        # print("🐼 5. hi")
         if (
             emit_signal
         ):  # only emit the signal after the delete and replace operations both finish
+            # print("🐼 6. hi")
             managedb_signal_handler.emit_database_changed_signal()
     else:
+        # print("🐼 7. hi")
         print("Error, no connection")
 
 
@@ -929,6 +950,7 @@ class UpdateDatabaseWorker(QObject):
 
     def work(self):
         """Performs the work of the worker"""
+        # print("🥶 5. hello")
         current = 0
         if self.recreate_tables:
             self.status_changed_signal.emit("Recreating tables...")
@@ -936,17 +958,26 @@ class UpdateDatabaseWorker(QObject):
             current += 1
             self.progress_changed_signal.emit(current)
             self.task_finished_signal.emit("Recreated tables")
+            # print("🥶 6. hello")
         else:
             self.progress_changed_signal.emit(len(self.files))
+            # print("🥶 7. hello")
         self.status_changed_signal.emit("Filling tables...")
+        # print("🥶 8. hello self.files : ", self.files)
+        # print("🥶 8.1. hello")
         for file in self.files:
+            # print("🥶 8.2. hello")
             filename = os.path.basename(file["file"])
-            insert_single_file(
-                file["file"], file["vendor"], file["year"], emit_signal=False
-            )
+            # print("🥶 8.3. hello filename : ", filename)
+            # TODO error in this line
+            insert_single_file(file["file"], file["vendor"], int(file["year"]), emit_signal=False)
+            # print("🥶 9. hello")
             self.task_finished_signal.emit(filename)
             current += 1
             self.progress_changed_signal.emit(current)
+            # print("🥶 10. hello")
+        
         managedb_signal_handler.emit_database_changed_signal()
         self.status_changed_signal.emit("Done")
         self.worker_finished_signal.emit(0)
+        # print("🥶 11. hello")
