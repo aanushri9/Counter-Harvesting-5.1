@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-botton-left-radius:5px;\n"
+"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"

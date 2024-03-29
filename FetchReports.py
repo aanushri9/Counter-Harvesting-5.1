@@ -1573,9 +1573,7 @@ class FetchReportsController(FetchReportsAbstract):
                             border-radius: 4px;
                             text-align: center;
                         }
-                        QPushButton:hover{
-                            background-color: #2095E6;
-                        }
+                       
                     """
                 )
                 item = QStandardItem(vendor.name)
@@ -1605,9 +1603,7 @@ class FetchReportsController(FetchReportsAbstract):
                             border-radius: 4px;
                             text-align: center;
                         }
-                        QPushButton:hover{
-                            background-color: #2095E6;
-                        }
+                       
                     """
                 )
                 item = QStandardItem(vendor.name)
