@@ -30,7 +30,7 @@
     "provider": ""
   },
   {
-    "name": "Akadémiai Kiadó",
+    "name": "Akad\u00e9miai Kiad\u00f3",
     "version": "5.0",
     "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
     "starting_year": "2000",
@@ -1395,7 +1395,7 @@
     "provider": ""
   },
   {
-    "name": "Akadémiai Kiadó",
+    "name": "Akad\u00e9miai Kiad\u00f3",
     "version": "5.1",
     "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
     "starting_year": "2000",
@@ -2721,6 +2721,21 @@
     "starting_year": "2000",
     "customer_id": "101005",
     "requestor_id": "upei",
+    "api_key": "",
+    "platform": "",
+    "requires_two_attempts": false,
+    "does_ip_checking": false,
+    "needs_throttling": false,
+    "notes": "",
+    "provider": ""
+  },
+  {
+    "name": "zzz",
+    "version": "5.1",
+    "base_url": "https://stoplight.io/mocks/countermetrics/counter-sushi-api/173057565/r51/reports",
+    "starting_year": "2023",
+    "customer_id": "134",
+    "requestor_id": "",
     "api_key": "",
     "platform": "",
     "requires_two_attempts": false,
