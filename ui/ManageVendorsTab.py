@@ -68,10 +68,6 @@ class Ui_manage_vendor_tab(object):
 "border-radius:15px;\n"
 "}\n"
 "\n"
-"QPushButton:hover {\n"
-"    background-color: lightblue;\n"
-"}\n"
-"\n"
 "")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setObjectName("frame_2")
@@ -89,11 +85,6 @@ class Ui_manage_vendor_tab(object):
 "   border-radius: 4px;\n"
 "text-align: center;\n"
 "}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
-"}\n"
-"\n"
 "")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/Icons/add.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -112,11 +103,6 @@ class Ui_manage_vendor_tab(object):
 "   border-radius: 4px;\n"
 "text-align: center;\n"
 "}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
-"}\n"
-"\n"
 "")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("resources/Icons/import.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -135,11 +121,6 @@ class Ui_manage_vendor_tab(object):
 "   border-radius: 4px;\n"
 "text-align: center;\n"
 "}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
-"}\n"
-"\n"
 "")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("resources/Icons/export - Copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -158,11 +139,6 @@ class Ui_manage_vendor_tab(object):
 "   border-radius: 4px;\n"
 "text-align: center;\n"
 "}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
-"}\n"
-"\n"
 "")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("resources/Icons/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -207,9 +183,6 @@ class Ui_manage_vendor_tab(object):
 "border-radius:15px;\n"
 "}\n"
 "\n"
-"QPushButton:hover {\n"
-"    background-color: lightblue;\n"
-"}\n"
 "")
         self.selectVersionFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.selectVersionFrame.setProperty("pushButton", True)
@@ -224,10 +197,6 @@ class Ui_manage_vendor_tab(object):
 "text-align: center;\n"
 "}\n"
 "\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
-"}\n"
-"\n"
 "")
         self.version51.setObjectName("version51")
         self.horizontalLayout_2.addWidget(self.version51)
@@ -239,9 +208,6 @@ class Ui_manage_vendor_tab(object):
 "text-align: center;\n"
 "}\n"
 "\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
-"}\n"
 "\n"
 "")
         self.version50.setObjectName("version50")

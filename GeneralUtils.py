@@ -26,7 +26,8 @@ def save_json_file(file_dir: str, file_name: str, json_string: str):
         file.write(json_string)
         file.close()
     except IOError as e:
-        print(e)
+        pass
+        # print(e)
 
 
 def read_json_file(file_path: str) -> str:

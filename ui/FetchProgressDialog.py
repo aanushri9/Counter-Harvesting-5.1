@@ -115,7 +115,7 @@ class Ui_FetchProgressDialog(object):
         self.results_scroll_area.setWidgetResizable(True)
         self.results_scroll_area.setObjectName("results_scroll_area")
         self.scroll_area_widget_contents = QtWidgets.QWidget()
-        self.scroll_area_widget_contents.setGeometry(QtCore.QRect(0, 0, 776, 434))
+        self.scroll_area_widget_contents.setGeometry(QtCore.QRect(0, 0, 776, 430))
         self.scroll_area_widget_contents.setObjectName("scroll_area_widget_contents")
         self.scroll_area_vertical_layout = QtWidgets.QVBoxLayout(self.scroll_area_widget_contents)
         self.scroll_area_vertical_layout.setObjectName("scroll_area_vertical_layout")
@@ -135,10 +135,6 @@ class Ui_FetchProgressDialog(object):
 "text-align: center;\n"
 "font-size: 14px;\n"
 "padding: 4px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
 "}\n"
 "\n"
 "")

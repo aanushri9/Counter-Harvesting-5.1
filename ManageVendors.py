@@ -6,6 +6,7 @@ import json
 from sys import version
 import requests
 import validators
+import logging
 from PyQt5.QtWidgets import (
     QDialog,
     QLabel,
@@ -260,9 +261,6 @@ class ManageVendorsController(QObject):
                         border-radius: 4px;
                         text-align: center;
                     }
-                    QPushButton:hover{
-                        background-color: #2095E6;
-                    }
                 """
             )
             # Set the model for the QListView
@@ -310,9 +308,6 @@ class ManageVendorsController(QObject):
                         border-radius: 4px;
                         text-align: center;
                     }
-                    QPushButton:hover{
-                        background-color: #2095E6;
-                    }
                 """
             )
 
@@ -340,7 +335,7 @@ class ManageVendorsController(QObject):
         if not is_valid:
             return is_valid, message
 
-        is_valid, message = self.validate_url(new_vendor.base_url)
+        is_valid, message = self.validate_url(new_vendor.base_url, version)
         if not is_valid:
             return is_valid, message
         if new_vendor.customer_id == "":
@@ -398,8 +393,6 @@ class ManageVendorsController(QObject):
         notes_edit = vendor_dialog_ui.notesEdit
 
         validate_button = vendor_dialog_ui.validate_button
-        if self.curr_version == "5.0":
-            validate_button.hide()
         self.isValidated = False
 
         name_validation_label = vendor_dialog_ui.name_validation_label
@@ -418,7 +411,7 @@ class ManageVendorsController(QObject):
         )
 
         def attempt_add_vendor():
-            if self.curr_version == "5.1" and not self.isValidated:
+            if not self.isValidated:
                 GeneralUtils.show_message("Please validate the vendor first.")
                 return
 
@@ -457,28 +450,33 @@ class ManageVendorsController(QObject):
 
         def validate_vendor():
             try:
-                request_query = {"customer_id": customer_id_edit.text()}
                 request_url = base_url_edit.text()
-                # triming the url and removing /reports from the end and adding /members
+                # triming the url and removing /reports from the end and adding /status
                 request_url = request_url.strip()
                 if request_url.endswith("/reports"):
                     request_url = request_url[:-8]
-                request_url += "/members"
+                request_url += "/status"
 
-                print("Request URL: ", request_url)
-
-                response = requests.get(request_url, request_query, timeout=10)
+                response = requests.get(request_url, timeout=10)
+                url = response.history[0].url if response.history else response.url
                 if response.status_code == 200:
+                    logging.info(f"URL for Validation : {url} \n Success\n\n")
                     GeneralUtils.show_message("Vendor validated successfully")
                     self.isValidated = True
                 else:
+                    response_text = response.text
+                    if len(response_text) > 500:
+                        response_text = response_text[:500] + "..."
+                    logging.info(f"URL for Validation : {url} \n {response_text}\n\n")
                     GeneralUtils.show_message(
-                        f"Vendor validation failed with status code: {response.status_code}"
+                        f"Vendor validation failed with status code: {response.status_code} \n Check Logs for more info"
                     )
             except requests.exceptions.Timeout as e:
+                logging.info(f"Vendor validation failed: Timeout , URL : {request_url} \n\n")
                 GeneralUtils.show_message("Vendor validation failed: Timeout")
                 return
             except requests.exceptions.RequestException as e:
+                logging.info(f"Vendor validation failed: {e} , \nURL : {request_url} \n\n")
                 GeneralUtils.show_message(f"Vendor validation failed: {e}")
                 return
 
@@ -572,14 +570,14 @@ class ManageVendorsController(QObject):
             validation_label.hide()
             return
 
-        is_valid, message = self.validate_url(url)
+        is_valid, message = self.validate_url(url, self.curr_version)
         if is_valid:
             validation_label.hide()
         else:
             validation_label.show()
             validation_label.setText(message)
 
-    def validate_url(self, url: str) -> tuple[bool, str]:
+    def validate_url(self, url: str, version: str) -> tuple[bool, str]:
         """Validates a new url
 
         :param url: The URL to be validated
@@ -588,9 +586,9 @@ class ManageVendorsController(QObject):
         if not validators.url(url):
             return False, "Invalid Url"
 
-        if self.curr_version == "5.0" and not url.endswith("/reports"):
+        if version == "5.0" and not url.endswith("/reports"):
             return False, "URL must end with '/reports'"
-        elif self.curr_version == "5.1" and not url.endswith("/r51/reports"):
+        elif version == "5.1" and not url.endswith("/r51/reports"):
             return False, "URL must end with '/r51/reports'"
 
         return True, ""
@@ -688,9 +686,28 @@ class ManageVendorsController(QObject):
                     row["notes"] if "notes" in row else "",
                     row["provider"] if "provider" in row else "",
                 )
+
+                is_valid, message = self.validate_new_name(vendor.name, "", version)
+                if not is_valid:
+                    if message == "Duplicate vendor name":
+                        org_vendor = None
+                        if version == "5.0":
+                            for v in self.vendors_v50:
+                                if v.name.lower() == vendor.name.lower():
+                                    org_vendor = v
+                                    break
+                        else:
+                            for v in self.vendors_v51:
+                                if v.name.lower() == vendor.name.lower():
+                                    org_vendor = v
+                                    break
+                        if org_vendor:
+                            self.edit_vendor(vendor, org_vendor, version)
+                            return True, ""
+
                 is_valid, message = self.add_vendor(vendor, version)
                 if not is_valid:
-                    print(f"error in importing vendors version {version} : {message}")
+                    print(f"error in importing vendor version {version} : {message}")
 
             tsv_file.close()
 
@@ -955,7 +972,7 @@ class ManageVendorsController(QObject):
         if not is_valid:
             return is_valid, message
 
-        is_valid, message = self.validate_url(new_vendor.base_url)
+        is_valid, message = self.validate_url(new_vendor.base_url, version)
         if not is_valid:
             return is_valid, message
         if new_vendor.customer_id == "":

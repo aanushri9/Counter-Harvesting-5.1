@@ -152,7 +152,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
         <x>0</x>
         <y>0</y>
         <width>776</width>
-        <height>434</height>
+        <height>430</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="scroll_area_vertical_layout"/>
@@ -179,10 +179,6 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 text-align: center;
 font-size: 14px;
 padding: 4px;
-}
-
-QPushButton:hover{
- background-color: #2095E6;
 }
 
 </string>

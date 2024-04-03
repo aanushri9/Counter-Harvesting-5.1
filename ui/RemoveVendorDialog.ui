@@ -35,7 +35,6 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-bottom-left-radius:5px;
 }
 QDialog{
 background-color:#1f232a;;

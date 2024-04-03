@@ -746,7 +746,7 @@ def create_connection(db_file: str) -> sqlite3.Connection:
         connection = sqlite3.connect(db_file)
         return connection
     except sqlite3.Error as error:
-        print(error)
+        # print(error)
         connection.close()
     return connection
 
@@ -773,7 +773,8 @@ def run_sql(
         if emit_signal:
             managedb_signal_handler.emit_database_changed_signal()
     except sqlite3.Error as error:
-        print(error)
+        pass
+        # print(error)
 
 
 def run_select_sql(
@@ -793,7 +794,8 @@ def run_select_sql(
             cursor.execute(sql_text)
         return cursor.fetchall()  # gets the results
     except sqlite3.Error as error:
-        print(error)
+        pass
+        # print(error)
 
 
 def setup_database(drop_tables: bool, emit_signal: bool = True):
@@ -969,8 +971,8 @@ class UpdateDatabaseWorker(QObject):
             # print("🥶 8.2. hello")
             filename = os.path.basename(file["file"])
             # print("🥶 8.3. hello filename : ", filename)
-            # TODO error in this line
-            insert_single_file(file["file"], file["vendor"], int(file["year"]), emit_signal=False)
+            if filename:
+                insert_single_file(file["file"], file["vendor"], int(file["year"]), emit_signal=False)
             # print("🥶 9. hello")
             self.task_finished_signal.emit(filename)
             current += 1

@@ -40,7 +40,8 @@ load_dotenv()
 
 def trap_exc_during_debug(*args):
     # when app raises an uncaught exception, print info
-    print(args)
+    pass
+    # print(args)
 
 
 # install exception hook: without this, uncaught exception would cause the application to exit
@@ -57,7 +58,8 @@ if hasattr(Qt, "AA_UseHighDpiPixmaps"):
 
 def trap_exc_during_debug(*args):
     # when app raises an uncaught exception, print info
-    print(args)
+    pass
+    # print(args)
 
 
 # install exception hook: without this, uncaught exception would cause the application to exit

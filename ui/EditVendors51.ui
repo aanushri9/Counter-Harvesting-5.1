@@ -40,7 +40,6 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-bottom-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -94,9 +93,7 @@ color:white;}</string>
              <string notr="true">QFrame {
     border: 2px solid white;
 	border-radius: 15px;}
-QPushButton:hover {
-    background-color: lightblue;
-}
+
 
 </string>
             </property>
@@ -123,10 +120,6 @@ QPushButton:hover {
 	font: bold;
    border-radius: 4px;
 text-align: center;
-}
-
-QPushButton:hover{
- background-color: #2095E6;
 }
 
 </string>
@@ -167,10 +160,6 @@ QPushButton:hover{
 text-align: center;
 }
 
-QPushButton:hover{
- background-color: rgb(94, 94, 94);
-}
-
 </string>
                </property>
                <property name="text">
@@ -202,11 +191,6 @@ QPushButton:hover{
    border-radius: 4px;
 text-align: center;
 }
-
-QPushButton:hover{
- background-color: rgb(255, 96, 60);
-}
-
 </string>
                </property>
                <property name="text">
@@ -593,7 +577,7 @@ QDateEdit::down-arrow {
                  <second>0</second>
                  <year>2019</year>
                  <month>12</month>
-                 <day>26</day>
+                 <day>25</day>
                 </datetime>
                </property>
                <property name="displayFormat">

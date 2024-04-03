@@ -253,7 +253,7 @@ class ReportHeaderModel(JsonModel):
         )
 
     def __repr__(self):
-        return f"🍭🍭🍭🍭🍭🍭 [{self.report_name}, {self.report_id}, {self.release}, {self.institution_name}, {self.institution_ids}, {self.report_filters}, {self.report_attributes}, {self.exceptions}, {self.created}, {self.created_by}, {self.registry_record}] 🍭🍭🍭🍭🍭🍭"
+        return f" [{self.report_name}, {self.report_id}, {self.release}, {self.institution_name}, {self.institution_ids}, {self.report_filters}, {self.report_attributes}, {self.exceptions}, {self.created}, {self.created_by}, {self.registry_record}] "
 
 
 class ReportModel(JsonModel):
@@ -279,6 +279,7 @@ class ReportModel(JsonModel):
         if "Report_Items" in json_dict:
             report_item_dicts = json_dict["Report_Items"]
             if len(report_item_dicts) > 0:
+
                 if major_report_type == MajorReportType.PLATFORM:
                     for report_item_dict in report_item_dicts:
                         report_items.append(
@@ -370,7 +371,7 @@ class PlatformReportItemModel(JsonModel):
         return cls(platform, data_type, access_method, performances)
 
     def __repr__(self):
-        return f"🍭🍭🍭🍭🍭🍭 [{self.platform}, {self.data_type}, {self.access_method}, {self.performances}] 🍭🍭🍭🍭🍭🍭"
+        return f"[{self.platform}, {self.data_type}, {self.access_method}, {self.performances}]"
 
 
 class DatabaseReportItemModel(JsonModel):
@@ -832,7 +833,7 @@ class ProcessResult:
         self.year = ""
 
     def __repr__(self):
-        return f"[🃏🃏🃏🃏🃏🃏🃏🃏🃏🃏🃏 {self.vendor} , {self.report_type} , {self.completion_status}, {self.message}, {self.retry}, {self.file_name}, {self.file_dir}, {self.file_path}, {self.protected_file_path}, {self.year} 🃏🃏🃏🃏🃏🃏🃏🃏🃏🃏🃏]"
+        return f"[ {self.vendor} , {self.report_type} , {self.completion_status}, {self.message}, {self.retry}, {self.file_name}, {self.file_dir}, {self.file_path}, {self.protected_file_path}, {self.year} ]"
 
 
 class SpecialReportOptions:
@@ -901,7 +902,7 @@ class SpecialReportOptions:
         self.include_parent_details = False, SpecialOptionType.POB, None, None
 
     def __repr__(self):
-        return f"[🤨🤨🤨 {self.data_type} , {self.access_method} , {self.metric_type}, {self.exclude_monthly_details}, {self.yop}, {self.access_type}, {self.section_type}, {self.authors}, {self.publication_date}, {self.article_version}, {self.include_component_details}, {self.include_parent_details} 🤨🤨🤨]"
+        return f"[ {self.data_type} , {self.access_method} , {self.metric_type}, {self.exclude_monthly_details}, {self.yop}, {self.access_type}, {self.section_type}, {self.authors}, {self.publication_date}, {self.article_version}, {self.include_component_details}, {self.include_parent_details} ]"
 
 
 class RequestData:
@@ -935,7 +936,7 @@ class RequestData:
         self.special_options = special_options
 
     def __repr__(self):
-        return f"[🤪🤪🤪 {self.vendor} , {self.target_report_types} , {self.begin_date}, {self.end_date}, {self.save_location}, {self.special_options} 🤪🤪🤪]"
+        return f"[ {self.vendor} , {self.target_report_types} , {self.begin_date}, {self.end_date}, {self.save_location}, {self.special_options} ]"
 
 
 class FetchReportsAbstract:
@@ -1132,18 +1133,22 @@ class FetchReportsAbstract:
         if successful_reports == "":
             successful_box.hide()
         else:
+            successful_reports = successful_reports[:-2]
             successful_box.show()
         if warning_reports == "":
             warning_box.hide()
         else:
+            warning_reports = warning_reports[:-2]
             warning_box.show()
         if failed_reports == "":
             failed_box.hide()
         else:
+            failed_reports = failed_reports[:-2]
             failed_box.show()
         if cancelled_reports == "":
             cancelled_box.hide()
         else:
+            cancelled_reports = cancelled_reports[:-2]
             cancelled_box.show()
 
         successful_list_edit.clear()
@@ -1255,6 +1260,7 @@ class FetchReportsAbstract:
 
         # Start updating database...
         if self.is_yearly_fetch and len(self.database_report_data) > 0:
+            # print("🐼 1. hello")
             if not self.start_updating_database():
                 self.finish_updating_database()
         else:
@@ -1573,9 +1579,6 @@ class FetchReportsController(FetchReportsAbstract):
                             border-radius: 4px;
                             text-align: center;
                         }
-                        QPushButton:hover{
-                            background-color: #2095E6;
-                        }
                     """
                 )
                 item = QStandardItem(vendor.name)
@@ -1604,9 +1607,6 @@ class FetchReportsController(FetchReportsAbstract):
                             font: bold;
                             border-radius: 4px;
                             text-align: center;
-                        }
-                        QPushButton:hover{
-                            background-color: #2095E6;
                         }
                     """
                 )
@@ -1698,7 +1698,26 @@ class FetchReportsController(FetchReportsAbstract):
         for i in range(len(special_options)):
             option_name = special_options[i][1]
             checkbox = QCheckBox(option_name)
-            checkbox.setStyleSheet("color: white;")
+            checkbox.setStyleSheet(
+                """
+                QCheckBox::indicator {
+                    width: 15px;
+                    height: 15px;
+                    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+                    border-radius: 4px;
+                }
+                QCheckBox::indicator:checked {
+                    background-color: qradialgradient(spread:pad, 
+                                            cx:0.5,
+                                            cy:0.5,
+                                            radius:0.9,
+                                            fx:0.5,
+                                            fy:0.5,
+                                            stop:0 rgba(0, 255, 0, 255), 
+                                            stop:1 rgba(0, 64, 0, 255));
+                }
+                """
+            )
             checkbox.toggled.connect(
                 lambda is_checked, option=option_name: self.on_special_option_toggled(
                     option, is_checked
@@ -1748,7 +1767,8 @@ class FetchReportsController(FetchReportsAbstract):
                 checkbox.setChecked(True)
                 if selected_option[3] == ["all"]:
                     continue
-                line_edit.setText("|".join(selected_option[3]))
+                if selected_option[3]:
+                    line_edit.setText("|".join(selected_option[3]))
 
         self.show_more_options_ok_button = self.more_option_dialog_ui.buttonBox.button(
             QDialogButtonBox.Ok
@@ -1799,6 +1819,7 @@ class FetchReportsController(FetchReportsAbstract):
             flags=Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint,
         )
         dialog.setWindowTitle(option_name + " options")
+        dialog.setFixedSize(400, 300)
         dialog.setStyleSheet(
             """
             QDialog {
@@ -1806,8 +1827,21 @@ class FetchReportsController(FetchReportsAbstract):
             color: #ffffff;
             }
 
-            QCheckBox {
-            color: #ffffff;
+            QCheckBox::indicator {
+                width: 15px;
+                height: 15px;
+                background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+                border-radius: 4px;
+            }
+            QCheckBox::indicator:checked {
+                background-color: qradialgradient(spread:pad, 
+                                        cx:0.5,
+                                        cy:0.5,
+                                        radius:0.9,
+                                        fx:0.5,
+                                        fy:0.5,
+                                        stop:0 rgba(0, 255, 0, 255), 
+                                        stop:1 rgba(0, 64, 0, 255));
             }
 
             QLineEdit {
@@ -1849,13 +1883,21 @@ class FetchReportsController(FetchReportsAbstract):
             background-color: #444444;
             }
             
-            QListView::item:selected {
-            background-color: #666666;
+            QListView::indicator {
+                width: 15px;
+                height: 15px;
+                background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+                border-radius: 4px;
             }
-            
-            QListView::item:checked {
-            background-color: #007bff;
-            color: #ffffff;
+            QListView::indicator:checked {
+                background-color: qradialgradient(spread:pad, 
+                                        cx:0.5,
+                                        cy:0.5,
+                                        radius:0.9,
+                                        fx:0.5,
+                                        fy:0.5,
+                                        stop:0 rgba(0, 255, 0, 255), 
+                                        stop:1 rgba(0, 64, 0, 255));
             }
         """
         )
@@ -2065,7 +2107,6 @@ class FetchReportsController(FetchReportsAbstract):
 
         self.is_yearly_fetch = True
         self.save_dir = self.settings.yearly_directory
-        # self.save_dir = f"{directory_path}/all_data/yearly_files/"
         self.selected_data = []
 
         for i in range(len(vendors)):
@@ -2125,7 +2166,7 @@ class FetchReportsController(FetchReportsAbstract):
 
         self.get_checked_standard_reports_types_list()
         self.selected_data = []
-        self.is_yearly_fetch = False
+        self.is_yearly_fetch = True
         custom_dir = self.custom_dir_edit.text()
 
         if len(self.standard_reports_types_list) > 0 or count > 1:
@@ -2269,7 +2310,7 @@ class VendorWorker(QObject):
                     f"Unexpected HTTP status code received: {response.status_code}"
                 )
                 logging.warning(
-                    f"Request URL : {url} \nRequest_Query: {request_query} \nUnexpected HTTP status code received: {response.status_code}  FAILED \n\n"
+                    f"Request URL : {url} \nUnexpected HTTP status code received: {response.status_code}  FAILED \n\n"
                 )
         except requests.exceptions.Timeout as e:
             self.process_result.completion_status = CompletionStatus.FAILED
@@ -2277,13 +2318,13 @@ class VendorWorker(QObject):
                 f"Request timed out after {self.request_timeout} second(s)"
             )
             logging.error(
-                f"Request URL : {request_url} \nRequest_Query: {request_query} \nRequest timed out after {self.request_timeout} second(s) \nFAILED\n\n"
+                f"Request URL : {request_url} \nRequest timed out after {self.request_timeout} second(s) \nFAILED\n\n"
             )
         except requests.exceptions.RequestException as e:
             self.process_result.completion_status = CompletionStatus.FAILED
             self.process_result.message = f"Request Exception: {e}"
             logging.error(
-                f"Request URL : {request_url} \nRequest_Query: {request_query} \nRequest Exception: {e}  \nFAILED\n\n"
+                f"Request URL : {request_url} \nRequest Exception: {e}  \nFAILED\n\n"
             )
 
         if len(self.report_workers) == 0:
@@ -2310,7 +2351,7 @@ class VendorWorker(QObject):
                 self.process_result.message = exception_models_to_message(exceptions)
                 self.process_result.completion_status = CompletionStatus.FAILED
                 logging.error(
-                    f"Request URL : {url} \nRequest_Query: {self.request_data} \n{self.process_result.message}  \nFAILED\n\n"
+                    f"Request URL : {url} \n{self.process_result.message}  \nFAILED\n\n"
                 )
                 return
 
@@ -2440,7 +2481,6 @@ class VendorWorker(QObject):
         thread: QThread
         worker: ReportWorker
         worker, thread = self.report_workers[worker_id]
-
         self.report_process_results.append(worker.process_result)
         worker.deleteLater()
         thread.quit()
@@ -2618,7 +2658,7 @@ class ReportWorker(QObject):
                 self.save_json_file(json_string)
 
             json_dict = json.loads(json_string)
-
+            # TODO
             report_model = ReportModel.from_json(json_dict)
             self.process_report_model(report_model)
             if len(report_model.report_items) > 0 or len(report_model.exceptions) > 0:
@@ -2766,6 +2806,8 @@ class ReportWorker(QObject):
 
                     elif major_report_type == MajorReportType.TITLE:
                         report_item: TitleReportItemModel
+                        # TODO 13
+                        # print("🤡🤡🤡 report_item : ", report_item , " 🤡🤡🤡")
                         if report_item.title:
                             metric_row.title = report_item.title
                         if report_item.publisher:

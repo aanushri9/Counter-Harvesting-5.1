@@ -112,7 +112,6 @@ class Ui_FetchReports(object):
 "QPushButton{\n"
 "border: 2px solid grey ;\n"
 "border-radius:15px;\n"
-"hover:grey\n"
 "}")
         self.frame_2.setFrameShape(QtWidgets.QFrame.Box)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -161,8 +160,26 @@ class Ui_FetchReports(object):
 "\n"
 "QListView::item {\n"
 "    padding: 6px;\n"
-"\n"
 "}\n"
+"\n"
+"\n"
+"QListView::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"QListView::indicator:checked {\n"
+"    background-color: qradialgradient(spread:pad, \n"
+"                            cx:0.5,\n"
+"                            cy:0.5,\n"
+"                            radius:0.9,\n"
+"                            fx:0.5,\n"
+"                            fy:0.5,\n"
+"                            stop:0 rgba(0, 255, 0, 255), \n"
+"                            stop:1 rgba(0, 64, 0, 255));\n"
+"}\n"
+"\n"
 "\n"
 "\n"
 "QScrollBar {\n"
@@ -394,10 +411,8 @@ class Ui_FetchReports(object):
         self.lblFetchAllReport_3.setObjectName("lblFetchAllReport_3")
         self.gridLayout_6.addWidget(self.lblFetchAllReport_3, 0, 0, 1, 2)
         self.vendors_list_view_fetch = QtWidgets.QListView(self.frmSelectVenders)
-        self.vendors_list_view_fetch.setStyleSheet("\n"
-"\n"
-"\n"
-"QListView {\n"
+        self.vendors_list_view_fetch.setAutoFillBackground(True)
+        self.vendors_list_view_fetch.setStyleSheet("QListView {\n"
 "    background-color: rgb(33, 33, 33);\n"
 "    color:white;\n"
 "    alternate-background-color: rgb(50, 50, 50);\n"
@@ -408,6 +423,23 @@ class Ui_FetchReports(object):
 "\n"
 "QListView::item {\n"
 "    padding: 6px;\n"
+"}\n"
+"\n"
+"QListView::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"QListView::indicator:checked {\n"
+"    background-color: qradialgradient(spread:pad, \n"
+"                            cx:0.5,\n"
+"                            cy:0.5,\n"
+"                            radius:0.9,\n"
+"                            fx:0.5,\n"
+"                            fy:0.5,\n"
+"                            stop:0 rgba(0, 255, 0, 255), \n"
+"                            stop:1 rgba(0, 64, 0, 255));\n"
 "}\n"
 "\n"
 "\n"
@@ -474,24 +506,88 @@ class Ui_FetchReports(object):
         font = QtGui.QFont()
         font.setFamily("Georgia")
         self.dr_master_report_checkbox.setFont(font)
+        self.dr_master_report_checkbox.setStyleSheet("QCheckBox::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: qradialgradient(spread:pad, \n"
+"                            cx:0.5,\n"
+"                            cy:0.5,\n"
+"                            radius:0.9,\n"
+"                            fx:0.5,\n"
+"                            fy:0.5,\n"
+"                            stop:0 rgba(0, 255, 0, 255), \n"
+"                            stop:1 rgba(0, 64, 0, 255));\n"
+"}")
         self.dr_master_report_checkbox.setObjectName("dr_master_report_checkbox")
         self.gridLayout_13.addWidget(self.dr_master_report_checkbox, 2, 1, 1, 1)
         self.tr_master_report_checkbox = QtWidgets.QCheckBox(self.frame_5)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         self.tr_master_report_checkbox.setFont(font)
+        self.tr_master_report_checkbox.setStyleSheet("QCheckBox::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: qradialgradient(spread:pad, \n"
+"                            cx:0.5,\n"
+"                            cy:0.5,\n"
+"                            radius:0.9,\n"
+"                            fx:0.5,\n"
+"                            fy:0.5,\n"
+"                            stop:0 rgba(0, 255, 0, 255), \n"
+"                            stop:1 rgba(0, 64, 0, 255));\n"
+"}")
         self.tr_master_report_checkbox.setObjectName("tr_master_report_checkbox")
         self.gridLayout_13.addWidget(self.tr_master_report_checkbox, 2, 0, 1, 1)
         self.pr_master_report_checkbox = QtWidgets.QCheckBox(self.frame_5)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         self.pr_master_report_checkbox.setFont(font)
+        self.pr_master_report_checkbox.setStyleSheet("QCheckBox::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: qradialgradient(spread:pad, \n"
+"                            cx:0.5,\n"
+"                            cy:0.5,\n"
+"                            radius:0.9,\n"
+"                            fx:0.5,\n"
+"                            fy:0.5,\n"
+"                            stop:0 rgba(0, 255, 0, 255), \n"
+"                            stop:1 rgba(0, 64, 0, 255));\n"
+"}")
         self.pr_master_report_checkbox.setObjectName("pr_master_report_checkbox")
         self.gridLayout_13.addWidget(self.pr_master_report_checkbox, 1, 0, 1, 1)
         self.ir_master_report_checkbox = QtWidgets.QCheckBox(self.frame_5)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         self.ir_master_report_checkbox.setFont(font)
+        self.ir_master_report_checkbox.setStyleSheet("QCheckBox::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);\n"
+"    border-radius: 4px;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: qradialgradient(spread:pad, \n"
+"                            cx:0.5,\n"
+"                            cy:0.5,\n"
+"                            radius:0.9,\n"
+"                            fx:0.5,\n"
+"                            fy:0.5,\n"
+"                            stop:0 rgba(0, 255, 0, 255), \n"
+"                            stop:1 rgba(0, 64, 0, 255));\n"
+"}")
         self.ir_master_report_checkbox.setObjectName("ir_master_report_checkbox")
         self.gridLayout_13.addWidget(self.ir_master_report_checkbox, 1, 1, 1, 1)
         self.select_all_master_reports_button = QtWidgets.QPushButton(self.frame_5)
@@ -677,7 +773,7 @@ class Ui_FetchReports(object):
 "    border-bottom: none;\n"
 "    border-top-color: white;\n"
 "}")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 20), QtCore.QTime(0, 0, 0)))
+        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 18), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.horizontalLayout.addWidget(self.All_reports_edit_fetch)
         self.fetch_all_data_button = QtWidgets.QPushButton(self.frame_3)

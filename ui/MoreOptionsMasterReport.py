@@ -14,7 +14,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MoreOptionsDialog(object):
     def setupUi(self, MoreOptionsDialog):
         MoreOptionsDialog.setObjectName("MoreOptionsDialog")
-        MoreOptionsDialog.resize(399, 479)
+        MoreOptionsDialog.resize(401, 511)
+        MoreOptionsDialog.setMinimumSize(QtCore.QSize(300, 0))
         MoreOptionsDialog.setStyleSheet("QMainWindow{\n"
 "background-color: #323232;\n"
 "color: white;\n"
@@ -22,16 +23,11 @@ class Ui_MoreOptionsDialog(object):
         self.centralwidget = QtWidgets.QWidget(MoreOptionsDialog)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalFrame = QtWidgets.QFrame(self.centralwidget)
-        self.verticalFrame.setGeometry(QtCore.QRect(0, 9, 401, 461))
+        self.verticalFrame.setGeometry(QtCore.QRect(0, 9, 401, 490))
+        self.verticalFrame.setMinimumSize(QtCore.QSize(300, 0))
         self.verticalFrame.setObjectName("verticalFrame")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalFrame)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtWidgets.QLabel(self.verticalFrame)
-        self.label.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.label.setSizeIncrement(QtCore.QSize(50, 0))
-        self.label.setStyleSheet("color: white;")
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label, 0, QtCore.Qt.AlignHCenter)
         self.options_frame_main = QtWidgets.QFrame(self.verticalFrame)
         self.options_frame_main.setStyleSheet("QFrame{\n"
 "color: white;\n"
@@ -53,8 +49,7 @@ class Ui_MoreOptionsDialog(object):
 
     def retranslateUi(self, MoreOptionsDialog):
         _translate = QtCore.QCoreApplication.translate
-        MoreOptionsDialog.setWindowTitle(_translate("MoreOptionsDialog", "MainWindow"))
-        self.label.setText(_translate("MoreOptionsDialog", "Options"))
+        MoreOptionsDialog.setWindowTitle(_translate("MoreOptionsDialog", "Options"))
 
 
 if __name__ == "__main__":

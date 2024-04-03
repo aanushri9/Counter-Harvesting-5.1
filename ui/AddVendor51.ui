@@ -35,7 +35,6 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-bottom-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -390,13 +389,13 @@ background-color: #2E2F30;
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>0</width>
+                 <width>64</width>
                  <height>30</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>65</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -406,6 +405,8 @@ background-color: #2E2F30;
 background-color: #2E2F30;
     border-radius: 4px;
     padding-left: 5px;
+min-width: 55px;
+	max-width: 56px;
 }
 
 QDateEdit::up-button, QDateEdit::down-button {
@@ -444,7 +445,7 @@ QDateEdit::down-arrow {
                  <second>0</second>
                  <year>2019</year>
                  <month>12</month>
-                 <day>27</day>
+                 <day>25</day>
                 </datetime>
                </property>
                <property name="displayFormat">
@@ -625,10 +626,6 @@ background-color: #2E2F30;
 	font: bold;
    border-radius: 4px;
 text-align: center;
-}
-
-QPushButton:hover{
- background-color: #2095E6;
 }
 
 </string>

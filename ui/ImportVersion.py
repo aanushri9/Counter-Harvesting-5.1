@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ImportVersion.ui'
+# Form implementation generated from reading ui file 'importVersion.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -36,7 +36,6 @@ class Ui_importVersionDialog(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"

@@ -11,10 +11,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_noResultFound(object):
     def setupUi(self, noResultFound):
         noResultFound.setObjectName("noResultFound")
-        noResultFound.setGeometry(QtCore.QRect(0, 0, 630, 143))
+        noResultFound.resize(630, 143)
         noResultFound.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -38,7 +38,6 @@ class Ui_MainWindow(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -53,7 +52,6 @@ class Ui_MainWindow(object):
         font.setFamily("Georgia")
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -62,10 +60,7 @@ class Ui_MainWindow(object):
         font.setFamily("Georgia")
         font.setPointSize(14)
         self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton:hover {\n"
-"    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */\n"
-"    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */\n"
-"}")
+        self.pushButton.setStyleSheet("")
         self.pushButton.setObjectName("pushButton")
         noResultFound.setCentralWidget(self.centralwidget)
 
@@ -74,16 +69,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, noResultFound):
         _translate = QtCore.QCoreApplication.translate
-        noResultFound.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "No matches found"))
-        self.pushButton.setText(_translate("MainWindow", "Back"))
+        noResultFound.setWindowTitle(_translate("noResultFound", "MainWindow"))
+        self.label.setText(_translate("noResultFound", "No matches found"))
+        self.pushButton.setText(_translate("noResultFound", "Back"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     noResultFound = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_noResultFound()
     ui.setupUi(noResultFound)
     noResultFound.show()
     sys.exit(app.exec_())

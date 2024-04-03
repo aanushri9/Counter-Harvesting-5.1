@@ -70,10 +70,6 @@ border-color:grey;
 border-radius:15px;
 }
 
-QPushButton:hover {
-    background-color: lightblue;
-}
-
 </string>
               </property>
               <property name="frameShape">
@@ -95,11 +91,6 @@ QPushButton:hover {
    border-radius: 4px;
 text-align: center;
 }
-
-QPushButton:hover{
- background-color: #2095E6;
-}
-
 </string>
                  </property>
                  <property name="text">
@@ -126,11 +117,6 @@ QPushButton:hover{
    border-radius: 4px;
 text-align: center;
 }
-
-QPushButton:hover{
- background-color: #2095E6;
-}
-
 </string>
                  </property>
                  <property name="text">
@@ -160,11 +146,6 @@ QPushButton:hover{
    border-radius: 4px;
 text-align: center;
 }
-
-QPushButton:hover{
- background-color: #2095E6;
-}
-
 </string>
                  </property>
                  <property name="text">
@@ -191,11 +172,6 @@ QPushButton:hover{
    border-radius: 4px;
 text-align: center;
 }
-
-QPushButton:hover{
- background-color: #2095E6;
-}
-
 </string>
                  </property>
                  <property name="text">
@@ -263,9 +239,6 @@ border-color:grey;
 border-radius:15px;
 }
 
-QPushButton:hover {
-    background-color: lightblue;
-}
 </string>
            </property>
            <property name="frameShape">
@@ -285,10 +258,6 @@ QPushButton:hover {
 text-align: center;
 }
 
-QPushButton:hover{
- background-color: #2095E6;
-}
-
 </string>
               </property>
               <property name="text">
@@ -306,9 +275,6 @@ QPushButton:hover{
 text-align: center;
 }
 
-QPushButton:hover{
- background-color: #2095E6;
-}
 
 </string>
               </property>

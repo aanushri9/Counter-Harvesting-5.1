@@ -122,7 +122,6 @@ border-radius:15px;
 QPushButton{
 border: 2px solid grey ;
 border-radius:15px;
-hover:grey
 }</string>
                  </property>
                  <property name="frameShape">
@@ -185,18 +184,36 @@ border: none ;
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QListView {
-	background-color: rgb(33, 33, 33);
-	color:white;
-	alternate-background-color: rgb(50, 50, 50);
-	padding: 8px;
-	border: 2px solid gray;
-	border-radius: 4px;
+    background-color: rgb(33, 33, 33);
+    color:white;
+    alternate-background-color: rgb(50, 50, 50);
+    padding: 8px;
+    border: 2px solid gray;
+    border-radius: 4px;
 }
 
 QListView::item {
     padding: 6px;
-
 }
+
+
+QListView::indicator {
+    width: 15px;
+    height: 15px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+	border-radius: 4px;
+}
+QListView::indicator:checked {
+    background-color: qradialgradient(spread:pad, 
+                            cx:0.5,
+                            cy:0.5,
+                            radius:0.9,
+                            fx:0.5,
+                            fy:0.5,
+                            stop:0 rgba(0, 255, 0, 255), 
+                            stop:1 rgba(0, 64, 0, 255));
+}
+
 
 
 QScrollBar {
@@ -591,21 +608,38 @@ border: 2px solid grey ;
                      </item>
                      <item row="4" column="0" colspan="2">
                       <widget class="QListView" name="vendors_list_view_fetch">
+                       <property name="autoFillBackground">
+                        <bool>true</bool>
+                       </property>
                        <property name="styleSheet">
-                        <string notr="true">
-
-
-QListView {
-	background-color: rgb(33, 33, 33);
-	color:white;
-	alternate-background-color: rgb(50, 50, 50);
-	padding: 8px;
-	border: 2px solid gray;
-	border-radius: 4px;
+                        <string notr="true">QListView {
+    background-color: rgb(33, 33, 33);
+    color:white;
+    alternate-background-color: rgb(50, 50, 50);
+    padding: 8px;
+    border: 2px solid gray;
+    border-radius: 4px;
 }
 
 QListView::item {
     padding: 6px;
+}
+
+QListView::indicator {
+    width: 15px;
+    height: 15px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+	border-radius: 4px;
+}
+QListView::indicator:checked {
+    background-color: qradialgradient(spread:pad, 
+                            cx:0.5,
+                            cy:0.5,
+                            radius:0.9,
+                            fx:0.5,
+                            fy:0.5,
+                            stop:0 rgba(0, 255, 0, 255), 
+                            stop:1 rgba(0, 64, 0, 255));
 }
 
 
@@ -727,6 +761,24 @@ text-align:center;</string>
                             <family>Georgia</family>
                            </font>
                           </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox::indicator {
+    width: 15px;
+    height: 15px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+	border-radius: 4px;
+}
+QCheckBox::indicator:checked {
+    background-color: qradialgradient(spread:pad, 
+                            cx:0.5,
+                            cy:0.5,
+                            radius:0.9,
+                            fx:0.5,
+                            fy:0.5,
+                            stop:0 rgba(0, 255, 0, 255), 
+                            stop:1 rgba(0, 64, 0, 255));
+}</string>
+                          </property>
                           <property name="text">
                            <string>DR</string>
                           </property>
@@ -738,6 +790,24 @@ text-align:center;</string>
                            <font>
                             <family>Georgia</family>
                            </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox::indicator {
+    width: 15px;
+    height: 15px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+	border-radius: 4px;
+}
+QCheckBox::indicator:checked {
+    background-color: qradialgradient(spread:pad, 
+                            cx:0.5,
+                            cy:0.5,
+                            radius:0.9,
+                            fx:0.5,
+                            fy:0.5,
+                            stop:0 rgba(0, 255, 0, 255), 
+                            stop:1 rgba(0, 64, 0, 255));
+}</string>
                           </property>
                           <property name="text">
                            <string>TR</string>
@@ -751,6 +821,24 @@ text-align:center;</string>
                             <family>Georgia</family>
                            </font>
                           </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox::indicator {
+    width: 15px;
+    height: 15px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+	border-radius: 4px;
+}
+QCheckBox::indicator:checked {
+    background-color: qradialgradient(spread:pad, 
+                            cx:0.5,
+                            cy:0.5,
+                            radius:0.9,
+                            fx:0.5,
+                            fy:0.5,
+                            stop:0 rgba(0, 255, 0, 255), 
+                            stop:1 rgba(0, 64, 0, 255));
+}</string>
+                          </property>
                           <property name="text">
                            <string>PR</string>
                           </property>
@@ -762,6 +850,24 @@ text-align:center;</string>
                            <font>
                             <family>Georgia</family>
                            </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox::indicator {
+    width: 15px;
+    height: 15px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #808080);
+	border-radius: 4px;
+}
+QCheckBox::indicator:checked {
+    background-color: qradialgradient(spread:pad, 
+                            cx:0.5,
+                            cy:0.5,
+                            radius:0.9,
+                            fx:0.5,
+                            fy:0.5,
+                            stop:0 rgba(0, 255, 0, 255), 
+                            stop:1 rgba(0, 64, 0, 255));
+}</string>
                           </property>
                           <property name="text">
                            <string>IR</string>
@@ -1089,7 +1195,7 @@ QDateEdit::down-arrow {
                    <second>0</second>
                    <year>2019</year>
                    <month>12</month>
-                   <day>20</day>
+                   <day>18</day>
                   </datetime>
                  </property>
                  <property name="displayFormat">

@@ -36,7 +36,6 @@ class Ui_addVendor51Dialog(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -237,13 +236,15 @@ class Ui_addVendor51Dialog(object):
         self.gridLayout_5.addWidget(self.url_validation_label, 4, 2, 1, 1)
         self.All_reports_edit_fetch = QtWidgets.QDateEdit(self.AddNewVendor)
         self.All_reports_edit_fetch.setEnabled(True)
-        self.All_reports_edit_fetch.setMinimumSize(QtCore.QSize(0, 30))
-        self.All_reports_edit_fetch.setMaximumSize(QtCore.QSize(60, 16777215))
+        self.All_reports_edit_fetch.setMinimumSize(QtCore.QSize(64, 30))
+        self.All_reports_edit_fetch.setMaximumSize(QtCore.QSize(65, 16777215))
         self.All_reports_edit_fetch.setStyleSheet("QDateEdit {\n"
 "    border: 2px solid #808080;\n"
 "background-color: #2E2F30;\n"
 "    border-radius: 4px;\n"
 "    padding-left: 5px;\n"
+"min-width: 55px;\n"
+"    max-width: 56px;\n"
 "}\n"
 "\n"
 "QDateEdit::up-button, QDateEdit::down-button {\n"
@@ -274,7 +275,7 @@ class Ui_addVendor51Dialog(object):
 "    border-bottom: none;\n"
 "    border-top-color: white;\n"
 "}")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 27), QtCore.QTime(0, 0, 0)))
+        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 25), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.gridLayout_5.addWidget(self.All_reports_edit_fetch, 5, 2, 1, 1)
         self.customerIdEdit = QtWidgets.QLineEdit(self.AddNewVendor)
@@ -390,10 +391,6 @@ class Ui_addVendor51Dialog(object):
 "    font: bold;\n"
 "   border-radius: 4px;\n"
 "text-align: center;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
 "}\n"
 "\n"
 "")

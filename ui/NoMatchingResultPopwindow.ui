@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
+ <class>noResultFound</class>
  <widget class="QMainWindow" name="noResultFound">
   <property name="geometry">
    <rect>
@@ -37,7 +37,6 @@ text-align:left;
 padding: 5px 10px;
 
 border-top-left-radius:5px;
-border-bottom-left-radius:5px;
 }
 QPushButton:pressed{
 background-color:grey;
@@ -59,7 +58,6 @@ color:white;}</string>
      <font>
       <family>Georgia</family>
       <pointsize>14</pointsize>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -83,10 +81,7 @@ color:white;}</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton:hover {
-    background-color: #0000FF; /* 鼠标悬停时的背景颜色为蓝色 */
-    color: #FFFFFF; /* 鼠标悬停时的文字颜色为白色 */
-}</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Back</string>

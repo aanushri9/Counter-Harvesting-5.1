@@ -41,7 +41,6 @@ class Ui_editVendors51(object):
 "padding: 5px 10px;\n"
 "\n"
 "border-top-left-radius:5px;\n"
-"border-bottom-left-radius:5px;\n"
 "}\n"
 "QPushButton:pressed{\n"
 "background-color:grey;\n"
@@ -78,9 +77,7 @@ class Ui_editVendors51(object):
         self.edit_vendor_options_frame.setStyleSheet("QFrame {\n"
 "    border: 2px solid white;\n"
 "    border-radius: 15px;}\n"
-"QPushButton:hover {\n"
-"    background-color: lightblue;\n"
-"}\n"
+"\n"
 "\n"
 "")
         self.edit_vendor_options_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -100,10 +97,6 @@ class Ui_editVendors51(object):
 "    font: bold;\n"
 "   border-radius: 4px;\n"
 "text-align: center;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: #2095E6;\n"
 "}\n"
 "\n"
 "")
@@ -129,10 +122,6 @@ class Ui_editVendors51(object):
 "text-align: center;\n"
 "}\n"
 "\n"
-"QPushButton:hover{\n"
-" background-color: rgb(94, 94, 94);\n"
-"}\n"
-"\n"
 "")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("../latestUI/resources/Icons/undo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -153,11 +142,6 @@ class Ui_editVendors51(object):
 "   border-radius: 4px;\n"
 "text-align: center;\n"
 "}\n"
-"\n"
-"QPushButton:hover{\n"
-" background-color: rgb(255, 96, 60);\n"
-"}\n"
-"\n"
 "")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("../latestUI/resources/Icons/trash-can.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -397,7 +381,7 @@ class Ui_editVendors51(object):
 "    border-bottom: none;\n"
 "    border-top-color: white;\n"
 "}")
-        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 26), QtCore.QTime(0, 0, 0)))
+        self.All_reports_edit_fetch.setDateTime(QtCore.QDateTime(QtCore.QDate(2019, 12, 25), QtCore.QTime(0, 0, 0)))
         self.All_reports_edit_fetch.setObjectName("All_reports_edit_fetch")
         self.gridLayout_5.addWidget(self.All_reports_edit_fetch, 7, 3, 1, 1)
         self.label = QtWidgets.QLabel(self.edit_vendor_details_frame)
