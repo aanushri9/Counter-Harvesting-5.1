@@ -7,6 +7,7 @@ from sys import version
 import requests
 import validators
 import logging
+import time
 from PyQt5.QtWidgets import (
     QDialog,
     QLabel,
@@ -449,36 +450,51 @@ class ManageVendorsController(QObject):
                 GeneralUtils.show_message(message)
 
         def validate_vendor():
-            try:
-                request_url = base_url_edit.text()
-                # triming the url and removing /reports from the end and adding /status
-                request_url = request_url.strip()
-                if request_url.endswith("/reports"):
-                    request_url = request_url[:-8]
-                request_url += "/status"
+            attempt = 1
+            max_attempts = 5
+            delay_seconds = 5
+            while attempt <= max_attempts:
+                try:
+                    request_url = base_url_edit.text().strip()
+                    if request_url.endswith("/reports"):
+                        request_url = request_url[:-8]
+                    request_url += "/status"
 
-                response = requests.get(request_url, timeout=10)
-                url = response.history[0].url if response.history else response.url
-                if response.status_code == 200:
-                    logging.info(f"URL for Validation : {url} \n Success\n\n")
-                    GeneralUtils.show_message("Vendor validated successfully")
-                    self.isValidated = True
-                else:
-                    response_text = response.text
-                    if len(response_text) > 500:
-                        response_text = response_text[:500] + "..."
-                    logging.info(f"URL for Validation : {url} \n {response_text}\n\n")
-                    GeneralUtils.show_message(
-                        f"Vendor validation failed with status code: {response.status_code} \n Check Logs for more info"
-                    )
-            except requests.exceptions.Timeout as e:
-                logging.info(f"Vendor validation failed: Timeout , URL : {request_url} \n\n")
-                GeneralUtils.show_message("Vendor validation failed: Timeout")
-                return
-            except requests.exceptions.RequestException as e:
-                logging.info(f"Vendor validation failed: {e} , \nURL : {request_url} \n\n")
-                GeneralUtils.show_message(f"Vendor validation failed: {e}")
-                return
+                    response = requests.get(request_url, timeout=10)
+                    url = response.history[0].url if response.history else response.url
+                    if response.status_code == 200:
+                        logging.info(f"URL for Validation : {url} \n Success\n\n")
+                        GeneralUtils.show_message("Vendor validated successfully")
+                        self.isValidated = True
+                        return
+                    else:
+                        response_text = response.text[:500] + "..." if len(response.text) > 500 else response.text
+                        logging.info(f"URL for Validation : {url} \n {response_text}\n\n")
+                        GeneralUtils.show_message(
+                            f"Vendor validation failed with status code: {response.status_code} \n Check Logs for more info"
+                        )
+                        return  # Exit the function if validation fails
+                except requests.exceptions.Timeout as e:
+                    logging.info(f"Vendor validation failed: Timeout , URL : {request_url} \n\n")
+                    GeneralUtils.show_message("Vendor validation failed: Timeout")
+                    return
+                except requests.exceptions.RequestException as e:
+                    if isinstance(e, requests.exceptions.HTTPError) and e.response.status_code == 1011:
+                        if attempt < max_attempts:
+                            GeneralUtils.show_message(f"Vendor validation failed: {e}. Retrying in {delay_seconds} seconds...")
+                            time.sleep(delay_seconds)
+                            attempt += 1
+                            continue  # Retry the API call
+                        else:
+                            GeneralUtils.show_message(f"All retry attempts failed. Giving up.")
+                            return
+                    else:
+                        logging.info(f"Vendor validation failed: {e} , \nURL : {request_url} \n\n")
+                        GeneralUtils.show_message(f"Vendor validation failed: {e}")
+                        return
+
+            # If all retry attempts are exhausted
+            GeneralUtils.show_message(f"All retry attempts failed. Giving up.")
 
         validate_button.clicked.connect(lambda: validate_vendor())
         button_box = vendor_dialog_ui.buttonBox
