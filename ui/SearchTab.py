@@ -357,7 +357,7 @@ class Ui_Search(object):
         self.input_search_edit.setMaximumSize(QtCore.QSize(16777215, 60))
         font = QtGui.QFont()
         font.setFamily("Georgia")
-        font.setPointSize(-1)
+        font.setPointSize(1)
         self.input_search_edit.setFont(font)
         self.input_search_edit.setStyleSheet("QLineEdit {\n"
 "    color: white;\n"
