@@ -324,7 +324,7 @@ class ManageVendorsController(QObject):
     # Adding A New Vendor Section
     # """
 
-    def add_vendor(self, new_vendor: Vendor51, version: str) -> tuple[bool, str]:
+    def add_vendor(self, new_vendor: Vendor51, version: str):
         """Adds a new vendor to the system if the vendor is valid
 
         :param new_vendor: The new vendor to be added
@@ -538,8 +538,7 @@ class ManageVendorsController(QObject):
             validation_label.setText(message)
 
     def validate_new_name(
-        self, new_name: str, original_name: str, version: str
-    ) -> tuple[bool, str]:
+        self, new_name: str, original_name: str, version: str):
         """Validates a new vendor name
 
         :param new_name: The new name to be validated
@@ -593,7 +592,7 @@ class ManageVendorsController(QObject):
             validation_label.show()
             validation_label.setText(message)
 
-    def validate_url(self, url: str, version: str) -> tuple[bool, str]:
+    def validate_url(self, url: str, version: str):
         """Validates a new url
 
         :param url: The URL to be validated
@@ -613,7 +612,7 @@ class ManageVendorsController(QObject):
     # Update dat files Section
     # """
 
-    def write_data_to_file(self, file_path: str, vendors: list[Vendor51]):
+    def write_data_to_file(self, file_path: str, vendors):
         """
         Write the data of vendors to a file in JSON format.
 
@@ -979,8 +978,7 @@ class ManageVendorsController(QObject):
         self,
         new_vendor: Vendor51,
         original_vendor: Vendor51,
-        version: str,
-    ) -> tuple[bool, str]:
+        version: str,):
         # Check if vendor name is valid
         is_valid, message = self.validate_new_name(
             new_vendor.name, original_vendor.name, version

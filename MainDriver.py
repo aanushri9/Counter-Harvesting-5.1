@@ -1,4 +1,3 @@
-from ast import main
 from json import load
 import locale
 import sys

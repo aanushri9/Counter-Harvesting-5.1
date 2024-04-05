@@ -942,8 +942,8 @@ class RequestData:
 class FetchReportsAbstract:
     def __init__(
         self,
-        vendors_v50: list[Vendor51],
-        vendors_v51: list[Vendor51],
+        vendors_v50,
+        vendors_v51,
         settings: SettingsModel,
         widget: QWidget,
     ):
@@ -1360,8 +1360,8 @@ class FetchReportsController(FetchReportsAbstract):
 
     def __init__(
         self,
-        vendors_v50: list[Vendor51],
-        vendors_v51: list[Vendor51],
+        vendors_v50,
+        vendors_v51,
         settings: SettingsModel,
         widget: QWidget,
         fetch_reports_ui: FetchReportsTab.Ui_FetchReports,
