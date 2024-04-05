@@ -1,0 +1,19 @@
+Report_Name	Platform Master Report
+Report_ID	PR
+Release	5
+Institution_Name	University Of Prince Edward Island
+Institution_ID	aaas:20351555
+Metric_Types	
+Report_Filters	
+Report_Attributes	
+Exceptions	
+Reporting_Period	End_Date=2024-03-31; Begin_Date=2024-01-01
+Created	2024-04-05T13:46:39Z
+Created_By	Atypon Systems LLC.
+
+Platform	Metric_Type	Reporting_Period_Total	Jan-2024	Feb-2024	Mar-2024
+aaas	Total_Item_Requests	366	100	99	167
+aaas	Searches_Platform	333	95	90	148
+aaas	Unique_Item_Investigations	322	89	86	147
+aaas	Total_Item_Investigations	396	112	104	180
+aaas	Unique_Item_Requests	298	79	83	136
