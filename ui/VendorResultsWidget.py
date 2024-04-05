@@ -144,10 +144,10 @@ class Ui_VendorResultsWidget(object):
         _translate = QtCore.QCoreApplication.translate
         VendorResultsWidget.setWindowTitle(_translate("VendorResultsWidget", "Form"))
         self.status_label.setText(_translate("VendorResultsWidget", "Success"))
-        self.label.setText(_translate("VendorResultsWidget", "SUCCESSFUL : "))
+        self.label.setText(_translate("VendorResultsWidget", "SUCCESS : "))
         self.label_4.setText(_translate("VendorResultsWidget", "WARNING : "))
         self.label_6.setText(_translate("VendorResultsWidget", "FAILED : "))
-        self.label_8.setText(_translate("VendorResultsWidget", "CANCELLED : "))
+        self.label_8.setText(_translate("VendorResultsWidget", "CANCEL : "))
         self.vendor_label.setText(_translate("VendorResultsWidget", "Bioone"))
 
 
