@@ -32,6 +32,25 @@ https://github.com/CS-4820-Library-Project/COUNTER-5-Report-Tool/blob/master/doc
 
 ## Setup Instructions (Windows)
 
+### Download the project from Github
+- Open a command prompt.
+- Run git clone <repository-url> to download the project from Github.
+- Navigate to the project directory
+- In the command prompt, type cd followed by the path to the project directory.
+- Install project dependencies
+- Run pip install -r requirements.txt in the command prompt to install all necessary packages.
+
+### Run the project
+- Type python maindriver.py in the command prompt.
+- A User-Interface window should open with the project working.
+
+### Developer Setup (Optional)
+- Follow the respective installation instructions for Anaconda, PyCharm, or Visual Studio Code on Windows.
+- Open the project in your chosen IDE.
+- Ensure you have Python withing IDE
+- Set up the project interpreter to point to the Python environment.
+- Run the program from MainDriver.py.
+
 ## Setup Instruction (MacOS)
 
 ### Download the project from Github
@@ -48,22 +67,37 @@ https://github.com/CS-4820-Library-Project/COUNTER-5-Report-Tool/blob/master/doc
 - A User-Interface window should open with the project working
 - To run the project from now on, you only need to double click or right click and open MainDriver.py and the project should open
 
+### Developer Setup (Optional)
+- Follow the respective installation instructions for Anaconda, PyCharm, or Visual Studio Code on Windows.
+- Open the project in your chosen IDE.
+- Ensure you have Python withing IDE
+- Set up the project interpreter to point to the Python environment.
+- Run the program from MainDriver.py.
+
+## Setup Instruction (Ubuntu)
+
+### Download the project from Github
+- Open a terminal.
+- Run git clone <repository-url> to download the project from Github.
+- Navigate to the project directory
+- In the terminal, use cd to navigate to the directory where you cloned the project.
+- Install project dependencies
+- Run pip install -r requirements.txt in the terminal to install all necessary packages.
+
+### Run the project
+- Type python3 maindriver.py in the terminal.
+- A User-Interface window should open with the project working.
+
+### Developer Setup (Optional)
+- Follow the respective installation instructions for Anaconda, PyCharm, or Visual Studio Code on Windows.
+- Open the project in your chosen IDE.
+- Ensure you have Python withing IDE
+- Set up the project interpreter to point to the Python environment.
+- Run the program from MainDriver.py.
+
 ## Developer Setup (using Anaconda, Pycharm, Visual Studio Code)
 - Download and install Anaconda: https://www.anaconda.com/distribution/#download-section
 - Download and install PyCharm: https://www.jetbrains.com/pycharm/download/
 - Download and install Visual Studio Code: https://code.visualstudio.com/ 
 
-### Using Anaconda
-- Launch Anaconda Navigator (Anaconda GUI)
-- Go to Environments on the left pane
-- Search for and ensure that pyqt and requests packages are installed
-
-### Using PyCharm
-- Download and open the project using PyCharm
-- Go to File->Settings
-- On the left pane, select Project->Project Interpreter
-- Click the cog wheel on the right of the project interpreter drop down, click add
-- Choose Existing environment and set the location to anaconda_install_location/python.exe, OK, OK
-- Allow the IDE to complete set up then launch the program from MainDriver.py. There should be a play icon next to the line "if __name__ == "__main__":"
-- We Good To Go!
-Test
+It should be good to go! 
