@@ -8,7 +8,7 @@ from ui import (
     Settingtab,
 )
 
-sys.path.insert(0, "/Users/karan/Downloads/UPEI/UPEI STUDY/Winter 2024/Counter Harvesting Tool 5.1")
+sys.path.insert(0, "/Users/karan/Downloads/UPEI/UPEI STUDY/Winter 2024/Counter-Harvesting-Tool-5.1")
 from PyQt5.QtGui import QTextDocument
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 
