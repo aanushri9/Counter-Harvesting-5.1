@@ -37,13 +37,6 @@ class SettingsTabTests(unittest.TestCase):
         plain_text = doc.toPlainText()
         self.assertEqual(plain_text, "Request timeout")
 
-        doc.setHtml(settings_tab_ui.label_4.text())
-        plain_text = doc.toPlainText()
-        self.assertEqual(plain_text, "Concurrent vendors")
-
-        doc.setHtml(settings_tab_ui.label_5.text())
-        plain_text = doc.toPlainText()
-        self.assertEqual(plain_text, "Concurrent reports")
 
         doc.setHtml(settings_tab_ui.label_6.text())
         plain_text = doc.toPlainText()
@@ -56,8 +49,6 @@ class SettingsTabTests(unittest.TestCase):
         self.assertEqual(settings_tab_ui.directory_edit.text(), "")
         self.assertEqual(settings_tab_ui.request_interval_spin_box.value(), 0)
         self.assertEqual(settings_tab_ui.request_timeout_spin_box.value(), 0)
-        self.assertEqual(settings_tab_ui.concurrent_vendors_spin_box.value(), 0)
-        self.assertEqual(settings_tab_ui.concurrent_reports_spin_box.value(), 0)
         self.assertEqual(settings_tab_ui.user_agent_edit.text(), "")
         self.assertEqual(settings_tab_ui.select_directory_button.text(), "Choose")
         self.assertEqual(settings_tab_ui.save_button.text(), "Save All Changes")

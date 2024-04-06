@@ -91,7 +91,7 @@ class AddVendorTests(unittest.TestCase):
         )
         self.assertEqual(vendor_dialog_ui.providerEdit.text(), "")
         self.assertEqual(vendor_dialog_ui.notesEdit.text(), "")
-        self.assertEqual(vendor_dialog_ui.pushButton.text(), "Validate")
+        self.assertEqual(vendor_dialog_ui.validate_button.text(), "Validate")
 
     def test_ok_button(self):
         okWidget = vendor_dialog_ui.buttonBox.Ok

@@ -27,7 +27,7 @@ class VendorResultsWidgetTests(unittest.TestCase):
 
         doc.setHtml(vendor_results_widget_ui.label.text())
         plain_text = doc.toPlainText()
-        self.assertEqual(plain_text, "SUCCESSFUL : ")
+        self.assertEqual(plain_text, "SUCCESS : ")
 
         doc.setHtml(vendor_results_widget_ui.label_4.text())
         plain_text = doc.toPlainText()
@@ -39,7 +39,7 @@ class VendorResultsWidgetTests(unittest.TestCase):
 
         doc.setHtml(vendor_results_widget_ui.label_8.text())
         plain_text = doc.toPlainText()
-        self.assertEqual(plain_text, "CANCELLED : ")
+        self.assertEqual(plain_text, "CANCEL : ")
 
         doc.setHtml(vendor_results_widget_ui.successful_reports_list.text())
         plain_text = doc.toPlainText()
