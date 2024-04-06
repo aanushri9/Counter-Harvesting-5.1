@@ -1,3 +1,4 @@
+
 from json import load
 import locale
 import sys

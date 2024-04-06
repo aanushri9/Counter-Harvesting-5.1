@@ -17,7 +17,7 @@ from PyQt5.QtWidgets import (
     QMainWindow,
     QDateEdit,
 )
-
+from typing import List
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, QObject, QModelIndex, pyqtSignal
 from Settings import SettingsModel
@@ -130,8 +130,8 @@ class ManageVendorsController(QObject):
         self.vendor_list_view.clicked.connect(self.on_vendor_selected)
 
         self.settings = settings
-        self.vendors_v50: list[Vendor51] = []
-        self.vendors_v51: list[Vendor51] = []
+        self.vendors_v50: List[Vendor51] = []
+        self.vendors_v51: List[Vendor51] = []
         self.vendor_names_v50 = set()
         self.vendor_names_v51 = set()
 
@@ -612,13 +612,13 @@ class ManageVendorsController(QObject):
     # Update dat files Section
     # """
 
-    def write_data_to_file(self, file_path: str, vendors):
+    def write_data_to_file(self, file_path: str, vendors: List[Vendor51]):
         """
         Write the data of vendors to a file in JSON format.
 
         Args:
             file_path (str): The path of the file to write the data to.
-            vendors (list[Vendor51]): The list of vendors to write to the file.
+            vendors (List[Vendor51]): The list of vendors to write to the file.
 
         Returns:
             None
@@ -634,7 +634,7 @@ class ManageVendorsController(QObject):
         script_directory = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_directory, "vendors51.dat")
         self.write_data_to_file(file_path, self.vendors_v51)
-        all_vendors: list[Vendor51] = []
+        all_vendors: List[Vendor51] = []
         for vendor in self.vendors_v50:
             all_vendors.append(vendor)
         for vendor in self.vendors_v51:
@@ -648,7 +648,7 @@ class ManageVendorsController(QObject):
         script_directory = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_directory, "vendors.dat")
         self.write_data_to_file(file_path, self.vendors_v50)
-        all_vendors: list[Vendor51] = []
+        all_vendors: List[Vendor51] = []
         for vendor in self.vendors_v50:
             all_vendors.append(vendor)
         for vendor in self.vendors_v51:

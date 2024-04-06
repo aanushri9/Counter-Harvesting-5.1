@@ -8,6 +8,7 @@ import platform
 import logging
 import os
 import re
+from typing import List
 from Constants import (
     ACCEPTABLE_CODES,
     ALL_REPORTS,
@@ -942,8 +943,8 @@ class RequestData:
 class FetchReportsAbstract:
     def __init__(
         self,
-        vendors_v50,
-        vendors_v51,
+        vendors_v50: List[Vendor51],
+        vendors_v51: List[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
     ):
@@ -956,11 +957,11 @@ class FetchReportsAbstract:
 
         # region General
         self.widget = widget
-        self.vendors_v50: list[Vendor51] = vendors_v50
-        self.vendors_v51: list[Vendor51] = vendors_v51
+        self.vendors_v50: List[Vendor51] = vendors_v50
+        self.vendors_v51: List[Vendor51] = vendors_v51
         # self.update_vendors(vendors)
         self.selected_data = []  # List of ReportData Objects
-        self.retry_data = []  # List of (Vendor, list[report_types])>
+        self.retry_data = []  # List of (Vendor, List[report_types])>
         self.vendor_workers = {}  # <k = worker_id, v = (VendorWorker, Thread)>
         self.started_processes = 0
         self.completed_processes = 0
@@ -1360,8 +1361,8 @@ class FetchReportsController(FetchReportsAbstract):
 
     def __init__(
         self,
-        vendors_v50,
-        vendors_v51,
+        vendors_v50: List[Vendor51],
+        vendors_v51: List[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
         fetch_reports_ui: FetchReportsTab.Ui_FetchReports,
