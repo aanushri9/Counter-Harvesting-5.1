@@ -36,7 +36,6 @@ from ui import (
     FetchProgressDialog,
     VendorResultsWidget,
 )
-from typing import List
 from ManageVendors import Vendor51
 from PyQt5.QtCore import QObject, QThread, pyqtSignal, QDate, Qt
 from PyQt5.QtWidgets import (
@@ -943,8 +942,8 @@ class RequestData:
 class FetchReportsAbstract:
     def __init__(
         self,
-        vendors_v50: List[Vendor51],
-        vendors_v51: List[Vendor51],
+        vendors_v50: list[Vendor51],
+        vendors_v51: list[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
     ):
@@ -957,12 +956,12 @@ class FetchReportsAbstract:
 
         # region General
         self.widget = widget
-        self.vendors_v50: List[Vendor51] = vendors_v50
-        self.vendors_v51: List[Vendor51] = vendors_v51
+        self.vendors_v50: list[Vendor51] = vendors_v50
+        self.vendors_v51: list[Vendor51] = vendors_v51
 
         # self.update_vendors(vendors_v50, vendors_v51)
         self.selected_data = []  # List of ReportData Objects
-        self.retry_data = []  # List of (Vendor, List[report_types])>
+        self.retry_data = []  # List of (Vendor, list[report_types])>
         self.vendor_workers = {}  # <k = worker_id, v = (VendorWorker, Thread)>
         self.started_processes = 0
         self.completed_processes = 0
@@ -1167,9 +1166,15 @@ class FetchReportsAbstract:
         failed_list_edit.setText(failed_reports)
         cancelled_list_edit.setText(cancelled_reports)
 
-        # logging.info(
-        #     f"\nVendor : {vendor.name} \nstatus:  {vendor_result.completion_status} \nmessage: {vendor_result.message} \n Successful: {successful_reports} \n Warning: {warning_reports} \n Failed: {failed_reports} \n Cancelled: {cancelled_reports} \n"
-        # )
+        if (
+            successful_reports == ""
+            and warning_reports == ""
+            and failed_reports == ""
+            and cancelled_reports == ""
+        ):
+            status_label.setText("Unsupported Report(s) / Error(check logs)")
+            frame.hide()
+
 
     def on_vendor_worker_finished(self, worker_id: str):
         """Handles the signal emmited when a vendor worker has finished
@@ -1245,8 +1250,6 @@ class FetchReportsAbstract:
         self.cancel_button = fetch_progress_ui.buttonBox.button(QDialogButtonBox.Cancel)
 
         self.ok_button.setEnabled(False)
-        # self.retry_button.setEnabled(False)
-        # self.retry_button.setText("Retry Selected")
         self.ok_button.clicked.connect(lambda: self.fetch_progress_dialog.close())
         # self.retry_button.clicked.connect(
         #     lambda: self.retry_selected_reports(window_title)
@@ -1276,11 +1279,9 @@ class FetchReportsAbstract:
         """Finishes up the database update process"""
         self.is_updating_database = False
         self.database_report_data = []
-
         self.ok_button.setEnabled(True)
-        # self.retry_button.setEnabled(True)
+        self.cancel_button.hide()
         self.status_label.setText("Done!")
-        # print("🥶 4. hello")
 
     def cancel_workers(self):
         """Sends a cancel signal to all vendor workers, updates the UI accordingly"""
@@ -1329,15 +1330,12 @@ class FetchReportsAbstract:
         self.database_worker = UpdateDatabaseWorker(self.database_report_data, False)
         self.database_worker.moveToThread(self.database_thread)
 
-        # print("🥶 0. hello")
         def on_progress_changed(progress: int):
-            # print("🥶 1. hello")
             self.progress_bar.setValue(
                 int((progress / len(self.database_report_data)) * 100)
             )
 
         def on_worker_finished(code):
-            # print("🥶 2. hello")
             self.database_thread.quit()
             self.database_thread.wait()
             self.finish_updating_database()
@@ -1347,7 +1345,6 @@ class FetchReportsAbstract:
 
         self.database_thread.started.connect(self.database_worker.work)
         self.database_thread.start()
-        # print("🥶 3. hello")
         return True
 
 
@@ -1366,8 +1363,8 @@ class FetchReportsController(FetchReportsAbstract):
 
     def __init__(
         self,
-        vendors_v50: List[Vendor51],
-        vendors_v51: List[Vendor51],
+        vendors_v50: list[Vendor51],
+        vendors_v51: list[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
         fetch_reports_ui: FetchReportsTab.Ui_FetchReports,
@@ -1717,12 +1714,12 @@ class FetchReportsController(FetchReportsAbstract):
         # )
 
         options_layout = self.more_option_dialog_ui.options_frame_main.layout()
-        self.more_option_dialog_ui.options_frame_main.setStyleSheet(
-            """
-            color: #ffffff;
-            background-color: #333333;
-            """
-        )
+        # self.more_option_dialog_ui.options_frame_main.setStyleSheet(
+        #     """
+        #     color: #ffffff;
+        #     background-color: #333333;
+        #     """
+        # )
 
         options_layout.addWidget(QLabel("Show"), 0, 0)
         options_layout.addWidget(QLabel("Filters"), 0, 1)
@@ -1734,6 +1731,9 @@ class FetchReportsController(FetchReportsAbstract):
             checkbox = QCheckBox(option_name)
             checkbox.setStyleSheet(
                 """
+                QCheckBox {
+                    color: white;
+                }
                 QCheckBox::indicator {
                     width: 15px;
                     height: 15px;
@@ -1799,11 +1799,20 @@ class FetchReportsController(FetchReportsAbstract):
             selected_option = self.selected_options.__dict__[option_name.lower()]
             if selected_option[0] == True:
                 checkbox.setChecked(True)
-                if selected_option[3] == ["all"]:
-                    continue
-                if selected_option[3]:
-                    line_edit.setText("|".join(selected_option[3]))
+            if selected_option[3] == ["all"]:
+                continue
+            if selected_option[3]:
+                line_edit.setText("|".join(selected_option[3]))
 
+        self.more_option_dialog_ui.buttonBox.setStyleSheet(
+            """
+            border: 1px solid grey;
+            border-radius: 4px;
+            background-color: #000000;            
+            color: white;
+            padding: 4px;
+            """
+        )
         self.show_more_options_ok_button = self.more_option_dialog_ui.buttonBox.button(
             QDialogButtonBox.Ok
         )
@@ -1884,7 +1893,6 @@ class FetchReportsController(FetchReportsAbstract):
             border-radius: 4px;
             }
 
-            }   
         """
         )
 
@@ -1954,13 +1962,50 @@ class FetchReportsController(FetchReportsAbstract):
             )
             dialog.close()
 
-        button_box = QDialogButtonBox(
-            QDialogButtonBox.Ok | QDialogButtonBox.Cancel, dialog
-        )
-        button_box.accepted.connect(on_ok_button_clicked)
-        button_box.rejected.connect(lambda: dialog.close())
-        button_box.setCenterButtons(True)
-        layout.addWidget(button_box)
+        # button_box = QDialogButtonBox(
+        #     QDialogButtonBox.Ok | QDialogButtonBox.Cancel, dialog
+        # )
+        # button_box.accepted.connect(on_ok_button_clicked)
+        # button_box.rejected.connect(lambda: dialog.close())
+        # button_box.setCenterButtons(True)
+        # button_box.setStyleSheet(
+        #     """
+
+        #     QPushButton {
+        #         border: 1px solid grey;
+        #         border-radius: 4px;
+        #         background-color: #000000;
+        #         color: white;
+        #         padding: 4px;
+        #     }
+        # """
+        # ) # this css is not getting apply
+        # layout.addWidget(button_box)
+
+        ok_button = QPushButton("OK", dialog)
+        cancel_button = QPushButton("Cancel", dialog)
+
+        button_style = """
+            QPushButton {
+                border: 1px solid grey;
+                border-radius: 4px;
+                background-color: #000000;            
+                color: white;
+                padding: 4px;
+            }
+        """
+
+        ok_button.setStyleSheet(button_style)
+        cancel_button.setStyleSheet(button_style)
+
+        ok_button.clicked.connect(on_ok_button_clicked)
+        cancel_button.clicked.connect(lambda: dialog.close())
+
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(ok_button)
+        button_layout.addWidget(cancel_button)
+
+        layout.addLayout(button_layout)
 
         dialog.exec_()
 

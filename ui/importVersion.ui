@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>351</width>
-    <height>229</height>
+    <width>323</width>
+    <height>148</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,37 +81,15 @@ QLineEdit {
           <enum>QFrame::Plain</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_7">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Georgia</family>
-              <pointsize>14</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">text-align:centre;</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="checkBox">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Select Version&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>Remove Previous Data</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QPushButton" name="importVersion50">
+           <widget class="QPushButton" name="import_button">
             <property name="font">
              <font>
               <family>Georgia</family>
@@ -124,26 +102,7 @@ border-radius:15px;
 text-align:center;</string>
             </property>
             <property name="text">
-             <string>Version 5.0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QPushButton" name="importVersion51">
-            <property name="font">
-             <font>
-              <family>Georgia</family>
-              <pointsize>12</pointsize>
-              <italic>false</italic>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border: 2px solid grey;
-border-radius:15px;
-text-align:center;</string>
-            </property>
-            <property name="text">
-             <string>Version 5.1</string>
+             <string>Import</string>
             </property>
            </widget>
           </item>

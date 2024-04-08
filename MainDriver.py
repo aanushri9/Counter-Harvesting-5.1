@@ -1,4 +1,4 @@
-
+from ast import main
 from json import load
 import locale
 import sys
@@ -37,6 +37,7 @@ import hashlib
 
 load_dotenv()
 
+
 def trap_exc_during_debug(*args):
     # when app raises an uncaught exception, print info
     pass
@@ -73,6 +74,7 @@ if hasattr(Qt, "AA_UseHighDpiPixmaps"):
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
 
 authorized = False
+
 
 class PasswordDialog(QDialog):
     def __init__(self, parent=None):

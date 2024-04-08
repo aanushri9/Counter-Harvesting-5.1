@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_importVersionDialog(object):
     def setupUi(self, importVersionDialog):
         importVersionDialog.setObjectName("importVersionDialog")
-        importVersionDialog.resize(351, 229)
+        importVersionDialog.resize(323, 148)
         importVersionDialog.setStyleSheet("*{\n"
 "    \n"
 "border:none;\n"
@@ -72,43 +72,19 @@ class Ui_importVersionDialog(object):
         self.frame_3.setObjectName("frame_3")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_3)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label_7 = QtWidgets.QLabel(self.frame_3)
-        self.label_7.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
-        self.label_7.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(14)
-        font.setBold(True)
-        self.label_7.setFont(font)
-        self.label_7.setStyleSheet("text-align:centre;")
-        self.label_7.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.label_7.setObjectName("label_7")
-        self.gridLayout_2.addWidget(self.label_7, 0, 0, 1, 2)
-        self.importVersion50 = QtWidgets.QPushButton(self.frame_3)
+        self.checkBox = QtWidgets.QCheckBox(self.frame_3)
+        self.checkBox.setObjectName("checkBox")
+        self.gridLayout_2.addWidget(self.checkBox, 0, 0, 1, 1)
+        self.import_button = QtWidgets.QPushButton(self.frame_3)
         font = QtGui.QFont()
         font.setFamily("Georgia")
         font.setPointSize(12)
-        self.importVersion50.setFont(font)
-        self.importVersion50.setStyleSheet("border: 2px solid grey;\n"
+        self.import_button.setFont(font)
+        self.import_button.setStyleSheet("border: 2px solid grey;\n"
 "border-radius:15px;\n"
 "text-align:center;")
-        self.importVersion50.setObjectName("importVersion50")
-        self.gridLayout_2.addWidget(self.importVersion50, 1, 0, 1, 1)
-        self.importVersion51 = QtWidgets.QPushButton(self.frame_3)
-        font = QtGui.QFont()
-        font.setFamily("Georgia")
-        font.setPointSize(12)
-        font.setItalic(False)
-        self.importVersion51.setFont(font)
-        self.importVersion51.setStyleSheet("border: 2px solid grey;\n"
-"border-radius:15px;\n"
-"text-align:center;")
-        self.importVersion51.setObjectName("importVersion51")
-        self.gridLayout_2.addWidget(self.importVersion51, 1, 1, 1, 1)
+        self.import_button.setObjectName("import_button")
+        self.gridLayout_2.addWidget(self.import_button, 1, 0, 1, 1)
         self.verticalLayout.addWidget(self.frame_3)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 2)
         importVersionDialog.setCentralWidget(self.centralwidget)
@@ -119,9 +95,8 @@ class Ui_importVersionDialog(object):
     def retranslateUi(self, importVersionDialog):
         _translate = QtCore.QCoreApplication.translate
         importVersionDialog.setWindowTitle(_translate("importVersionDialog", "MainWindow"))
-        self.label_7.setText(_translate("importVersionDialog", "<html><head/><body><p align=\"center\">Select Version</p></body></html>"))
-        self.importVersion50.setText(_translate("importVersionDialog", "Version 5.0"))
-        self.importVersion51.setText(_translate("importVersionDialog", "Version 5.1"))
+        self.checkBox.setText(_translate("importVersionDialog", "Remove Previous Data"))
+        self.import_button.setText(_translate("importVersionDialog", "Import"))
 
 
 if __name__ == "__main__":

@@ -4,7 +4,6 @@ import csv
 import os
 import json
 from sys import version
-import time
 import requests
 import validators
 import logging
@@ -17,7 +16,7 @@ from PyQt5.QtWidgets import (
     QMainWindow,
     QDateEdit,
 )
-from typing import List
+
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, QObject, QModelIndex, pyqtSignal
 from Settings import SettingsModel
@@ -130,8 +129,8 @@ class ManageVendorsController(QObject):
         self.vendor_list_view.clicked.connect(self.on_vendor_selected)
 
         self.settings = settings
-        self.vendors_v50: List[Vendor51] = []
-        self.vendors_v51: List[Vendor51] = []
+        self.vendors_v50: list[Vendor51] = []
+        self.vendors_v51: list[Vendor51] = []
         self.vendor_names_v50 = set()
         self.vendor_names_v51 = set()
 
@@ -174,7 +173,8 @@ class ManageVendorsController(QObject):
         try:
             # script_directory = os.path.dirname(os.path.abspath(__file__))
             file_path = self.settings.vendors_location
-
+            if not os.path.exists(file_path):
+                return
             # Read JSON data from vendors.dat
             with open(file_path, "r") as file:
                 vendors_data = json.load(file)
@@ -450,51 +450,40 @@ class ManageVendorsController(QObject):
                 GeneralUtils.show_message(message)
 
         def validate_vendor():
-            attempt = 1
-            max_attempts = 5
-            delay_seconds = 5
-            while attempt <= max_attempts:
-                try:
-                    request_url = base_url_edit.text().strip()
-                    if request_url.endswith("/reports"):
-                        request_url = request_url[:-8]
-                    request_url += "/status"
+            try:
+                request_url = base_url_edit.text()
+                # triming the url and removing /reports from the end and adding /status
+                request_url = request_url.strip()
+                if request_url.endswith("/reports"):
+                    request_url = request_url[:-8]
+                request_url += "/status"
 
-                    response = requests.get(request_url, timeout=10)
-                    url = response.history[0].url if response.history else response.url
-                    if response.status_code == 200:
-                        logging.info(f"URL for Validation : {url} \n Success\n\n")
-                        GeneralUtils.show_message("Vendor validated successfully")
-                        self.isValidated = True
-                        return
-                    else:
-                        response_text = response.text[:500] + "..." if len(response.text) > 500 else response.text
-                        logging.info(f"URL for Validation : {url} \n {response_text}\n\n")
-                        GeneralUtils.show_message(
-                            f"Vendor validation failed with status code: {response.status_code} \n Check Logs for more info"
-                        )
-                        return  # Exit the function if validation fails
-                except requests.exceptions.Timeout as e:
-                    logging.info(f"Vendor validation failed: Timeout , URL : {request_url} \n\n")
-                    GeneralUtils.show_message("Vendor validation failed: Timeout")
-                    return
-                except requests.exceptions.RequestException as e:
-                    if isinstance(e, requests.exceptions.HTTPError) and e.response.status_code == 1011:
-                        if attempt < max_attempts:
-                            GeneralUtils.show_message(f"Vendor validation failed: {e}. Retrying in {delay_seconds} seconds...")
-                            time.sleep(delay_seconds)
-                            attempt += 1
-                            continue  # Retry the API call
-                        else:
-                            GeneralUtils.show_message(f"All retry attempts failed. Giving up.")
-                            return
-                    else:
-                        logging.info(f"Vendor validation failed: {e} , \nURL : {request_url} \n\n")
-                        GeneralUtils.show_message(f"Vendor validation failed: {e}")
-                        return
-
-            # If all retry attempts are exhausted
-            GeneralUtils.show_message(f"All retry attempts failed. Giving up.")
+                response = requests.get(request_url, timeout=10)
+                url = response.history[0].url if response.history else response.url
+                if response.status_code == 200:
+                    logging.info(f"URL for Validation : {url} \n Success\n\n")
+                    GeneralUtils.show_message("Vendor validated successfully")
+                    self.isValidated = True
+                else:
+                    response_text = response.text
+                    if len(response_text) > 500:
+                        response_text = response_text[:500] + "..."
+                    logging.info(f"URL for Validation : {url} \n {response_text}\n\n")
+                    GeneralUtils.show_message(
+                        f"Vendor validation failed with status code: {response.status_code} \n Check Logs for more info"
+                    )
+            except requests.exceptions.Timeout as e:
+                logging.info(
+                    f"Vendor validation failed: Timeout , URL : {request_url} \n\n"
+                )
+                GeneralUtils.show_message("Vendor validation failed: Timeout")
+                return
+            except requests.exceptions.RequestException as e:
+                logging.info(
+                    f"Vendor validation failed: {e} , \nURL : {request_url} \n\n"
+                )
+                GeneralUtils.show_message(f"Vendor validation failed: {e}")
+                return
 
         validate_button.clicked.connect(lambda: validate_vendor())
         button_box = vendor_dialog_ui.buttonBox
@@ -613,13 +602,13 @@ class ManageVendorsController(QObject):
     # Update dat files Section
     # """
 
-    def write_data_to_file(self, file_path: str, vendors: List[Vendor51]):
+    def write_data_to_file(self, file_path: str, vendors: list[Vendor51]):
         """
         Write the data of vendors to a file in JSON format.
 
         Args:
             file_path (str): The path of the file to write the data to.
-            vendors (List[Vendor51]): The list of vendors to write to the file.
+            vendors (list[Vendor51]): The list of vendors to write to the file.
 
         Returns:
             None
@@ -635,7 +624,7 @@ class ManageVendorsController(QObject):
         script_directory = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_directory, "vendors51.dat")
         self.write_data_to_file(file_path, self.vendors_v51)
-        all_vendors: List[Vendor51] = []
+        all_vendors: list[Vendor51] = []
         for vendor in self.vendors_v50:
             all_vendors.append(vendor)
         for vendor in self.vendors_v51:
@@ -649,7 +638,7 @@ class ManageVendorsController(QObject):
         script_directory = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_directory, "vendors.dat")
         self.write_data_to_file(file_path, self.vendors_v50)
-        all_vendors: List[Vendor51] = []
+        all_vendors: list[Vendor51] = []
         for vendor in self.vendors_v50:
             all_vendors.append(vendor)
         for vendor in self.vendors_v51:
@@ -660,11 +649,10 @@ class ManageVendorsController(QObject):
     # Import Export Section
     # """
 
-    def import_vendors_tsv(self, file_path: str, version: str):
-        """Imports the vendors version 5.1 from a TSV file path to the system
+    def import_vendors_tsv(self, file_path: str):
+        """Imports the vendors of version 5.1 and version 5.0 from a TSV file path to the system
 
         :param file_path: The file path of the vendors TSV file
-        :param version: The version of the vendor list to import
         """
         try:
             tsv_file = open(file_path, "r", encoding="utf-8", newline="")
@@ -703,11 +691,13 @@ class ManageVendorsController(QObject):
                     row["provider"] if "provider" in row else "",
                 )
 
-                is_valid, message = self.validate_new_name(vendor.name, "", version)
+                is_valid, message = self.validate_new_name(
+                    vendor.name, "", vendor.version
+                )
                 if not is_valid:
                     if message == "Duplicate vendor name":
                         org_vendor = None
-                        if version == "5.0":
+                        if vendor.version == "5.0":
                             for v in self.vendors_v50:
                                 if v.name.lower() == vendor.name.lower():
                                     org_vendor = v
@@ -717,36 +707,59 @@ class ManageVendorsController(QObject):
                                 if v.name.lower() == vendor.name.lower():
                                     org_vendor = v
                                     break
-                        if org_vendor:
-                            self.edit_vendor(vendor, org_vendor, version)
-                            return True, ""
 
-                is_valid, message = self.add_vendor(vendor, version)
-                if not is_valid:
-                    print(f"error in importing vendor version {version} : {message}")
+                        if org_vendor:
+                            is_valid, message = self.update_vendor_while_importing(
+                                vendor, org_vendor, vendor.version
+                            )
+                            if not is_valid:
+                                print(
+                                    f"error in importing vendor : {vendor.name}, version {vendor.version}, message : {message}"
+                                )
+                    else:
+                        print(
+                            f"error in importing vendor : {vendor.name} , version {vendor.version}, message : {message}"
+                        )
+                else:
+                    is_valid, message = self.add_vendor(vendor, vendor.version)
+                    if not is_valid:
+                        print(
+                            f"error in importing vendor : {vendor.name} , version {vendor.version}, message : {message}"
+                        )
 
             tsv_file.close()
 
             self.sort_vendors()
             self.selected_index = -1
-            if version == "5.1":
-                self.on_click_version51()
-                self.update_vendors51_dat_file()
-            else:
-                self.on_click_version50()
-                self.update_vendors_dat_file()
+            self.on_click_version50()
+            self.update_vendors_dat_file()
+            self.on_click_version51()
+            self.update_vendors51_dat_file()
             self.update_vendor_names()
 
             GeneralUtils.show_message(f"Import successful!")
         except Exception as e:
             GeneralUtils.show_message(f"File import failed: {e}")
 
-    def import_vendors_clicked(self, import_version_dialog, version: str):
+    def import_vendors_clicked(
+        self, import_version_dialog, remove_previous: bool = False
+    ):
         import_version_dialog.close()
         file_path = GeneralUtils.choose_file(TSV_FILTER)
 
         if file_path:
-            self.import_vendors_tsv(file_path, version)
+            if remove_previous:
+                self.remove_all_previous_vendors()
+            self.import_vendors_tsv(file_path)
+
+    def remove_all_previous_vendors(self):
+        self.vendors_v50.clear()
+        self.vendors_v51.clear()
+        self.vendor_names_v50.clear()
+        self.vendor_names_v51.clear()
+        file_path = self.settings.vendors_location
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
     def on_import_vendors_clicked(self):
         """Handles the signal emitted when the import vendors button is clicked.
@@ -758,14 +771,14 @@ class ManageVendorsController(QObject):
         import_version_dialog_ui.setupUi(import_version_dialog)
         import_version_dialog.show()
 
-        select_version50_button = import_version_dialog_ui.importVersion50
-        select_version51_button = import_version_dialog_ui.importVersion51
+        import_btn = import_version_dialog_ui.import_button
+        remove_previous_vendors_checkbox = import_version_dialog_ui.checkBox
+        # TODO
 
-        select_version50_button.clicked.connect(
-            lambda: self.import_vendors_clicked(import_version_dialog, "5.0")
-        )
-        select_version51_button.clicked.connect(
-            lambda: self.import_vendors_clicked(import_version_dialog, "5.1")
+        import_btn.clicked.connect(
+            lambda: self.import_vendors_clicked(
+                import_version_dialog, remove_previous_vendors_checkbox.isChecked()
+            )
         )
 
         import_version_dialog.exec_()
@@ -974,6 +987,31 @@ class ManageVendorsController(QObject):
         )
 
         edit_vendor_dialog.exec_()
+
+    def update_vendor_while_importing(
+        self, new_vendor: Vendor51, old_vendor: Vendor51, version: str
+    ):
+        is_valid, message = self.validate_url(new_vendor.base_url, version)
+        if not is_valid:
+            return is_valid, message
+        if version == "5.1":
+            self.vendors_v51.remove(old_vendor)
+            self.vendors_v51.append(new_vendor)
+            self.vendor_names_v51.remove(old_vendor.name.lower())
+            self.vendor_names_v51.add(new_vendor.name.lower())
+            self.sort_vendors()
+            self.on_click_version51()
+            self.update_vendors51_dat_file()
+        else:
+            self.vendors_v50.remove(old_vendor)
+            self.vendors_v50.append(new_vendor)
+            self.vendor_names_v50.remove(old_vendor.name.lower())
+            self.vendor_names_v50.add(new_vendor.name.lower())
+            self.sort_vendors()
+            self.on_click_version50()
+            self.update_vendors_dat_file()
+
+        return True, ""
 
     def edit_vendor(
         self,

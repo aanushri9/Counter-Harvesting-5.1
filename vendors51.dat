@@ -1,8 +1,23 @@
 [
   {
+    "name": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "version": "5.1",
+    "base_url": "http://belvadi.ddnsfree.com/r51/reports",
+    "starting_year": "2023",
+    "customer_id": "sample",
+    "requestor_id": "",
+    "api_key": "",
+    "platform": "",
+    "requires_two_attempts": false,
+    "does_ip_checking": false,
+    "needs_throttling": false,
+    "notes": "",
+    "provider": ""
+  },
+  {
     "name": "AAAMary-Liebert",
     "version": "5.1",
-    "base_url": "https://www.llkiiigjh.com/reports",
+    "base_url": "https://www.llkiiigjh.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "82521",
     "requestor_id": "collections@upei.ca",
@@ -17,7 +32,7 @@
   {
     "name": "AAASS",
     "version": "5.1",
-    "base_url": "https://www.science.org/reports",
+    "base_url": "https://www.science.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "20351555",
     "requestor_id": "collections@upei.ca",
@@ -32,7 +47,7 @@
   {
     "name": "Akad\u00e9miai Kiad\u00f3",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "ak-prod_2079",
     "requestor_id": "cc8a3ee0-95a8-405f-9a34-b0074df7e2be",
@@ -47,7 +62,7 @@
   {
     "name": "Alexander Street Press",
     "version": "5.1",
-    "base_url": "https://pqbi.prod.proquest.com/release/sushi/asp/sushi/reports",
+    "base_url": "https://pqbi.prod.proquest.com/release/sushi/asp/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "896",
     "requestor_id": "6015a0ee506210291b69cc45",
@@ -62,7 +77,7 @@
   {
     "name": "Allen Press",
     "version": "5.1",
-    "base_url": "https://sitemaster.meridian.allenpress.com//sushi/reports",
+    "base_url": "https://sitemaster.meridian.allenpress.com//sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "19464",
     "requestor_id": "97554",
@@ -77,7 +92,7 @@
   {
     "name": "American Institute of Physics Scitation",
     "version": "5.1",
-    "base_url": "https://www.scitation.org/reports",
+    "base_url": "https://www.scitation.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "000001180661",
     "requestor_id": "collections@upei.ca",
@@ -92,7 +107,7 @@
   {
     "name": "AMS Journals_and_Books",
     "version": "5.1",
-    "base_url": "https://counter.ams.org/counter/r5/reports",
+    "base_url": "https://counter.ams.org/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "UPEIS*CHA",
     "requestor_id": "",
@@ -107,7 +122,7 @@
   {
     "name": "AMS Mathscinet",
     "version": "5.1",
-    "base_url": "https://mathscinet.ams.org/counter/r5/reports",
+    "base_url": "https://mathscinet.ams.org/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "UPEIS*CHA",
     "requestor_id": "",
@@ -122,7 +137,7 @@
   {
     "name": "AMS-Journals & books",
     "version": "5.1",
-    "base_url": "https://counter.ams.org/counter/r5/reports",
+    "base_url": "https://counter.ams.org/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "UPEIS*CHA",
     "requestor_id": "",
@@ -137,7 +152,7 @@
   {
     "name": "Annual Reviews",
     "version": "5.1",
-    "base_url": "https://www.annualreviews.org/reports",
+    "base_url": "https://www.annualreviews.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "106712",
     "requestor_id": "upei",
@@ -152,7 +167,7 @@
   {
     "name": "APS   Amer. Physical Society",
     "version": "5.1",
-    "base_url": "https://inqwell.squidsolutions.com/release/aps/sushi/reports",
+    "base_url": "https://inqwell.squidsolutions.com/release/aps/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "PR447048",
     "requestor_id": "5c9290982b734cbb9893a765",
@@ -167,7 +182,7 @@
   {
     "name": "APS - Amer. Physical Society",
     "version": "5.1",
-    "base_url": "https://inqwell.squidsolutions.com/release/aps/sushi/reports",
+    "base_url": "https://inqwell.squidsolutions.com/release/aps/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "PR447048",
     "requestor_id": "5c9290982b734cbb9893a765",
@@ -182,7 +197,7 @@
   {
     "name": "APS Amer Physiological Soc",
     "version": "5.1",
-    "base_url": "https://www.physiology.org/reports",
+    "base_url": "https://www.physiology.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "00015659",
     "requestor_id": "collections@upei.ca",
@@ -197,7 +212,7 @@
   {
     "name": "APS-Amer. Physiological Society",
     "version": "5.1",
-    "base_url": "https://journals.physiology.org/reports",
+    "base_url": "https://journals.physiology.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "00015659",
     "requestor_id": "collections@upei.ca",
@@ -212,7 +227,7 @@
   {
     "name": "ARRS",
     "version": "5.1",
-    "base_url": "https://www.ajronline.org/reports",
+    "base_url": "https://www.ajronline.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "638004",
     "requestor_id": "MB731034",
@@ -227,7 +242,7 @@
   {
     "name": "ASME",
     "version": "5.1",
-    "base_url": "https://sitemaster.asmedigitalcollection.asme.org/sushi/reports",
+    "base_url": "https://sitemaster.asmedigitalcollection.asme.org/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "3217",
     "requestor_id": "128450",
@@ -242,7 +257,7 @@
   {
     "name": "AVMA",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "avma-prod_475",
     "requestor_id": "3672727a-56a8-4b54-a132-f1d7ea1e944e",
@@ -257,7 +272,7 @@
   {
     "name": "AVMA Journals",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "avma-prod_475",
     "requestor_id": "3672727a-56a8-4b54-a132-f1d7ea1e944e",
@@ -272,7 +287,7 @@
   {
     "name": "Bates Videos",
     "version": "5.1",
-    "base_url": "https://sitemaster.lwwhealthlibrary.com//sushi/reports",
+    "base_url": "https://sitemaster.lwwhealthlibrary.com//sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "134573",
     "requestor_id": "7782989",
@@ -287,7 +302,7 @@
   {
     "name": "BioOne",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "512B6680-A058-E811-80C8-005056B9C586",
     "requestor_id": "eafe8b88-2d7e-4a96-9319-e13e10598817",
@@ -302,7 +317,7 @@
   {
     "name": "BMJ",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "396291",
     "requestor_id": "a4f4efe1-bbf8-44f0-90b7-c1442964bff9",
@@ -317,7 +332,7 @@
   {
     "name": "Brill",
     "version": "5.1",
-    "base_url": "https://ams.brill.com/rest/COUNTER/v5/reports",
+    "base_url": "https://ams.brill.com/rest/COUNTER/v5/r51/reports",
     "starting_year": "2000",
     "customer_id": "5923",
     "requestor_id": "",
@@ -332,7 +347,7 @@
   {
     "name": "CABI",
     "version": "5.1",
-    "base_url": "https://cabidigitallibrary.org/reports",
+    "base_url": "https://cabidigitallibrary.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "59221",
     "requestor_id": "collections@upei.ca",
@@ -347,7 +362,7 @@
   {
     "name": "Cambridge Core",
     "version": "5.1",
-    "base_url": "http://counter5.cambridge.org/reports",
+    "base_url": "http://counter5.cambridge.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "8a94032b5413f999015414009bdc0d1c",
     "requestor_id": "8a94032b5413f999015414009bdc0d1c",
@@ -362,7 +377,7 @@
   {
     "name": "Cambridge-Core",
     "version": "5.1",
-    "base_url": "https://counter5.cambridge.org/reports",
+    "base_url": "https://counter5.cambridge.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "8a94032b5413f999015414009bdc0d1c",
     "requestor_id": "8a94032b5413f999015414009bdc0d1c",
@@ -377,7 +392,7 @@
   {
     "name": "CanadaCommons",
     "version": "5.1",
-    "base_url": "https://connect.liblynx.com/sushi/r5/reports",
+    "base_url": "https://connect.liblynx.com/sushi/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "27539685",
     "requestor_id": "a4b347bb-911c-4db0-96e9-a0833b055919",
@@ -392,7 +407,7 @@
   {
     "name": "Canadian Science Publishing",
     "version": "5.1",
-    "base_url": "https://cdnsciencepub.com/reports",
+    "base_url": "https://cdnsciencepub.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "51861-2359-csp",
     "requestor_id": "collections@upei.ca",
@@ -407,7 +422,7 @@
   {
     "name": "Credo",
     "version": "5.1",
-    "base_url": "https://search.credoreference.com/reports",
+    "base_url": "https://search.credoreference.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "7303",
     "requestor_id": "admin@upei.ca|riddle999",
@@ -422,7 +437,7 @@
   {
     "name": "CSIRO",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "S-101264",
     "requestor_id": "3699464c-8a52-4303-a2c8-3a3dc43df225",
@@ -435,24 +450,9 @@
     "provider": ""
   },
   {
-    "name": "DeGruyter (Walter De Gruyter)",
-    "version": "5.1",
-    "base_url": "https:/ams.degruyter.com/rest/COUNTER/v5/reports",
-    "starting_year": "2000",
-    "customer_id": "",
-    "requestor_id": "",
-    "api_key": "",
-    "platform": "",
-    "requires_two_attempts": false,
-    "does_ip_checking": false,
-    "needs_throttling": false,
-    "notes": "",
-    "provider": ""
-  },
-  {
     "name": "Deslibris",
     "version": "5.1",
-    "base_url": "https://connect.liblynx.com/sushi/r5/reports",
+    "base_url": "https://connect.liblynx.com/sushi/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "24439522",
     "requestor_id": "7de2e76d-a1a3-4940-a089-f9cc4d847069",
@@ -467,7 +467,7 @@
   {
     "name": "Duke Euclid",
     "version": "5.1",
-    "base_url": "https://sitemaster.read.dukeupress.edu/sushi/reports",
+    "base_url": "https://sitemaster.read.dukeupress.edu/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "530",
     "requestor_id": "567",
@@ -482,7 +482,7 @@
   {
     "name": "Duke-Euclid",
     "version": "5.1",
-    "base_url": "https://sitemaster.read.dukeupress.edu/sushi/reports",
+    "base_url": "https://sitemaster.read.dukeupress.edu/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "530",
     "requestor_id": "567",
@@ -497,7 +497,7 @@
   {
     "name": "EBSCO",
     "version": "5.1",
-    "base_url": "https://sushi.ebscohost.com/R5/reports",
+    "base_url": "https://sushi.ebscohost.com/R5/r51/reports",
     "starting_year": "2000",
     "customer_id": "uprince",
     "requestor_id": "c456a677-df9c-415d-9a98-168170d7a427",
@@ -512,7 +512,7 @@
   {
     "name": "Edward Elgar",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "eep-prod_15264",
     "requestor_id": "cbfb7f55-8f88-4ad0-8396-2832a99c3d44",
@@ -525,24 +525,9 @@
     "provider": ""
   },
   {
-    "name": "Edward Elgar Publishing",
-    "version": "5.1",
-    "base_url": "https:/ams.elgaronline.com/rest/COUNTER/v5/reports",
-    "starting_year": "2000",
-    "customer_id": "",
-    "requestor_id": "",
-    "api_key": "",
-    "platform": "",
-    "requires_two_attempts": false,
-    "does_ip_checking": false,
-    "needs_throttling": false,
-    "notes": "",
-    "provider": ""
-  },
-  {
     "name": "Elsevier EngVillage",
     "version": "5.1",
-    "base_url": "https://api.elsevier.com/sushi/reports",
+    "base_url": "https://api.elsevier.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "C000051268",
     "requestor_id": "06c54d0bf8c3633fa96dd708a31e5162",
@@ -557,7 +542,7 @@
   {
     "name": "Elsevier SciDirect",
     "version": "5.1",
-    "base_url": "https://api.elsevier.com/sushi/reports",
+    "base_url": "https://api.elsevier.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "C000051268",
     "requestor_id": "06c54d0bf8c3633fa96dd708a31e5162",
@@ -572,7 +557,7 @@
   {
     "name": "Elsevier Scopus",
     "version": "5.1",
-    "base_url": "https://api.elsevier.com/sushi/reports",
+    "base_url": "https://api.elsevier.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "C000051268",
     "requestor_id": "06c54d0bf8c3633fa96dd708a31e5162",
@@ -587,7 +572,7 @@
   {
     "name": "Elsevier-EngVillage",
     "version": "5.1",
-    "base_url": "https://api.elsevier.com/sushi/reports",
+    "base_url": "https://api.elsevier.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "C000051268",
     "requestor_id": "06c54d0bf8c3633fa96dd708a31e5162",
@@ -602,7 +587,7 @@
   {
     "name": "Elsevier-SciDirect",
     "version": "5.1",
-    "base_url": "https://api.elsevier.com/sushi/reports",
+    "base_url": "https://api.elsevier.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "C000051268",
     "requestor_id": "06c54d0bf8c3633fa96dd708a31e5162",
@@ -617,7 +602,7 @@
   {
     "name": "ELSEVIER-Scopus",
     "version": "5.1",
-    "base_url": "https://api.elsevier.com/sushi/reports",
+    "base_url": "https://api.elsevier.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "C000051268",
     "requestor_id": "06c54d0bf8c3633fa96dd708a31e5162",
@@ -632,7 +617,7 @@
   {
     "name": "Emerald",
     "version": "5.1",
-    "base_url": "https://connect.liblynx.com/sushi/r5/reports",
+    "base_url": "https://connect.liblynx.com/sushi/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "2182277",
     "requestor_id": "021f71b6-a210-4080-8664-1c305d51c632",
@@ -647,7 +632,7 @@
   {
     "name": "Films on Demand",
     "version": "5.1",
-    "base_url": "https://connect.liblynx.com/sushi/r5/reports",
+    "base_url": "https://connect.liblynx.com/sushi/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "90428",
     "requestor_id": "e597d772-7356-4265-b216-bd0923294c8e",
@@ -662,7 +647,7 @@
   {
     "name": "Gale",
     "version": "5.1",
-    "base_url": "https://sushi5.galegroup.com/sushi/reports",
+    "base_url": "https://sushi5.galegroup.com/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "loc|otta0998",
     "requestor_id": "otta0998/otta0998",
@@ -677,7 +662,7 @@
   {
     "name": "GeoScienceWorld",
     "version": "5.1",
-    "base_url": "https://sitemaster.geoscienceworld.org/sushi/reports",
+    "base_url": "https://sitemaster.geoscienceworld.org/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "2320",
     "requestor_id": "15359",
@@ -692,7 +677,7 @@
   {
     "name": "Healio Slack",
     "version": "5.1",
-    "base_url": "https://journals.healio.com/reports",
+    "base_url": "https://journals.healio.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "UNIV OF P E I",
     "requestor_id": "collections@upei.ca",
@@ -707,7 +692,7 @@
   {
     "name": "Highwire",
     "version": "5.1",
-    "base_url": "https://hwdpapi.highwire.org/sushi/reports",
+    "base_url": "https://hwdpapi.highwire.org/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "collections@upei.ca",
     "requestor_id": "",
@@ -722,7 +707,7 @@
   {
     "name": "hire",
     "version": "5.1",
-    "base_url": "http://hire.com/reports",
+    "base_url": "http://hire.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "hiring",
     "requestor_id": "",
@@ -737,7 +722,7 @@
   {
     "name": "IEEE",
     "version": "5.1",
-    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/reports",
+    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/r51/reports",
     "starting_year": "2000",
     "customer_id": "4172671",
     "requestor_id": "",
@@ -752,7 +737,7 @@
   {
     "name": "IGI",
     "version": "5.1",
-    "base_url": "https://sushi5.igi-global.com/reports",
+    "base_url": "https://sushi5.igi-global.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "fdfd19f6-2fde-4653-b996-3bdef00199ee",
     "requestor_id": "85930500-2c9d-4b66-a21f-36a228ae3f5b",
@@ -767,7 +752,7 @@
   {
     "name": "IGI Global",
     "version": "5.1",
-    "base_url": "https://sushi5.igi-global.com/reports",
+    "base_url": "https://sushi5.igi-global.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "fdfd19f6-2fde-4653-b996-3bdef00199ee",
     "requestor_id": "85930500-2c9d-4b66-a21f-36a228ae3f5b",
@@ -782,7 +767,7 @@
   {
     "name": "Ingenta Connect",
     "version": "5.1",
-    "base_url": "https://www.ingentaconnect.com/sushiadmin/statistics/sushi/reports",
+    "base_url": "https://www.ingentaconnect.com/sushiadmin/statistics/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "peican",
     "requestor_id": "10832c48c658cb16",
@@ -797,7 +782,7 @@
   {
     "name": "IOP Institute of Physics",
     "version": "5.1",
-    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/reports",
+    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/r51/reports",
     "starting_year": "2000",
     "customer_id": "AIP_PR447048",
     "requestor_id": "",
@@ -812,7 +797,7 @@
   {
     "name": "JAMA",
     "version": "5.1",
-    "base_url": "http://sitemaster.jamanetwork.com//sushi/reports",
+    "base_url": "http://sitemaster.jamanetwork.com//sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "35310",
     "requestor_id": "1745359",
@@ -827,7 +812,7 @@
   {
     "name": "JSTOR",
     "version": "5.1",
-    "base_url": "https://www.jstor.org/sushi/reports",
+    "base_url": "https://www.jstor.org/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "upei.ca",
     "requestor_id": "collections@upei.ca",
@@ -842,7 +827,7 @@
   {
     "name": "Mark Allen Group",
     "version": "5.1",
-    "base_url": "https://www.magonlinelibrary.com/reports",
+    "base_url": "https://www.magonlinelibrary.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "279322",
     "requestor_id": "mbelvadi@upei.ca",
@@ -857,7 +842,7 @@
   {
     "name": "Mark-Allen-Group",
     "version": "5.1",
-    "base_url": "https://www.magonlinelibrary.com/reports",
+    "base_url": "https://www.magonlinelibrary.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "279322",
     "requestor_id": "mbelvadi@upei.ca",
@@ -872,7 +857,7 @@
   {
     "name": "Mary Ann Liebert",
     "version": "5.1",
-    "base_url": "https://www.liebertpub.com/reports",
+    "base_url": "https://www.liebertpub.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "8252134",
     "requestor_id": "collections@upei.ca",
@@ -887,7 +872,7 @@
   {
     "name": "McGraw Hill (Access Engineering)",
     "version": "5.1",
-    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/reports",
+    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/r51/reports",
     "starting_year": "2000",
     "customer_id": "8083",
     "requestor_id": "",
@@ -902,7 +887,7 @@
   {
     "name": "McGraw-Hill_Access_Engineering",
     "version": "5.1",
-    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/reports",
+    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/r51/reports",
     "starting_year": "2000",
     "customer_id": "8083",
     "requestor_id": "",
@@ -917,7 +902,7 @@
   {
     "name": "Microbiology Society",
     "version": "5.1",
-    "base_url": "https://www.microbiologyresearch.org/counter5/sushi/reports",
+    "base_url": "https://www.microbiologyresearch.org/counter5/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "sgid023870",
     "requestor_id": "70e8f980bc5e04dd292392e09bcd4428",
@@ -932,7 +917,7 @@
   {
     "name": "MIT Press",
     "version": "5.1",
-    "base_url": "https://sitemaster.direct.mit.edu/sushi/reports",
+    "base_url": "https://sitemaster.direct.mit.edu/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "491",
     "requestor_id": "3161",
@@ -947,7 +932,7 @@
   {
     "name": "MIT-Press",
     "version": "5.1",
-    "base_url": "https://sitemaster.direct.mit.edu/sushi/reports",
+    "base_url": "https://sitemaster.direct.mit.edu/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "491",
     "requestor_id": "3161",
@@ -962,7 +947,7 @@
   {
     "name": "NEJM",
     "version": "5.1",
-    "base_url": "https://www.nejm.org/reports",
+    "base_url": "https://www.nejm.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "000102063747",
     "requestor_id": "mbelvadi@upei.ca",
@@ -977,7 +962,7 @@
   {
     "name": "NewsBank",
     "version": "5.1",
-    "base_url": "https://stats.newsbank.com/sushi_r5/servlet/reports",
+    "base_url": "https://stats.newsbank.com/sushi_r5/servlet/r51/reports",
     "starting_year": "2000",
     "customer_id": "53072",
     "requestor_id": "53072:53072",
@@ -992,7 +977,7 @@
   {
     "name": "OVID",
     "version": "5.1",
-    "base_url": "https://stats.ovid.com/C5/sushi/reports",
+    "base_url": "https://stats.ovid.com/C5/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "4391",
     "requestor_id": "749fbf1f-1c04-496d-80ec-ecfed99e5f2c",
@@ -1007,7 +992,7 @@
   {
     "name": "Oxford Academic",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "20036030",
     "requestor_id": "390c6b17-935b-4a24-9890-bd41b9ff1581",
@@ -1022,7 +1007,7 @@
   {
     "name": "Oxford Books",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "13742",
     "requestor_id": "afbe0d71-d7c5-463f-96eb-859827823006",
@@ -1037,7 +1022,7 @@
   {
     "name": "Oxford Journals",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "20001588",
     "requestor_id": "017d3cbb-e2ce-4c2e-b2ae-3aebca27309c",
@@ -1052,7 +1037,7 @@
   {
     "name": "Philosophy Documentation Centre(PDC)",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "4154946",
     "requestor_id": "1034f0d0-c887-49a9-bdbf-01d15d11e80a",
@@ -1067,7 +1052,7 @@
   {
     "name": "Philosophy-Documentation-Centre(PDC)",
     "version": "5.1",
-    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/reports",
+    "base_url": "https://sushi5.scholarlyiq.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "4154946",
     "requestor_id": "1034f0d0-c887-49a9-bdbf-01d15d11e80a",
@@ -1082,7 +1067,7 @@
   {
     "name": "PNAS",
     "version": "5.1",
-    "base_url": "https://www.pnas.org/reports",
+    "base_url": "https://www.pnas.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "PR447048",
     "requestor_id": "collections@upei.ca",
@@ -1097,7 +1082,7 @@
   {
     "name": "Project Muse",
     "version": "5.1",
-    "base_url": "https://about.muse.jhu.edu/lib/counter5/sushi/reports",
+    "base_url": "https://about.muse.jhu.edu/lib/counter5/sushi/r51/reports",
     "starting_year": "2000",
     "customer_id": "i16692",
     "requestor_id": "",
@@ -1112,7 +1097,7 @@
   {
     "name": "Proquest",
     "version": "5.1",
-    "base_url": "https://sushi.proquest.com/counter/r5/reports",
+    "base_url": "https://sushi.proquest.com/counter/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "14670",
     "requestor_id": "",
@@ -1127,7 +1112,7 @@
   {
     "name": "Proquest Ebook Central",
     "version": "5.1",
-    "base_url": "https://pqbi.prod.proquest.com/release/sushi/ebooks/r5/reports",
+    "base_url": "https://pqbi.prod.proquest.com/release/sushi/ebooks/r5/r51/reports",
     "starting_year": "2000",
     "customer_id": "upei",
     "requestor_id": "5e31c5140c18c070632e35e4",
@@ -1142,7 +1127,7 @@
   {
     "name": "PsychiatryOnline",
     "version": "5.1",
-    "base_url": "https://psychiatryonline.org/reports",
+    "base_url": "https://psychiatryonline.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "297459",
     "requestor_id": "collections@upei.ca",
@@ -1157,7 +1142,7 @@
   {
     "name": "Royal Society of Chemistry",
     "version": "5.1",
-    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/reports",
+    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/r51/reports",
     "starting_year": "2000",
     "customer_id": "3140",
     "requestor_id": "",
@@ -1172,7 +1157,7 @@
   {
     "name": "Royal society publishing",
     "version": "5.1",
-    "base_url": "https://royalsocietypublishing.org/reports",
+    "base_url": "https://royalsocietypublishing.org/r51/reports",
     "starting_year": "2000",
     "customer_id": "CU-0735144",
     "requestor_id": "collections@upei.ca",
@@ -1187,7 +1172,7 @@
   {
     "name": "Royal-Society-of-Chemistry",
     "version": "5.1",
-    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/reports",
+    "base_url": "https://c5sushi.mpsinsight.com/c5sushi/services/r51/reports",
     "starting_year": "2000",
     "customer_id": "3140",
     "requestor_id": "",
@@ -1200,24 +1185,9 @@
     "provider": ""
   },
   {
-    "name": "Sage Books",
-    "version": "5.1",
-    "base_url": "https://securecenter.sagepub.com/SushiService/reports",
-    "starting_year": "2000",
-    "customer_id": "",
-    "requestor_id": "mLsZOFydEoFYd/eEqBHJpg",
-    "api_key": "",
-    "platform": "",
-    "requires_two_attempts": false,
-    "does_ip_checking": false,
-    "needs_throttling": false,
-    "notes": "",
-    "provider": ""
-  },
-  {
     "name": "Sage Journals",
     "version": "5.1",
-    "base_url": "https://journals.sagepub.com/reports",
+    "base_url": "https://journals.sagepub.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "1000451523",
     "requestor_id": "mbelvadi@upei.ca",
@@ -1232,7 +1202,7 @@
   {
     "name": "Springer-Nature",
     "version": "5.1",
-    "base_url": "http://counter.public.springernature.app/reports",
+    "base_url": "http://counter.public.springernature.app/r51/reports",
     "starting_year": "2000",
     "customer_id": "3000162182",
     "requestor_id": "",
@@ -1247,7 +1217,7 @@
   {
     "name": "Statista",
     "version": "5.1",
-    "base_url": "https://sushi-api.tracking.prod.aws.statista.com/reports",
+    "base_url": "https://sushi-api.tracking.prod.aws.statista.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "443654",
     "requestor_id": "443654",
@@ -1262,7 +1232,7 @@
   {
     "name": "Taylor & Francis books",
     "version": "5.1",
-    "base_url": "https://api.taylorandfrancis.com/v2/counterreports/reports",
+    "base_url": "https://api.taylorandfrancis.com/v2/counterreports/r51/reports",
     "starting_year": "2000",
     "customer_id": "101779",
     "requestor_id": "collections@upei.ca",
@@ -1277,7 +1247,7 @@
   {
     "name": "Taylor & Francis journals",
     "version": "5.1",
-    "base_url": "https://tandfonline.com/reports",
+    "base_url": "https://tandfonline.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "1453391",
     "requestor_id": "collections@upei.ca",
@@ -1292,7 +1262,7 @@
   {
     "name": "Taylor Francis Books",
     "version": "5.1",
-    "base_url": "https://api.taylorandfrancis.com/v2/counterreports/reports",
+    "base_url": "https://api.taylorandfrancis.com/v2/counterreports/r51/reports",
     "starting_year": "2000",
     "customer_id": "101779",
     "requestor_id": "",
@@ -1307,7 +1277,7 @@
   {
     "name": "Taylor Francis Journals",
     "version": "5.1",
-    "base_url": "https://tandfonline.com/reports",
+    "base_url": "https://tandfonline.com/r51/reports",
     "starting_year": "2000",
     "customer_id": "1453391",
     "requestor_id": "collections@upei.ca",
@@ -1322,7 +1292,7 @@
   {
     "name": "University of Chicago",
     "version": "5.1",
-    "base_url": "https://www.journals.uchicago.edu/reports",
+    "base_url": "https://www.journals.uchicago.edu/r51/reports",
     "starting_year": "2000",
     "customer_id": "117870",
     "requestor_id": "collections@upei.ca",
@@ -1337,7 +1307,7 @@
   {
     "name": "University of Chicago Press",
     "version": "5.1",
-    "base_url": "https://www.journals.uchicago.edu/reports",
+    "base_url": "https://www.journals.uchicago.edu/r51/reports",
     "starting_year": "2000",
     "customer_id": "117870",
     "requestor_id": "collections@upei.ca",
@@ -1352,10 +1322,40 @@
   {
     "name": "University-of-Toronto",
     "version": "5.1",
-    "base_url": "https://www.utpjournals.press/reports",
+    "base_url": "https://www.utpjournals.press/r51/reports",
     "starting_year": "2000",
     "customer_id": "101005",
     "requestor_id": "upei",
+    "api_key": "",
+    "platform": "",
+    "requires_two_attempts": false,
+    "does_ip_checking": false,
+    "needs_throttling": false,
+    "notes": "",
+    "provider": ""
+  },
+  {
+    "name": "zvvvvv",
+    "version": "5.1",
+    "base_url": "https://stoplight.io/mocks/countermetrics/counter-sushi-api/173057565/r51/reports",
+    "starting_year": "2023",
+    "customer_id": "3435",
+    "requestor_id": "",
+    "api_key": "",
+    "platform": "",
+    "requires_two_attempts": false,
+    "does_ip_checking": false,
+    "needs_throttling": false,
+    "notes": "",
+    "provider": ""
+  },
+  {
+    "name": "zxzxz",
+    "version": "5.1",
+    "base_url": "https://stoplight.io/mocks/countermetrics/counter-sushi-api/173057565/r51/reports",
+    "starting_year": "2023",
+    "customer_id": "344",
+    "requestor_id": "",
     "api_key": "",
     "platform": "",
     "requires_two_attempts": false,
