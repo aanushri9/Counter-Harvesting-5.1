@@ -346,43 +346,34 @@ def read_report_file(
     :param year: the year of the data in the file
     :returns: (file_name, report, values) a Tuple with the file name, the kind of report, and the data from the file
     """
-    # print(f"🍭 0. yo filename : {file_name} , vendor: {vendor} , year : {year}")
+
     delimiter = DELIMITERS[file_name[-4:].lower()]
     file = open(file_name, "r", encoding="utf-8-sig")
-    # print("🍭 1. yo")
     reader = csv.reader(file, delimiter=delimiter, quotechar='"')
     if file.mode == "r":
-        # print("🍭 2. yo")
         header = {}
         for row in range(HEADER_ROWS):  # reads header data
-            # print(f"🍭 2.1. yo row : {row}")
             cells = next(reader)
-            # TODO error is here at index 12
             if cells:
                 key = cells[0].lower()
-                # print(f"🍭 2.2. yo row : {row} , key : {key}")
                 if len(cells) > 1:
                     header[key] = cells[1].strip()
                 else:
                     header[key] = None
-                # print(f"🍭 2.3. yo row : {row} , key : {key} , header[key] : {header[key]}")
-        # print("🍭 3. yo")
+
         for row in range(BLANK_ROWS):
             next(reader)
         column_headers = next(reader)
         column_headers = list(
             map((lambda column_header: column_header.lower()), column_headers)
         )  # reads column headers
-        # print("🍭 4. yo")
 
         values = []
         for cells in list(reader):
-            # print("🍭 5. yo")
             for (
                 month
             ) in MONTHS:  # makes value from each month with metric > 0 for each row
                 month_header = MONTHS[month][:3].lower() + "-" + str(year)
-                # print(f"🍭 6. yo month_header : {month_header} , column_headers : {column_headers}")
                 if month_header in column_headers:
                     current_month = column_headers.index(month_header)
                     metric = int(cells[current_month])
@@ -404,7 +395,6 @@ def read_report_file(
                         value["file"] = os.path.basename(file.name)
                         values.append(value)
         
-        # print("🍭 7. yo")
         return os.path.basename(file.name), header["report_id"], tuple(values)
     else:
         print("Error: could not open file " + file_name)

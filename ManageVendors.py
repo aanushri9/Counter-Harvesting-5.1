@@ -7,7 +7,6 @@ from sys import version
 import requests
 import validators
 import logging
-import time
 from PyQt5.QtWidgets import (
     QDialog,
     QLabel,
@@ -17,7 +16,7 @@ from PyQt5.QtWidgets import (
     QMainWindow,
     QDateEdit,
 )
-from typing import List
+
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, QObject, QModelIndex, pyqtSignal
 from Settings import SettingsModel
@@ -130,8 +129,8 @@ class ManageVendorsController(QObject):
         self.vendor_list_view.clicked.connect(self.on_vendor_selected)
 
         self.settings = settings
-        self.vendors_v50: List[Vendor51] = []
-        self.vendors_v51: List[Vendor51] = []
+        self.vendors_v50: list[Vendor51] = []
+        self.vendors_v51: list[Vendor51] = []
         self.vendor_names_v50 = set()
         self.vendor_names_v51 = set()
 
@@ -324,7 +323,7 @@ class ManageVendorsController(QObject):
     # Adding A New Vendor Section
     # """
 
-    def add_vendor(self, new_vendor: Vendor51, version: str):
+    def add_vendor(self, new_vendor: Vendor51, version: str) -> tuple[bool, str]:
         """Adds a new vendor to the system if the vendor is valid
 
         :param new_vendor: The new vendor to be added
@@ -538,7 +537,8 @@ class ManageVendorsController(QObject):
             validation_label.setText(message)
 
     def validate_new_name(
-        self, new_name: str, original_name: str, version: str):
+        self, new_name: str, original_name: str, version: str
+    ) -> tuple[bool, str]:
         """Validates a new vendor name
 
         :param new_name: The new name to be validated
@@ -592,7 +592,7 @@ class ManageVendorsController(QObject):
             validation_label.show()
             validation_label.setText(message)
 
-    def validate_url(self, url: str, version: str):
+    def validate_url(self, url: str, version: str) -> tuple[bool, str]:
         """Validates a new url
 
         :param url: The URL to be validated
@@ -612,13 +612,13 @@ class ManageVendorsController(QObject):
     # Update dat files Section
     # """
 
-    def write_data_to_file(self, file_path: str, vendors: List[Vendor51]):
+    def write_data_to_file(self, file_path: str, vendors: list[Vendor51]):
         """
         Write the data of vendors to a file in JSON format.
 
         Args:
             file_path (str): The path of the file to write the data to.
-            vendors (List[Vendor51]): The list of vendors to write to the file.
+            vendors (list[Vendor51]): The list of vendors to write to the file.
 
         Returns:
             None
@@ -634,7 +634,7 @@ class ManageVendorsController(QObject):
         script_directory = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_directory, "vendors51.dat")
         self.write_data_to_file(file_path, self.vendors_v51)
-        all_vendors: List[Vendor51] = []
+        all_vendors: list[Vendor51] = []
         for vendor in self.vendors_v50:
             all_vendors.append(vendor)
         for vendor in self.vendors_v51:
@@ -648,7 +648,7 @@ class ManageVendorsController(QObject):
         script_directory = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_directory, "vendors.dat")
         self.write_data_to_file(file_path, self.vendors_v50)
-        all_vendors: List[Vendor51] = []
+        all_vendors: list[Vendor51] = []
         for vendor in self.vendors_v50:
             all_vendors.append(vendor)
         for vendor in self.vendors_v51:
@@ -978,7 +978,8 @@ class ManageVendorsController(QObject):
         self,
         new_vendor: Vendor51,
         original_vendor: Vendor51,
-        version: str,):
+        version: str,
+    ) -> tuple[bool, str]:
         # Check if vendor name is valid
         is_valid, message = self.validate_new_name(
             new_vendor.name, original_vendor.name, version

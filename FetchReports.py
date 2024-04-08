@@ -8,7 +8,6 @@ import platform
 import logging
 import os
 import re
-from typing import List
 from Constants import (
     ACCEPTABLE_CODES,
     ALL_REPORTS,
@@ -943,8 +942,8 @@ class RequestData:
 class FetchReportsAbstract:
     def __init__(
         self,
-        vendors_v50: List[Vendor51],
-        vendors_v51: List[Vendor51],
+        vendors_v50: list[Vendor51],
+        vendors_v51: list[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
     ):
@@ -957,11 +956,12 @@ class FetchReportsAbstract:
 
         # region General
         self.widget = widget
-        self.vendors_v50: List[Vendor51] = vendors_v50
-        self.vendors_v51: List[Vendor51] = vendors_v51
-        # self.update_vendors(vendors)
+        self.vendors_v50: list[Vendor51] = vendors_v50
+        self.vendors_v51: list[Vendor51] = vendors_v51
+
+        # self.update_vendors(vendors_v50, vendors_v51)
         self.selected_data = []  # List of ReportData Objects
-        self.retry_data = []  # List of (Vendor, List[report_types])>
+        self.retry_data = []  # List of (Vendor, list[report_types])>
         self.vendor_workers = {}  # <k = worker_id, v = (VendorWorker, Thread)>
         self.started_processes = 0
         self.completed_processes = 0
@@ -999,22 +999,26 @@ class FetchReportsAbstract:
 
         # endregion
 
-    def on_vendors_changed(self, vendors: list):
+    def on_vendors_changed(self, vendors_50: list, vendors_51: list):
         """Handles the signal emitted when the system's vendor list is updated
 
         :param vendors: An updated list of the system's vendors
         """
-        self.update_vendors(vendors)
+        # self.update_vendors(vendors_50, vendors_51)
         self.update_vendors_ui()
 
-    def update_vendors(self, vendors: list):
-        """Updates the local copy of vendors that support report fetching (SUSHI)
+    # def update_vendors(self, vendors_50: list, vendors_51: list):
+    #     """Updates the local copy of vendors that support report fetching (SUSHI)
 
-        :param vendors: A list of vendors
-        """
-        self.vendors = []
-        for vendor in vendors:
-            self.vendors.append(vendor)
+    #     :param vendors: A list of vendors
+    #     """
+    #     self.vendors_v50 = []
+    #     for vendor in vendors_50:
+    #         self.vendors_v50.append(vendor)
+
+    #     self.vendors_v51 = []
+    #     for vendor in vendors_51:
+    #         self.vendors_v51.append(vendor)
 
     def update_vendors_ui(self):
         """Updates the UI to show vendors that support report fetching (SUSHI)"""
@@ -1361,8 +1365,8 @@ class FetchReportsController(FetchReportsAbstract):
 
     def __init__(
         self,
-        vendors_v50: List[Vendor51],
-        vendors_v51: List[Vendor51],
+        vendors_v50: list[Vendor51],
+        vendors_v51: list[Vendor51],
         settings: SettingsModel,
         widget: QWidget,
         fetch_reports_ui: FetchReportsTab.Ui_FetchReports,
@@ -1403,6 +1407,7 @@ class FetchReportsController(FetchReportsAbstract):
         self.version_51_btn = fetch_reports_ui.version_51_button
         self.version_50_btn = fetch_reports_ui.version_50_button
         self.curr_version = "5.1"
+        self.update_vendors(vendors_v50, vendors_v51)
         self.update_vendors_ui("5.1")
         self.version_50_btn.clicked.connect(lambda: self.update_vendors_ui("5.0"))
         self.version_51_btn.clicked.connect(lambda: self.update_vendors_ui("5.1"))
@@ -1552,6 +1557,20 @@ class FetchReportsController(FetchReportsAbstract):
             # self.custom_dir_edit.setText(f"{directory_path}/all_data/special_reports/")
             self.custom_dir_edit.setText(self.settings.other_directory)
 
+    def update_vendors(self, vendors_50: Vendor51, vendors_51: Vendor51):
+        """Updates the local copy of vendors that support report fetching (SUSHI)
+
+        :param vendors_50: A list of vendors 5.0
+        :param vendors_51: A list of vendors 5.1
+        """
+        self.vendors_v50 = []
+        for vendor in vendors_50:
+            self.vendors_v50.append(vendor)
+        self.vendors_v51 = []
+        for vendor in vendors_51:
+            self.vendors_v51.append(vendor)
+        self.update_vendors_ui("5.1")
+
     # Vendor List Section
     def update_vendors_ui(self, version: str):
         """Updates the UI to show vendors that support report fetching (SUSHI)"""
@@ -1689,7 +1708,20 @@ class FetchReportsController(FetchReportsAbstract):
         self.more_option_dialog_ui.setupUi(self.more_option_dialog)
         self.more_option_dialog.show()
 
+        # self.more_option_dialog.setStyleSheet(
+        #     """
+        #     color: #ffffff;
+        #     background-color: #333333;
+        #     """
+        # )
+
         options_layout = self.more_option_dialog_ui.options_frame_main.layout()
+        self.more_option_dialog_ui.options_frame_main.setStyleSheet(
+            """
+            color: #ffffff;
+            background-color: #333333;
+            """
+        )
 
         options_layout.addWidget(QLabel("Show"), 0, 0)
         options_layout.addWidget(QLabel("Filters"), 0, 1)
@@ -2562,16 +2594,15 @@ class ReportWorker(QObject):
                 value = special_options_dict[option]
                 is_selected, option_type, option_name, option_parameters = value
 
+                if (
+                    option_type == SpecialOptionType.AP
+                    or option_type == SpecialOptionType.ADP
+                    or option_type == SpecialOptionType.POS
+                ):
+                    if option_parameters[0] != DEFAULT_SPECIAL_OPTION_VALUE:
+                        request_query[option] = "|".join(option_parameters)
                 if is_selected:
-                    if (
-                        option_type == SpecialOptionType.AP
-                        or option_type == SpecialOptionType.ADP
-                        or option_type == SpecialOptionType.POS
-                    ):
-                        if option_parameters[0] != DEFAULT_SPECIAL_OPTION_VALUE:
-                            request_query[option] = "|".join(option_parameters)
-
-                    elif option_type == SpecialOptionType.POB:
+                    if option_type == SpecialOptionType.POB:
                         request_query[option] = "True"
 
                     if (
@@ -2659,7 +2690,7 @@ class ReportWorker(QObject):
                 self.save_json_file(json_string)
 
             json_dict = json.loads(json_string)
-            # TODO
+
             report_model = ReportModel.from_json(json_dict)
             self.process_report_model(report_model)
             if len(report_model.report_items) > 0 or len(report_model.exceptions) > 0:
@@ -2807,8 +2838,6 @@ class ReportWorker(QObject):
 
                     elif major_report_type == MajorReportType.TITLE:
                         report_item: TitleReportItemModel
-                        # TODO 13
-                        # print("🤡🤡🤡 report_item : ", report_item , " 🤡🤡🤡")
                         if report_item.title:
                             metric_row.title = report_item.title
                         if report_item.publisher:

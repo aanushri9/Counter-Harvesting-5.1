@@ -1,4 +1,4 @@
-
+from ast import main
 from json import load
 import locale
 import sys
@@ -74,7 +74,6 @@ if hasattr(Qt, "AA_UseHighDpiPixmaps"):
 
 authorized = False
 
-#Password code handled here
 class PasswordDialog(QDialog):
     def __init__(self, parent=None):
         super(PasswordDialog, self).__init__(parent)
@@ -156,9 +155,11 @@ if __name__ == "__main__":
                     1
                 )  # Switch to another tab (index 1) if password is incorrect
                 return
-
         # Allow changing to the selected tab
+        if index == 1:
+            fetch_reports_controller.update_vendors(manage_vendors_controller.vendors_v50, manage_vendors_controller.vendors_v51)
         main_window_ui.tab_widget.setCurrentIndex(index)
+
 
     def handle_tab_change2(index):
         if index == 0 and authorized == False:
